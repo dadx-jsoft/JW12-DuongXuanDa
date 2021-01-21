@@ -36,6 +36,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- SPRING JPA -->
+		<dependency> <!-- kết nối jpa với spring boot -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency> <!-- kết nối với mysql -->
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		
 		<!-- SPRING TOOLS -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
