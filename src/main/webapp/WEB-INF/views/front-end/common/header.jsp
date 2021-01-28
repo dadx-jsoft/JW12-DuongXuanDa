@@ -20,7 +20,7 @@
 			<nav class="limiter-menu-desktop container">
 
 				<!-- Logo desktop -->
-				<a href="/" class="logo"> <img src="images/icons/logo-01.png"
+				<a href="/" class="logo"> <img src="/images/icons/logo-01.png"
 					alt="IMG-LOGO">
 				</a>
 
@@ -35,7 +35,7 @@
 
 						<li><a href="products">Shop</a></li>
 
-						<li class="label1" data-label1="hot"><a href="shopping_cart">Features</a></li>
+						<li class="label1" data-label1="hot"><a href="shopping-cart">Features</a></li>
 
 						<li><a href="blog">Blog</a></li>
 
@@ -71,7 +71,7 @@
 	<div class="wrap-header-mobile">
 		<!-- Logo moblie -->
 		<div class="logo-mobile">
-			<a href="/"><img src="images/icons/logo-01.png"
+			<a href="/"><img src="/images/icons/logo-01.png"
 				alt="IMG-LOGO"></a>
 		</div>
 
@@ -134,7 +134,7 @@
 
 			<li><a href="products">Shop</a></li>
 
-			<li><a href="shopping_cart" class="label1 rs1" data-label1="hot">Features</a></li>
+			<li><a href="shopping-cart" class="label1 rs1" data-label1="hot">Features</a></li>
 
 			<li><a href="blog">Blog</a></li>
 
@@ -149,7 +149,7 @@
 		<div class="container-search-header">
 			<button
 				class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-				<img src="images/icons/icon-close2.png" alt="CLOSE">
+				<img src="/images/icons/icon-close2.png" alt="CLOSE">
 			</button>
 
 			<form class="wrap-search-header flex-w p-l-15">

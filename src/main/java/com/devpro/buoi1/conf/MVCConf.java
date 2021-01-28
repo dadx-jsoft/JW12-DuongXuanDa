@@ -24,6 +24,7 @@ public class MVCConf implements WebMvcConfigurer {
 		registry.addResourceHandler("/images/**").addResourceLocations("classpath:/images/");
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
 		registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/fonts/");
+		registry.addResourceHandler("/summernote/**").addResourceLocations("classpath:/summernote/");
 	}
 	
 	// cấu hình cho MVC biết chỗ folder để lấy view trả về cho Browser.

@@ -1,5 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -8,16 +6,16 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="./common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
-<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
+<jsp:include page="./common/css.jsp"></jsp:include>
 </head>
 <body class="animsition">
 
-	<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
+	<jsp:include page="./common/header.jsp"></jsp:include>
 
 	<!-- Cart -->
-	<jsp:include page="/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
+	<jsp:include page="./common/cart.jsp"></jsp:include>
 
 	<!-- breadcrumb -->
 	<div class="container">
@@ -26,7 +24,7 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
 				Men <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a> <span class="stext-109 cl4"> Lightweight Jacket </span>
+			</a> <span class="stext-109 cl4"> ${pro_detail.title} </span>
 		</div>
 	</div>
 
@@ -43,39 +41,39 @@
 
 							<div class="slick3 gallery-lb">
 								<div class="item-slick3"
-									data-thumb="images/product-detail-01.jpg">
+									data-thumb="/images/product-detail-01.jpg">
 									<div class="wrap-pic-w pos-relative">
-										<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+										<img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="images/product-detail-01.jpg"> <i
+											href="/images/product-detail-01.jpg"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
 								<div class="item-slick3"
-									data-thumb="images/product-detail-02.jpg">
+									data-thumb="/images/product-detail-02.jpg">
 									<div class="wrap-pic-w pos-relative">
-										<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+										<img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="images/product-detail-02.jpg"> <i
+											href="/images/product-detail-02.jpg"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
 								<div class="item-slick3"
-									data-thumb="images/product-detail-03.jpg">
+									data-thumb="/images/product-detail-03.jpg">
 									<div class="wrap-pic-w pos-relative">
-										<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+										<img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="images/product-detail-03.jpg"> <i
+											href="/images/product-detail-03.jpg"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -87,14 +85,11 @@
 
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">Lightweight
-							Jacket</h4>
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14">${pro_detail.title}</h4>
 
-						<span class="mtext-106 cl2"> $58.79 </span>
+						<span class="mtext-106 cl2"> ${pro_detail.price} VNĐ </span>
 
-						<p class="stext-102 cl3 p-t-23">Nulla eget sem vitae eros
-							pharetra viverra. Nam vitae luctus ligula. Mauris consequat
-							ornare feugiat.</p>
+						<p class="stext-102 cl3 p-t-23">${pro_detail.shortDescription}</p>
 
 						<!--  -->
 						<div class="p-t-33">
@@ -203,18 +198,9 @@
 						<div class="tab-pane fade show active" id="description"
 							role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">
-								<p class="stext-102 cl6">Aenean sit amet gravida nisi. Nam
-									fermentum est felis, quis feugiat nunc fringilla sit amet. Ut
-									in blandit ipsum. Quisque luctus dui at ante aliquet, in
-									hendrerit lectus interdum. Morbi elementum sapien rhoncus
-									pretium maximus. Nulla lectus enim, cursus et elementum sed,
-									sodales vitae eros. Ut ex quam, porta consequat interdum in,
-									faucibus eu velit. Quisque rhoncus ex ac libero varius
-									molestie. Aenean tempor sit amet orci nec iaculis. Cras sit
-									amet nulla libero. Curabitur dignissim, nunc nec laoreet
-									consequat, purus nunc porta lacus, vel efficitur tellus augue
-									in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non
-									tempor erat. Duis in egestas nunc.</p>
+								<p class="stext-102 cl6">${pro_detail.detailDescription}</p>
+									
+								<%--  --%>
 							</div>
 						</div>
 
@@ -256,7 +242,7 @@
 										<!-- Review -->
 										<div class="flex-w flex-t p-b-68">
 											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="images/avatar-01.jpg" alt="AVATAR">
+												<img src="/images/avatar-01.jpg" alt="AVATAR">
 											</div>
 
 											<div class="size-207">
@@ -350,7 +336,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-01.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-01.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -368,9 +354,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -381,7 +367,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-02.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-02.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -398,9 +384,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -411,7 +397,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-03.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-03.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -429,9 +415,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -442,7 +428,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-04.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-04.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -460,9 +446,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -473,7 +459,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-05.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-05.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -491,9 +477,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -504,7 +490,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-06.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-06.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -522,9 +508,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -535,7 +521,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-07.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-07.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -553,9 +539,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -566,7 +552,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-08.jpg" alt="IMG-PRODUCT"> <a
+								<img src="/images/product-08.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -584,9 +570,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -612,7 +598,7 @@
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+					<img src="/images/icons/icon-close.png" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -624,39 +610,39 @@
 
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3"
-										data-thumb="images/product-detail-01.jpg">
+										data-thumb="/images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											<img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-01.jpg"> <i
+												href="/images/product-detail-01.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-02.jpg">
+										data-thumb="/images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											<img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-02.jpg"> <i
+												href="/images/product-detail-02.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-03.jpg">
+										data-thumb="/images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											<img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-03.jpg"> <i
+												href="/images/product-detail-03.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -765,16 +751,16 @@
 		</div>
 	</div>
 
-	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+	<jsp:include page="./common/js.jsp"></jsp:include>
 
 	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
+	<script src="/vendor/slick/slick.min.js"></script>
+	<script src="/js/slick-custom.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/parallax100/parallax100.js"></script>
+	<script src="/vendor/parallax100/parallax100.js"></script>
 	<script>
 		$('.parallax100').parallax100();
 	</script>
@@ -792,9 +778,9 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="/vendor/isotope/isotope.pkgd.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="/vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
 		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e) {
 			e.preventDefault();

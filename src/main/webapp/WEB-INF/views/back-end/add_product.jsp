@@ -26,6 +26,12 @@
 
 <!-- Custom styles for this template-->
 <jsp:include page="/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
+
+
+<!-- include summernote css/js -->
+<link href="summernote/summernote.min.css" rel="stylesheet">
+<script src="summernote/summernote.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -60,40 +66,66 @@
 						<sf:form class="form-horizontal" role="form" method="post"
 							action="add_product" modelAttribute="product">
 
+							<!-- form-group // -->
+
 							<!-- <div class="form-group">
-								<label for="sex" class="col-sm-3 control-label">Giới
-									tính</label>
-								<div class="col-sm-9">
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="Nam"
-										checked="checked"> Nam
-									</label> <label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="Nữ">
-										Nữ
-									</label>
+								<label for="tech" class="col-sm-3 control-label">Options</label>
+								<div class="col-sm-3">
+									<select class="form-control">
+										<option value="">Vui lòng chọn</option>
+										<option value="texnolog2">option 2</option>
+										<option value="texnolog3">option 3</option>
+									</select>
 								</div>
 							</div> -->
+							<div class="form-group">
+								<label for="category" class="col-sm-3 control-label">Thể
+									loại</label>
+								<sf:select path="categories.id" class="col-sm-3" id="category">
+									<sf:options items="${categories}" itemValue="id"
+										itemLabel="name" />
+								</sf:select>
+							</div>
 							<!-- form-group // -->
 
 							<div class="form-group">
 								<label for="name" class="col-sm-3 control-label">Tên sản
 									phẩm</label>
 								<div class="col-sm-9">
-									<sf:input path="name" type="text" cssClass="form-control"
+									<sf:input path="title" type="text" cssClass="form-control"
 										name="name" id="name" placeholder="Nhập tên sản phẩm" />
 								</div>
 							</div>
 							<!-- form-group // -->
 							<div class="form-group">
-								<label for="name" class="col-sm-3 control-label">Giá</label>
+								<label for="price" class="col-sm-3 control-label">Giá</label>
 								<div class="col-sm-3">
 									<sf:input path="price" type="number" cssClass="form-control"
-										name="price" id="price" placeholder="Nhập giá" min = "0"/>
+										name="price" id="price" placeholder="Nhập giá" min="0" />
 								</div>
 							</div>
-							<!-- form-group // -->
 
 							<div class="form-group">
+								<label for="priceSale" class="col-sm-3 control-label">Giá
+									khuyến mãi</label>
+								<div class="col-sm-3">
+									<sf:input path="priceSale" type="number"
+										cssClass="form-control" name="priceSale" id="priceSale"
+										placeholder="Nhập giá khuyến mãi" min="0" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="seo" class="col-sm-3 control-label">Seo</label>
+								<div class="col-sm-3">
+									<sf:input path="seo" type="text" cssClass="form-control"
+										name="seo" id="seo" placeholder="Nhập seo" min="0" />
+								</div>
+							</div>
+
+							<!-- form-group // -->
+
+							<%-- <div class="form-group">
 								<label for="quantity" class="col-sm-3 control-label">Số
 									lượng</label>
 								<div class="col-sm-3">
@@ -101,7 +133,7 @@
 										name="quantity" id="quantity"
 										placeholder="Nhập số lượng sản phẩm" min = "1" value = "1"/>
 								</div>
-							</div>
+							</div> --%>
 							<!-- form-group // -->
 
 							<!-- <div class="form-group">
@@ -119,38 +151,40 @@
 							</div> -->
 							<!-- form-group // -->
 							<div class="form-group">
-								<label for="name" class="col-sm-3 control-label">Ảnh sản
-									phẩm</label>
+								<label for="avatar" class="col-sm-3 control-label">Ảnh
+									sản phẩm</label>
 								<div class="col-sm-3">
 									<label class="control-label small" for="file_img">Hỗ
 										trợ (jpg/png):</label>
-									<sf:input path="image" type="file" name="file_img" />
+									<sf:input path="avatar" type="file" name="avatar" />
 								</div>
 								<!-- <div class="col-sm-3">
 									<label class="control-label small" for="file_img">File:</label>
 									<input type="file" name="file_archive">
 								</div> -->
 							</div>
-							<!-- form-group // -->
-
-							<!-- <div class="form-group">
-								<label for="tech" class="col-sm-3 control-label">Options</label>
-								<div class="col-sm-3">
-									<select class="form-control">
-										<option value="">Vui lòng chọn</option>
-										<option value="texnolog2">option 2</option>
-										<option value="texnolog3">option 3</option>
-									</select>
-								</div>
-							</div> -->
-							<!-- form-group // -->
 
 							<div class="form-group">
-								<label for="about" class="col-sm-3 control-label">Mô tả</label>
+								<label for="shortDescription" class="col-sm-3 control-label">Mô
+									tả ngắn</label>
 								<div class="col-sm-9">
-									<sf:textarea path="description" name="description"
-										id="description" class="form-control" />
+									<sf:textarea path="shortDescription" name="shortDescription"
+										id="shortDescription" class="form-control summernote" />
 								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="detailDescription" class="col-sm-3 control-label">Mô
+									tả</label>
+								<div class="col-sm-9">
+									<sf:textarea path="detailDescription" name="detailDescription"
+										id="detailDescription" class="form-control summernote" />
+								</div>
+								<!-- <script type="text/javascript">
+									$(document).ready(function() {
+										$('.summernote').summernote();
+									});
+								</script> -->
 							</div>
 							<!-- form-group // -->
 							<hr>
@@ -188,6 +222,7 @@
 	<jsp:include page="/WEB-INF/views/back-end/common/logout.jsp"></jsp:include>
 
 	<jsp:include page="/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
+
 
 </body>
 

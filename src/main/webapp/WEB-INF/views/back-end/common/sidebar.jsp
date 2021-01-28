@@ -1,7 +1,7 @@
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	
+
 <ul
 	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 	id="accordionSidebar">
@@ -14,17 +14,9 @@
 			<i class="fas fa-laugh-wink"></i>
 		</div>
 		<div class="sidebar-brand-text mx-3">
-			SB Admin <sup>2</sup>
+			Dashboard
 		</div>
 	</a>
-
-	<!-- Divider -->
-	<hr class="sidebar-divider my-0">
-
-	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active"><a class="nav-link" href="admin">
-			<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
-	</a></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
@@ -81,8 +73,7 @@
 				<h6 class="collapse-header">Login Screens:</h6>
 				<a class="collapse-item" href="login">Login</a> <a
 					class="collapse-item" href="register">Register</a> <a
-					class="collapse-item" href="forgot_password">Forgot
-					Password</a>
+					class="collapse-item" href="forgot_password">Forgot Password</a>
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">Other Pages:</h6>
 				<a class="collapse-item" href="404.html">404 Page</a> <a
@@ -96,14 +87,56 @@
 	</a></li>
 
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="products_admin"> <i
-			class="fas fa-fw fa-table"></i> <span>Sản phẩm</span>
+	<li class="nav-item"><a class="nav-link" href="contacts_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Liên hệ</span>
+	</a></li>
+
+	<!-- Nav Item - Add product -->
+	<li class="nav-item"><a class="nav-link" href="categories_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Danh mục</span>
 	</a></li>
 	
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="products_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm</span>
+	</a></li>
+
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link"
+		href="products_images_admin"> <i class="fas fa-fw fa-table"></i> <span>Ảnh
+				sản phẩm</span>
+	</a></li>
+
 	<!-- Nav Item - Add product -->
 	<li class="nav-item"><a class="nav-link" href="add_product"> <i
 			class="fas fa-fw fa-table"></i> <span>Thêm sản phẩm</span>
 	</a></li>
+
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="roles_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Vai trò</span>
+	</a></li>
+	
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="users_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Users</span>
+	</a></li>
+	
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="users_roles_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Phân quyền</span>
+	</a></li>
+	
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="saleorders_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Đơn hàng</span>
+	</a></li>
+	
+	<!-- Nav Item - Tables -->
+	<li class="nav-item"><a class="nav-link" href="saleorders_products_admin">
+			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm của đơn hàng</span>
+	</a></li>
+
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
@@ -113,17 +146,5 @@
 		<button class="rounded-circle border-0" id="sidebarToggle"></button>
 	</div>
 
-	<!-- Sidebar Message -->
-	<div class="sidebar-card">
-		<img class="sidebar-card-illustration mb-2"
-			src="img/undraw_rocket.svg" alt="">
-		<p class="text-center mb-2">
-			<strong>SB Admin Pro</strong> is packed with premium features,
-			components, and more!
-		</p>
-		<a class="btn btn-success btn-sm"
-			href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
-			Pro!</a>
-	</div>
 
 </ul>

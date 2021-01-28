@@ -3,6 +3,7 @@ package com.devpro.buoi1.cotroller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,26 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.buoi1.dto.AjaxResponse;
-import com.devpro.buoi1.dto.Contact;
+import com.devpro.buoi1.dto.Contact1;
 
 @Controller
 public class ContactController {
+
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
 	public String details(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
-		/*
-		 * String name = request.getParameter("name"); System.out.println("Name(URL): "+
-		 * name);
-		 * 
-		 * model.addAttribute("name", name);
-		 */
-
-		model.addAttribute("contact", new Contact());
+		model.addAttribute("contact", new Contact1());
 
 		return "front-end/contact";
 	}
 
+	/* Các cách đẩy dữ liệu lên server */
+	// C1: Dùng HttpServletRequest
 	@RequestMapping(value = { "/contact1" }, method = RequestMethod.POST)
 	public String contact1(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
@@ -45,10 +42,10 @@ public class ContactController {
 		return "front-end/contact";
 	}
 
-	/* Dùng srping form */
+	/* C2: Dùng srping form */
 	@RequestMapping(value = { "/contact2" }, method = RequestMethod.POST)
 	public String contact2(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@ModelAttribute("contact") Contact contact) throws Exception {
+			@ModelAttribute("contact") Contact1 contact) throws Exception {
 
 		System.out.println("Contact[email]: " + contact.getEmail());
 		System.out.println("Contact[Msg]: " + contact.getMsg());
@@ -56,12 +53,18 @@ public class ContactController {
 		return "front-end/contact";
 	}
 
+	// C3: Dùng Ajax
 	@RequestMapping(value = { "/contact3" }, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> contact3(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response, @RequestBody Contact contact) {
-		
-		System.out.println(contact.getEmail() + ": "+ contact.getMsg());
-		
+			final HttpServletResponse response, @RequestBody Contact1 contact) {
+
+//		Contact lh = contactService.saveContact(contact);
+//		if (lh != null) {
+//			return ResponseEntity.ok(new AjaxResponse(200, "The your message is sent to Administrator."));
+//		} else {
+//			return ResponseEntity.badRequest().body(new AjaxResponse(200, "Your message is corrupted when sending to Administrator."));
+//		}
+		System.out.println("Contact[Msg]: " + contact.getMsg());
 		return ResponseEntity.ok(new AjaxResponse(200, "Success"));
 	}
 }
