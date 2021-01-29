@@ -8,7 +8,7 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
@@ -22,7 +22,7 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04"> Home
+			<a href="${base}/index" class="stext-109 cl8 hov-cl1 trans-04"> Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a> <a href="blog" class="stext-109 cl8 hov-cl1 trans-04"> Blog
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
 					<div class="p-r-45 p-r-0-lg">
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
-							<img src="images/blog-04.jpg" alt="IMG-BLOG">
+							<img src="${base}/images/blog-04.jpg" alt="IMG-BLOG">
 
 							<div class="flex-col-c-m size-123 bg9 how-pos5">
 								<span class="ltext-107 cl2 txt-center"> 22 </span> <span
@@ -176,7 +176,7 @@
 							<ul>
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-01.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-01.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -187,7 +187,7 @@
 
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-02.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-02.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -198,7 +198,7 @@
 
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-03.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-03.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">

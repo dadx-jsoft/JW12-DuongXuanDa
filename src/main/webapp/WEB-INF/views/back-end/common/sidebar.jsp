@@ -9,7 +9,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="admin">
+		href="${base}/admin">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -71,69 +71,69 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Login Screens:</h6>
-				<a class="collapse-item" href="login">Login</a> <a
-					class="collapse-item" href="register">Register</a> <a
-					class="collapse-item" href="forgot_password">Forgot Password</a>
+				<a class="collapse-item" href="${base}/login">Login</a> <a
+					class="collapse-item" href="${base}/register">Register</a> <a
+					class="collapse-item" href="${base}/forgot_password">Forgot Password</a>
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">Other Pages:</h6>
 				<a class="collapse-item" href="404.html">404 Page</a> <a
-					class="collapse-item" href="blank">Blank Page</a>
+					class="collapse-item" href="${base}/admin/blank">Blank Page</a>
 			</div>
 		</div></li>
 
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts"> <i
+	<li class="nav-item"><a class="nav-link" href="${base}/charts"> <i
 			class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
 	</a></li>
 
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="contacts_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/contacts">
 			<i class="fas fa-fw fa-table"></i> <span>Liên hệ</span>
 	</a></li>
 
 	<!-- Nav Item - Add product -->
-	<li class="nav-item"><a class="nav-link" href="categories_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/categories">
 			<i class="fas fa-fw fa-table"></i> <span>Danh mục</span>
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="products_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/products">
 			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm</span>
 	</a></li>
 
 	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link"
-		href="products_images_admin"> <i class="fas fa-fw fa-table"></i> <span>Ảnh
+		href="${base}/admin/products_images"> <i class="fas fa-fw fa-table"></i> <span>Ảnh
 				sản phẩm</span>
 	</a></li>
 
 	<!-- Nav Item - Add product -->
-	<li class="nav-item"><a class="nav-link" href="add_product"> <i
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/add-product"> <i
 			class="fas fa-fw fa-table"></i> <span>Thêm sản phẩm</span>
 	</a></li>
 
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="roles_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/roles">
 			<i class="fas fa-fw fa-table"></i> <span>Vai trò</span>
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="users_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/users">
 			<i class="fas fa-fw fa-table"></i> <span>Users</span>
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="users_roles_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/users_roles">
 			<i class="fas fa-fw fa-table"></i> <span>Phân quyền</span>
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="saleorders_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/saleorders">
 			<i class="fas fa-fw fa-table"></i> <span>Đơn hàng</span>
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="saleorders_products_admin">
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/saleorders_products">
 			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm của đơn hàng</span>
 	</a></li>
 

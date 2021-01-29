@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminCategoryController {
-	@RequestMapping(value = { "categories_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/categories" }, method = RequestMethod.GET)
 	public String categories(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 

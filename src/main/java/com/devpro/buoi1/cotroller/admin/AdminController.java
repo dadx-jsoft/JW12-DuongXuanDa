@@ -52,42 +52,42 @@ public class AdminController {
 		return "back-end/forgot_password";
 	}
 
-	@RequestMapping(value = { "products_images_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/products_images" }, method = RequestMethod.GET)
 	public String products_images(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
 		return "back-end/products_images";
 	}
 
-	@RequestMapping(value = { "roles_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/roles" }, method = RequestMethod.GET)
 	public String roles(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
 		return "back-end/roles";
 	}
 
-	@RequestMapping(value = { "users_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/users" }, method = RequestMethod.GET)
 	public String users(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
 		return "back-end/users";
 	}
 
-	@RequestMapping(value = { "users_roles_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/users_roles" }, method = RequestMethod.GET)
 	public String users_roles(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
 		return "back-end/users_roles";
 	}
 
-	@RequestMapping(value = { "saleorders_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/saleorders" }, method = RequestMethod.GET)
 	public String saleorders(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
 		return "back-end/saleorders";
 	}
 
-	@RequestMapping(value = { "saleorders_products_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/saleorders_products" }, method = RequestMethod.GET)
 	public String saleorders_products(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
@@ -101,7 +101,7 @@ public class AdminController {
 		return "back-end/charts";
 	}
 
-	@RequestMapping(value = { "/blank" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/blank" }, method = RequestMethod.GET)
 	public String blank(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 

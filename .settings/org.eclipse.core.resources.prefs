@@ -6,5 +6,5 @@ encoding//src/main/resources/application.properties=UTF-8
 encoding//src/main/webapp/WEB-INF/views/back-end/add_product.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/back-end/categories.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/back-end/common/sidebar.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/front-end/common/variables.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/common/variables.jsp=UTF-8
 encoding/<project>=UTF-8

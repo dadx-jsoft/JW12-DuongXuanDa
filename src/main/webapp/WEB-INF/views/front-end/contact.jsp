@@ -8,7 +8,7 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 
@@ -46,7 +46,7 @@
 								type="text" name="email" placeholder="Your Email Address">
 
 							<img class="how-pos4 pointer-none"
-								src="images/icons/icon-email.png" alt="ICON">
+								src="${base}/images/icons/icon-email.png" alt="ICON">
 						</div>
 
 						<div class="bor8 m-b-30">
@@ -70,7 +70,7 @@
 								name = "email" placeholder="Your Email Address" />
 
 							<img class="how-pos4 pointer-none"
-								src="images/icons/icon-email.png" alt="ICON">
+								src="${base}/images/icons/icon-email.png" alt="ICON">
 						</div>
 
 						<div class="bor8 m-b-30">
@@ -94,7 +94,7 @@
 								type="text" id="email" placeholder="Your Email Address">
 
 							<img class="how-pos4 pointer-none"
-								src="images/icons/icon-email.png" alt="ICON">
+								src="${base}/images/icons/icon-email.png" alt="ICON">
 						</div>
 
 						<div class="bor8 m-b-30">
@@ -155,7 +155,7 @@
 	<!-- Map -->
 	<div class="map">
 		<div class="size-303" id="google_map" data-map-x="40.691446"
-			data-map-y="-73.886787" data-pin="images/icons/pin.png"
+			data-map-y="-73.886787" data-pin="${base}/images/icons/pin.png"
 			data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
 	</div>
 

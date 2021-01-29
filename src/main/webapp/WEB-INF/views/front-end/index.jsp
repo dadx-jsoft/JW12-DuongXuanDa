@@ -42,7 +42,7 @@
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="zoomIn" data-delay="1600">
-								<a href="product"
+								<a href="${base}/product"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -67,7 +67,7 @@
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="slideInUp" data-delay="1600">
-								<a href="product"
+								<a href="${base}/product"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -93,7 +93,7 @@
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rotateIn" data-delay="1600">
-								<a href="product"
+								<a href="${base}/product"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -112,8 +112,8 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-01.jpg" alt="IMG-BANNER"> <a
-							href="product"
+						<img src="${base}/images/banner-01.jpg" alt="IMG-BANNER"> <a
+							href="${base}/product"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8"> Women
@@ -131,8 +131,8 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER"> <a
-							href="product"
+						<img src="${base}/images/banner-02.jpg" alt="IMG-BANNER"> <a
+							href="${base}/product"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8"> Men </span>
@@ -151,8 +151,8 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER"> <a
-							href="product"
+						<img src="${base}/images/banner-03.jpg" alt="IMG-BANNER"> <a
+							href="${base}/product"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
@@ -339,13 +339,13 @@
 			</div>
 
 			<div class="row isotope-grid">
-				<c:forEach items="${products}" var="product">
+				<c:forEach items="${products}" var="${base}/product">
 					<div
 						class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item cat-${product.categories.id}">
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/product-01.jpg" alt="IMG-PRODUCT"> <a
+								<img src="${base}/images/product-01.jpg" alt="IMG-PRODUCT"> <a
 									href="#"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View </a>
@@ -353,7 +353,7 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail/${product.id}"
+									<a href="${base}/product-detail/${product.id}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${product.title} </a> <span class="stext-105 cl3">
 										${product.price} VNĐ</span>
@@ -363,9 +363,9 @@
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04"
-										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="images/icons/icon-heart-02.png" alt="ICON">
+										src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -399,7 +399,7 @@
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+					<img src="${base}/images/icons/icon-close.png" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -411,39 +411,39 @@
 
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3"
-										data-thumb="images/product-detail-01.jpg">
+										data-thumb="${base}/images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-01.jpg"> <i
+												href="${base}/images/product-detail-01.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-02.jpg">
+										data-thumb="${base}/images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-02.jpg"> <i
+												href="${base}/images/product-detail-02.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-03.jpg">
+										data-thumb="${base}/images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-03.jpg"> <i
+												href="${base}/images/product-detail-03.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>

@@ -8,7 +8,7 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
@@ -194,7 +194,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-01.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -212,9 +212,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -225,7 +225,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-02.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-02.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -242,9 +242,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -255,7 +255,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-03.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-03.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -273,9 +273,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -286,7 +286,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-04.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-04.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -304,9 +304,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -317,7 +317,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-05.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-05.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -335,9 +335,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -348,7 +348,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-06.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-06.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -366,9 +366,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -379,7 +379,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-07.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-07.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -397,9 +397,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -410,7 +410,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-08.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-08.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -428,9 +428,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -441,7 +441,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-09.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-09.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -459,9 +459,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -472,7 +472,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-10.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-10.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -490,9 +490,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -503,7 +503,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-11.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-11.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -520,9 +520,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -533,7 +533,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-12.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-12.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -550,9 +550,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -563,7 +563,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-13.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-13.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -581,9 +581,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -594,7 +594,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-14.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-14.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -612,9 +612,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -625,7 +625,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-15.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-15.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -643,9 +643,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -656,7 +656,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-16.jpg" alt="IMG-PRODUCT"> <a
+							<img src="${base}/images/product-16.jpg" alt="IMG-PRODUCT"> <a
 								href="#"
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View </a>
@@ -673,9 +673,9 @@
 								<a href="#"
 									class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04"
-									src="images/icons/icon-heart-01.png" alt="ICON"> <img
+									src="${base}/images/icons/icon-heart-01.png" alt="ICON"> <img
 									class="icon-heart2 dis-block trans-04 ab-t-l"
-									src="images/icons/icon-heart-02.png" alt="ICON">
+									src="${base}/images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -707,7 +707,7 @@
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+					<img src="${base}/images/icons/icon-close.png" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -719,39 +719,39 @@
 
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3"
-										data-thumb="images/product-detail-01.jpg">
+										data-thumb="${base}/images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-01.jpg"> <i
+												href="${base}/images/product-detail-01.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-02.jpg">
+										data-thumb="${base}/images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-02.jpg"> <i
+												href="${base}/images/product-detail-02.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
 									<div class="item-slick3"
-										data-thumb="images/product-detail-03.jpg">
+										data-thumb="${base}/images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											<img src="${base}/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
 											<a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-03.jpg"> <i
+												href="${base}/images/product-detail-03.jpg"> <i
 												class="fa fa-expand"></i>
 											</a>
 										</div>

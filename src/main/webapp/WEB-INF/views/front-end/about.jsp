@@ -8,7 +8,7 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
@@ -67,7 +67,7 @@
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="${base}/images/about-01.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="${base}/images/about-02.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>

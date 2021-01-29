@@ -8,7 +8,7 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/front-end/common/variables.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
@@ -34,8 +34,8 @@
 					<div class="p-r-45 p-r-0-lg">
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="blog-detail" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-04.jpg" alt="IMG-BLOG">
+							<a href="${base}/blog-detail" class="hov-img0 how-pos5-parent">
+								<img src="${base}/images/blog-04.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center"> 22 </span> <span
@@ -45,7 +45,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="blog-detail"
+									<a href="${base}/blog-detail"
 										class="ltext-108 cl2 hov-cl1 trans-04"> 8 Inspiring Ways
 										to Wear Dresses in the Winter </a>
 								</h4>
@@ -61,7 +61,7 @@
 									</span> <span> StreetStyle, Fashion, Couple <span
 											class="cl12 m-l-4 m-r-6">|</span>
 									</span> <span> 8 Comments </span>
-									</span> <a href="blog-detail"
+									</span> <a href="${base}/blog-detail"
 										class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"> Continue
 										Reading <i class="fa fa-long-arrow-right m-l-9"></i>
 									</a>
@@ -71,8 +71,8 @@
 
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="blog-detail" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-05.jpg" alt="IMG-BLOG">
+							<a href="${base}/blog-detail" class="hov-img0 how-pos5-parent">
+								<img src="${base}/images/blog-05.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center"> 18 </span> <span
@@ -82,7 +82,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="blog-detail"
+									<a href="${base}/blog-detail"
 										class="ltext-108 cl2 hov-cl1 trans-04"> The Great Big List
 										of Men’s Gifts for the Holidays </a>
 								</h4>
@@ -98,7 +98,7 @@
 									</span> <span> StreetStyle, Fashion, Couple <span
 											class="cl12 m-l-4 m-r-6">|</span>
 									</span> <span> 8 Comments </span>
-									</span> <a href="blog-detail"
+									</span> <a href="${base}/blog-detail"
 										class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"> Continue
 										Reading <i class="fa fa-long-arrow-right m-l-9"></i>
 									</a>
@@ -108,8 +108,8 @@
 
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="blog-detail" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-06.jpg" alt="IMG-BLOG">
+							<a href="${base}/blog-detail" class="hov-img0 how-pos5-parent">
+								<img src="${base}/images/blog-06.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center"> 16 </span> <span
@@ -119,7 +119,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="blog-detail"
+									<a href="${base}/blog-detail"
 										class="ltext-108 cl2 hov-cl1 trans-04"> 5 Winter-to-Spring
 										Fashion Trends to Try Now </a>
 								</h4>
@@ -135,7 +135,7 @@
 									</span> <span> StreetStyle, Fashion, Couple <span
 											class="cl12 m-l-4 m-r-6">|</span>
 									</span> <span> 8 Comments </span>
-									</span> <a href="blog-detail"
+									</span> <a href="${base}/blog-detail"
 										class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"> Continue
 										Reading <i class="fa fa-long-arrow-right m-l-9"></i>
 									</a>
@@ -197,7 +197,7 @@
 							<ul>
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-01.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-01.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -208,7 +208,7 @@
 
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-02.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-02.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -219,7 +219,7 @@
 
 								<li class="flex-w flex-t p-b-30"><a href="#"
 									class="wrao-pic-w size-214 hov-ovelay1 m-r-20"> <img
-										src="images/product-min-03.jpg" alt="PRODUCT">
+										src="${base}/images/product-min-03.jpg" alt="PRODUCT">
 								</a>
 
 									<div class="size-215 flex-col-t p-t-8">

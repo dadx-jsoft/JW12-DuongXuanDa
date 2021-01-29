@@ -22,7 +22,7 @@ public class AdminProductController {
 	@Autowired
 	private ProductRepo productRepo;
 
-	@RequestMapping(value = { "/add_product" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/add-product" }, method = RequestMethod.GET)
 	public String add_product_get(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
@@ -32,7 +32,7 @@ public class AdminProductController {
 		return "back-end/add_product";
 	}
 
-	@RequestMapping(value = { "/add_product" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "admin/add-product" }, method = RequestMethod.POST)
 	public String add_product_post(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @ModelAttribute("product") Product product) throws Exception {
 
@@ -47,7 +47,7 @@ public class AdminProductController {
 		return "back-end/add_product";
 	}
 	
-	@RequestMapping(value = { "products_admin" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/products" }, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 

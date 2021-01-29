@@ -19,7 +19,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Dashboard</title>
+<title>Add products - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -27,11 +27,8 @@
 <!-- Custom styles for this template-->
 <jsp:include page="/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
 
-
-<!-- include summernote css/js -->
-<link href="summernote/summernote.min.css" rel="stylesheet">
-<script src="summernote/summernote.min.js"></script>
-
+<!-- include summernote css-->
+<link href="/summernote/summernote.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -64,7 +61,7 @@
 					<div class="panel-body">
 
 						<sf:form class="form-horizontal" role="form" method="post"
-							action="add_product" modelAttribute="product">
+							action="${base}/admin/add-product" modelAttribute="product">
 
 							<!-- form-group // -->
 
@@ -180,11 +177,7 @@
 									<sf:textarea path="detailDescription" name="detailDescription"
 										id="detailDescription" class="form-control summernote" />
 								</div>
-								<!-- <script type="text/javascript">
-									$(document).ready(function() {
-										$('.summernote').summernote();
-									});
-								</script> -->
+
 							</div>
 							<!-- form-group // -->
 							<hr>
@@ -224,6 +217,16 @@
 	<jsp:include page="/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
 
 
+	<!-- include summernote js-->
+	<script src="/summernote/summernote.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$('.summernote').summernote({
+			height : 200, //set editable area's height
+			codemirror : { // codemirror options
+				theme : 'monokai'
+			}
+		});
+	</script>
 </body>
 
 </html>
