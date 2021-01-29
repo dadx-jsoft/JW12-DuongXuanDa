@@ -59,7 +59,11 @@
 					<!-- add product form -->
 
 					<div class="panel-body">
-
+						<c:if test="${not empty message}">
+							<div class="alert alert-primary" role="alert">
+								<c:out value="${message }"></c:out>
+							</div>
+						</c:if>
 						<sf:form class="form-horizontal" role="form" method="post"
 							action="${base}/admin/add-product" modelAttribute="product">
 

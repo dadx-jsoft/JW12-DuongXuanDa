@@ -43,7 +43,11 @@ public class AdminProductController {
 		System.out.println("AddProduct[categoryId]: " + product.getCategories().getId());
 
 		productRepo.save(product);
-
+		
+		model.addAttribute("message", "Lưu thành công!");
+		model.addAttribute("product", new Product());
+		model.addAttribute("categories", categoriesRepo.findAll());
+		
 		return "back-end/add_product";
 	}
 	
