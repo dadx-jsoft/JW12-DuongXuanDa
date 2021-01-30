@@ -107,11 +107,6 @@
 				sản phẩm</span>
 	</a></li>
 
-	<!-- Nav Item - Add product -->
-	<li class="nav-item"><a class="nav-link" href="${base}/admin/add-product"> <i
-			class="fas fa-fw fa-table"></i> <span>Thêm sản phẩm</span>
-	</a></li>
-
 	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/roles">
 			<i class="fas fa-fw fa-table"></i> <span>Vai trò</span>

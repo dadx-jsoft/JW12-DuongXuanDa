@@ -54,10 +54,14 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Thêm sản phẩm</h1>
+					<h1 class="h3 text-gray-800">Thêm sản phẩm</h1>
 
 					<!-- add product form -->
-
+					<div class="panel-body mb-4">
+						<a href="${base}/admin/products" class="btn btn-primary a-btn-slide-text"> <i
+							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
+						</a>
+					</div>
 					<div class="panel-body">
 						<c:if test="${not empty message}">
 							<div class="alert alert-primary" role="alert">
@@ -187,7 +191,7 @@
 							<hr>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
-									<button type="submit" class="btn btn-primary">Thêm</button>
+									<button type="submit" class="btn btn-primary">Thêm <i class="fas fa-plus-circle"></i></button>
 								</div>
 							</div>
 							<!-- form-group // -->

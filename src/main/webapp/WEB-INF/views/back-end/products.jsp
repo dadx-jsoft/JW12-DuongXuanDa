@@ -62,7 +62,13 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
+							<h6 class="m-0 font-weight-bold text-primary">Danh sách sản
+								phẩm</h6>
+						</div>
+						<div class="card-body py-3">
+							<a href="${base}/admin/add-product" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+								<i class="fas fa-plus-circle"></i>
+							</a>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -89,36 +95,23 @@
 										</tr>
 									</tfoot>
 									<tbody>
-										<tr>
-											<td>Ví da 1</td>
-											<td>/images/vida1.jpg</td>
-											<td>120000</td>
-											<td>115000</td>
-											<td>Ví da</td>
-											<td><a href="#"
-												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
-													<i class="fas fa-edit"></i>
-											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-													<i class="fas fa-eye"></i>
-											</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-													<i class="fas fa-trash-alt"></i>
-											</a></td>
-										</tr>
-										<tr>
-											<td>Túi đeo chéo</td>
-											<td>/images/vida1.jpg</td>
-											<td>120000</td>
-											<td>114000</td>
-											<td>Ví da</td>
-											<td><a href="#"
-												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
-													<i class="fas fa-edit"></i>
-											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-													<i class="fas fa-eye"></i>
-											</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-													<i class="fas fa-trash-alt"></i>
-											</a></td>
-										</tr>
+										<c:forEach items="${productList}" var="product">
+											<tr>
+												<td>${product.title}</td>
+												<td>${product.avatar}</td>
+												<td>${product.price}</td>
+												<td>${product.priceSale}</td>
+												<td>${product.categories.id}</td>
+												<td><a href="#"
+													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+														<i class="fas fa-edit"></i>
+												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
+														<i class="fas fa-eye"></i>
+												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+														<i class="fas fa-trash-alt"></i>
+												</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

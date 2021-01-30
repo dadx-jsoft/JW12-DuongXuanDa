@@ -29,7 +29,7 @@ public class AdminProductController {
 		model.addAttribute("product", new Product());
 		model.addAttribute("categories", categoriesRepo.findAll());
 
-		return "back-end/add_product";
+		return "back-end/save_product";
 	}
 
 	@RequestMapping(value = { "admin/add-product" }, method = RequestMethod.POST)
@@ -48,13 +48,16 @@ public class AdminProductController {
 		model.addAttribute("product", new Product());
 		model.addAttribute("categories", categoriesRepo.findAll());
 		
-		return "back-end/add_product";
+		return "back-end/save_product";
 	}
 	
 	@RequestMapping(value = { "admin/products" }, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-
+		
+		model.addAttribute("productList", productRepo.findAll());
+		model.addAttribute("categories", categoriesRepo.findAll());
+		
 		return "back-end/products";
 	}
 }
