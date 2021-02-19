@@ -12,22 +12,22 @@ import java.util.List;
 @Table(name = "tbl_saleorder")
 public class Saleorder extends BaseEntity {
 
-	@Column(nullable = false, length = 45)
+	@Column(nullable = false)
 	private String code;
 
-	@Column(name = "customer_address", length = 100)
+	@Column(name = "customer_address")
 	private String customerAddress;
 
-	@Column(name = "customer_name", length = 100)
+	@Column(name = "customer_name")
 	private String customerName;
 
-	@Column(name = "customer_phone", length = 100)
+	@Column(name = "customer_phone")
 	private String customerPhone;
 
-	@Column(name = "cutomer_email", length = 100)
+	@Column(name = "cutomer_email")
 	private String cutomerEmail;
 
-	@Column(length = 200)
+	@Column(name = "seo")
 	private String seo;
 
 	@Column(precision = 10, scale = 2)

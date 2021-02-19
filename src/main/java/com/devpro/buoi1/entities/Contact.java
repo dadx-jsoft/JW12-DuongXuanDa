@@ -7,19 +7,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_contact")
 public class Contact extends BaseEntity {
-	@Column(name = "first_name", nullable = false, length = 100)
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 
-	@Column(name = "last_name", nullable = false, length = 100)
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@Column(name = "email", nullable = false, length = 200)
+	@Column(name = "email", nullable = false)
 	private String email;
 
-	@Column(name = "request_type", nullable = false, length = 45)
+	@Column(name = "request_type", nullable = false)
 	private String requestType;
 
-	@Column(name = "message", nullable = false, length = 1000)
+	@Column(name = "message", nullable = false)
 	private String message;
 
 	public String getFirstName() {

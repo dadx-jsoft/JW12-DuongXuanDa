@@ -9,10 +9,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_products_images")
 public class ProductsImages extends BaseEntity {
-	@Column(name = "title", nullable = false, length = 500)
+	@Column(name = "title", nullable = false)
 	private String title;
 
-	@Column(name = "path", nullable = false, length = 200)
+	@Column(name = "path", nullable = false)
 	private String path;
 
 	@ManyToOne

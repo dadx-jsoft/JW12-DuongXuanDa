@@ -11,10 +11,10 @@ import java.util.List;
 @Table(name = "tbl_roles")
 public class Role extends BaseEntity {
 
-	@Column(nullable = false, length = 45)
+	@Column(nullable = false)
 	private String description;
 
-	@Column(nullable = false, length = 45)
+	@Column(nullable = false)
 	private String name;
 
 	// bi-directional many-to-many association to User

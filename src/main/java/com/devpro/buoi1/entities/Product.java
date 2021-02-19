@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_products")
 public class Product extends BaseEntity {
 
-	@Column(name = "title", nullable = false, length = 1000)
+	@Column(name = "title", nullable = false)
 	private String title;
 
 	@Column(name = "price", precision = 13, scale = 2, nullable = false)
@@ -27,21 +27,21 @@ public class Product extends BaseEntity {
 	@Column(name = "price_sale", precision = 13, scale = 2, nullable = true)
 	private BigDecimal priceSale;
 
-	@Column(name = "short_description", length = 3000)
+	@Column(name = "short_description")
 	private String shortDescription;
 
 	@Lob
 	@Column(name = "detail_description", columnDefinition = "LONGTEXT", nullable = true)
 	private String detailDescription;
 
-	@Column(name = "avatar", length = 200)
+	@Column(name = "avatar")
 	private String avatar;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
 	private Categories categories;
 
-	@Column(name = "seo", length = 1000)
+	@Column(name = "seo")
 	private String seo;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
