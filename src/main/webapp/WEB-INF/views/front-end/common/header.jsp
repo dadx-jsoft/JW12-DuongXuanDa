@@ -27,21 +27,17 @@
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
 					<ul class="main-menu">
-						<li><a href="/">Home</a> <!-- <ul class="sub-menu">
-								<li><a href="index.html">Homepage 1</a></li>
-								<li><a href="home-02.html">Homepage 2</a></li>
-								<li><a href="home-03.html">Homepage 3</a></li>
-							</ul> --></li>
+						<li><a href="/">Home</a></li>
 
-						<li><a href="products">Shop</a></li>
+						<li><a href="${base}/products">Shop</a></li>
 
-						<li class="label1" data-label1="hot"><a href="shopping-cart">Features</a></li>
+						<li class="label1" data-label1="hot"><a href="${base}/shopping-cart">Features</a></li>
 
-						<li><a href="blog">Blog</a></li>
+						<li><a href="${base}/blog">Blog</a></li>
 
-						<li><a href="about">About</a></li>
+						<li><a href="${base}/about">About</a></li>
 
-						<li><a href="contact">Contact</a></li>
+						<li><a href="${base}/contact">Contact</a></li>
 					</ul>
 				</div>
 

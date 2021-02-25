@@ -17,7 +17,7 @@ public class BlogController {
 		return "front-end/blog";
 	}
 
-	@RequestMapping(value = { "/blog_detail" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/blog-detail" }, method = RequestMethod.GET)
 	public String blog_detail(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
