@@ -69,20 +69,10 @@
 							</div>
 						</c:if>
 						<sf:form class="form-horizontal" role="form" method="post"
-							action="${base}/admin/add-product" modelAttribute="product">
+							action="${base}/admin/add-product" modelAttribute="product" enctype="multipart/form-data">
 
 							<!-- form-group // -->
 
-							<!-- <div class="form-group">
-								<label for="tech" class="col-sm-3 control-label">Options</label>
-								<div class="col-sm-3">
-									<select class="form-control">
-										<option value="">Vui lòng chọn</option>
-										<option value="texnolog2">option 2</option>
-										<option value="texnolog3">option 3</option>
-									</select>
-								</div>
-							</div> -->
 							<div class="form-group">
 								<label for="category" class="col-sm-3 control-label">Thể
 									loại</label>
@@ -141,34 +131,6 @@
 							</div> --%>
 							<!-- form-group // -->
 
-							<!-- <div class="form-group">
-								<label class="col-sm-3 control-label">Thời gian</label>
-								<div class="col-sm-3">
-									<label class="control-label small" for="date_start">Ngày
-										bắt đầu: </label> <input type="text" class="form-control"
-										name="date_start" id="date_start" placeholder="Начало">
-								</div>
-								<div class="col-sm-3">
-									<label class="control-label small" for="date_finish">Ngày
-										kết thúc:</label> <input type="text" class="form-control"
-										name="date_finish" id="date_finish" placeholder="Конец">
-								</div>
-							</div> -->
-							<!-- form-group // -->
-							<div class="form-group">
-								<label for="avatar" class="col-sm-3 control-label">Ảnh
-									sản phẩm</label>
-								<div class="col-sm-3">
-									<label class="control-label small" for="file_img">Hỗ
-										trợ (jpg/png):</label>
-									<sf:input path="avatar" type="file" name="avatar" />
-								</div>
-								<!-- <div class="col-sm-3">
-									<label class="control-label small" for="file_img">File:</label>
-									<input type="file" name="file_archive">
-								</div> -->
-							</div>
-
 							<div class="form-group">
 								<label for="shortDescription" class="col-sm-3 control-label">Mô
 									tả ngắn</label>
@@ -187,6 +149,18 @@
 								</div>
 
 							</div>
+							
+							<!-- form-group // -->
+							<div class="form-group">
+								<label for="avatar" class="col-sm-3 control-label">Ảnh
+									sản phẩm</label>
+								<div class="col-sm-3">
+									<label class="control-label small" for="avatar_file">Hỗ
+										trợ (jpg/png):</label>
+									<input type="file" name="avatar_file" />
+								</div>
+							</div>
+							
 							<!-- form-group // -->
 							<hr>
 							<div class="form-group">
