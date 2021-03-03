@@ -1,8 +1,6 @@
 package com.devpro.buoi1.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * The persistent class for the tbl_saleorder_products database table.

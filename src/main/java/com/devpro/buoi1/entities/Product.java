@@ -39,7 +39,7 @@ public class Product extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
-	private Categories categories;
+	private Category categories;
 
 	@Column(name = "seo")
 	private String seo;
@@ -95,11 +95,11 @@ public class Product extends BaseEntity {
 		this.avatar = avatar;
 	}
 
-	public Categories getCategories() {
+	public Category getCategories() {
 		return categories;
 	}
 
-	public void setCategories(Categories categories) {
+	public void setCategories(Category categories) {
 		this.categories = categories;
 	}
 

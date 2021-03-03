@@ -95,21 +95,23 @@
 										</tr>
 									</tfoot>
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>Tiger Nixon</td>
-											<td>Tiger Nixon</td>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td><a href="#"
-												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
-													<i class="fas fa-edit"></i>
-											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-													<i class="fas fa-eye"></i>
-											</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-													<i class="fas fa-trash-alt"></i>
-											</a></td>
-										</tr>
+										<c:forEach items="${contactList}" var="contact">
+											<tr>
+												<td>${contact.firstName}</td>
+												<td>${contact.lastName}</td>
+												<td>${contact.email}</td>
+												<td>${contact.requestType}</td>
+												<td>${contact.message}</td>
+												<td><a href="#"
+													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+														<i class="fas fa-edit"></i>
+												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
+														<i class="fas fa-eye"></i>
+												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+														<i class="fas fa-trash-alt"></i>
+												</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

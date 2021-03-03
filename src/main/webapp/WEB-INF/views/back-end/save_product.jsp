@@ -69,10 +69,10 @@
 							</div>
 						</c:if>
 						<sf:form class="form-horizontal" role="form" method="post"
-							action="${base}/admin/add-product" modelAttribute="product" enctype="multipart/form-data">
+							action="${base}/admin/products/add" modelAttribute="product" enctype="multipart/form-data">
 
 							<!-- form-group // -->
-
+							<sf:hidden path="id"/>
 							<div class="form-group">
 								<label for="category" class="col-sm-3 control-label">Thể
 									loại</label>
@@ -165,7 +165,7 @@
 							<hr>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
-									<button type="submit" class="btn btn-primary">Thêm <i class="fas fa-plus-circle"></i></button>
+									<button type="submit" class="btn btn-primary">Lưu <i class="fas fa-plus-circle"></i></button>
 								</div>
 							</div>
 							<!-- form-group // -->

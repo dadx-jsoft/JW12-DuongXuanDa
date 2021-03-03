@@ -66,7 +66,7 @@
 								phẩm</h6>
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/add-product" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/products/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -102,7 +102,7 @@
 												<td>${product.price}</td>
 												<td>${product.priceSale}</td>
 												<td>${product.categories.id}</td>
-												<td><a href="#"
+												<td><a href="${base}/admin/products/edit/${product.id}"
 													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 														<i class="fas fa-edit"></i>
 												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
