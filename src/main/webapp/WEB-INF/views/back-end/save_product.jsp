@@ -1,11 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
 <!-- SPRING FORM -->
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
+<!-- Custom fonts for this template-->
+<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Add products - Dashboard</title>
+<title>Save products - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -63,11 +64,11 @@
 						</a>
 					</div>
 					<div class="panel-body">
-						<c:if test="${not empty message}">
+						<%-- <c:if test="${not empty message}">
 							<div class="alert alert-primary" role="alert">
 								<c:out value="${message }"></c:out>
 							</div>
-						</c:if>
+						</c:if> --%>
 						<sf:form class="form-horizontal" role="form" method="post"
 							action="${base}/admin/products/add" modelAttribute="product" enctype="multipart/form-data">
 
@@ -153,22 +154,27 @@
 							<!-- form-group // -->
 							<div class="form-group">
 								<label for="avatar" class="col-sm-3 control-label">Ảnh
-									sản phẩm</label>
+									đại diện</label>
 								<div class="col-sm-3">
-									<label class="control-label small" for="avatar_file">Hỗ
-										trợ (jpg/png):</label>
+									<img src="${base}/upload/${product.avatar}" width="100px" >	
 									<input type="file" name="avatar_file" />
 								</div>
 							</div>
 							
-							<!-- form-group // -->
+							<div class="form-group">
+								<label for="avatar" class="col-sm-3 control-label">Ảnh
+									sản phẩm</label>
+								<div class="col-sm-3">
+									<input type="file" name="listProductImage" multiple="multiple"/>
+								</div>
+							</div>
+							
 							<hr>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="submit" class="btn btn-primary">Lưu <i class="fas fa-plus-circle"></i></button>
 								</div>
 							</div>
-							<!-- form-group // -->
 						</sf:form>
 
 					</div>

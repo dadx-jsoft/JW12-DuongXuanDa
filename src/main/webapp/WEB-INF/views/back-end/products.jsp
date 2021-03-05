@@ -1,7 +1,8 @@
+<!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,13 +52,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1>
-					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
-					</p>
+					<!-- <h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1> -->
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -66,7 +61,8 @@
 								phẩm</h6>
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/products/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/products/add"
+								class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -96,21 +92,25 @@
 									</tfoot>
 									<tbody>
 										<c:forEach items="${productList}" var="product">
-											<tr>
-												<td>${product.title}</td>
-												<td>${product.avatar}</td>
-												<td>${product.price}</td>
-												<td>${product.priceSale}</td>
-												<td>${product.categories.id}</td>
-												<td><a href="${base}/admin/products/edit/${product.id}"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
-														<i class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-														<i class="fas fa-trash-alt"></i>
-												</a></td>
-											</tr>
+											<c:if test="${product.status == true}">
+												<tr>
+													<td>${product.title}</td>
+													<td><img src="${base}/upload/${product.avatar}"
+														width="100px"></td>
+													<td>${product.price}</td>
+													<td>${product.priceSale}</td>
+													<td>${product.categories.id}</td>
+													<td><a href="${base}/admin/products/edit/${product.id}"
+														class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+															<i class="fas fa-edit"></i>
+													</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
+															<i class="fas fa-eye"></i>
+													</a> <a href="${base}/admin/products/delete/${product.id}" class="btn btn-danger a-btn-slide-text"
+														onclick="return confirmDeleteItem();"> <strong>Delete</strong>
+															<i class="fas fa-trash-alt"></i>
+													</a></td>
+												</tr>
+											</c:if>
 										</c:forEach>
 									</tbody>
 								</table>
