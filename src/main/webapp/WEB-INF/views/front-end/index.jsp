@@ -184,13 +184,18 @@
 						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
 						data-filter="*">All Products</button>
 
-					<c:forEach items="${categories}" var="category">
+					<%-- <c:forEach items="${categories}" var="category">
 						<!-- <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 							data-filter=".women">Women</button> -->
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 							data-filter=".cat-${category.id}">${category.name}</button>
-					</c:forEach>
+					</c:forEach> --%>
+					
+					<ul>
+					${menu}
+					</ul>
+					
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -354,7 +359,7 @@
 	
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
-										<a href="${base}/product-detail/${product.id}"
+										<a href="${base}/product-detail/${product.seo}"
 											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${product.title} </a> <span class="stext-105 cl3">
 											${product.price} VNĐ</span>

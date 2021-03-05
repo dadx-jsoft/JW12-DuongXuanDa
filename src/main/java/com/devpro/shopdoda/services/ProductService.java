@@ -2,18 +2,25 @@ package com.devpro.shopdoda.services;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.repositories.Products_ImagesRepo;
 import com.devpro.shopdoda.utils.Constants;
+import com.devpro.shopdoda.utils.Utilities;
 
 @Service
 public class ProductService implements Constants {
@@ -24,6 +31,24 @@ public class ProductService implements Constants {
 	@Autowired
 	private Products_ImagesRepo products_ImagesRepo;
 
+	@PersistenceContext
+	EntityManager entityManager;
+	
+	public List<Product> search(ProductSearch productSearch) {
+		String jpql = "SELECT p FROM Product p where 1=1";
+		
+		if(!StringUtils.isEmpty(productSearch.getSeo())) {
+			jpql = jpql + " AND p.seo = '" + productSearch.getSeo() + "'";
+		}
+		
+		if(!StringUtils.isEmpty(productSearch.getCategorySeo())) {
+			jpql = jpql + " AND p.categories.seo = '" + productSearch.getCategorySeo() + "'";
+		}
+		
+		Query query = entityManager.createQuery(jpql, Product.class);
+		return query.getResultList();
+	}
+	
 	/**
 	 * Kiem tra uploaded file.
 	 * 
@@ -81,6 +106,8 @@ public class ProductService implements Constants {
 				}
 			}
 
+			product.setSeo(Utilities.seo(product.getTitle() + "-" + System.currentTimeMillis()));
+			
 			productRepo.save(product);
 
 		} catch (Exception e) {

@@ -13,7 +13,7 @@ import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
 
 @Controller
-public class HomeController {
+public class HomeController extends BaseController{
 
 	@Autowired
 	private CategoriesRepo categoriesRepo;
@@ -40,7 +40,8 @@ public class HomeController {
 
 		model.addAttribute("products", productRepo.findAll());
 		model.addAttribute("categories", categoriesRepo.findAll());
-
+		model.addAttribute("menu", buildMenu());
+		
 		return "front-end/index";
 	}
 

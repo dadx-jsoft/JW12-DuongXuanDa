@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,20 +100,45 @@
 													<td>${product.price}</td>
 													<td>${product.priceSale}</td>
 													<td>${product.categories.id}</td>
-													<td><a href="${base}/admin/products/edit/${product.id}"
+													<td><a
+														href="${base}/admin/products/edit/${product.id}"
 														class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 															<i class="fas fa-edit"></i>
-													</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-															<i class="fas fa-eye"></i>
-													</a> <a href="${base}/admin/products/delete/${product.id}" class="btn btn-danger a-btn-slide-text"
-														onclick="return confirmDeleteItem();"> <strong>Delete</strong>
-															<i class="fas fa-trash-alt"></i>
+													</a> <a href="#" class="btn btn-primary a-btn-slide-text">
+															<strong>View</strong> <i class="fas fa-eye"></i>
+													</a> <a href="${base}/admin/products/delete/${product.id}"
+														class="btn btn-danger a-btn-slide-text"
+														onclick="return confirmDeleteItem();"
+														data-bs-toggle="modal" data-bs-target="#exampleModal">
+															<strong>Delete</strong> <i class="fas fa-trash-alt"></i>
 													</a></td>
 												</tr>
 											</c:if>
 										</c:forEach>
 									</tbody>
 								</table>
+
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Modal
+													title</h5>
+												<button type="button" class="btn-close"
+													data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">...</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Save
+													changes</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
