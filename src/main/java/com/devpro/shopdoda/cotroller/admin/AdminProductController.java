@@ -1,6 +1,7 @@
 package com.devpro.shopdoda.cotroller.admin;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
@@ -78,10 +80,33 @@ public class AdminProductController {
 	@GetMapping
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-
-		model.addAttribute("productList", productRepo.findAll());
-		model.addAttribute("categories", categoriesRepo.findAll());
+		ProductSearch productSearch = new ProductSearch();
+		productSearch.buildPaging(request);
+		
+		List<Product> productList = productService.search(productSearch);
+		
+		model.addAttribute("productList", productList);
+		model.addAttribute("productSearch", productSearch);
+		
+//		model.addAttribute("categories", categoriesRepo.findAll());
 
 		return "back-end/products";
 	}
+	
+	@RequestMapping(value = { "/search-all" }, method = RequestMethod.GET)
+	public String searchAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+
+		ProductSearch productSearch = new ProductSearch();
+		productSearch.buildPaging(request);
+
+		productSearch.setSearchText(request.getParameter("searchText")); // name input
+		List<Product> productList = productService.search(productSearch);
+
+		model.addAttribute("productList", productList);
+		model.addAttribute("productSearch", productSearch);
+
+		return "back-end/products";
+	}
+	
 }

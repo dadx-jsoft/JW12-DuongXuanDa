@@ -6,7 +6,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <!-- Custom fonts for this template-->
-<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +23,13 @@
 <title>Save products - Dashboard</title>
 
 <!-- Custom fonts for this template-->
-<jsp:include page="/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
 
 <!-- Custom styles for this template-->
-<jsp:include page="/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
 
 <!-- include summernote css-->
-<link href="/summernote/summernote.css" rel="stylesheet" />
+<link href="${base}/summernote/summernote.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -38,7 +38,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<jsp:include page="/WEB-INF/views/back-end/common/sidebar.jsp"></jsp:include>
+		<jsp:include page="${base}/WEB-INF/views/back-end/common/sidebar.jsp"></jsp:include>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -48,7 +48,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<jsp:include page="/WEB-INF/views/back-end/common/topbar.jsp"></jsp:include>
+				<jsp:include page="${base}/WEB-INF/views/back-end/common/topbar.jsp"></jsp:include>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -187,7 +187,7 @@
 			<!-- End of Main Content -->
 
 			<!-- Footer -->
-			<jsp:include page="/WEB-INF/views/back-end/common/footer.jsp"></jsp:include>
+			<jsp:include page="${base}/WEB-INF/views/back-end/common/footer.jsp"></jsp:include>
 			<!-- End of Footer -->
 
 		</div>
@@ -197,12 +197,12 @@
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
-	<jsp:include page="/WEB-INF/views/back-end/common/back_to_top.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/back-end/common/back_to_top.jsp"></jsp:include>
 
 	<!-- Logout Modal-->
-	<jsp:include page="/WEB-INF/views/back-end/common/logout.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/back-end/common/logout.jsp"></jsp:include>
 
-	<jsp:include page="/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
 
 
 	<!-- include summernote js-->

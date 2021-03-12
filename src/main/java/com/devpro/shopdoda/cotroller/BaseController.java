@@ -20,8 +20,7 @@ public class BaseController {
 		
 		List<Category> categories = categoriesService.getAllParents();
 		for(Category c : categories) {
-//			menu.append("<li><a href=\"\">" + c.getName() + "</a>");
-			menu.append("<li><a href=\"" + "category/"+ c.getSeo() + "\">"+c.getName()+"</a>");
+			menu.append("<li><a href=\"/category/"+ c.getSeo() + "\">"+c.getName()+"</a>");
 			if(c.getChilds() != null && !c.getChilds().isEmpty()) {
 				recursiveMenu(menu, c.getChilds());
 			}
@@ -30,13 +29,11 @@ public class BaseController {
 		
 		return menu.toString();
 	}
-	//"<li><a href=\"category/" + c.getName() + "\"></a>"
-	
+
 	private void recursiveMenu(StringBuilder menu, List<Category> childs) {
 		menu.append("<ul>");
 		for(Category c : childs) {
-//			menu.append("<li><a href=\"\">" + c.getName() + "</a>");
-			menu.append("<li><a href=\"" + "category/"+ c.getSeo() + "\">"+c.getName()+"</a>");
+			menu.append("<li><a href=\"/category/"+ c.getSeo() + "\">"+c.getName()+"</a>");
 			if(c.getChilds() != null && !c.getChilds().isEmpty()) {
 				recursiveMenu(menu, c.getChilds());
 				menu.append("</li>");

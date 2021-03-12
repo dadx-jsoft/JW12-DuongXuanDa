@@ -19,7 +19,7 @@ public class SubscribeController {
 	public ResponseEntity<AjaxResponse> subscribe(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @RequestBody Subscribe subscribe) {
 
-		System.out.println("Subscribe[email]: " + subscribe.getEmail());
+		System.out.println("Subscribe[emailSubscribe]: " + subscribe.getEmail());
 
 		return ResponseEntity.ok(new AjaxResponse(200, "Chúc mừng bạn đã đăng ký nhận ưu đãi thành công"));
 	}

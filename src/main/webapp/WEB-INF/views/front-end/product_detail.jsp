@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- Variables -->
+<jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Home</title>
-<!-- Variables -->
-<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
+
 <jsp:include page="./common/css.jsp"></jsp:include>
 </head>
 <body class="animsition">
@@ -41,43 +42,31 @@
 
 							<div class="slick3 gallery-lb">
 								<div class="item-slick3"
-									data-thumb="${base}/images/product-detail-01.jpg">
+									data-thumb="${base}/upload/${pro_detail.avatar}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${base}/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+										<img src="${base}/upload/${pro_detail.avatar}" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${base}/images/product-detail-01.jpg"> <i
+											href="${base}/upload/${pro_detail.avatar}"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
+								<c:forEach items="${listImages}" var="imageProduct">
 								<div class="item-slick3"
-									data-thumb="${base}/images/product-detail-02.jpg">
+									data-thumb="${base}/upload/${imageProduct.path}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="${base}/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+										<img src="${base}/upload/${imageProduct.path}" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${base}/images/product-detail-02.jpg"> <i
+											href="${base}/upload/${imageProduct.path}"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3"
-									data-thumb="${base}/images/product-detail-03.jpg">
-									<div class="wrap-pic-w pos-relative">
-										<img src="${base}/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${base}/images/product-detail-03.jpg"> <i
-											class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -321,7 +310,8 @@
 		</div>
 	</section>
 
-
+	
+	
 	<!-- Related Products -->
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
@@ -585,11 +575,11 @@
 
 
 	<!-- Footer -->
-	<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
 
 	<!-- Back to top -->
-	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
 	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
@@ -754,13 +744,13 @@
 	<jsp:include page="./common/js.jsp"></jsp:include>
 
 	<!--===============================================================================================-->
-	<script src="/vendor/daterangepicker/moment.min.js"></script>
-	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="${base}/vendor/daterangepicker/moment.min.js"></script>
+	<script src="${base}/vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
-	<script src="/vendor/slick/slick.min.js"></script>
-	<script src="/js/slick-custom.js"></script>
+	<script src="${base}/vendor/slick/slick.min.js"></script>
+	<script src="${base}/js/slick-custom.js"></script>
 	<!--===============================================================================================-->
-	<script src="/vendor/parallax100/parallax100.js"></script>
+	<script src="${base}/vendor/parallax100/parallax100.js"></script>
 	<script>
 		$('.parallax100').parallax100();
 	</script>
@@ -778,9 +768,9 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="/vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="${base}/vendor/isotope/isotope.pkgd.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="/vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="${base}/vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
 		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e) {
 			e.preventDefault();

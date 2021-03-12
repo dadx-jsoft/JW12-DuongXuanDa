@@ -8,16 +8,16 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
-<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
 <body class="animsition">
 
-	<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
 	<!-- Cart -->
-	<jsp:include page="/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
 
 	<!-- breadcrumb -->
 	<div class="container">
@@ -281,13 +281,13 @@
 
 
 	<!-- Footer -->
-	<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
 
 	<!-- Back to top -->
-	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
-	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 
 </body>
 </html>

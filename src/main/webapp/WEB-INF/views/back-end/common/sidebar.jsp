@@ -76,8 +76,7 @@
 					class="collapse-item" href="${base}/forgot_password">Forgot Password</a>
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">Other Pages:</h6>
-				<a class="collapse-item" href="404.html">404 Page</a> <a
-					class="collapse-item" href="${base}/admin/blank">Blank Page</a>
+				<a class="collapse-item" href="404.html">404 Page</a> 
 			</div>
 		</div></li>
 
@@ -99,12 +98,6 @@
 	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/products">
 			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm</span>
-	</a></li>
-
-	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link"
-		href="${base}/admin/products_images"> <i class="fas fa-fw fa-table"></i> <span>Ảnh
-				sản phẩm</span>
 	</a></li>
 
 	<!-- Nav Item - Tables -->
