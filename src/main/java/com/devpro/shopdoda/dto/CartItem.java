@@ -1,6 +1,6 @@
 package com.devpro.shopdoda.dto;
 
-import com.ibm.icu.math.BigDecimal;
+import java.math.BigDecimal;
 
 public class CartItem {
 	private int productId;

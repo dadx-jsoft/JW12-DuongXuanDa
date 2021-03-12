@@ -61,11 +61,6 @@ public class HomeController extends BaseController{
 		return "front-end/index";
 	}
 
-	@RequestMapping(value = { "/shopping-cart" }, method = RequestMethod.GET)
-	public String shopping_cart(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-
-		return "front-end/shopping_cart";
-	}
+	
 
 }
