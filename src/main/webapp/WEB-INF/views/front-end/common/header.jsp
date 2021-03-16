@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header class="header-v4">
 	<!-- Header desktop -->
 	<div class="container-menu-desktop">
@@ -31,7 +32,8 @@
 
 						<li><a href="${base}/products">Shop</a></li>
 
-						<li class="label1" data-label1="hot"><a href="${base}/shopping-cart">Features</a></li>
+						<li class="label1" data-label1="hot"><a
+							href="${base}/shopping-cart">Features</a></li>
 
 						<li><a href="${base}/blog">Blog</a></li>
 
@@ -48,14 +50,13 @@
 						<i class="zmdi zmdi-search"></i>
 					</div>
 
-					<div
+					<div id="totalItemsInCart"
 						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="${totalItems}">  <!-- js-show-cart -->
-						
-						<a href="${base}/cart/view"><i class="zmdi zmdi-shopping-cart"></i></a>
-						<span id="totalItemsInCart"></span>
-					</div>
+						data-notify="${totalItems>0?totalItems:0}">
+						<!-- js-show-cart -->
 
+						<a href="${base}/cart/view"><i class="zmdi zmdi-shopping-cart"></i></a>
+					</div>
 					<a href="#"
 						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
@@ -69,8 +70,7 @@
 	<div class="wrap-header-mobile">
 		<!-- Logo moblie -->
 		<div class="logo-mobile">
-			<a href="/"><img src="/images/icons/logo-01.png"
-				alt="IMG-LOGO"></a>
+			<a href="/"><img src="/images/icons/logo-01.png" alt="IMG-LOGO"></a>
 		</div>
 
 		<!-- Icon header -->
@@ -119,16 +119,13 @@
 		</ul>
 
 		<ul class="main-menu-m">
-			<li><a href="/">Home</a>
-				<!-- <ul class="sub-menu-m">
+			<li><a href="/">Home</a> <!-- <ul class="sub-menu-m">
 					<li><a href="index.html">Homepage 1</a></li>
 					<li><a href="home-02.html">Homepage 2</a></li>
 					<li><a href="home-03.html">Homepage 3</a></li>
-				</ul>  -->
-				<!-- <span class="arrow-main-menu-m"> <i
+				</ul>  --> <!-- <span class="arrow-main-menu-m"> <i
 					class="fa fa-angle-right" aria-hidden="true"></i>
-				</span> -->
-			</li>
+				</span> --></li>
 
 			<li><a href="products">Shop</a></li>
 
