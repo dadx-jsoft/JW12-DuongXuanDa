@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class CartItem {
 	private int productId;
 	private String productName;
+	private String productAvatar;
 	private int quantity;
 	private BigDecimal priceUnit;
 
@@ -38,6 +39,14 @@ public class CartItem {
 
 	public void setPriceUnit(BigDecimal priceUnit) {
 		this.priceUnit = priceUnit;
+	}
+
+	public String getProductAvatar() {
+		return productAvatar;
+	}
+
+	public void setProductAvatar(String productAvatar) {
+		this.productAvatar = productAvatar;
 	}
 
 }

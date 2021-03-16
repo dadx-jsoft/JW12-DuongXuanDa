@@ -24,6 +24,9 @@ import com.devpro.shopdoda.services.ProductService;
 @Controller
 public class ProductController extends BaseController {
 	@Autowired
+	private ProductRepo productRepo;
+	
+	@Autowired
 	private ProductService productService;
 
 	@Autowired
@@ -54,6 +57,13 @@ public class ProductController extends BaseController {
 		List<ProductsImages> listImages = productImagesService.findByProduct(productDetail);
 		if (listImages != null)
 			model.addAttribute("listImages", listImages);
+		
+		// related products
+		productSearch = new ProductSearch();
+		productSearch.setCategorySeo(productDetail.getCategories().getSeo());
+		List<Product> relatedProducts = productService.search(productSearch);
+		relatedProducts.remove(productDetail); // bỏ product hiện tại khỏi ds liên quan đến nó
+		model.addAttribute("relatedProducts", relatedProducts);
 		
 		return "front-end/product_detail";
 	}

@@ -52,6 +52,7 @@ public class ProductService implements Constants {
 					+ st + " OR p.shortDescription LIKE " 
 					+ st + " ) ";
 		}
+		
 		System.out.println(jpql);
 
 		Query query = entityManager.createQuery(jpql, Product.class);

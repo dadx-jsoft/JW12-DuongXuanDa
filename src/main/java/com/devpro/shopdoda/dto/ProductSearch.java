@@ -1,6 +1,5 @@
 package com.devpro.shopdoda.dto;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.util.StringUtils;
@@ -9,7 +8,7 @@ public class ProductSearch {
 
 	private String seo;
 	private String categorySeo;
-	
+
 	public String searchText;
 
 	public String getSearchText() {

@@ -32,8 +32,8 @@
 
 						<li><a href="${base}/products">Shop</a></li>
 
-						<li class="label1" data-label1="hot"><a
-							href="${base}/shopping-cart">Features</a></li>
+						<%-- <li class="label1" data-label1="hot"><a
+							href="${base}/shopping-cart">Features</a></li> --%>
 
 						<li><a href="${base}/blog">Blog</a></li>
 
@@ -70,7 +70,7 @@
 	<div class="wrap-header-mobile">
 		<!-- Logo moblie -->
 		<div class="logo-mobile">
-			<a href="/"><img src="/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			<a href="/"><img src="${base}/images/icons/logo-01.png" alt="IMG-LOGO"></a>
 		</div>
 
 		<!-- Icon header -->
@@ -80,9 +80,9 @@
 				<i class="zmdi zmdi-search"></i>
 			</div>
 
-			<div
+			<div id="totalItemsInCartMobile"
 				class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-				data-notify="2">
+				data-notify="${totalItems>0?totalItems:0}">
 				<i class="zmdi zmdi-shopping-cart"></i>
 			</div>
 
@@ -127,15 +127,15 @@
 					class="fa fa-angle-right" aria-hidden="true"></i>
 				</span> --></li>
 
-			<li><a href="products">Shop</a></li>
+			<li><a href="${base}/products">Shop</a></li>
 
-			<li><a href="shopping-cart" class="label1 rs1" data-label1="hot">Features</a></li>
+			<!-- <li><a href="shopping-cart" class="label1 rs1" data-label1="hot">Features</a></li> -->
 
-			<li><a href="blog">Blog</a></li>
+			<li><a href="${base}/blog">Blog</a></li>
 
-			<li><a href="about">About</a></li>
+			<li><a href="${base}/about">About</a></li>
 
-			<li><a href="contact">Contact</a></li>
+			<li><a href="${base}/contact">Contact</a></li>
 		</ul>
 	</div>
 

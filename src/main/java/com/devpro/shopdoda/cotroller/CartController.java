@@ -84,12 +84,6 @@ public class CartController extends BaseController {
 	@RequestMapping(value = { "/cart/view" }, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-		return "front-end/shopping_cart";
-	}
-
-	@RequestMapping(value = { "/cart/add" }, method = RequestMethod.POST)
-	public ResponseEntity<AjaxResponse> addToCart(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response, @RequestBody CartItem cartItem) {
 		HttpSession httpSession = request.getSession();
 
 		Cart cart = null;
@@ -99,11 +93,30 @@ public class CartController extends BaseController {
 			cart = new Cart();
 			httpSession.setAttribute("cart", cart);
 		}
+		List<CartItem> cartItems = cart.getCartItems();
+		
+		model.addAttribute("cartItems", cartItems);
+		
+		return "front-end/shopping_cart";
+	}
+
+	@RequestMapping(value = { "/cart/add" }, method = RequestMethod.POST)
+	public ResponseEntity<AjaxResponse> addToCart(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response, @RequestBody CartItem cartItem) {
+		HttpSession httpSession = request.getSession();
+
+		Cart cart = null;
+		if (httpSession.getAttribute("cart") != null) { // có cart
+			cart = (Cart) httpSession.getAttribute("cart");
+		} else { // chưa có cart
+			cart = new Cart();
+			httpSession.setAttribute("cart", cart);
+		}
 
 		List<CartItem> cartItems = cart.getCartItems();
 		boolean isExists = false;
 		for (CartItem item : cartItems) {
-			if (item.getProductId() == cartItem.getProductId()) {
+			if (item.getProductId() == cartItem.getProductId()) { // trùng id trong giỏ hàng
 				isExists = true;
 				item.setQuantity(item.getQuantity() + cartItem.getQuantity());
 			}
@@ -112,6 +125,7 @@ public class CartController extends BaseController {
 		if (!isExists) {
 			Product productInDb = productRepo.getOne(cartItem.getProductId());
 			cartItem.setProductName(productInDb.getTitle());
+			cartItem.setProductAvatar(productInDb.getAvatar());
 			cartItem.setPriceUnit(productInDb.getPrice());
 			cart.getCartItems().add(cartItem);
 		}
