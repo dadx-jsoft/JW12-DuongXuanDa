@@ -4,7 +4,8 @@ function addToCart(productId, quantity) {
 	var data = {};
 	data["productId"] = productId;
 	data["quantity"] = quantity;
-
+	$("#numberProduct").val()
+	
 	$.ajax({
 		url: "/cart/add",
 		type: "post",

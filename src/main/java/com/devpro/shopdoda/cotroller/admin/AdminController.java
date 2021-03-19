@@ -80,13 +80,6 @@ public class AdminController {
 		return "back-end/users_roles";
 	}
 
-	@RequestMapping(value = { "admin/saleorders" }, method = RequestMethod.GET)
-	public String saleorders(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/saleorders";
-	}
-
 	@RequestMapping(value = { "admin/saleorders_products" }, method = RequestMethod.GET)
 	public String saleorders_products(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {

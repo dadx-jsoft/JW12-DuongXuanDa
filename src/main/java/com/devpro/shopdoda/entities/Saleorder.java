@@ -2,6 +2,7 @@ package com.devpro.shopdoda.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class Saleorder extends BaseEntity {
 	private String customerPhone;
 
 	@Column(name = "cutomer_email")
-	private String cutomerEmail;
+	private String customerEmail;
 
 	@Column(name = "seo")
 	private String seo;
@@ -37,7 +38,7 @@ public class Saleorder extends BaseEntity {
 	private Integer userId;
 
 	// bi-directional many-to-one association to SaleorderProduct
-	@OneToMany(mappedBy = "saleorder")
+	@OneToMany(mappedBy = "saleorder", cascade = CascadeType.ALL)
 	private List<SaleorderProduct> saleorderProducts;
 
 	public Saleorder() {
@@ -75,12 +76,12 @@ public class Saleorder extends BaseEntity {
 		this.customerPhone = customerPhone;
 	}
 
-	public String getCutomerEmail() {
-		return cutomerEmail;
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
 
-	public void setCutomerEmail(String cutomerEmail) {
-		this.cutomerEmail = cutomerEmail;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
 
 	public String getSeo() {
@@ -115,14 +116,17 @@ public class Saleorder extends BaseEntity {
 		this.saleorderProducts = saleorderProducts;
 	}
 
-	public SaleorderProduct addTblSaleorderProduct(SaleorderProduct saleorderProduct) {
+	public SaleorderProduct addSaleorderProduct(SaleorderProduct saleorderProduct) {
+		if(this.saleorderProducts == null) {
+			this.saleorderProducts = new ArrayList<SaleorderProduct>();
+		}
 		getSaleorderProducts().add(saleorderProduct);
 		saleorderProduct.setSaleorder(this);
-
+		
 		return saleorderProduct;
 	}
 
-	public SaleorderProduct removeTblSaleorderProduct(SaleorderProduct saleorderProduct) {
+	public SaleorderProduct removeSaleorderProduct(SaleorderProduct saleorderProduct) {
 		getSaleorderProducts().remove(saleorderProduct);
 		saleorderProduct.setSaleorder(null);
 

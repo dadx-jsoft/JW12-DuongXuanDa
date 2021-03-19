@@ -21,7 +21,6 @@ public class ProductSearch {
 
 	public Integer offset = null;
 	public Integer count = null;
-
 	public void buildPaging(HttpServletRequest request) {
 		if (!StringUtils.isEmpty(request.getParameter("offset"))) {
 			this.offset = Integer.parseInt(request.getParameter("offset"));

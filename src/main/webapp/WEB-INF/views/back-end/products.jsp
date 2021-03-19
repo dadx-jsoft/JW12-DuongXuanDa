@@ -8,7 +8,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -27,7 +26,6 @@
 <!-- Custom styles for this page -->
 <link href="${base}/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -97,7 +95,7 @@
 										<c:forEach items="${productList}" var="product" varStatus="loop">
 											<c:if test="${product.status == true}">
 												<tr>
-													<td><span>${loop.index}</span></td>
+													<td><span>${loop.index+1}</span></td>
 													<td>${product.title}</td>
 													<td><img src="${base}/upload/${product.avatar}"
 														width="80px"></td>
@@ -121,8 +119,11 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								
+								<!-- Paging -->
 								<tag:paginate offset="${productSearch.offset }"
 									count="${productSearch.count }" uri="${pageUrl}" />
+								<!-- End Paging -->
 							</div>
 						</div>
 

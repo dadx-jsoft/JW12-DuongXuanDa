@@ -1,6 +1,9 @@
 package com.devpro.shopdoda.entities;
 
 import javax.persistence.*;
+
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.List;
 
 /**
@@ -9,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "tbl_roles")
-public class Role extends BaseEntity {
+public class Role extends BaseEntity implements GrantedAuthority{
 
 	@Column(nullable = false)
 	private String description;
@@ -56,6 +59,11 @@ public class Role extends BaseEntity {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	@Override
+	public String getAuthority() {
+		return this.name;
 	}
 
 }

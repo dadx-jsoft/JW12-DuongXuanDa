@@ -1,6 +1,7 @@
 package com.devpro.shopdoda.cotroller;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,14 +50,18 @@ public class CartController extends BaseController {
 
 		return total;
 	}
-
-	@RequestMapping(value = { "/cart/paymnet" }, method = RequestMethod.POST)
+	private void resetCart(final HttpServletRequest request) {
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("cart", new Cart());
+		httpSession.setAttribute("totalItems", getTotalItems(request));
+	}
+	@RequestMapping(value = { "/cart/payment" }, method = RequestMethod.POST)
 	public String addProduct_Post(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
-		String email = request.getParameter("email");
-		String tel = request.getParameter("tel");
-		String fullName = request.getParameter("fullName");
-
+		String customerName = request.getParameter("customerName");
+		String customerAddress = request.getParameter("customerAddress");
+		String customerPhone = request.getParameter("customerPhone");
+		
 		HttpSession httpSession = request.getSession();
 		Cart cart = (Cart) httpSession.getAttribute("cart");
 		List<CartItem> cartItems = cart.getCartItems();
@@ -64,21 +69,31 @@ public class CartController extends BaseController {
 		Saleorder saleOrder = new Saleorder();
 		saleOrder.setCode("ORDER-"+System.currentTimeMillis());
 		saleOrder.setSeo("ORDER-"+System.currentTimeMillis());
-		saleOrder.setCustomerName(fullName);
-		saleOrder.setCustomerAddress("Ha Noi");
+		saleOrder.setCustomerName(customerName);
+		saleOrder.setCustomerAddress(customerAddress);
+		saleOrder.setCustomerPhone(customerPhone);
 		saleOrder.setTotal(new BigDecimal(0));
 		
+		BigDecimal totalPrice = BigDecimal.ZERO;
+		
 		for(CartItem item : cartItems) {
+			Date date = new Date();
 			SaleorderProduct saleOrderProducts = new SaleorderProduct();
-//			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
-			saleOrderProducts.setProductId(item.getProductId());
+			saleOrderProducts.setCreatedDate(date);
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
 			saleOrderProducts.setQuantity(item.getQuantity());
-			saleOrder.addTblSaleorderProduct(saleOrderProducts);
+			saleOrder.addSaleorderProduct(saleOrderProducts);
+			saleOrder.setCreatedDate(date);
+			totalPrice=totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
 		}
 		
-		saleOrderRepo.save(saleOrder);
+		saleOrder.setTotal(totalPrice);
 		
-		return "redirect:/admin/list-product";
+		saleOrderRepo.save(saleOrder); 
+		
+		this.resetCart(request);
+		
+		return "redirect:/products";
 	}
 
 	@RequestMapping(value = { "/cart/view" }, method = RequestMethod.GET)

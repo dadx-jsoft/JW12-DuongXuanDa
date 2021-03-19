@@ -30,7 +30,7 @@
 
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<form class="bg0 p-t-75 p-b-85" action="${base}/cart/payment" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -121,25 +121,38 @@
 									you need any help.</p>
 
 								<div class="p-t-15">
-									<span class="stext-112 cl8"> Calculate Shipping </span>
+									<span class="stext-112 cl8"> Mời quý khách nhập thông tin</span>
 
-									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+									<!-- <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="time">
 											<option>Select a country...</option>
 											<option>USA</option>
 											<option>UK</option>
 										</select>
 										<div class="dropDownSelect2"></div>
-									</div>
+									</div> -->
 
-									<div class="bor8 bg0 m-b-12">
+									<!-- <div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
 											name="state" placeholder="State /  country">
-									</div>
+									</div> -->
 
-									<div class="bor8 bg0 m-b-22">
+									<!-- <div class="bor8 bg0 m-b-22">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
 											name="postcode" placeholder="Postcode / Zip">
+									</div> -->
+									
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerName" placeholder="Họ tên">
+									</div>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerAddress" placeholder="Địa chỉ">
+									</div>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerPhone" placeholder="Số điện thoại">
 									</div>
 
 									<div class="flex-w">
@@ -162,9 +175,10 @@
 							</div>
 						</div>
 
-						<button
+						<button type = "submit"
 							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Proceed to Checkout</button>
+							Proceed to Checkout	
+						</button>
 					</div>
 				</div>
 			</div>

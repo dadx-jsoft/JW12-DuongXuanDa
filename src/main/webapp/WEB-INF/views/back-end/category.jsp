@@ -50,20 +50,12 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Danh mục</h1>
-					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
-					</p>
-
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Danh sách danh
-								mục</h6>
+							<h6 class="m-0 font-weight-bold text-primary">
+								<a href="${base}/admin/categories">Danh sách danh mục</a>
+							</h6>
 
 						</div>
 						<div class="card-body py-3">
@@ -73,7 +65,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
+								<table class="table table-bordered" width="100%"
 									cellspacing="0">
 									<thead>
 										<tr>
@@ -91,18 +83,20 @@
 									</tfoot>
 									<tbody>
 										<c:forEach items="${categoryList}" var="category">
+											<c:if test="${category.status == true}">
 											<tr>
 												<td>${category.name}</td>
 												<td>${category.description}</td>
-												<td><a href="${base}/admin/category/edit"
+												<td><a href="${base}/admin/categories/edit/${category.id}"
 													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 														<i class="fas fa-edit"></i>
 												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+												</a> <a href="${base}/admin/categories/delete/${category.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
 														<i class="fas fa-trash-alt"></i>
 												</a></td>
 											</tr>
+											</c:if>
 										</c:forEach>
 									</tbody>
 								</table>

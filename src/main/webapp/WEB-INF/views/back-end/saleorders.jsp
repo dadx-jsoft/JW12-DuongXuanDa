@@ -99,14 +99,15 @@
 										</tr>
 									</tfoot>
 									<tbody>
+										<c:forEach items="${saleorders}" var="saleorder" varStatus="loop">
 										<tr>
-											<td>1</td>
-											<td>dadx</td>
-											<td>250000 vnd</td>
-											<td>Dương Xuân Đà</td>
-											<td>Nhổn, Minh Khai, Từ Liêm, Hà Nội</td>
-											<td>0961010169</td>
-											<td>dadx.jsoft@gmail.com</td>
+											<td>${loop.index+1}</td>
+											<td>${saleorder.userId}</td>
+											<td>${saleorder.total} VNĐ</td>
+											<td>${saleorder.customerName}</td>
+											<td>${saleorder.customerAddress}</td>
+											<td>${saleorder.customerPhone}</td>
+											<td>${saleorder.customerEmail}</td>
 											<td style="width: 25%;"><a href="#"
 												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 													<i class="fas fa-edit"></i>
@@ -116,6 +117,7 @@
 													<i class="fas fa-trash-alt"></i>
 											</a></td>
 										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

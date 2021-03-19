@@ -10,10 +10,11 @@ import javax.persistence.*;
 @Table(name = "tbl_saleorder_products")
 public class SaleorderProduct extends BaseEntity {
 
-	@Column(name = "product_id", nullable = false)
-	private Integer productId;
+	@ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    Product product;
 
-	@Column(nullable = false)
+	@Column(name = "quality", nullable = false)
 	private int quantity;
 
 	// bi-directional many-to-one association to Saleorder
@@ -24,12 +25,12 @@ public class SaleorderProduct extends BaseEntity {
 	public SaleorderProduct() {
 	}
 
-	public Integer getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getQuantity() {

@@ -1,3 +1,14 @@
+<%@page import="com.devpro.shopdoda.entities.User"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%
+String email = "Login";
+Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+if (principal instanceof UserDetails) {
+  email = ((User)principal).getEmail();
+}
+%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header class="header-v4">
 	<!-- Header desktop -->
@@ -10,7 +21,7 @@
 
 				<div class="right-top-bar flex-w h-full">
 					<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-						href="#" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
+						href="${base}/login" class="flex-c-m trans-04 p-lr-25"> <%= email %> </a> <a
 						href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
 						class="flex-c-m trans-04 p-lr-25"> USD </a>
 				</div>
@@ -54,7 +65,7 @@
 						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 						data-notify="${totalItems>0?totalItems:0}">
 						<!-- js-show-cart -->
-
+						
 						<a href="${base}/cart/view"><i class="zmdi zmdi-shopping-cart"></i></a>
 					</div>
 					<a href="#"
@@ -81,7 +92,7 @@
 			</div>
 
 			<div id="totalItemsInCartMobile"
-				class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+				class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
 				data-notify="${totalItems>0?totalItems:0}">
 				<i class="zmdi zmdi-shopping-cart"></i>
 			</div>

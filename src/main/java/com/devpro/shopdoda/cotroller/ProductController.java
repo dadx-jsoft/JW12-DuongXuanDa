@@ -17,7 +17,6 @@ import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
 import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
-import com.devpro.shopdoda.repositories.Products_ImagesRepo;
 import com.devpro.shopdoda.services.ProductImagesService;
 import com.devpro.shopdoda.services.ProductService;
 
@@ -25,7 +24,7 @@ import com.devpro.shopdoda.services.ProductService;
 public class ProductController extends BaseController {
 	@Autowired
 	private ProductRepo productRepo;
-	
+
 	@Autowired
 	private ProductService productService;
 
@@ -38,7 +37,15 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = { "/products" }, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
+		model.addAttribute("menu", buildMenu());
 
+		ProductSearch productSearch = new ProductSearch();
+		productSearch.buildPaging(request);
+
+		List<Product> products = productService.search(productSearch);
+
+		model.addAttribute("products", products);
+		model.addAttribute("productSearch", productSearch);
 		return "front-end/products";
 	}
 
@@ -57,14 +64,14 @@ public class ProductController extends BaseController {
 		List<ProductsImages> listImages = productImagesService.findByProduct(productDetail);
 		if (listImages != null)
 			model.addAttribute("listImages", listImages);
-		
+
 		// related products
 		productSearch = new ProductSearch();
 		productSearch.setCategorySeo(productDetail.getCategories().getSeo());
 		List<Product> relatedProducts = productService.search(productSearch);
 		relatedProducts.remove(productDetail); // bỏ product hiện tại khỏi ds liên quan đến nó
 		model.addAttribute("relatedProducts", relatedProducts);
-		
+
 		return "front-end/product_detail";
 	}
 
@@ -81,7 +88,7 @@ public class ProductController extends BaseController {
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
 
-		return "front-end/index";
+		return "front-end/products";
 	}
 
 	@RequestMapping(value = { "/product/search-all" }, method = RequestMethod.GET)
@@ -97,7 +104,7 @@ public class ProductController extends BaseController {
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
 
-		return "front-end/index";
+		return "front-end/products";
 	}
 
 }

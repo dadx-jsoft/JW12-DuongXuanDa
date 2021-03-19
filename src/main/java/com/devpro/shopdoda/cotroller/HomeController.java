@@ -57,7 +57,6 @@ public class HomeController extends BaseController{
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
 		
-		
 		return "front-end/index";
 	}
 
