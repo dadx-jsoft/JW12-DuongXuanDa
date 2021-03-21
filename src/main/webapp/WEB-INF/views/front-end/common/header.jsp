@@ -2,10 +2,10 @@
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%
-String email = "Login";
+String username = null;
 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 if (principal instanceof UserDetails) {
-  email = ((User)principal).getEmail();
+	username = ((User)principal).getUsername();
 }
 %>
 
@@ -16,14 +16,20 @@ if (principal instanceof UserDetails) {
 		<!-- Topbar -->
 		<div class="top-bar">
 			<div class="content-topbar flex-sb-m h-full container">
-				<div class="left-top-bar">Free shipping for standard order
-					over $100</div>
+				<div class="left-top-bar">Free shipping for all order</div>
 
 				<div class="right-top-bar flex-w h-full">
-					<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-						href="${base}/login" class="flex-c-m trans-04 p-lr-25"> <%= email %> </a> <a
-						href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
-						class="flex-c-m trans-04 p-lr-25"> USD </a>
+					<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a>
+					<%
+						if(username!=null){
+					%>
+						<a href="" class="flex-c-m trans-04 p-lr-25"> <%= username %> </a>
+						<a href="${base}/logout" class="flex-c-m trans-04 p-lr-25"> Logout </a>
+					<% } else{ %>
+						<a href="${base}/login" class="flex-c-m trans-04 p-lr-25"> Login </a>
+					<% } %>
+					<!-- <a href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> 
+					<a href="#" class="flex-c-m trans-04 p-lr-25"> USD </a> -->
 				</div>
 			</div>
 		</div>
@@ -130,13 +136,7 @@ if (principal instanceof UserDetails) {
 		</ul>
 
 		<ul class="main-menu-m">
-			<li><a href="/">Home</a> <!-- <ul class="sub-menu-m">
-					<li><a href="index.html">Homepage 1</a></li>
-					<li><a href="home-02.html">Homepage 2</a></li>
-					<li><a href="home-03.html">Homepage 3</a></li>
-				</ul>  --> <!-- <span class="arrow-main-menu-m"> <i
-					class="fa fa-angle-right" aria-hidden="true"></i>
-				</span> --></li>
+			<li><a href="/">Home</a></li>
 
 			<li><a href="${base}/products">Shop</a></li>
 

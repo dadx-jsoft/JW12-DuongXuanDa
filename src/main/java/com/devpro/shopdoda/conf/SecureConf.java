@@ -20,7 +20,8 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 
-				.antMatchers("/css/**", "/js/**", "/vendor/**", "/images/**", "/img/**", "/fonts/**", "/upload/**", "/summernote/**", "/files/**")
+				.antMatchers("/css/**", "/js/**", "/vendor/**", "/images/**", "/img/**", "/fonts/**", "/upload/**",
+						"/summernote/**"/* , "/files/**" */)
 				.permitAll()
 
 				.antMatchers("/admin/**").hasAnyAuthority("ADMIN")

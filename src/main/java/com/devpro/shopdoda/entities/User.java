@@ -24,6 +24,17 @@ public class User extends BaseEntity implements UserDetails {
 
 	@Column(nullable = false)
 	private String username;
+	
+	@Column(name = "full_name", nullable = false)
+	private String fullName;
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
 	// bi-directional many-to-many association to Role
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

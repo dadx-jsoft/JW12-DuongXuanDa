@@ -1,3 +1,7 @@
+<!-- sử dụng tiếng việt -->
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,36 +38,32 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Đăng ký tài khoản!</h1>
                             </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
+                            <form class="user" action="${base}/register" method="POST">
+                                <div class="form-group">
+                                    <input name="fullName" type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Họ và tên">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Địa chỉ email">
+                                </div>
+                                <div class="form-group">
+                                    <input name="userName" type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Username">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input name="password" type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input name="confirmPassword" type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Xác nhận mật khẩu">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google

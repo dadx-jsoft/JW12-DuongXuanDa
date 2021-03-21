@@ -103,7 +103,7 @@ public class ProductService implements Constants {
 
 			// kiem tra neu nguoi dung co upload file avatar?
 			if (!isEmptyUploadFile(productAvatar)) {
-				String avatarPath = "/product/avatar/" + productAvatar.getOriginalFilename();
+				String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
 				product.setAvatar(avatarPath);
 
 				productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
@@ -112,7 +112,7 @@ public class ProductService implements Constants {
 			// kiem tra neu nguoi dung co upload nhieu files anh san pham
 			if (!isEmptyUploadFile(listProductImageFile)) {
 				for (MultipartFile productImageFile : listProductImageFile) {
-					String productPath = "/product/picture/" + productImageFile.getOriginalFilename();
+					String productPath = "product/picture/" + productImageFile.getOriginalFilename();
 
 					ProductsImages productsImages = new ProductsImages();
 					productsImages.setCreatedDate(new Date());

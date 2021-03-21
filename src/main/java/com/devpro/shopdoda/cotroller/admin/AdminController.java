@@ -31,19 +31,6 @@ public class AdminController {
 		return "back-end/index";
 	}
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String login(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/login";
-	}
-
-	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
-	public String register(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/register";
-	}
 
 	@RequestMapping(value = { "/forgot_password" }, method = RequestMethod.GET)
 	public String forgot_password(final ModelMap model, final HttpServletRequest request,
