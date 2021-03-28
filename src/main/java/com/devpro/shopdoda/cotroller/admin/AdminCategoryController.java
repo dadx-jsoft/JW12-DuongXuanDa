@@ -8,17 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.shopdoda.entities.Category;
-import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.repositories.CategoriesRepo;
+import com.devpro.shopdoda.utils.UserUtils;
+import com.devpro.shopdoda.utils.Utilities;
 
 @Controller
 public class AdminCategoryController {
@@ -46,10 +44,19 @@ public class AdminCategoryController {
 		return "back-end/save_category";
 	}
 
+	@RequestMapping(value = { "/admin/categories/save" }, method = RequestMethod.GET)
+	public String add_category(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response) throws Exception {
+		model.addAttribute("categoryEdit", new Category());
+		return "back-end/save_category";
+	}
 	@RequestMapping(value = { "/admin/categories/save" }, method = RequestMethod.POST)
 	public String add_category(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @ModelAttribute("categoryEdit") Category categoryEdit) throws Exception {
 		categoryEdit.setCreatedDate(new Date());
+		// created by
+		categoryEdit.setCreatedBy(UserUtils.getUserId());
+		categoryEdit.setSeo(Utilities.seo(categoryEdit.getName()));
 		categoriesRepo.save(categoryEdit);
 
 		return "redirect:/admin/categories";
@@ -57,12 +64,12 @@ public class AdminCategoryController {
 	
 	@RequestMapping(value = { "/admin/categories/delete/{id}" }, method = RequestMethod.GET)
 	public String deleteCategory(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@PathVariable("id") Integer CategoryId) throws Exception {
-		Category deletedCategory = categoriesRepo.findById(CategoryId).get();
+			@PathVariable("id") Integer categoryId) throws Exception {
+		Category deletedCategory = categoriesRepo.findById(categoryId).get();
 		deletedCategory.setStatus(false);
 		categoriesRepo.save(deletedCategory);
 		
-		return "redirect:/back-end/categories";
+		return "redirect:/admin/categories";
 	}
 	
 

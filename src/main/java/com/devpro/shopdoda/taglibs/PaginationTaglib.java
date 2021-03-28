@@ -1,4 +1,5 @@
 package com.devpro.shopdoda.taglibs;
+
 import java.io.Writer;
 
 import javax.servlet.jsp.JspException;
@@ -55,6 +56,10 @@ public class PaginationTaglib extends SimpleTagSupport {
 	}
 
 	private String constructLink(int page, String text, String className, boolean disabled) {
+		if (uri.contains("offset=")) {
+			uri = uri.substring(0, uri.indexOf("offset="));
+		}
+
 		StringBuilder link = new StringBuilder("<li");
 		link.append(" class=\"page-item ");
 		link.append(className == null ? "" : className);
@@ -62,8 +67,8 @@ public class PaginationTaglib extends SimpleTagSupport {
 		if (disabled)
 			link.append(">").append("<a class='page-link' href=\"#\">" + text + "</a></li>");
 		else
-			link.append(">")
-					.append("<a  class='page-link' href=\"" + uri + "?offset=" + page + "\">" + text + "</a></li>");
+			link.append(">").append("<a  class='page-link' href=\"" + uri + (uri.contains("?") ? "" : "?") + "offset="
+					+ page + "\">" + text + "</a></li>");
 		return link.toString();
 	}
 

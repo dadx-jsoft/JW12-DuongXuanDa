@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +23,6 @@ import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.services.ProductService;
 
 @Controller
-@RequestMapping("admin/products")
 public class AdminProductController {
 	@Autowired
 	private CategoriesRepo categoriesRepo;
@@ -36,7 +33,7 @@ public class AdminProductController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("add")
+	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.GET)
 	public String add_product_get(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
@@ -46,7 +43,7 @@ public class AdminProductController {
 		return "back-end/save_product";
 	}
 	
-	@PostMapping("add")
+	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.POST)
 	public String add_product_post(final ModelMap model, @ModelAttribute("product") Product product,
 			@RequestParam("avatar_file") MultipartFile avatar, @RequestParam("listProductImage") MultipartFile[] listProductImage) throws Exception {
 
@@ -56,7 +53,7 @@ public class AdminProductController {
 		return "redirect:/admin/products";
 	}
 
-	@GetMapping("edit/{id}")
+	@RequestMapping(value = {"admin/products/edit/{id}"}, method = RequestMethod.GET)
 	public String edit_product_get(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 
@@ -66,7 +63,7 @@ public class AdminProductController {
 		return "back-end/save_product";
 	}
 	
-	@GetMapping("delete/{id}")
+	@RequestMapping(value = {"admin/products/delete/{id}"}, method = RequestMethod.GET)
 	public String deleteProduct(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 		
@@ -77,7 +74,7 @@ public class AdminProductController {
 		return "redirect:/admin/products";
 	}
 	
-	@GetMapping
+	@RequestMapping(value = {"admin/products"}, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		ProductSearch productSearch = new ProductSearch();
@@ -93,7 +90,7 @@ public class AdminProductController {
 		return "back-end/products";
 	}
 	
-	@RequestMapping(value = { "/search-all" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"admin/products/search-all"}, method = RequestMethod.GET)
 	public String searchAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 

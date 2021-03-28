@@ -26,3 +26,14 @@ CREATE TABLE `tbl_comment` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin comment';
+
+/* Tạo bảng attribute tương tự category*/
+-- Sau đó tạo bảng sau
+CREATE TABLE `tbl_attribute_product` (
+  `attribute_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  PRIMARY KEY (`attribute_id`,`product_id`),
+  KEY `fk_product_idx` (`product_id`),
+  CONSTRAINT `fk_product` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`),
+  CONSTRAINT `fk_attribute` FOREIGN KEY (`attribute_id`) REFERENCES `tbl_attribute` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='bảng trung gian thể hiện quan hệ n-n của attribute và product';

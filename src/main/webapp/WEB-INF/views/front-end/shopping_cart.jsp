@@ -1,3 +1,6 @@
+<%@page import="com.devpro.shopdoda.entities.User"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -99,6 +102,9 @@
 					<div
 						class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
 						<h4 class="mtext-109 cl2 p-b-30">Cart Totals</h4>
+						<c:if test="${not empty errorMessage}">
+						<h5 class="alert alert-warning">${errorMessage}</h5>
+						</c:if>
 
 						<div class="flex-w flex-t bor12 p-b-13">
 							<div class="size-208">
@@ -142,19 +148,53 @@
 											name="postcode" placeholder="Postcode / Zip">
 									</div> -->
 									
+									<%
+									boolean isLogined = false;
+									Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+									if (principal instanceof UserDetails) {
+										isLogined = true;
+									}
+									%>
+									<%if(!isLogined){ %>
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="customerName" placeholder="Họ tên">
+											name="customerName" placeholder="Họ tên" required="required">
 									</div>
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="customerAddress" placeholder="Địa chỉ">
+											name="customerAddress" placeholder="Địa chỉ" required="required">
 									</div>
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="customerPhone" placeholder="Số điện thoại">
+											name="customerPhone" placeholder="Số điện thoại" required="required">
 									</div>
-
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email"
+											name="customerEmail" placeholder="Email" required="required">
+									</div>
+									<%} else { 
+										String fullName = ((User)principal).getFullName();
+										String address = ((User)principal).getAddress();
+										String phone = ((User)principal).getPhone();
+										String email = ((User)principal).getEmail();
+									%>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerName" placeholder="<%= fullName %>" readonly>
+									</div>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerAddress" placeholder="<%= address%>" readonly>
+									</div>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+											name="customerPhone" placeholder="<%= phone %>" readonly>
+									</div>
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email"
+											name="customerEmail" placeholder="<%= email %>" readonly>
+									</div>
+									<%} %>
 									<div class="flex-w">
 										<div
 											class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
@@ -185,9 +225,6 @@
 		</div>
 	</form>
 
-
-
-
 	<!-- Footer -->
 	<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
@@ -195,6 +232,7 @@
 	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
 	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+
 
 </body>
 </html>

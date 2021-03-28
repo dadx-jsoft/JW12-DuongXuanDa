@@ -1,6 +1,7 @@
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Paging -->
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
@@ -121,6 +122,11 @@
 								</table>
 								
 								<!-- Paging -->
+								<c:set var="req" value="${pageContext.request}" />
+								<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />
+								<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}" />
+								<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}" />
+								<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params ? '?'+=params+='&':'' }" />
 								<tag:paginate offset="${productSearch.offset }"
 									count="${productSearch.count }" uri="${pageUrl}" />
 								<!-- End Paging -->

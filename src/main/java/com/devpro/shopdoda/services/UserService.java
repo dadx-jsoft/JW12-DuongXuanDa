@@ -23,4 +23,15 @@ public class UserService {
 			return null;
 		}
 	}
+
+	public User loadUserById(Integer userId) {
+		try {
+			String jpql = "Select u From User u Where u.id='" + userId + "'";
+			Query query = entityManager.createQuery(jpql, User.class);
+			return (User) query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

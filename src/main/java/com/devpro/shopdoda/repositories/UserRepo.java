@@ -7,5 +7,5 @@ import com.devpro.shopdoda.entities.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer>{
-
+	
 }

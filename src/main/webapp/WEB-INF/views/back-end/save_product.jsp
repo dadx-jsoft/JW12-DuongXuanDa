@@ -7,6 +7,7 @@
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,7 +157,7 @@
 								<label for="avatar" class="col-sm-3 control-label">Ảnh
 									đại diện</label>
 								<div class="col-sm-3">
-									<img src="${base}/upload/${product.avatar}" width="100px" >	
+									<img src="${base}/upload/${product.avatar}" width="100px" onerror="this.src='${base}/upload/no-img-chose.png'">
 									<input type="file" name="avatar_file" />
 								</div>
 							</div>

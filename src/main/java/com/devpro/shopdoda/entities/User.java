@@ -16,6 +16,9 @@ import java.util.List;
 @Table(name = "tbl_users")
 public class User extends BaseEntity implements UserDetails {
 
+	
+	private static final long serialVersionUID = 1L;
+
 	@Column(nullable = false)
 	private String email;
 
@@ -27,6 +30,28 @@ public class User extends BaseEntity implements UserDetails {
 	
 	@Column(name = "full_name", nullable = false)
 	private String fullName;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "phone")
+	private String phone;
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public String getFullName() {
 		return fullName;

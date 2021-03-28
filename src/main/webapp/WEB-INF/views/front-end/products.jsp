@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -46,7 +47,7 @@
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
-									<img src="${base}/upload${product.avatar}" alt="IMG-PRODUCT">
+									<img src="${base}/upload/${product.avatar}" alt="IMG-PRODUCT">
 									<a href="#"
 										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 										Quick View </a>
@@ -81,6 +82,13 @@
 				<!-- <a href="#"
 					class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More </a> -->
+				
+				<c:set var="req" value="${pageContext.request}" />
+				<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />
+				<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}" />
+				<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}" />
+				<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params ? '?'+=params+='&':'' }" />
+				
 				<tag:paginate offset="${productSearch.offset }"
 					count="${productSearch.count }" uri="${pageUrl}" />
 			</div>

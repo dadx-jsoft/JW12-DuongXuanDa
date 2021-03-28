@@ -16,18 +16,30 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+//	@Bean
+//    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+//        return new JwtAuthenticationFilter();
+//    }
+	
+//	@Bean(BeanIds.AUTHENTICATION_MANAGER)
+//    @Override
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        // Get AuthenticationManager bean
+//        return super.authenticationManagerBean();
+//    }
+	
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 
 				.antMatchers("/css/**", "/js/**", "/vendor/**", "/images/**", "/img/**", "/fonts/**", "/upload/**",
-						"/summernote/**"/* , "/files/**" */)
+						"/summernote/**" /* , "/files/**" */)
 				.permitAll()
 
 				.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-
+				
 				.and()
-
+				
 				.formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/home", true)
 				.failureUrl("/login?login_error=true").permitAll()
 

@@ -15,7 +15,6 @@ import com.devpro.shopdoda.utils.Constants;
 @Service
 public class CategoriesService implements Constants {
 
-
 	@PersistenceContext
 	EntityManager entityManager;
 	

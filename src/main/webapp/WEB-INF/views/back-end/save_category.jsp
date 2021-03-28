@@ -85,14 +85,6 @@
 							</div>
 
 							<div class="form-group">
-								<label for="seo" class="col-sm-3 control-label">Seo</label>
-								<div class="col-sm-3">
-									<sf:input path="seo" type="text" cssClass="form-control"
-										name="seo" id="seo" placeholder="Nhập seo" min="0" />
-								</div>
-							</div>
-							
-							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="submit" class="btn btn-primary">Lưu <i class="fas fa-plus-circle"></i></button>
 								</div>

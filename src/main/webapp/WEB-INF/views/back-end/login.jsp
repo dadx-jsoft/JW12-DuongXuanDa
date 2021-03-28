@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="${base}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -88,6 +89,11 @@
                                                     Me</label>
                                             </div>
                                         </div>
+                                        <c:if test="${not empty param.login_error}">
+											<div class="alert alert-danger" role="alert">
+											  	Login attempt was not successful, try again.
+											</div>
+										</c:if>
                                         <button class="btn btn-lg btn-primary btn-block btn-user" type="submit">Log In</button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">

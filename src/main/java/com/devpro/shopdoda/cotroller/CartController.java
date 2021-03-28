@@ -24,6 +24,7 @@ import com.devpro.shopdoda.entities.Saleorder;
 import com.devpro.shopdoda.entities.SaleorderProduct;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.repositories.SaleorderRepo;
+import com.devpro.shopdoda.services.MailService;
 
 @Controller
 public class CartController extends BaseController {
@@ -32,7 +33,9 @@ public class CartController extends BaseController {
 	ProductRepo productRepo;
 	@Autowired
 	SaleorderRepo saleOrderRepo;
-	
+	@Autowired
+	private MailService mailService;
+
 	private int getTotalItems(final HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
 
@@ -50,33 +53,48 @@ public class CartController extends BaseController {
 
 		return total;
 	}
+
 	private void resetCart(final HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
 		httpSession.setAttribute("cart", new Cart());
 		httpSession.setAttribute("totalItems", getTotalItems(request));
 	}
+
 	@RequestMapping(value = { "/cart/payment" }, method = RequestMethod.POST)
-	public String addProduct_Post(final ModelMap model, final HttpServletRequest request,
+	public String cartPayment(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
-		String customerName = request.getParameter("customerName");
-		String customerAddress = request.getParameter("customerAddress");
-		String customerPhone = request.getParameter("customerPhone");
-		
 		HttpSession httpSession = request.getSession();
 		Cart cart = (Cart) httpSession.getAttribute("cart");
 		List<CartItem> cartItems = cart.getCartItems();
+		System.out.println("cart size: "+ cartItems.size());
+		
+		String errorMessage = null;
+		if (cartItems.size() == 0) {
+			errorMessage = "Không có sản phẩm nào trong giỏ hàng";
+		}
+		
+		String customerName = request.getParameter("customerName");
+		String customerAddress = request.getParameter("customerAddress");
+		String customerPhone = request.getParameter("customerPhone");
+		String customerEmail = request.getParameter("customerEmail");
+
+		if(errorMessage != null) {
+			model.addAttribute("errorMessage", errorMessage);
+			return "front-end/shopping_cart";
+		}
 		
 		Saleorder saleOrder = new Saleorder();
-		saleOrder.setCode("ORDER-"+System.currentTimeMillis());
-		saleOrder.setSeo("ORDER-"+System.currentTimeMillis());
+		saleOrder.setCode("ORDER-" + System.currentTimeMillis());
+		saleOrder.setSeo("ORDER-" + System.currentTimeMillis());
 		saleOrder.setCustomerName(customerName);
 		saleOrder.setCustomerAddress(customerAddress);
 		saleOrder.setCustomerPhone(customerPhone);
+		saleOrder.setCustomerEmail(customerEmail);
 		saleOrder.setTotal(new BigDecimal(0));
-		
+
 		BigDecimal totalPrice = BigDecimal.ZERO;
-		
-		for(CartItem item : cartItems) {
+
+		for (CartItem item : cartItems) {
 			Date date = new Date();
 			SaleorderProduct saleOrderProducts = new SaleorderProduct();
 			saleOrderProducts.setCreatedDate(date);
@@ -84,20 +102,22 @@ public class CartController extends BaseController {
 			saleOrderProducts.setQuantity(item.getQuantity());
 			saleOrder.addSaleorderProduct(saleOrderProducts);
 			saleOrder.setCreatedDate(date);
-			totalPrice=totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
+			totalPrice = totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
 		}
-		
+
 		saleOrder.setTotal(totalPrice);
-		
-		saleOrderRepo.save(saleOrder); 
-		
+
+		saleOrderRepo.save(saleOrder);
+
 		this.resetCart(request);
-		
+
+		mailService.sendEmail(customerEmail);
+
 		return "redirect:/products";
 	}
 
 	@RequestMapping(value = { "/cart/view" }, method = RequestMethod.GET)
-	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	public String cartView(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		HttpSession httpSession = request.getSession();
 
@@ -109,9 +129,9 @@ public class CartController extends BaseController {
 			httpSession.setAttribute("cart", cart);
 		}
 		List<CartItem> cartItems = cart.getCartItems();
-		
+
 		model.addAttribute("cartItems", cartItems);
-		
+
 		return "front-end/shopping_cart";
 	}
 
