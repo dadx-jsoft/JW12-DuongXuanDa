@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name = "tbl_roles")
 public class Role extends BaseEntity implements GrantedAuthority{
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(nullable = false)
 	private String description;
 

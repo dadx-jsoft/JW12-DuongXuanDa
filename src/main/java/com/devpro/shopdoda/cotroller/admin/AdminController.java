@@ -39,41 +39,6 @@ public class AdminController {
 		return "back-end/forgot_password";
 	}
 
-	@RequestMapping(value = { "admin/products_images" }, method = RequestMethod.GET)
-	public String products_images(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-
-		return "back-end/products_images";
-	}
-
-	@RequestMapping(value = { "admin/roles" }, method = RequestMethod.GET)
-	public String roles(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/roles";
-	}
-
-	@RequestMapping(value = { "admin/users" }, method = RequestMethod.GET)
-	public String users(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/users";
-	}
-
-	@RequestMapping(value = { "admin/users_roles" }, method = RequestMethod.GET)
-	public String users_roles(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-
-		return "back-end/users_roles";
-	}
-
-	@RequestMapping(value = { "admin/saleorders_products" }, method = RequestMethod.GET)
-	public String saleorders_products(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-
-		return "back-end/saleorders_products";
-	}
-
 	@RequestMapping(value = { "/charts" }, method = RequestMethod.GET)
 	public String charts(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {

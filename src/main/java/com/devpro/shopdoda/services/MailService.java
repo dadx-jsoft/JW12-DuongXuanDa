@@ -15,8 +15,8 @@ public class MailService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(mails);
 
-        msg.setSubject("Subject test");
-        msg.setText("Text test \n Spring Boot Email");
+        msg.setSubject("Đặt hàng thành công");
+        msg.setText("Chúc mừng bạn đã đặt hàng thành công");
 
         javaMailSender.send(msg);
 

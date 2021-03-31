@@ -299,8 +299,6 @@
 		</div>
 	</section>
 
-
-
 	<!-- Footer -->
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
@@ -309,8 +307,6 @@
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
-
-
 
 </body>
 </html>

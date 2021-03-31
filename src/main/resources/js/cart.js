@@ -13,6 +13,9 @@ function addToCart(productId, quantity) {
 		data: JSON.stringify(data),
 		dataType: "json",
 		success: function(jsonResult) {
+			// thông báo thành công
+			swal("Thành công", "Đã thêm sản phẩm vào giỏ hàng !", "success");
+			
 			//$("#totalItemsInCart").html(jsonResult.data)
 			// Một cách siêu củ chuối để update number của cart trên giao diện @@
 			var base = '${base}'
@@ -38,5 +41,5 @@ function addToCart(productId, quantity) {
 		error: function(jqXhr, textStatus, errorMessage) { // error callback 
 		}
 	});
-
+				
 };

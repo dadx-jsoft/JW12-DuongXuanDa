@@ -308,8 +308,8 @@
 		</div>
 
 		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<span class="stext-107 cl6 p-lr-25"> SKU: JAK-01 </span> <span
-				class="stext-107 cl6 p-lr-25"> Categories: Jacket, Men </span>
+			<span class="stext-107 cl6 p-lr-25"> Category </span> <span
+				class="stext-107 cl6 p-lr-25"> ${pro_detail.categories.name } </span>
 		</div>
 	</section>
 
@@ -338,7 +338,7 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html"
+									<a href="${base}/product-detail/${relatedProduct.seo}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${relatedProduct.title} </a> <span class="stext-105 cl3">
 										${relatedProduct.price} </span>
@@ -498,7 +498,7 @@
 										</div>
 
 										<button onclick="addToCart(${pro_detail.id}, 1)"
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">  <!-- js-addcart-detail -->
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Add to cart</button>
 									</div>
 								</div>
@@ -594,14 +594,6 @@
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(
-				function() {
-					var nameProduct = $(this).parent().parent().parent()
-							.parent().find('.js-name-detail').html();
-					$(this).on('click', function() {
-						swal(nameProduct, "is added to cart !", "success");
-					});
-				});
 	</script>
 
 </body>

@@ -39,6 +39,8 @@ public class ProductService implements Constants {
 	public List<Product> search(ProductSearch productSearch) {
 		String jpql = "SELECT p FROM Product p where 1=1";
 
+		jpql = jpql + " AND p.status = true";
+		
 		if (!StringUtils.isEmpty(productSearch.getSeo())) {
 			jpql = jpql + " AND p.seo = '" + productSearch.getSeo() + "'";
 		}
@@ -89,15 +91,18 @@ public class ProductService implements Constants {
 	public void saveOrUpdate(Product product, MultipartFile productAvatar, MultipartFile[] listProductImageFile)
 			throws Exception {
 		try {
-
+			Product productInDB = productRepo.findById(product.getId()).get();
 			// truong hop la chinh sua
 			if (product.getId() != null && product.getId() > 0) {
-				Product productInDB = productRepo.findById(product.getId()).get();
 
-				// nếu upload lại ảnh thì phai xoa anh cu di
+				// nếu upload lại avatar thì phải xóa avatar cũ đi
 				if (!isEmptyUploadFile(productAvatar)) {
-					String avatarPath = ROOT_UPLOAD_PATH + productInDB.getAvatar();
-					new File(avatarPath).delete();
+					String oldAvatarPath = productInDB.getAvatar();
+					if(!StringUtils.isEmpty(oldAvatarPath)) {
+						new File(ROOT_UPLOAD_PATH + oldAvatarPath).delete();
+					}
+				} else {
+					product.setAvatar(productInDB.getAvatar());
 				}
 			}
 
@@ -107,19 +112,21 @@ public class ProductService implements Constants {
 				product.setAvatar(avatarPath);
 
 				productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
+			}else {
+				product.setAvatar(productInDB.getAvatar());
 			}
 
-			// kiem tra neu nguoi dung co upload nhieu files anh san pham
+			// Nếu upload nhiều file ảnh sản phẩm
 			if (!isEmptyUploadFile(listProductImageFile)) {
 				for (MultipartFile productImageFile : listProductImageFile) {
 					String productPath = "product/picture/" + productImageFile.getOriginalFilename();
 
 					ProductsImages productsImages = new ProductsImages();
-					productsImages.setCreatedDate(new Date());
+					productsImages.setTitle(productImageFile.getOriginalFilename());
 					productsImages.setPath(productPath);
 					productsImages.setProduct(product);
-					productsImages.setTitle(productImageFile.getOriginalFilename());
-
+					productsImages.setCreatedDate(new Date());
+					
 					productImageFile.transferTo(new File(ROOT_UPLOAD_PATH + productPath));
 					products_ImagesRepo.save(productsImages);
 				}

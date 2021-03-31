@@ -13,19 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
-import com.devpro.shopdoda.repositories.CategoriesRepo;
-import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.services.ProductService;
 
 @Controller
 public class HomeController extends BaseController{
 
-	@Autowired
-	private CategoriesRepo categoriesRepo;
-
-	@Autowired
-	private ProductRepo productRepo;
-	
 	@Autowired
 	private ProductService productService;
 

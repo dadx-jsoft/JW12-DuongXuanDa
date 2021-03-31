@@ -59,7 +59,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/categories/save" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/categories/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>

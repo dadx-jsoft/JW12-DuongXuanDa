@@ -8,19 +8,11 @@ public class ProductSearch {
 
 	private String seo;
 	private String categorySeo;
-
 	public String searchText;
-
-	public String getSearchText() {
-		return searchText;
-	}
-
-	public void setSearchText(String searchText) {
-		this.searchText = searchText;
-	}
 
 	public Integer offset = null;
 	public Integer count = null;
+
 	public void buildPaging(HttpServletRequest request) {
 		if (!StringUtils.isEmpty(request.getParameter("offset"))) {
 			this.offset = Integer.parseInt(request.getParameter("offset"));
@@ -61,4 +53,11 @@ public class ProductSearch {
 		this.offset = offset;
 	}
 
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
 }

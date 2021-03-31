@@ -44,14 +44,14 @@ public class AdminCategoryController {
 		return "back-end/save_category";
 	}
 
-	@RequestMapping(value = { "/admin/categories/save" }, method = RequestMethod.GET)
-	public String add_category(final ModelMap model, final HttpServletRequest request,
+	@RequestMapping(value = { "/admin/categories/add" }, method = RequestMethod.GET)
+	public String addCategory(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 		model.addAttribute("categoryEdit", new Category());
 		return "back-end/save_category";
 	}
 	@RequestMapping(value = { "/admin/categories/save" }, method = RequestMethod.POST)
-	public String add_category(final ModelMap model, final HttpServletRequest request,
+	public String saveCategory(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @ModelAttribute("categoryEdit") Category categoryEdit) throws Exception {
 		categoryEdit.setCreatedDate(new Date());
 		// created by

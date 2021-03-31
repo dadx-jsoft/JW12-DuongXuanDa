@@ -52,12 +52,6 @@
 
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">Đơn hàng</h1>
-					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
-					</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -76,7 +70,7 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>Code</th>
+											<th>#</th>
 											<th>User</th>
 											<th>Total</th>
 											<th>Customer name</th>
@@ -88,7 +82,7 @@
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Code</th>
+											<th>#</th>
 											<th>User</th>
 											<th>Total</th>
 											<th>Customer name</th>

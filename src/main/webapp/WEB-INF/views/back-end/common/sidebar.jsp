@@ -111,21 +111,10 @@
 	</a></li>
 	
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="${base}/admin/users_roles">
-			<i class="fas fa-fw fa-table"></i> <span>Phân quyền</span>
-	</a></li>
-	
-	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/saleorders">
 			<i class="fas fa-fw fa-table"></i> <span>Đơn hàng</span>
 	</a></li>
 	
-	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="${base}/admin/saleorders_products">
-			<i class="fas fa-fw fa-table"></i> <span>Sản phẩm của đơn hàng</span>
-	</a></li>
-
-
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 

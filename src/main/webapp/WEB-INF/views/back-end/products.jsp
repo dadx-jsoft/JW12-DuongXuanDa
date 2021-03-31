@@ -109,13 +109,32 @@
 															<i class="fas fa-edit"></i>
 													</a> <a href="#" class="btn btn-primary a-btn-slide-text">
 															<strong>View</strong> <i class="fas fa-eye"></i>
-													</a> <a href="${base}/admin/products/delete/${product.id}"
-														class="btn btn-danger a-btn-slide-text"
-														onclick="return confirmDeleteItem();"
-														data-bs-toggle="modal" data-bs-target="#exampleModal">
+													</a> 
+													<a href="#" data-toggle="modal"
+														class="btn btn-danger a-btn-slide-text" data-target="#deleteModal">
 															<strong>Delete</strong> <i class="fas fa-trash-alt"></i>
 													</a></td>
 												</tr>
+												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+													aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalLabel">Are you sure to delete?</h5>
+																<button class="close" type="button" data-dismiss="modal"
+																	aria-label="Close">
+																	<span aria-hidden="true">X</span>
+																</button>
+															</div>
+															<div class="modal-body">Select "Delete" below if you are ready
+																to delete this.</div>
+															<div class="modal-footer">
+																<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+																<a class="btn btn-primary" href="${base}/admin/products/delete/${product.id}">Delete</a>
+															</div>
+														</div>
+													</div>
+												</div>
 											</c:if>
 										</c:forEach>
 									</tbody>
@@ -158,6 +177,7 @@
 
 		<jsp:include page="${base}/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
 
+		
 </body>
 
 </html>

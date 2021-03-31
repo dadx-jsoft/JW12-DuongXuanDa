@@ -15,6 +15,7 @@ import com.devpro.shopdoda.dto.Subscribe;
 
 @Controller
 public class SubscribeController {
+	
 	@RequestMapping(value = { "/subscribe" }, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> subscribe(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @RequestBody Subscribe subscribe) {
@@ -23,4 +24,5 @@ public class SubscribeController {
 
 		return ResponseEntity.ok(new AjaxResponse(200, "Chúc mừng bạn đã đăng ký nhận ưu đãi thành công"));
 	}
+	
 }

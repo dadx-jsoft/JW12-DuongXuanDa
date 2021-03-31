@@ -34,7 +34,7 @@ public class Product extends BaseEntity {
 	@Column(name = "detail_description", columnDefinition = "LONGTEXT", nullable = true)
 	private String detailDescription;
 
-	@Column(name = "avatar")
+	@Column(name = "avatar", nullable = true)
 	private String avatar;
 
 	@ManyToOne(fetch = FetchType.EAGER)

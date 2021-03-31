@@ -50,15 +50,6 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Users</h1>
-					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
-					</p>
-
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
@@ -66,7 +57,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/users/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -78,6 +69,9 @@
 										<tr>
 											<th>User name</th>
 											<th>email</th>
+											<th>Full name</th>
+											<th>Address</th>
+											<th>Phone</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -85,22 +79,30 @@
 										<tr>
 											<th>User name</th>
 											<th>email</th>
+											<th>Full name</th>
+											<th>Address</th>
+											<th>Phone</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
 									<tbody>
+										<c:forEach items="${users}" var="user">
 										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td><a href="#"
+											<td>${user.username}</td>
+											<td>${user.email}</td>
+											<td>${user.fullName}</td>
+											<td>${user.address}</td>
+											<td>${user.phone}</td>
+											<td><a href="${base}/admin/users/edit/${user.id}"
 												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 													<i class="fas fa-edit"></i>
 											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 													<i class="fas fa-eye"></i>
-											</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+											</a> <a href="${base}/admin/users/delete/${user.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
 													<i class="fas fa-trash-alt"></i>
 											</a></td>
 										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

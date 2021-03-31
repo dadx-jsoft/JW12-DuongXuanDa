@@ -70,7 +70,8 @@ public class AdminProductController {
 		Product deletedProduct = productRepo.findById(productId).get();
 		deletedProduct.setStatus(false);
 		productRepo.save(deletedProduct);
-
+		System.out.println("Delete product success");
+		
 		return "redirect:/admin/products";
 	}
 	
