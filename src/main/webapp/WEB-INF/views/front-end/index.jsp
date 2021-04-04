@@ -28,18 +28,18 @@
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1"
-					style="background-image: url(${base}/images/slide-01.jpg);">
+					style="background-image: url(${base}/images/slide-001.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2"> Women Collection
+								<span class="ltext-101 cl0 respon2"> Women Collection
 									2018 </span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">NEW SEASON
+								<h2 class="ltext-201 cl0 p-t-19 p-b-43 respon1">NEW SEASON
 								</h2>
 							</div>
 
@@ -54,17 +54,17 @@
 				</div>
 
 				<div class="item-slick1"
-					style="background-image: url(${base}/images/slide-02.jpg);">
+					style="background-image: url(${base}/images/slide-002.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2"> Men New-Season </span>
+								<span class="ltext-101 cl0 respon2"> Men New-Season </span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">Jackets &
+								<h2 class="ltext-201 cl0 p-t-19 p-b-43 respon1">Jackets &
 									Coats</h2>
 							</div>
 
@@ -79,18 +79,18 @@
 				</div>
 
 				<div class="item-slick1"
-					style="background-image: url(${base}/images/slide-03.jpg);">
+					style="background-image: url(${base}/images/slide-003.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2"> Men Collection 2018
+								<span class="ltext-101 cl0 respon2"> Men Collection 2018
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">New
+								<h2 class="ltext-201 cl0 p-t-19 p-b-43 respon1">New
 									arrivals</h2>
 							</div>
 

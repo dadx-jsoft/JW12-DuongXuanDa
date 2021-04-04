@@ -1,6 +1,7 @@
 package com.devpro.shopdoda.services;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,6 @@ import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
 import com.devpro.shopdoda.repositories.ProductRepo;
-import com.devpro.shopdoda.repositories.Products_ImagesRepo;
 import com.devpro.shopdoda.taglibs.PaginationTaglib;
 import com.devpro.shopdoda.utils.Constants;
 import com.devpro.shopdoda.utils.Utilities;
@@ -28,9 +28,6 @@ public class ProductService implements Constants {
 
 	@Autowired
 	private ProductRepo productRepo;
-
-	@Autowired
-	private Products_ImagesRepo products_ImagesRepo;
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -91,33 +88,33 @@ public class ProductService implements Constants {
 	public void saveOrUpdate(Product product, MultipartFile productAvatar, MultipartFile[] listProductImageFile)
 			throws Exception {
 		try {
-			Product productInDB = productRepo.findById(product.getId()).get();
-			// truong hop la chinh sua
+			
+			// TH chỉnh sửa
 			if (product.getId() != null && product.getId() > 0) {
-
+				Product productInDB = productRepo.findById(product.getId()).get();
 				// nếu upload lại avatar thì phải xóa avatar cũ đi
 				if (!isEmptyUploadFile(productAvatar)) {
 					String oldAvatarPath = productInDB.getAvatar();
 					if(!StringUtils.isEmpty(oldAvatarPath)) {
 						new File(ROOT_UPLOAD_PATH + oldAvatarPath).delete();
 					}
+					String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
+					product.setAvatar(avatarPath);
+					productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
 				} else {
 					product.setAvatar(productInDB.getAvatar());
 				}
 			}
-
-			// kiem tra neu nguoi dung co upload file avatar?
-			if (!isEmptyUploadFile(productAvatar)) {
+			// TH tạo mới, nếu upload avatar
+			else if (!isEmptyUploadFile(productAvatar)) {
 				String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
 				product.setAvatar(avatarPath);
-
 				productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
-			}else {
-				product.setAvatar(productInDB.getAvatar());
 			}
-
-			// Nếu upload nhiều file ảnh sản phẩm
+			// Upload nhiều file ảnh sản phẩm
 			if (!isEmptyUploadFile(listProductImageFile)) {
+				List<ProductsImages> images = new ArrayList<>();
+				
 				for (MultipartFile productImageFile : listProductImageFile) {
 					String productPath = "product/picture/" + productImageFile.getOriginalFilename();
 
@@ -128,12 +125,13 @@ public class ProductService implements Constants {
 					productsImages.setCreatedDate(new Date());
 					
 					productImageFile.transferTo(new File(ROOT_UPLOAD_PATH + productPath));
-					products_ImagesRepo.save(productsImages);
+					images.add(productsImages);
 				}
+				product.setProducts_images(images);
 			}
 
 			product.setSeo(Utilities.seo(product.getTitle() + "-" + System.currentTimeMillis()));
-
+			System.out.println(product.getShortDescription());
 			productRepo.save(product);
 
 		} catch (Exception e) {

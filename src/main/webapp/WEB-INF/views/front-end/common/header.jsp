@@ -38,7 +38,7 @@ if (principal instanceof UserDetails) {
 			<nav class="limiter-menu-desktop container">
 
 				<!-- Logo desktop -->
-				<a href="/" class="logo"> <img src="/images/icons/logo-01.png"
+				<a href="/" class="logo"> <img src="/images/icons/logo.png"
 					alt="IMG-LOGO">
 				</a>
 
@@ -87,7 +87,7 @@ if (principal instanceof UserDetails) {
 	<div class="wrap-header-mobile">
 		<!-- Logo moblie -->
 		<div class="logo-mobile">
-			<a href="/"><img src="${base}/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			<a href="/"><img src="${base}/images/icons/logo.png" alt="IMG-LOGO"></a>
 		</div>
 
 		<!-- Icon header -->

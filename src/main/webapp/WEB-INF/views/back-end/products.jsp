@@ -102,7 +102,7 @@
 														width="80px"></td>
 													<td>${product.price}</td>
 													<td>${product.priceSale}</td>
-													<td>${product.categories.id}</td>
+													<td>${product.categories.name}</td>
 													<td><a
 														href="${base}/admin/products/edit/${product.id}"
 														class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
