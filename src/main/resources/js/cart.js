@@ -1,10 +1,13 @@
 
 function addToCart(productId, quantity) {
 	// javascript object.
+	if($('#numberProduct').val() > 1){
+		quantity = $('#numberProduct').val();
+	}
 	var data = {};
 	data["productId"] = productId;
 	data["quantity"] = quantity;
-	$("#numberProduct").val()
+	
 	
 	$.ajax({
 		url: "/cart/add",

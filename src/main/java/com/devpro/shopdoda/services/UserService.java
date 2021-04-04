@@ -15,7 +15,7 @@ public class UserService {
 
 	public User loadUserByUsername(String userName) {
 		try {
-			String jpql = "Select u From User u Where u.username='" + userName + "'";
+			String jpql = "Select u From User u Where u.username='" + userName + "' And u.status = true";
 			Query query = entityManager.createQuery(jpql, User.class);
 			return (User) query.getSingleResult();
 		} catch (Exception e) {

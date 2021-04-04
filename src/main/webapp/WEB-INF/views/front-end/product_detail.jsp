@@ -76,7 +76,7 @@
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">${pro_detail.title}</h4>
 
-						<span class="mtext-106 cl2"> ${pro_detail.price} VNĐ </span>
+						<span class="mtext-106 cl2 text-danger font-weight-bold"> ${pro_detail.price} VNĐ </span>
 
 						<p class="stext-102 cl3 p-t-23">${pro_detail.shortDescription}</p>
 
@@ -125,16 +125,13 @@
 										</div>
 
 										<input class="mtext-104 cl3 txt-center num-product"
-											type="number" name="num-product" value="1" id = "numberProduct">
+											type="number" name="num-product" value="1" id = "numberProduct" min="1">
 
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
 
-									<!-- <button
-										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										Add to cart</button> -->
 									<button onclick="addToCart(${pro_detail.id}, 1)"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 										Add to cart</button>
@@ -177,10 +174,6 @@
 						</li>
 
 						<li class="nav-item p-b-10"><a class="nav-link"
-							data-toggle="tab" href="#information" role="tab">Additional
-								information</a></li>
-
-						<li class="nav-item p-b-10"><a class="nav-link"
 							data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a></li>
 					</ul>
 
@@ -191,42 +184,9 @@
 							role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">${pro_detail.detailDescription}</p>
-									
-								<%--  --%>
 							</div>
 						</div>
 
-						<!-- - -->
-						<div class="tab-pane fade" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Weight </span> <span
-											class="stext-102 cl6 size-206"> 0.79 kg </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Dimensions </span> <span
-											class="stext-102 cl6 size-206"> 110 x 33 x 100 cm </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Materials </span> <span
-											class="stext-102 cl6 size-206"> 60% cotton </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Color </span> <span
-											class="stext-102 cl6 size-206"> Black, Blue, Grey,
-												Green, Red, White </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Size </span> <span
-											class="stext-102 cl6 size-206"> XL, L, M, S </span></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<!-- - -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
@@ -340,7 +300,7 @@
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="${base}/product-detail/${relatedProduct.seo}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										${relatedProduct.title} </a> <span class="stext-105 cl3">
+										${relatedProduct.title} </a> <span class="stext-105 cl3 text-danger font-weight-bold">
 										${relatedProduct.price} </span>
 								</div>
 

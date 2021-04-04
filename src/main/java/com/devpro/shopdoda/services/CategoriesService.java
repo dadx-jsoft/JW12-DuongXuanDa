@@ -19,7 +19,7 @@ public class CategoriesService implements Constants {
 	EntityManager entityManager;
 	
 	public List<Category> getAllParents() {
-		String jpql = "select * from tbl_category tc where tc.parent_id is null";
+		String jpql = "select * from tbl_category tc where tc.parent_id is null and tc.status = true";
 		Query query = entityManager.createNativeQuery(jpql, Category.class);
 		return query.getResultList();
 	}

@@ -22,14 +22,9 @@ import com.devpro.shopdoda.services.ProductService;
 
 @Controller
 public class ProductController extends BaseController {
-	@Autowired
-	private ProductRepo productRepo;
 
 	@Autowired
 	private ProductService productService;
-
-	@Autowired
-	private CategoriesRepo categoriesRepo;
 
 	@Autowired
 	private ProductImagesService productImagesService;

@@ -54,7 +54,7 @@ public class ProductService implements Constants {
 					+ st + " OR p.shortDescription LIKE " 
 					+ st + " ) ";
 		}
-		
+		jpql = jpql + " ORDER BY p.createdDate DESC";
 		System.out.println(jpql);
 
 		Query query = entityManager.createQuery(jpql, Product.class);

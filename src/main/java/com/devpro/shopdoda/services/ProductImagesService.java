@@ -22,7 +22,7 @@ public class ProductImagesService {
 
 	// tim kiem product images
 	public List<ProductsImages> findByProduct(Product product) {
-		String jpql = "SELECT p FROM ProductsImages p where 1=1";
+		String jpql = "SELECT p FROM ProductsImages p WHERE 1=1 AND p.status = true";
 
 		jpql = jpql + " AND p.product.id = '" + product.getId() + "'";
 

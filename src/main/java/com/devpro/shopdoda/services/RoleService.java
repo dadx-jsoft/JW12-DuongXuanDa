@@ -15,7 +15,7 @@ public class RoleService {
 
 	// tim kiem role by name
 	public Role getRoleByName(String roleName) {
-		String jpql = "SELECT r FROM Role r where r.name = '"+roleName+"' ";
+		String jpql = "SELECT r FROM Role r where r.name = '"+roleName+"' AND r.status = true";
 
 		System.out.println(jpql);
 
