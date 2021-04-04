@@ -66,23 +66,23 @@ public class CartController extends BaseController {
 		HttpSession httpSession = request.getSession();
 		Cart cart = (Cart) httpSession.getAttribute("cart");
 		List<CartItem> cartItems = cart.getCartItems();
-		System.out.println("cart size: "+ cartItems.size());
-		
+		System.out.println("cart size: " + cartItems.size());
+
 		String errorMessage = null;
 		if (cartItems.size() == 0) {
 			errorMessage = "Không có sản phẩm nào trong giỏ hàng";
 		}
-		
+
 		String customerName = request.getParameter("customerName");
 		String customerAddress = request.getParameter("customerAddress");
 		String customerPhone = request.getParameter("customerPhone");
 		String customerEmail = request.getParameter("customerEmail");
 
-		if(errorMessage != null) {
+		if (errorMessage != null) {
 			model.addAttribute("errorMessage", errorMessage);
 			return "front-end/shopping_cart";
 		}
-		
+
 		Saleorder saleOrder = new Saleorder();
 		saleOrder.setCode("ORDER-" + System.currentTimeMillis());
 		saleOrder.setSeo("ORDER-" + System.currentTimeMillis());
@@ -168,4 +168,6 @@ public class CartController extends BaseController {
 		httpSession.setAttribute("totalItems", getTotalItems(request));
 		return ResponseEntity.ok(new AjaxResponse(200, getTotalItems(request)));
 	}
+
+	
 }

@@ -219,6 +219,7 @@
 							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout	
 						</button>
+						
 					</div>
 				</div>
 			</div>
@@ -232,7 +233,6 @@
 	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
 	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
-
 
 </body>
 </html>

@@ -102,12 +102,18 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
+		    <groupId>com.paypal.sdk</groupId>
+		    <artifactId>rest-api-sdk</artifactId>
+		    <version>1.14.0</version>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<!-- <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 
