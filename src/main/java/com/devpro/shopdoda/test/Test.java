@@ -4,7 +4,7 @@ import com.ibm.icu.math.BigDecimal;
 
 public class Test {
 	public static void main(String[] args) {
-		BigDecimal a = BigDecimal.ZERO;
+		System.out.println(BigDecimal.ZERO);
 	}
 
 }

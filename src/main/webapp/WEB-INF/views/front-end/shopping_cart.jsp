@@ -55,7 +55,11 @@
 											<img src="${base}/upload/${item.productAvatar}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">${item.productName}</td>
+									<td class="column-2">
+									<a href="${base}/product-detail/${item.productSeo}"
+											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											${item.productName} </a>
+									</td>
 									<td class="column-3">${item.priceUnit}</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">

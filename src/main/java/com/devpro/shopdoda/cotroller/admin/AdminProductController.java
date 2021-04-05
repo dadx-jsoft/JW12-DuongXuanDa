@@ -47,7 +47,6 @@ public class AdminProductController {
 	public String add_product_post(final ModelMap model, @ModelAttribute("product") Product product,
 			@RequestParam("avatar_file") MultipartFile avatar, @RequestParam("listProductImage") MultipartFile[] listProductImage) throws Exception {
 
-		product.setCreatedDate(new Date());
 		productService.saveOrUpdate(product, avatar, listProductImage);
 
 		return "redirect:/admin/products";

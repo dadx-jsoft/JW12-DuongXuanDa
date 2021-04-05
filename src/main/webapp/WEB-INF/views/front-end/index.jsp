@@ -1,6 +1,9 @@
+<%@page import="java.math.BigDecimal"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!-- Paging -->
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
 
@@ -21,7 +24,8 @@
 
 	<!-- Cart -->
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
-
+	<!-- Cart js -->
+	<jsp:include page="./common/cart.jsp"></jsp:include>
 
 	<!-- Slider -->
 	<section class="section-slide">
@@ -33,8 +37,8 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl0 respon2"> Women Collection
-									2018 </span>
+								<span class="ltext-101 cl0 respon2"> Leather Collection
+									2021 </span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
@@ -45,7 +49,7 @@
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="zoomIn" data-delay="1600">
-								<a href="${base}/product"
+								<a href="${base}/products"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -59,18 +63,17 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl0 respon2"> Men New-Season </span>
+								<span class="ltext-101 cl0 respon2"> Leather New-Season </span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-201 cl0 p-t-19 p-b-43 respon1">Jackets &
-									Coats</h2>
+								<h2 class="ltext-201 cl0 p-t-19 p-b-43 respon1">Wallet & Strap</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="slideInUp" data-delay="1600">
-								<a href="${base}/product"
+								<a href="${base}/products"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -84,7 +87,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl0 respon2"> Men Collection 2018
+								<span class="ltext-101 cl0 respon2"> New Collection 2021
 								</span>
 							</div>
 
@@ -96,7 +99,7 @@
 
 							<div class="layer-slick1 animated visible-false"
 								data-appear="rotateIn" data-delay="1600">
-								<a href="${base}/product"
+								<a href="${base}/products"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now </a>
 							</div>
@@ -119,9 +122,9 @@
 							href="${base}/product"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8"> Women
+								<span class="block1-name ltext-102 trans-04 p-b-8"> Leather
 								</span> <span class="block1-info stext-102 trans-04"> Spring
-									2018 </span>
+									2021 </span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
@@ -138,9 +141,9 @@
 							href="${base}/product"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8"> Men </span>
+								<span class="block1-name ltext-102 trans-04 p-b-8"> Wallet </span>
 
-								<span class="block1-info stext-102 trans-04"> Spring 2018
+								<span class="block1-info stext-102 trans-04"> Spring 2021
 								</span>
 							</div>
 
@@ -183,25 +186,35 @@
 
 			<div class="row isotope-grid">
 
-				<c:forEach items="${products}" var="product">
-					<c:if test="${product.status == true}">
+				<c:forEach items="${products}" var="product" varStatus="count">
 						<div
 							class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item cat-${product.categories.id}">
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
 									<img src="${base}/upload/${product.avatar}" alt="IMG-PRODUCT">
-									<a href="#"
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										Quick View </a>
+									<button
+										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" onclick="showModal('product_${product.id}')">
+										Quick View </button>
+									<script>
+									function showModal(productIdModal){
+								        document.getElementById(productIdModal).classList.add("show-modal1");
+								    };
+								    function hideModal(productIdModal){
+								    	document.getElementById(productIdModal).classList.remove("show-modal1");
+									};
+									</script>
 								</div>
 
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
 										<a href="${base}/product-detail/${product.seo}"
 											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											${product.title} </a> <span class="stext-105 cl3 text-danger font-weight-bold">
-											${product.price} VNĐ</span>
+											${product.title} </a> 
+											<span class="stext-105 cl3 text-danger font-weight-bold">
+											
+											<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${product.price}" />
+											 </span>
 									</div>
 
 									<div class="block2-txt-child2 flex-r p-t-3">
@@ -216,7 +229,114 @@
 								</div>
 							</div>
 						</div>
-					</c:if>
+						
+						<!-- Modal1 -->
+						<div id="product_${product.id}" class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+							<div class="overlay-modal1 js-hide-modal1"></div>
+
+							<div class="container">
+								<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+									<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+										<img src="images/icons/icon-close.png" alt="CLOSE">
+									</button>
+					
+									<div class="row">
+										<div class="col-md-6 col-lg-7 p-b-30">
+											<div class="p-l-25 p-r-30 p-lr-0-lg">
+												<div class="wrap-slick3 flex-sb flex-w">
+													<div class="wrap-slick3-dots"></div>
+													<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+					
+													<div class="slick3 gallery-lb">
+														<div class="item-slick3"
+															data-thumb="${base}/upload/${product.avatar}">
+															<div class="wrap-pic-w pos-relative">
+																<img src="${base}/upload/${product.avatar}"
+																	alt="IMG-PRODUCT"> <a
+																	class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+																	href="${base}/upload/${product.avatar}"> <i
+																	class="fa fa-expand"></i>
+																</a>
+															</div>
+														</div>
+					
+														<c:forEach items="${product.productsImages}" var="imageProduct">
+														<div class="item-slick3"
+															data-thumb="${base}/upload/${imageProduct.path}">
+															<div class="wrap-pic-w pos-relative">
+																<img src="${base}/upload/${imageProduct.path}"
+																	alt="IMG-PRODUCT"> <a
+																	class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+																	href="${base}/upload/${imageProduct.path}"> <i
+																	class="fa fa-expand"></i>
+																</a>
+															</div>
+														</div>
+														</c:forEach>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-6 col-lg-5 p-b-30">
+											<div class="p-r-50 p-t-5 p-lr-0-lg">
+												<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+													${product.title}
+												</h4>
+					
+												<span class="mtext-106 cl2 text-danger">
+													<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${product.price}" /> 
+												</span>
+					
+												<p class="stext-102 cl3 p-t-23">
+													${product.shortDescription }
+												</p>
+												
+												<!--  -->
+												<div class="p-t-33">
+													<div class="flex-w flex-r-m p-b-10">
+														<div class="size-203 flex-c-m respon6">Color</div>
+														<div class="size-204 respon6-next">
+															${product.color }
+														</div>
+													</div>
+													<div class="flex-w flex-r-m p-b-10">
+														<div class="size-203 flex-c-m respon6">Material</div>
+														<div class="size-204 respon6-next">
+															${product.material }
+														</div>
+													</div>
+					
+													<div class="flex-w flex-r-m p-b-10">
+														<div class="size-204 flex-w flex-m respon6-next">
+															<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+																<div
+																	class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+																	<i class="fs-16 zmdi zmdi-minus"></i>
+																</div>
+						
+																<input class="mtext-104 cl3 txt-center num-product"
+																	type="number" name="num-product" value="1" id = "numberProduct" min="0">
+						
+																<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+																	<i class="fs-16 zmdi zmdi-plus"></i>
+																</div>
+															</div>
+					
+															<button onclick="addToCart(${product.id}, 1)"
+																	class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+															Add to cart
+															</button>
+														</div>
+													</div>	
+												</div>
+					
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 				</c:forEach>
 
 			</div>
@@ -238,163 +358,6 @@
 	<!-- Back to top -->
 	<jsp:include
 		page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
-
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		<div class="overlay-modal1 js-hide-modal1"></div>
-
-		<div class="container">
-			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="${base}/images/icons/icon-close.png" alt="CLOSE">
-				</button>
-
-				<div class="row">
-					<div class="col-md-6 col-lg-7 p-b-30">
-						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
-								<div class="wrap-slick3-dots"></div>
-								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3"
-										data-thumb="${base}/images/product-detail-01.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="${base}/images/product-detail-01.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="${base}/images/product-detail-01.jpg"> <i
-												class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="${base}/images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="${base}/images/product-detail-02.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="${base}/images/product-detail-02.jpg"> <i
-												class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="${base}/images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="${base}/images/product-detail-03.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="${base}/images/product-detail-03.jpg"> <i
-												class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-5 p-b-30">
-						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14">Lightweight
-								Jacket</h4>
-
-							<span class="mtext-106 cl2"> $58.79 </span>
-
-							<p class="stext-102 cl3 p-t-23">Nulla eget sem vitae eros
-								pharetra viverra. Nam vitae luctus ligula. Mauris consequat
-								ornare feugiat.</p>
-
-							<!--  -->
-							<div class="p-t-33">
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">Size</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">Color</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-204 flex-w flex-m respon6-next">
-										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-											<div
-												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product"
-												type="number" name="num-product" value="1">
-
-											<div
-												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-
-										<button
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-											Add to cart</button>
-									</div>
-								</div>
-							</div>
-
-							<!--  -->
-							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
-								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-										data-tooltip="Add to Wishlist"> <i
-										class="zmdi zmdi-favorite"></i>
-									</a>
-								</div>
-
-								<a href="#"
-									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
-								</a> <a href="#"
-									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
-								</a> <a href="#"
-									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 
@@ -458,15 +421,6 @@
 				});
 
 		/*---------------------------------------------*/
-
-		$('.js-addcart-detail').each(
-				function() {
-					var nameProduct = $(this).parent().parent().parent()
-							.parent().find('.js-name-detail').html();
-					$(this).on('click', function() {
-						swal(nameProduct, "is added to cart !", "success");
-					});
-				});
 	</script>
 
 </body>

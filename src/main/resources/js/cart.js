@@ -1,9 +1,13 @@
 
 function addToCart(productId, quantity) {
-	// javascript object.
+
+	if($('#numberProduct').val() == 0){
+		return;
+	}else{
 	if($('#numberProduct').val() > 1){
 		quantity = $('#numberProduct').val();
 	}
+	// javascript object.
 	var data = {};
 	data["productId"] = productId;
 	data["quantity"] = quantity;
@@ -44,5 +48,5 @@ function addToCart(productId, quantity) {
 		error: function(jqXhr, textStatus, errorMessage) { // error callback 
 		}
 	});
-				
+	}	
 };

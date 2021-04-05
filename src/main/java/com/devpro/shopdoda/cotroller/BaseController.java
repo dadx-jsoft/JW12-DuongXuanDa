@@ -1,13 +1,11 @@
 package com.devpro.shopdoda.cotroller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.devpro.shopdoda.entities.Category;
-import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.services.CategoriesService;
 
 public class BaseController {

@@ -8,6 +8,7 @@ public class CartItem {
 	private String productAvatar;
 	private int quantity;
 	private BigDecimal priceUnit;
+	private String productSeo;
 
 	public int getProductId() {
 		return productId;
@@ -47,6 +48,14 @@ public class CartItem {
 
 	public void setProductAvatar(String productAvatar) {
 		this.productAvatar = productAvatar;
+	}
+
+	public String getProductSeo() {
+		return productSeo;
+	}
+
+	public void setProductSeo(String productSeo) {
+		this.productSeo = productSeo;
 	}
 
 }

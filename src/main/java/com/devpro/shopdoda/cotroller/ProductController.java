@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
-import com.devpro.shopdoda.repositories.CategoriesRepo;
-import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.services.ProductImagesService;
 import com.devpro.shopdoda.services.ProductService;
 

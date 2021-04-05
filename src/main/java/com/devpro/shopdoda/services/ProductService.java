@@ -52,7 +52,7 @@ public class ProductService implements Constants {
 					+ st + " ) ";
 		}
 		jpql = jpql + " ORDER BY p.createdDate DESC";
-		System.out.println(jpql);
+//		System.out.println(jpql);
 
 		Query query = entityManager.createQuery(jpql, Product.class);
 
@@ -104,6 +104,7 @@ public class ProductService implements Constants {
 				} else {
 					product.setAvatar(productInDB.getAvatar());
 				}
+				product.setCreatedDate(productInDB.getCreatedDate());
 			}
 			// TH tạo mới, nếu upload avatar
 			else if (!isEmptyUploadFile(productAvatar)) {
@@ -127,11 +128,10 @@ public class ProductService implements Constants {
 					productImageFile.transferTo(new File(ROOT_UPLOAD_PATH + productPath));
 					images.add(productsImages);
 				}
-				product.setProducts_images(images);
+				product.setProductsImages(images);
 			}
-
+			product.setUpdatedDate(new Date());
 			product.setSeo(Utilities.seo(product.getTitle() + "-" + System.currentTimeMillis()));
-			System.out.println(product.getShortDescription());
 			productRepo.save(product);
 
 		} catch (Exception e) {

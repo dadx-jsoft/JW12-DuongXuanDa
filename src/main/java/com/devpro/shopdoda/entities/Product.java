@@ -44,6 +44,12 @@ public class Product extends BaseEntity {
 	@Column(name = "seo")
 	private String seo;
 
+	@Column(name = "color")
+	private String color;
+	
+	@Column(name = "material")
+	private String material;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductsImages> productsImages = new ArrayList<ProductsImages>();
 
@@ -111,23 +117,39 @@ public class Product extends BaseEntity {
 		this.seo = seo;
 	}
 
-	public List<ProductsImages> getProducts_images() {
+	public List<ProductsImages> getProductsImages() {
 		return productsImages;
 	}
 
-	public void setProducts_images(List<ProductsImages> productsImages) {
+	public void setProductsImages(List<ProductsImages> productsImages) {
 		this.productsImages = productsImages;
 	}
 
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(String material) {
+		this.material = material;
+	}
+
 	public ProductsImages addProductsImages(ProductsImages productsImages) {
-		getProducts_images().add(productsImages);
+		getProductsImages().add(productsImages);
 		productsImages.setProduct(this);
 
 		return productsImages;
 	}
 
 	public ProductsImages removeProductsImages(ProductsImages productsImages) {
-		getProducts_images().remove(productsImages);
+		getProductsImages().remove(productsImages);
 		productsImages.setProduct(null);
 
 		return productsImages;

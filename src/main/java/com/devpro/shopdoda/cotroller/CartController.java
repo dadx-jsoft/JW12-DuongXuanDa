@@ -162,6 +162,7 @@ public class CartController extends BaseController {
 			cartItem.setProductName(productInDb.getTitle());
 			cartItem.setProductAvatar(productInDb.getAvatar());
 			cartItem.setPriceUnit(productInDb.getPrice());
+			cartItem.setProductSeo(productInDb.getSeo());
 			cart.getCartItems().add(cartItem);
 		}
 

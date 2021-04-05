@@ -93,6 +93,20 @@
 										name="name" id="name" placeholder="Nhập tên sản phẩm" />
 								</div>
 							</div>
+							<div class="form-group">
+								<label for="color" class="col-sm-3 control-label">Màu sắc</label>
+								<div class="col-sm-9">
+									<sf:input path="color" type="text" cssClass="form-control"
+										name="color" id="color" placeholder="Màu sắc" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="material" class="col-sm-3 control-label">Chất liệu</label>
+								<div class="col-sm-9">
+									<sf:input path="material" type="text" cssClass="form-control"
+										name="material" id="material" placeholder="Chất liệu" />
+								</div>
+							</div>
 							<!-- form-group // -->
 							<div class="form-group">
 								<label for="price" class="col-sm-3 control-label">Giá</label>
