@@ -7,11 +7,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_contact")
 public class Contact extends BaseEntity {
-	@Column(name = "first_name", nullable = false)
-	private String firstName;
-
-	@Column(name = "last_name", nullable = false)
-	private String lastName;
+	@Column(name = "full_name", nullable = false)
+	private String fullName;
 
 	@Column(name = "email", nullable = false)
 	private String email;
@@ -22,20 +19,12 @@ public class Contact extends BaseEntity {
 	@Column(name = "message", nullable = false)
 	private String message;
 
-	public String getFirstName() {
-		return firstName;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {

@@ -1,5 +1,7 @@
 package com.devpro.shopdoda.cotroller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,8 +46,12 @@ public class CommentController {
 		comment.setProduct(p);
 		comment.setMessage(commentDto.getMessage());
 		comment.setStatus(false); // chờ admin duyệt
+		comment.setCreatedDate(new Date());
+		comment.setUpdatedDate(comment.getCreatedDate());
+		comment.setStatus(false);
+		
 		commentRepo.save(comment);
 		
-		return ResponseEntity.ok(new AjaxResponse(200, "Comment thành công. Vui lòng chờ quản trị viên phê duyệt comment. "));
+		return ResponseEntity.ok(new AjaxResponse(200, "Comment thành công. Vui lòng chờ quản trị viên phê duyệt comment."));
 	}
 }

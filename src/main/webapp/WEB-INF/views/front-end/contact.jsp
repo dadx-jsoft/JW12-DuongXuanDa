@@ -85,7 +85,7 @@
 					</sf:form> --%>
 
 					<!-- Cách 3 -->
-					<form>
+					<!-- <form> -->
 						<h4 class="mtext-105 cl2 txt-center p-b-30">Send Us A Message
 						</h4>
 
@@ -96,16 +96,23 @@
 							<img class="how-pos4 pointer-none"
 								src="${base}/images/icons/icon-email.png" alt="ICON">
 						</div>
+						
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
+								type="text" id="fName" placeholder="Your Full Name">
+							<img class="how-pos4 pointer-none"
+								src="${base}/images/icons/icon-heart-01.png" alt="ICON">
+						</div>
 
 						<div class="bor8 m-b-30">
 							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
 								id="msg" placeholder="How Can We Help?"></textarea>
 						</div>
 
-						<button type="button" onclick="SaveContact();"
+						<button type="button" onclick="SaveContact()"
 							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 							Submit</button>
-					</form>
+					<!-- </form> -->
 				</div>
 				<div
 					class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
@@ -117,8 +124,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Address </span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">Coza Store Center
-								8th floor, 379 Hudson St, New York, NY 10018 US</p>
+							<p class="stext-115 cl6 size-213 p-t-18">251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội</p>
 						</div>
 					</div>
 
@@ -130,7 +136,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Lets Talk </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">+1 800 1236879</p>
+							<p class="stext-115 cl1 size-213 p-t-18">+84 961 010 169</p>
 						</div>
 					</div>
 
@@ -142,7 +148,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Sale Support </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">contact@example.com
+							<p class="stext-115 cl1 size-213 p-t-18">duongnc0212@gmail.com
 							</p>
 						</div>
 					</div>
@@ -174,13 +180,20 @@
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
 	<script src="js/map-custom.js"></script>
-
+	<!--===============================================================================================-->
+	<script src="${base}/vendor/sweetalert/sweetalert.min.js"></script>
+	
 	<script>
 		function SaveContact() {
 			// javascript object.
 			var data = {};
 			data["email"] = $("#email").val();
+			data["fullName"] = $("#fName").val();
 			data["msg"] = $("#msg").val();
+
+			$("#email").val('');
+			$("#fName").val('');
+			$("#msg").val();
 			
 			$.ajax({
 				url : "/contact3",
@@ -191,7 +204,7 @@
 				dataType : "json",
 				success : function(jsonResult) {
 					if (jsonResult.statusCode == 200) {
-						alert(jsonResult.data);
+						swal("Thành công!!", "Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất", "success");
 					} else {
 						alert(jsonResult.data);
 					}

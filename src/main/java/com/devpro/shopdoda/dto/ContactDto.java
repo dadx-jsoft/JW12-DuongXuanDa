@@ -1,8 +1,17 @@
 package com.devpro.shopdoda.dto;
 
-public class Contact1 {
+public class ContactDto {
+	private String fullName;
 	private String email;
 	private String msg;
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
 	public String getEmail() {
 		return email;
