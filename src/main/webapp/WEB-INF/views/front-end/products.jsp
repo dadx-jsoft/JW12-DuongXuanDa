@@ -20,10 +20,6 @@
 
 	<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
-	<!-- Cart -->
-	<jsp:include page="/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
-	<!-- Cart js -->
-	<jsp:include page="./common/cart.jsp"></jsp:include>
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
@@ -171,7 +167,7 @@
 																</div>
 						
 																<input class="mtext-104 cl3 txt-center num-product"
-																	type="number" name="num-product" value="1" id = "numberProduct" min="0">
+																	type="number" name="num-product" value="1" id = "numberProduct_${product.id}" min="0">
 						
 																<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 																	<i class="fs-16 zmdi zmdi-plus"></i>

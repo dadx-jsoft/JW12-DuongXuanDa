@@ -28,9 +28,6 @@ if (principal instanceof UserDetails) {
 
 	<jsp:include page="./common/header.jsp"></jsp:include>
 
-	<!-- Cart -->
-	<jsp:include page="./common/cart.jsp"></jsp:include>
-
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -118,7 +115,7 @@ if (principal instanceof UserDetails) {
 										</div>
 
 										<input class="mtext-104 cl3 txt-center num-product"
-											type="number" name="num-product" value="1" id = "numberProduct" min="0">
+											type="number" name="num-product" value="1" id = "numberProduct_${pro_detail.id}" min="0">
 
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
@@ -357,7 +354,7 @@ if (principal instanceof UserDetails) {
 					}
 				},
 				error : function(jqXhr, textStatus, errorMessage) { // error callback 
-	
+					
 				}
 			});
 		}

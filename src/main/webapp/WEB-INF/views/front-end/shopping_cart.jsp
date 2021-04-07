@@ -1,8 +1,10 @@
+<%@ page session="true" %>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="com.devpro.shopdoda.entities.User"%>
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -10,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Shopping cart</title>
 <!-- Variables -->
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
@@ -20,9 +22,6 @@
 
 	<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
-	<!-- Cart -->
-	<jsp:include page="/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
-
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -31,7 +30,6 @@
 			</a> <span class="stext-109 cl4"> Shoping Cart </span>
 		</div>
 	</div>
-
 
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="${base}/cart/payment" method="post">
@@ -43,13 +41,12 @@
 							<table class="table-shopping-cart">
 								<tr class="table_head">
 									<th class="column-1">Product</th>
-									<th class="column-2"></th>
-									<th class="column-3">Price</th>
-									<th class="column-4">Quantity</th>
-									<th class="column-5">Total</th>
+									<th class="column-2">Name</th>
+									<th class="column-3">Price Unit</th>
+									<th class="column-4"></th>
+									<th class="column-5">Quantity</th>
 								</tr>
 								
-								<c:set var="total" value="${0}"/>
 								<c:forEach items="${cartItems}" var="item">
 								<tr class="table_row">
 									<td class="column-1">
@@ -62,46 +59,29 @@
 											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${item.productName} </a>
 									</td>
-									<td class="column-3">${item.priceUnit}</td>
-									<td class="column-4">
+									<td class="column-3 text-danger">${item.priceUnit}</td>
+									<td class="column-4"></td>
+									<td class="column-5">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div
+											<div onclick="UpdateCart(${item.productId},-1)"
 												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product"
+											<input id="numberOfProduct_${item.productId}" class="mtext-104 cl3 txt-center num-product"
 												type="number" name="num-product1" value="${item.quantity}">
 
-											<div
+											<div onclick="UpdateCart(${item.productId},1)"
 												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 									</td>
-									<td class="column-5 text-danger">${item.priceUnit*item.quantity}</td>
-									<c:set var="total" value="${total + item.priceUnit*item.quantity}" />
 								</tr>
 								</c:forEach>
 							</table>
 						</div>
 
-						<div
-							class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-							<div class="flex-w flex-m m-r-20 m-tb-5">
-								<input
-									class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5"
-									type="text" name="coupon" placeholder="Coupon Code">
-
-								<div
-									class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Apply coupon</div>
-							</div>
-
-							<div
-								class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart</div>
-						</div>
 					</div>
 				</div>
 
@@ -113,15 +93,7 @@
 						<h5 class="alert alert-warning">${errorMessage}</h5>
 						</c:if>
 
-						<div class="flex-w flex-t bor12 p-b-13">
-							<div class="size-208">
-								<span class="stext-110 cl2"> Subtotal: </span>
-							</div>
-
-							<div class="size-209">
-								<span class="mtext-110 cl2 text-danger"> ${total } </span>
-							</div>
-						</div>
+						<div class="flex-w flex-t bor12 p-b-13"></div>
 
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
@@ -137,26 +109,6 @@
 							</div>
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<div class="p-t-15">
-									<!-- <span class="stext-112 cl8"> Mời quý khách nhập thông tin</span> -->
-
-									<!-- <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="time">
-											<option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div> -->
-
-									<!-- <div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="state" placeholder="State /  country">
-									</div> -->
-
-									<!-- <div class="bor8 bg0 m-b-22">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
-											name="postcode" placeholder="Postcode / Zip">
-									</div> -->
 									
 									<%
 									boolean isLogined = false;
@@ -206,11 +158,6 @@
 											name="customerEmail" placeholder="<%= email %>" readonly>
 									</div>
 									<%} %>
-									<div class="flex-w">
-										<div
-											class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-											Update Totals</div>
-									</div>
 
 								</div>
 							</div>
@@ -223,7 +170,14 @@
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2 text-danger"> ${total} </span>
+								<span class="mtext-110 cl2 text-danger"> 
+								
+								<%-- <fmt:formatNumber type="number" pattern="###,###VNĐ" value="<%= session.getAttribute("totalPrice") %>"/> --%>
+								</span>
+								<%
+									Double totalPrice = (Double) session.getAttribute("totalPrice");
+								%>
+								<input id="totalPrice" value="${totalPrice}" readonly="readonly" class="text-danger font-weight-bold"/>
 							</div>
 						</div>
 
@@ -231,7 +185,6 @@
 							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout	
 						</button>
-						
 					</div>
 				</div>
 			</div>
@@ -240,11 +193,54 @@
 
 	<!-- Footer -->
 	<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
-
 	<!-- Back to top -->
 	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
-
+	<!-- main js -->
 	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
-
+	
+	<script>
+		function UpdateCart(productId, difference){
+			// javascript object.
+			var data = {};
+			data["productId"] = productId;
+			var numberOfProductId = '#numberOfProduct_' + productId;
+			data["quantity"] = parseInt($(numberOfProductId).val()) + difference; // vì sự kiện onclick lấy value hiện tại
+			$.ajax({
+				url : "/cart/update",
+				type : "post",
+				contentType : "application/json",
+				data : JSON.stringify(data),
+	
+				dataType : "json",
+				success : function(jsonResult) {
+					//$("#totalItemsInCart").html(jsonResult.data)
+					$('#totalPrice').val(jsonResult.data[1])
+					// Một cách siêu củ chuối để update number của cart trên giao diện @@
+					var base = '${base}'
+					$("#totalItemsInCart").after(
+						"<div id='totalItemsInCart1' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='${base}/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+					)
+					$("#totalItemsInCart").remove()
+					$("#totalItemsInCart1").after(
+						"<div id='totalItemsInCart' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+					)
+					$("#totalItemsInCart1").remove()
+					
+					// Mobile 
+					$("#totalItemsInCartMobile").after(
+						"<div id='totalItemsInCartMobile1' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='${base}/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+					)
+					$("#totalItemsInCartMobile").remove()
+					$("#totalItemsInCartMobile1").after(
+						"<div id='totalItemsInCartMobile' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+					)
+					$("#totalItemsInCartMobile1").remove()
+				},
+				error : function(jqXhr, textStatus, errorMessage) { // error callback 
+	
+				}
+			});
+		}
+	</script>
 </body>
 </html>

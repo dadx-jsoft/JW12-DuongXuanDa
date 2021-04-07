@@ -2,7 +2,9 @@ package com.devpro.shopdoda.cotroller;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,6 +54,25 @@ public class CartController extends BaseController {
 		}
 
 		return total;
+	}
+	
+	private Double getTotalPrice(HttpServletRequest request) {
+		HttpSession httpSession = request.getSession();
+
+		if (httpSession.getAttribute("cart") == null) {
+			return 0d;
+		}
+
+		Cart cart = (Cart) httpSession.getAttribute("cart");
+		List<CartItem> cartItems = cart.getCartItems();
+
+		Double totalPrice = 0d;
+		for (CartItem item : cartItems) {
+			totalPrice+= item.getPriceUnit().doubleValue() * item.getQuantity();
+//			totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
+		}
+
+		return totalPrice;
 	}
 
 	private void resetCart(final HttpServletRequest request) {
@@ -147,14 +168,16 @@ public class CartController extends BaseController {
 			cart = new Cart();
 			httpSession.setAttribute("cart", cart);
 		}
-
+		
 		List<CartItem> cartItems = cart.getCartItems();
 		boolean isExists = false;
+		Double totalPrice = 0d;
 		for (CartItem item : cartItems) {
 			if (item.getProductId() == cartItem.getProductId()) { // trùng id trong giỏ hàng
 				isExists = true;
 				item.setQuantity(item.getQuantity() + cartItem.getQuantity());
 			}
+			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 		}
 
 		if (!isExists) {
@@ -163,12 +186,37 @@ public class CartController extends BaseController {
 			cartItem.setProductAvatar(productInDb.getAvatar());
 			cartItem.setPriceUnit(productInDb.getPrice());
 			cartItem.setProductSeo(productInDb.getSeo());
+			cartItem.setQuantity(1);
 			cart.getCartItems().add(cartItem);
+			
+			totalPrice += cartItem.getPriceUnit().doubleValue() * cartItem.getQuantity();
 		}
 
 		httpSession.setAttribute("totalItems", getTotalItems(request));
+		httpSession.setAttribute("totalPrice", totalPrice);
 		return ResponseEntity.ok(new AjaxResponse(200, getTotalItems(request)));
 	}
 
+	@RequestMapping(value = { "/cart/update" }, method = RequestMethod.POST)
+	public ResponseEntity<AjaxResponse> updateCart(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response, @RequestBody CartItem cartItem) {
+		HttpSession httpSession = request.getSession();
+
+		Cart cart = (Cart) httpSession.getAttribute("cart");
+
+		List<CartItem> cartItems = cart.getCartItems();
+		Double totalPrice = 0d;
+		for (CartItem item : cartItems) {
+			if (item.getProductId() == cartItem.getProductId()) { // trùng id trong giỏ hàng
+				item.setQuantity(cartItem.getQuantity());
+			}
+			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
+		}
+		
+		httpSession.setAttribute("totalItems", getTotalItems(request));
+		httpSession.setAttribute("totalPrice", totalPrice);
+		String[] data = {String.valueOf(getTotalItems(request)), totalPrice.toString()};
+		return ResponseEntity.ok(new AjaxResponse(200, data));
+	}
 	
 }
