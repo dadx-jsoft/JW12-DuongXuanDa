@@ -27,8 +27,8 @@ CREATE TABLE `tbl_attribute` (
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `description` varchar(500) COLLATE utf8mb4_bin DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -57,8 +57,8 @@ CREATE TABLE `tbl_category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `description` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `parent_id` int DEFAULT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `tbl_category` (
 
 LOCK TABLES `tbl_category` WRITE;
 /*!40000 ALTER TABLE `tbl_category` DISABLE KEYS */;
-INSERT INTO `tbl_category` VALUES (17,'Túi đeo chéo da','Túi đeo chéo da',NULL,NULL,8,NULL,NULL,1,'tui-deo-cheo-da'),(18,'Ba lô da','Ba lô da',NULL,NULL,8,NULL,NULL,1,'ba-lo-da'),(19,'Cặp da công sở','Cặp da công sở',NULL,NULL,8,NULL,NULL,1,'cap-da-cong-so'),(20,'Ví da','Ví da',NULL,NULL,8,NULL,NULL,1,'vi-da'),(23,'Dây da đồng hồ','<p>Dây da đồng hồ<br></p>','2021-03-21 14:51:51',NULL,8,NULL,NULL,1,'day-da-ong-ho'),(28,'Demo cat 1','<p>d</p>','2021-03-29 20:15:49',NULL,8,NULL,NULL,0,'demo-cat-1');
+INSERT INTO `tbl_category` VALUES (17,'Túi đeo chéo da','Túi đeo chéo da','2020-12-19 14:51:51',NULL,8,NULL,NULL,1,'tui-deo-cheo-da'),(18,'Ba lô da','Ba lô da','2020-12-22 14:51:51',NULL,8,NULL,NULL,1,'ba-lo-da'),(19,'Cặp da công sở','Cặp da công sở','2020-12-21 14:51:00',NULL,8,NULL,NULL,1,'cap-da-cong-so'),(20,'Ví da','Ví da','2020-12-23 14:51:51',NULL,8,NULL,NULL,1,'vi-da'),(23,'Dây da đồng hồ','<p>Dây da đồng hồ<br></p>','2020-12-21 14:51:51',NULL,8,NULL,NULL,1,'day-da-dong-ho'),(28,'Demo cat 1','<p>d</p>','2020-12-20 20:15:49',NULL,8,NULL,NULL,0,'demo-cat-1');
 /*!40000 ALTER TABLE `tbl_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,18 +119,18 @@ CREATE TABLE `tbl_comments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `product_id` int NOT NULL,
-  `message` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `message` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `fk_product_id` (`product_id`),
-  KEY `fk_user_id` (`user_id`),
-  CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa comment sản phẩm';
+  KEY `fk_comment_product_id` (`product_id`),
+  KEY `fk_comment_user_id` (`user_id`),
+  CONSTRAINT `fk_comment_product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`),
+  CONSTRAINT `fk_comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa comment sản phẩm';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,6 +139,7 @@ CREATE TABLE `tbl_comments` (
 
 LOCK TABLES `tbl_comments` WRITE;
 /*!40000 ALTER TABLE `tbl_comments` DISABLE KEYS */;
+INSERT INTO `tbl_comments` VALUES (24,8,79,'ok','2021-04-07 09:39:24','2021-04-07 09:39:24',NULL,NULL,0),(25,8,79,'Sản phẩm rất đẹp','2021-04-07 09:40:24','2021-04-07 09:40:24',NULL,NULL,1),(26,8,79,'Cảm ơn shop đã hướng dẫn mình lắp khóa của dây ạ.','2021-04-07 09:41:24','2021-04-07 09:41:24',NULL,NULL,1),(27,8,78,'Sản phẩm tuyệt vời','2021-04-07 09:42:24','2021-04-07 09:42:24',NULL,NULL,0),(28,8,78,'Rất đẹp ạ','2021-04-07 09:43:24','2021-04-07 09:43:24',NULL,NULL,0),(29,8,76,'Màu đẹp quá!!','2021-04-07 09:48:34','2021-04-07 09:48:34',NULL,NULL,0);
 /*!40000 ALTER TABLE `tbl_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,18 +152,17 @@ DROP TABLE IF EXISTS `tbl_contact`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_contact` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `last_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `full_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `request_type` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `message` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin liên hệ';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin liên hệ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `tbl_contact` (
 
 LOCK TABLES `tbl_contact` WRITE;
 /*!40000 ALTER TABLE `tbl_contact` DISABLE KEYS */;
-INSERT INTO `tbl_contact` VALUES (3,'Dương Thanh','Phong','phong@gmail.com','LIEN_HE','tin nhắn',NULL,NULL,NULL,NULL,1);
+INSERT INTO `tbl_contact` VALUES (4,'Dương Xuân Hương','xuandapa@gmail.com','CONTACT','Tôi muốn hỏi về chính sách bảo hành.','2021-04-07 10:06:43','2021-04-07 10:06:43',NULL,NULL,1),(5,'Dương Xuân Đà','xuandapa@gmail.com','CONTACT','Tôi muốn mua trực tiếp tại shop?','2021-04-07 10:09:05','2021-04-07 10:09:05',NULL,NULL,1),(6,'Dương Thanh Phong','dadx.jsoft@gmail.com','CONTACT','Khi nào có dây cá sấu về shop ạ?','2021-04-07 10:10:25','2021-04-07 10:10:25',NULL,NULL,1),(7,'Đinh Thế Nghĩa','dinhnghia1410dt@gmail.com','CONTACT','Tôi muốn mua giá sỉ?','2021-04-07 10:16:07','2021-04-07 10:16:07',NULL,NULL,1);
 /*!40000 ALTER TABLE `tbl_contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `tbl_products` (
   `avatar` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `category_id` int DEFAULT NULL,
   `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -227,8 +227,8 @@ CREATE TABLE `tbl_products_images` (
   `title` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `path` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `product_id` int NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -259,8 +259,8 @@ CREATE TABLE `tbl_roles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `description` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -290,8 +290,8 @@ CREATE TABLE `tbl_saleorder` (
   `code` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_id` int DEFAULT NULL,
   `total` decimal(13,2) DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -312,7 +312,6 @@ CREATE TABLE `tbl_saleorder` (
 
 LOCK TABLES `tbl_saleorder` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder` DISABLE KEYS */;
-INSERT INTO `tbl_saleorder` VALUES (7,'1606312487050',NULL,200000.00,'2020-11-25 20:54:47',NULL,NULL,NULL,0,'Nguyễn Văn A','Hà Nội',NULL,NULL,NULL),(8,'1606312582507',NULL,200000.00,'2020-11-25 20:56:23',NULL,NULL,NULL,0,'Nguyễn Văn A','Hà Nội',NULL,NULL,NULL),(9,'ORDER-1615946322743',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Thanh Phong','90 Đặng Tiến Đông','ORDER-1615946322743','0961010169',NULL),(12,'ORDER-1615947171542',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Thanh Phong','90 Đặng Tiến Đông 1','ORDER-1615947171542','0961010169',NULL),(13,'ORDER-1616152160676',NULL,530002.00,NULL,NULL,NULL,NULL,1,'Đông Tà','Biển Đông','ORDER-1616152160676','0123456789',NULL),(14,'ORDER-1616152573248',NULL,0.00,'2021-03-19 18:16:13',NULL,NULL,NULL,1,'Tây Độc','Tây Bắc','ORDER-1616152573248','0123456789',NULL),(15,'ORDER-1616153057328',NULL,0.00,'2021-03-19 18:24:17',NULL,NULL,NULL,1,'Nam Đế','Hà Nam','ORDER-1616153057328','163726420498',NULL),(16,'ORDER-1616153184113',NULL,0.00,'2021-03-19 18:26:24',NULL,NULL,NULL,1,'Chu Độc pHu','Hà Nội','ORDER-1616153184113','85028-293',NULL),(17,'ORDER-1616153793909',NULL,0.00,'2021-03-19 18:36:34',NULL,NULL,NULL,1,'','','ORDER-1616153793909','',NULL),(18,'ORDER-1616154014265',NULL,1260000.00,'2021-03-19 18:40:14',NULL,NULL,NULL,1,'Chu Độc pHu','90 Đặng Tiến Đông','ORDER-1616154014265','2842',NULL),(19,'ORDER-1616154264329',NULL,840000.00,'2021-03-19 18:44:24',NULL,NULL,NULL,1,'','','ORDER-1616154264329','',NULL),(20,'ORDER-1616904341952',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Xuân Đà test mail','90 Đặng Tiến Đông','ORDER-1616904341952','1693719775','xuandapa@gmail.com'),(21,'ORDER-1616904668686',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Xuân Đà test mail','90 Đặng Tiến Đông 1','ORDER-1616904668686','1693719775','xuandapa@gmail.com'),(22,'ORDER-1616904728317',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Xuân Đà test mail 2','90 Đặng Tiến Đông 1','ORDER-1616904728317','1693719775','dadx.jsoft@gmail.com'),(23,'ORDER-1616904990079',NULL,0.00,NULL,NULL,NULL,NULL,1,'Dương Xuân Đà test mail 3','90 Đặng Tiến Đông 1','ORDER-1616904990079','1693719775','xuandapa@gmail.com'),(24,'ORDER-1616906170410',NULL,711000.00,'2021-03-28 11:36:10',NULL,NULL,NULL,1,'','','ORDER-1616906170410','',''),(25,'ORDER-1616906376373',NULL,420000.00,'2021-03-28 11:39:36',NULL,NULL,NULL,1,'Test required input','90 Đặng Tiến Đông','ORDER-1616906376373','1693719775','dadx.jsoft@gmail.com'),(26,'ORDER-1617526484358',NULL,420000.00,'2021-04-04 15:54:44',NULL,NULL,NULL,1,'Dương Xuân Đà 1','90 Đặng Tiến Đông 1','ORDER-1617526484359','1693719775','xuandapa@gmail.com');
 /*!40000 ALTER TABLE `tbl_saleorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,8 +327,8 @@ CREATE TABLE `tbl_saleorder_products` (
   `saleorder_id` int NOT NULL,
   `product_id` int NOT NULL,
   `quality` int NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -348,7 +347,6 @@ CREATE TABLE `tbl_saleorder_products` (
 
 LOCK TABLES `tbl_saleorder_products` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder_products` DISABLE KEYS */;
-INSERT INTO `tbl_saleorder_products` VALUES (15,12,60,2,NULL,NULL,NULL,NULL,1,NULL),(16,13,58,2,NULL,NULL,NULL,NULL,1,NULL),(17,13,66,2,NULL,NULL,NULL,NULL,1,NULL),(18,14,66,1,NULL,NULL,NULL,NULL,1,NULL),(19,14,58,2,NULL,NULL,NULL,NULL,1,NULL),(20,15,58,1,NULL,NULL,NULL,NULL,1,NULL),(21,15,65,2,NULL,NULL,NULL,NULL,1,NULL),(22,16,61,3,NULL,NULL,NULL,NULL,1,NULL),(24,17,58,1,'2021-03-19 18:36:34',NULL,NULL,NULL,1,NULL),(25,18,58,2,'2021-03-19 18:40:14',NULL,NULL,NULL,1,NULL),(26,18,59,1,'2021-03-19 18:40:14',NULL,NULL,NULL,1,NULL),(27,19,58,1,'2021-03-19 18:44:24',NULL,NULL,NULL,1,NULL),(28,19,59,1,'2021-03-19 18:44:24',NULL,NULL,NULL,1,NULL),(29,24,63,1,'2021-03-28 11:36:10',NULL,NULL,NULL,1,NULL),(30,25,60,1,'2021-03-28 11:39:36',NULL,NULL,NULL,1,NULL),(31,26,60,1,'2021-04-04 15:54:44',NULL,NULL,NULL,1,NULL);
 /*!40000 ALTER TABLE `tbl_saleorder_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,14 +362,15 @@ CREATE TABLE `tbl_users` (
   `username` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   `full_name` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `address` varchar(200) COLLATE utf8mb4_bin DEFAULT NULL,
   `phone` varchar(10) COLLATE utf8mb4_bin DEFAULT NULL,
+  `avatar` varchar(200) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
@@ -384,7 +383,7 @@ CREATE TABLE `tbl_users` (
 
 LOCK TABLES `tbl_users` WRITE;
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,1,'',NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com',NULL,NULL,NULL,NULL,1,'',NULL,NULL),(9,'user','$2a$04$aVuqZZv1.QxwXVB1Hdkr0uD0cT8JS1WEmzpZp5v/34pauBAcvJ73q','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169');
+INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,0,'',NULL,NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com','2021-03-20 21:39:00','2021-04-06 06:32:44',NULL,NULL,1,'Steve Dương','Nhổn, Minh Khai, Từ Liêm, Hà Nội','0961010169',NULL),(9,'user','$2a$04$aVuqZZv1.QxwXVB1Hdkr0uD0cT8JS1WEmzpZp5v/34pauBAcvJ73q','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169',NULL);
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-06  1:29:42
+-- Dump completed on 2021-04-07 10:33:48
