@@ -6,17 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
-import com.devpro.shopdoda.repositories.Products_ImagesRepo;
 
 @Service
 public class ProductImagesService {
-	@Autowired
-	private Products_ImagesRepo products_ImagesRepo;
-
 	@PersistenceContext
 	EntityManager entityManager;
 

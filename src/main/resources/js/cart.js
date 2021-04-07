@@ -1,4 +1,3 @@
-
 function addToCart(productId, quantity) {
 
 	if($('#numberProduct').val() == 0){

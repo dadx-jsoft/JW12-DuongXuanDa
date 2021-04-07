@@ -55,32 +55,51 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 text-gray-800">Thêm danh mục</h1>
+					<h1 class="h3 text-gray-800">Save user</h1>
 
 					<!-- add product form -->
 					<div class="panel-body mb-4">
-						<a href="${base}/admin/categories" class="btn btn-primary a-btn-slide-text"> <i
+						<a href="${base}/admin/users" class="btn btn-primary a-btn-slide-text"> <i
 							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
 						</a>
 					</div>
 					<div class="panel-body">
-						<sf:form class="form-horizontal" role="form" method="post" modelAttribute="categoryEdit"
-							action="${base}/admin/categories/save">
+						<sf:form class="form-horizontal" role="form" method="post" modelAttribute="userEdit"
+							action="${base}/admin/users/save">
 							<sf:hidden path="id"/>
 							<div class="form-group">
-								<label for="name" class="col-sm-3 control-label">Tên danh mục</label>
+								<label for="fullName" class="col-sm-3 control-label">Họ tên</label>
 								<div class="col-sm-9">
-									<sf:input path="name" type="text" cssClass="form-control"
-										name="name" placeholder="Nhập tên danh mục" />
+									<sf:input path="fullName" type="text" cssClass="form-control"
+										name="fullName" placeholder="Nhập họ tên user" />
 								</div>
 							</div>
-							
 							<div class="form-group">
-								<label for="detailDescription" class="col-sm-3 control-label">Mô
-									tả</label>
+								<label for="username" class="col-sm-3 control-label">Username</label>
 								<div class="col-sm-9">
-									<sf:textarea path="description" name="description"
-										id="description" class="form-control summernote" />
+									<sf:input path="username" type="text" cssClass="form-control"
+										name="username" placeholder="Nhập username" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="address" class="col-sm-3 control-label">Địa chỉ</label>
+								<div class="col-sm-9">
+									<sf:input path="address" type="text" cssClass="form-control"
+										name="address" placeholder="Nhập địa chỉ" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
+								<div class="col-sm-9">
+									<sf:input path="phone" type="text" cssClass="form-control"
+										name="phone" placeholder="Nhập số điện thoại" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="email" class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-9">
+									<sf:input path="email" type="text" cssClass="form-control"
+										name="email" placeholder="Nhập email" />
 								</div>
 							</div>
 

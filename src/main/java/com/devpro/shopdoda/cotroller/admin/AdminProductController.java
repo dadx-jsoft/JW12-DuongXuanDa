@@ -1,6 +1,5 @@
 package com.devpro.shopdoda.cotroller.admin;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +52,7 @@ public class AdminProductController {
 	}
 
 	@RequestMapping(value = {"admin/products/edit/{id}"}, method = RequestMethod.GET)
-	public String edit_product_get(final ModelMap model, final HttpServletRequest request,
+	public String editProduct(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 
 		model.addAttribute("product", productRepo.findById(productId).get());

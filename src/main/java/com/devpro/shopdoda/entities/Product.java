@@ -46,12 +46,15 @@ public class Product extends BaseEntity {
 
 	@Column(name = "color")
 	private String color;
-	
+
 	@Column(name = "material")
 	private String material;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductsImages> productsImages = new ArrayList<ProductsImages>();
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	public String getTitle() {
 		return title;
@@ -139,6 +142,14 @@ public class Product extends BaseEntity {
 
 	public void setMaterial(String material) {
 		this.material = material;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public ProductsImages addProductsImages(ProductsImages productsImages) {

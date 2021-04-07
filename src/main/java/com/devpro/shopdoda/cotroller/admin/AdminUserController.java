@@ -18,12 +18,16 @@ import com.devpro.shopdoda.entities.Role;
 import com.devpro.shopdoda.entities.User;
 import com.devpro.shopdoda.repositories.UserRepo;
 import com.devpro.shopdoda.services.RoleService;
+import com.devpro.shopdoda.services.UserService;
 import com.devpro.shopdoda.utils.GeneratePassword;
 
 @Controller
 public class AdminUserController {
 	@Autowired
 	private UserRepo userRepo;
+	
+	@Autowired 
+	private UserService userService;
 	
 	@Autowired
 	private RoleService roleService;
@@ -76,7 +80,7 @@ public class AdminUserController {
 	public String users(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		
-		model.addAttribute("users", userRepo.findAll());
+		model.addAttribute("users", userService.getAllUsers());
 		
 		return "back-end/users";
 	}
@@ -104,7 +108,13 @@ public class AdminUserController {
 	public String saveUser(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @ModelAttribute("userEdit") User userEdit) throws Exception {
 		
-		userEdit.setCreatedDate(new Date());
+		if(userEdit.getId()!=null && userEdit.getId()>0) {
+			User userInDB = userRepo.findById(userEdit.getId()).get();
+			userEdit.setCreatedDate(userInDB.getCreatedDate());
+			userEdit.setPassword(userInDB.getPassword());
+		}
+		
+		userEdit.setUpdatedDate(new Date());
 		
 		userRepo.save(userEdit);
 

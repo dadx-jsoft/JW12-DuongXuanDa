@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="com.devpro.shopdoda.entities.User"%>
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
@@ -48,6 +49,7 @@
 									<th class="column-5">Total</th>
 								</tr>
 								
+								<c:set var="total" value="${0}"/>
 								<c:forEach items="${cartItems}" var="item">
 								<tr class="table_row">
 									<td class="column-1">
@@ -77,7 +79,8 @@
 											</div>
 										</div>
 									</td>
-									<td class="column-5">${item.priceUnit*item.quantity}</td>
+									<td class="column-5 text-danger">${item.priceUnit*item.quantity}</td>
+									<c:set var="total" value="${total + item.priceUnit*item.quantity}" />
 								</tr>
 								</c:forEach>
 							</table>
@@ -116,7 +119,7 @@
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2"> $79.65 </span>
+								<span class="mtext-110 cl2 text-danger"> ${total } </span>
 							</div>
 						</div>
 
@@ -126,12 +129,15 @@
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-								<p class="stext-111 cl6 p-t-2">There are no shipping methods
-									available. Please double check your address, or contact us if
-									you need any help.</p>
-
+								<p class="stext-111 cl6 p-t-2">Free ship cho mọi đơn hàng.</p>
+							</div>
+							<br>
+							<div class="size-208 w-full-ssm">
+								<span class="stext-110 cl2"> Thông tin người nhận: </span>
+							</div>
+							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<div class="p-t-15">
-									<span class="stext-112 cl8"> Mời quý khách nhập thông tin</span>
+									<!-- <span class="stext-112 cl8"> Mời quý khách nhập thông tin</span> -->
 
 									<!-- <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="time">
@@ -183,6 +189,7 @@
 										String email = ((User)principal).getEmail();
 									%>
 									<div class="bor8 bg0 m-b-12">
+										
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerName" placeholder="<%= fullName %>" readonly>
 									</div>
@@ -207,6 +214,7 @@
 
 								</div>
 							</div>
+							
 						</div>
 
 						<div class="flex-w flex-t p-t-27 p-b-33">
@@ -215,7 +223,7 @@
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2"> $79.65 </span>
+								<span class="mtext-110 cl2 text-danger"> ${total} </span>
 							</div>
 						</div>
 

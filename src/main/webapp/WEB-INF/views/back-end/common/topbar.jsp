@@ -1,7 +1,17 @@
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	
+
+<%@page import="com.devpro.shopdoda.entities.User"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%
+String username = null;
+Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+if (principal instanceof UserDetails) {
+	username = ((User)principal).getUsername();
+}
+%>
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -163,8 +173,7 @@
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-					McGee</span> <img class="img-profile rounded-circle"
+				class="mr-2 d-none d-lg-inline text-gray-600 small"><%= username %></span> <img class="img-profile rounded-circle"
 				src="${base}/img/undraw_profile.svg">
 		</a> <!-- Dropdown - User Information -->
 			<div

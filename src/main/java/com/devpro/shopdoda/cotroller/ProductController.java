@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.devpro.shopdoda.dto.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
+import com.devpro.shopdoda.services.CommentService;
 import com.devpro.shopdoda.services.ProductImagesService;
 import com.devpro.shopdoda.services.ProductService;
 
@@ -26,6 +27,9 @@ public class ProductController extends BaseController {
 
 	@Autowired
 	private ProductImagesService productImagesService;
+
+	@Autowired
+	private CommentService commentService;
 
 	@RequestMapping(value = { "/products" }, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -64,7 +68,7 @@ public class ProductController extends BaseController {
 		List<Product> relatedProducts = productService.search(productSearch);
 		relatedProducts.remove(productDetail); // bỏ product hiện tại khỏi ds liên quan đến nó
 		model.addAttribute("relatedProducts", relatedProducts);
-
+		model.addAttribute("comments", commentService.findByProduct(productDetail));
 		return "front-end/product_detail";
 	}
 

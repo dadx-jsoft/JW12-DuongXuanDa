@@ -52,6 +52,4 @@ public class HomeController extends BaseController{
 		return "front-end/index";
 	}
 
-	
-
 }
