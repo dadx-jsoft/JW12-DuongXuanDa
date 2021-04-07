@@ -186,7 +186,6 @@ public class CartController extends BaseController {
 			cartItem.setProductAvatar(productInDb.getAvatar());
 			cartItem.setPriceUnit(productInDb.getPrice());
 			cartItem.setProductSeo(productInDb.getSeo());
-			cartItem.setQuantity(1);
 			cart.getCartItems().add(cartItem);
 			
 			totalPrice += cartItem.getPriceUnit().doubleValue() * cartItem.getQuantity();
