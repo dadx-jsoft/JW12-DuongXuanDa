@@ -17,8 +17,8 @@ import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 
-import com.devpro.shopdoda.adapter.FacebookSignInAdapter;
 import com.devpro.shopdoda.services.fb.FacebookConnectionSignup;
+import com.devpro.shopdoda.services.fb.FacebookSignInAdapter;
 
 @Configuration
 @EnableWebSecurity
