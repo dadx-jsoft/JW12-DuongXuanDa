@@ -59,7 +59,9 @@
 											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${item.productName} </a>
 									</td>
-									<td class="column-3 text-danger">${item.priceUnit}</td>
+									<td class="column-3">
+										<span class="text-danger"><fmt:formatNumber type="number" pattern="###,###" value="${item.priceUnit}" /></span> VNĐ
+									</td>
 									<td class="column-4"></td>
 									<td class="column-5">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -170,14 +172,13 @@
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2 text-danger"> 
-								
-								<%-- <fmt:formatNumber type="number" pattern="###,###VNĐ" value="<%= session.getAttribute("totalPrice") %>"/> --%>
-								</span>
 								<%
 									Double totalPrice = (Double) session.getAttribute("totalPrice");
 								%>
-								<input id="totalPrice" value="${totalPrice}" readonly="readonly" class="text-danger font-weight-bold"/>
+								<%-- <span id="totalPrice" class="mtext-110 cl2 text-danger"> 
+									<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${totalPrice}" />
+								</span> --%>
+								<input id="totalPrice" value="${totalPrice}" readonly="readonly" class="text-danger font-weight-bold"/>VNĐ
 							</div>
 						</div>
 
@@ -214,7 +215,9 @@
 				dataType : "json",
 				success : function(jsonResult) {
 					//$("#totalItemsInCart").html(jsonResult.data)
+					
 					$('#totalPrice').val(jsonResult.data[1])
+
 					// Một cách siêu củ chuối để update number của cart trên giao diện @@
 					var base = '${base}'
 					$("#totalItemsInCart").after(

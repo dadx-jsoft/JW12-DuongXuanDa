@@ -73,7 +73,7 @@
 				<h6 class="collapse-header">Login Screens:</h6>
 				<a class="collapse-item" href="${base}/login">Login</a> <a
 					class="collapse-item" href="${base}/register">Register</a> <a
-					class="collapse-item" href="${base}/forgot_password">Forgot Password</a>
+					class="collapse-item" href="${base}/password/forgot">Forgot Password</a>
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">Other Pages:</h6>
 				<a class="collapse-item" href="404.html">404 Page</a> 

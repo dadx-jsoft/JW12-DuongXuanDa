@@ -88,14 +88,15 @@
 										<tr>
 											<td>${role.name}</td>
 											<td>${role.description}</td>
-											<td><a href="${base}/admin/roles/edit/${role.id}"
+											<td>
+											<a href="${base}/admin/roles/edit/${role.id}"
 												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 													<i class="fas fa-edit"></i>
-											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-													<i class="fas fa-eye"></i>
-											</a> <a href="${base}/admin/roles/delete/${role.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+											</a> 
+											<a href="${base}/admin/roles/delete/${role.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
 													<i class="fas fa-trash-alt"></i>
-											</a></td>
+											</a>
+											</td>
 										</tr>
 										</c:if>
 										</c:forEach>

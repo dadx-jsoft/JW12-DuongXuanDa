@@ -87,14 +87,15 @@
 											<tr>
 												<td>${category.name}</td>
 												<td>${category.description}</td>
-												<td><a href="${base}/admin/categories/edit/${category.id}"
+												<td>
+												<a href="${base}/admin/categories/edit/${category.id}"
 													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 														<i class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-														<i class="fas fa-eye"></i>
-												</a> <a href="${base}/admin/categories/delete/${category.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-														<i class="fas fa-trash-alt"></i>
-												</a></td>
+												</a> 
+												<a href="${base}/admin/categories/delete/${category.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+													<i class="fas fa-trash-alt"></i>
+												</a>
+												</td>
 											</tr>
 											</c:if>
 										</c:forEach>

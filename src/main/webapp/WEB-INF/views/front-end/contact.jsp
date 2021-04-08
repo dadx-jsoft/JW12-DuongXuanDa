@@ -20,9 +20,6 @@
 
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
-	<!-- Cart -->
-	<jsp:include page="${base}/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
-
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
 		style="background-image: url('images/bg-01.jpg');">

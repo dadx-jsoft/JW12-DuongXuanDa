@@ -23,14 +23,6 @@ public class AdminController {
 		return "back-end/index";
 	}
 
-
-	@RequestMapping(value = { "/forgot_password" }, method = RequestMethod.GET)
-	public String forgot_password(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-
-		return "back-end/forgot_password";
-	}
-
 	@RequestMapping(value = { "/charts" }, method = RequestMethod.GET)
 	public String charts(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {

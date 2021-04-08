@@ -16,9 +16,6 @@
 
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
-	<!-- Cart -->
-	<jsp:include page="${base}/WEB-INF/views/front-end/common/cart.jsp"></jsp:include>
-
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">

@@ -33,7 +33,7 @@ public class AdminProductController {
 	private ProductService productService;
 
 	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.GET)
-	public String add_product_get(final ModelMap model, final HttpServletRequest request,
+	public String addProduct(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
 		model.addAttribute("product", new Product());
@@ -43,7 +43,7 @@ public class AdminProductController {
 	}
 	
 	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.POST)
-	public String add_product_post(final ModelMap model, @ModelAttribute("product") Product product,
+	public String saveProduct(final ModelMap model, @ModelAttribute("product") Product product,
 			@RequestParam("avatar_file") MultipartFile avatar, @RequestParam("listProductImage") MultipartFile[] listProductImage) throws Exception {
 
 		productService.saveOrUpdate(product, avatar, listProductImage);

@@ -1,4 +1,4 @@
-package com.devpro.shopdoda.cotroller;
+package com.devpro.shopdoda.cotroller.client;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

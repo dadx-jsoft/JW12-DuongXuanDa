@@ -1,4 +1,4 @@
-package com.devpro.shopdoda.cotroller;
+package com.devpro.shopdoda.cotroller.client;
 
 import java.math.BigDecimal;
 import java.util.Date;

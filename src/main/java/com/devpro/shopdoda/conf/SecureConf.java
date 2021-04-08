@@ -47,6 +47,9 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID").permitAll();
+		
+		// Cấu hình remember me, thời gian là 1296000 giây
+//	    http.rememberMe().key("uniqueAndSecret").tokenValiditySeconds(1296000);
 	}
 
 	@Autowired
