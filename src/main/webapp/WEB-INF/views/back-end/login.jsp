@@ -99,10 +99,15 @@
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <!-- <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        </a> -->
                                     </form>
+                                    <form class="user" action="${base}/signin/facebook" method="POST">
+									    <input type="hidden" name="scope" value="public_profile" />
+									    <input type="hidden" name="scope" value="email" />
+									    <input type="submit" value="Login using Facebook" class="btn btn-facebook btn-user btn-block"/>
+									</form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="${base}/password/forgot">Forgot Password?</a>

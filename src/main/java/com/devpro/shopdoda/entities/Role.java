@@ -38,6 +38,12 @@ public class Role extends BaseEntity implements GrantedAuthority{
 
 	public Role() {
 	}
+	public Role(String description, String name, List<User> users) {
+		super();
+		this.description = description;
+		this.name = name;
+		this.users = users;
+	}
 
 	public String getDescription() {
 		return description;
@@ -67,5 +73,7 @@ public class Role extends BaseEntity implements GrantedAuthority{
 	public String getAuthority() {
 		return this.name;
 	}
+
+	
 
 }
