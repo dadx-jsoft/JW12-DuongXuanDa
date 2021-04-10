@@ -14,8 +14,8 @@ public class PaginationTaglib extends SimpleTagSupport {
 	private int count;
 	private int max = MAX;
 	private int steps = MAX;
-	private String previous = "Previous";
-	private String next = "Next";
+	private String previous = "<";
+	private String next = ">";
 
 	private Writer getWriter() {
 		JspWriter out = getJspContext().getOut();

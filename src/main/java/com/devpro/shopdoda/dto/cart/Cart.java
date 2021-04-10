@@ -1,4 +1,4 @@
-package com.devpro.shopdoda.dto;
+package com.devpro.shopdoda.dto.cart;
 
 import java.util.ArrayList;
 import java.util.List;

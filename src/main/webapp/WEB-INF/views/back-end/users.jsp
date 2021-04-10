@@ -93,14 +93,15 @@
 											<td>${user.fullName}</td>
 											<td>${user.address}</td>
 											<td>${user.phone}</td>
-											<td><a href="${base}/admin/users/edit/${user.id}"
+											<td>
+											<a href="${base}/admin/users/edit/${user.id}"
 												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 													<i class="fas fa-edit"></i>
-											</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-													<i class="fas fa-eye"></i>
-											</a> <a href="${base}/admin/users/delete/${user.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+											</a>  
+											<a href="${base}/admin/users/delete/${user.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
 													<i class="fas fa-trash-alt"></i>
-											</a></td>
+											</a>
+											</td>
 										</tr>
 										</c:forEach>
 									</tbody>

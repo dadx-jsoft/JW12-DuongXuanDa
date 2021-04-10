@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.devpro.shopdoda.dto.ProductSearch;
+import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
@@ -28,30 +28,47 @@ public class AdminProductController {
 
 	@Autowired
 	private ProductRepo productRepo;
-	
+
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.GET)
-	public String addProduct(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
+	@RequestMapping(value = { "admin/products" }, method = RequestMethod.GET)
+	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		ProductSearch productSearch = new ProductSearch();
+		productSearch.buildPaging(request);
+
+		List<Product> productList = productService.search(productSearch);
+
+		model.addAttribute("productList", productList);
+		model.addAttribute("productSearch", productSearch);
+
+//		model.addAttribute("categories", categoriesRepo.findAll());
+
+		return "back-end/products";
+	}
+
+	@RequestMapping(value = { "admin/products/add" }, method = RequestMethod.GET)
+	public String addProduct(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
 
 		model.addAttribute("product", new Product());
 		model.addAttribute("categories", categoriesRepo.findAll());
 
 		return "back-end/save_product";
 	}
-	
-	@RequestMapping(value = {"admin/products/add"}, method = RequestMethod.POST)
+
+	@RequestMapping(value = { "admin/products/add" }, method = RequestMethod.POST)
 	public String saveProduct(final ModelMap model, @ModelAttribute("product") Product product,
-			@RequestParam("avatar_file") MultipartFile avatar, @RequestParam("listProductImage") MultipartFile[] listProductImage) throws Exception {
+			@RequestParam("avatar_file") MultipartFile avatar,
+			@RequestParam("listProductImage") MultipartFile[] listProductImage) throws Exception {
 
 		productService.saveOrUpdate(product, avatar, listProductImage);
 
 		return "redirect:/admin/products";
 	}
 
-	@RequestMapping(value = {"admin/products/edit/{id}"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/products/edit/{id}" }, method = RequestMethod.GET)
 	public String editProduct(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 
@@ -60,36 +77,20 @@ public class AdminProductController {
 
 		return "back-end/save_product";
 	}
-	
-	@RequestMapping(value = {"admin/products/delete/{id}"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "admin/products/delete/{id}" }, method = RequestMethod.GET)
 	public String deleteProduct(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
-		
+
 		Product deletedProduct = productRepo.findById(productId).get();
 		deletedProduct.setStatus(false);
 		productRepo.save(deletedProduct);
 		System.out.println("Delete product success");
-		
+
 		return "redirect:/admin/products";
 	}
-	
-	@RequestMapping(value = {"admin/products"}, method = RequestMethod.GET)
-	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		ProductSearch productSearch = new ProductSearch();
-		productSearch.buildPaging(request);
-		
-		List<Product> productList = productService.search(productSearch);
-		
-		model.addAttribute("productList", productList);
-		model.addAttribute("productSearch", productSearch);
-		
-//		model.addAttribute("categories", categoriesRepo.findAll());
 
-		return "back-end/products";
-	}
-	
-	@RequestMapping(value = {"admin/products/search-all"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "admin/products/search-all" }, method = RequestMethod.GET)
 	public String searchAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
@@ -104,5 +105,5 @@ public class AdminProductController {
 
 		return "back-end/products";
 	}
-	
+
 }

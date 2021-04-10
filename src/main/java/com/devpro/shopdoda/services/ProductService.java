@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.devpro.shopdoda.dto.ProductSearch;
+import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
 import com.devpro.shopdoda.repositories.ProductRepo;

@@ -1,4 +1,4 @@
-package com.devpro.shopdoda.dto;
+package com.devpro.shopdoda.dto.search;
 
 import javax.servlet.http.HttpServletRequest;
 

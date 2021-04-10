@@ -76,8 +76,7 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>First Name</th>
-											<th>Last Name</th>
+											<th>Full Name</th>
 											<th>Email</th>
 											<th>Request type</th>
 											<th>Message</th>
@@ -86,8 +85,7 @@
 									</thead>
 									<tfoot>
 										<tr>
-											<th>First Name</th>
-											<th>Last Name</th>
+											<th>Full Name</th>
 											<th>Email</th>
 											<th>Request type</th>
 											<th>Message</th>
@@ -97,8 +95,7 @@
 									<tbody>
 										<c:forEach items="${contactList}" var="contact">
 											<tr>
-												<td>${contact.firstName}</td>
-												<td>${contact.lastName}</td>
+												<td>${contact.fullName}</td>
 												<td>${contact.email}</td>
 												<td>${contact.requestType}</td>
 												<td>${contact.message}</td>

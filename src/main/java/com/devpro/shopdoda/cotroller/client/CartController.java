@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.shopdoda.dto.AjaxResponse;
-import com.devpro.shopdoda.dto.Cart;
-import com.devpro.shopdoda.dto.CartItem;
+import com.devpro.shopdoda.dto.cart.Cart;
+import com.devpro.shopdoda.dto.cart.CartItem;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.Saleorder;
 import com.devpro.shopdoda.entities.SaleorderProduct;

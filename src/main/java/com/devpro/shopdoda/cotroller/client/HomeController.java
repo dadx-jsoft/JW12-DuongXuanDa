@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.devpro.shopdoda.dto.ProductSearch;
+import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.services.ProductService;
 
