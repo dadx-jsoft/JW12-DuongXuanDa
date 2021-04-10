@@ -1,6 +1,6 @@
 package com.devpro.shopdoda.dto;
 
-public class CommentDto {
+public class ReviewDto {
 	private Integer userId;
 	private Integer productId;
 	private String message;

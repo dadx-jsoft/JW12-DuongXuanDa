@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `tbl_category`;
 CREATE TABLE `tbl_category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `description` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `tbl_category` (
   PRIMARY KEY (`id`),
   KEY `fk_internal_idx` (`parent_id`),
   CONSTRAINT `fk_internal` FOREIGN KEY (`parent_id`) REFERENCES `tbl_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa danh mục sản phẩm';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa danh mục sản phẩm';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `tbl_category` (
 
 LOCK TABLES `tbl_category` WRITE;
 /*!40000 ALTER TABLE `tbl_category` DISABLE KEYS */;
-INSERT INTO `tbl_category` VALUES (17,'Túi đeo chéo da','Túi đeo chéo da','2020-12-19 14:51:51',NULL,8,NULL,NULL,1,'tui-deo-cheo-da'),(18,'Ba lô da','Ba lô da','2020-12-22 14:51:51',NULL,8,NULL,NULL,1,'ba-lo-da'),(19,'Cặp da công sở','Cặp da công sở','2020-12-21 14:51:00',NULL,8,NULL,NULL,1,'cap-da-cong-so'),(20,'Ví da','Ví da','2020-12-23 14:51:51',NULL,8,NULL,NULL,1,'vi-da'),(23,'Dây da đồng hồ','<p>Dây da đồng hồ<br></p>','2020-12-21 14:51:51',NULL,8,NULL,NULL,1,'day-da-dong-ho'),(28,'Demo cat 1','<p>d</p>','2020-12-20 20:15:49',NULL,8,NULL,NULL,0,'demo-cat-1');
+INSERT INTO `tbl_category` VALUES (17,'Túi đeo chéo da','Túi đeo chéo da','2020-12-19 14:51:51',NULL,8,NULL,NULL,1,'tui-deo-cheo-da'),(18,'Ba lô da','Ba lô da là sản phẩm chiến lược của wada shop','2020-12-22 14:51:51','2021-04-08 08:59:58',8,8,NULL,1,'ba-lo-da'),(19,'Cặp da công sở','Cặp da công sở','2020-12-21 14:51:00',NULL,8,NULL,NULL,1,'cap-da-cong-so'),(20,'Ví da','Ví da','2020-12-23 14:51:51',NULL,8,NULL,NULL,1,'vi-da'),(23,'Dây da đồng hồ','<p>Dây da đồng hồ<br></p>','2020-12-21 14:51:51',NULL,8,NULL,NULL,1,'day-da-dong-ho'),(28,'Demo cat 1','<p>d</p>','2020-12-20 20:15:49',NULL,8,NULL,NULL,0,'demo-cat-1'),(29,'Thắt lưng da','<p>Thắt lưng da</p>','2021-04-08 09:01:10',NULL,8,NULL,NULL,1,'that-lung-da');
 /*!40000 ALTER TABLE `tbl_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,41 +106,6 @@ CREATE TABLE `tbl_category_attribute` (
 LOCK TABLES `tbl_category_attribute` WRITE;
 /*!40000 ALTER TABLE `tbl_category_attribute` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_category_attribute` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_comments`
---
-
-DROP TABLE IF EXISTS `tbl_comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_comments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `product_id` int NOT NULL,
-  `message` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `created_by` int DEFAULT NULL,
-  `updated_by` int DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `fk_comment_product_id` (`product_id`),
-  KEY `fk_comment_user_id` (`user_id`),
-  CONSTRAINT `fk_comment_product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`),
-  CONSTRAINT `fk_comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa comment sản phẩm';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_comments`
---
-
-LOCK TABLES `tbl_comments` WRITE;
-/*!40000 ALTER TABLE `tbl_comments` DISABLE KEYS */;
-INSERT INTO `tbl_comments` VALUES (24,8,79,'ok','2021-04-07 09:39:24','2021-04-07 09:39:24',NULL,NULL,0),(25,8,79,'Sản phẩm rất đẹp','2021-04-07 09:40:24','2021-04-07 09:40:24',NULL,NULL,1),(26,8,79,'Cảm ơn shop đã hướng dẫn mình lắp khóa của dây ạ.','2021-04-07 09:41:24','2021-04-07 09:41:24',NULL,NULL,1),(27,8,78,'Sản phẩm tuyệt vời','2021-04-07 09:42:24','2021-04-07 09:42:24',NULL,NULL,0),(28,8,78,'Rất đẹp ạ','2021-04-07 09:43:24','2021-04-07 09:43:24',NULL,NULL,0),(29,8,76,'Màu đẹp quá!!','2021-04-07 09:48:34','2021-04-07 09:48:34',NULL,NULL,0);
-/*!40000 ALTER TABLE `tbl_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -246,6 +211,41 @@ LOCK TABLES `tbl_products_images` WRITE;
 /*!40000 ALTER TABLE `tbl_products_images` DISABLE KEYS */;
 INSERT INTO `tbl_products_images` VALUES (27,'day_da_be_epsome_1.1.jpg','product/picture/day_da_be_epsome_1.1.jpg',72,'2021-03-31 14:22:56',NULL,NULL,NULL,1),(28,'day_da_be_epsome_1.2.jpg','product/picture/day_da_be_epsome_1.2.jpg',72,'2021-03-31 14:23:00',NULL,NULL,NULL,1),(29,'day_da_be_epsome_1.3.jpg','product/picture/day_da_be_epsome_1.3.jpg',72,'2021-03-31 14:23:02',NULL,NULL,NULL,1),(30,'day_da_be_epsome_1.4.jpg','product/picture/day_da_be_epsome_1.4.jpg',72,'2021-03-31 14:23:05',NULL,NULL,NULL,1),(31,'xanh-corban-mau-sang-2.jpg','product/picture/xanh-corban-mau-sang-2.jpg',73,'2021-04-04 21:33:47',NULL,NULL,NULL,1),(32,'xanh-corban-mau-sang-3.jpg','product/picture/xanh-corban-mau-sang-3.jpg',73,'2021-04-04 21:33:50',NULL,NULL,NULL,1),(33,'day-khoa-bam-do-ruou-vang-2.jpg','product/picture/day-khoa-bam-do-ruou-vang-2.jpg',74,'2021-04-04 21:58:12',NULL,NULL,NULL,1),(34,'day-da-cam-va-trang-ngoc-2.jpg','product/picture/day-da-cam-va-trang-ngoc-2.jpg',75,'2021-04-04 22:04:44',NULL,NULL,NULL,1),(35,'day-da-cam-va-trang-ngoc-3.jpg','product/picture/day-da-cam-va-trang-ngoc-3.jpg',75,'2021-04-04 22:04:44',NULL,NULL,NULL,1),(36,'nau-tay.jpg','product/picture/nau-tay.jpg',76,'2021-04-04 22:08:03',NULL,NULL,NULL,1),(37,'day-da-nau-1.jpg','product/picture/day-da-nau-1.jpg',77,'2021-04-04 22:14:59',NULL,NULL,NULL,1),(38,'swift-nau-tay-1.jpg','product/picture/swift-nau-tay-1.jpg',78,'2021-04-04 22:18:22',NULL,NULL,NULL,1),(39,'swift-nau-tay-2.jpg','product/picture/swift-nau-tay-2.jpg',78,'2021-04-04 22:18:22',NULL,NULL,NULL,1),(40,'handmade-do-ruou-vang-2.jpg','product/picture/handmade-do-ruou-vang-2.jpg',79,'2021-04-04 22:23:42',NULL,NULL,NULL,1),(41,'handmade-do-ruou-vang-3.jpg','product/picture/handmade-do-ruou-vang-3.jpg',79,'2021-04-04 22:23:42',NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `tbl_products_images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_reviews`
+--
+
+DROP TABLE IF EXISTS `tbl_reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_reviews` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `message` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `created_by` int DEFAULT NULL,
+  `updated_by` int DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `fk_comment_product_id` (`product_id`),
+  KEY `fk_comment_user_id` (`user_id`),
+  CONSTRAINT `fk_comment_product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`),
+  CONSTRAINT `fk_comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa comment sản phẩm';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_reviews`
+--
+
+LOCK TABLES `tbl_reviews` WRITE;
+/*!40000 ALTER TABLE `tbl_reviews` DISABLE KEYS */;
+INSERT INTO `tbl_reviews` VALUES (24,8,79,'ok','2021-04-07 09:39:24','2021-04-07 09:39:24',NULL,NULL,0),(25,8,79,'Sản phẩm rất đẹp','2021-04-07 09:40:24','2021-04-07 09:40:24',NULL,NULL,1),(26,8,79,'Cảm ơn shop đã hướng dẫn mình lắp khóa của dây ạ.','2021-04-07 09:41:24','2021-04-07 09:41:24',NULL,NULL,1),(27,8,78,'Sản phẩm tuyệt vời','2021-04-07 09:42:24','2021-04-07 09:42:24',NULL,NULL,0),(28,8,78,'Rất đẹp ạ','2021-04-07 09:43:24','2021-04-07 09:43:24',NULL,NULL,0),(29,8,76,'Màu đẹp quá!!','2021-04-07 09:48:34','2021-04-07 09:48:34',NULL,NULL,0);
+/*!40000 ALTER TABLE `tbl_reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `tbl_users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
@@ -374,7 +374,7 @@ CREATE TABLE `tbl_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin người dùng';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin người dùng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -383,7 +383,7 @@ CREATE TABLE `tbl_users` (
 
 LOCK TABLES `tbl_users` WRITE;
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,0,'',NULL,NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com','2021-03-20 21:39:00','2021-04-06 06:32:44',NULL,NULL,1,'Steve Dương','Nhổn, Minh Khai, Từ Liêm, Hà Nội','0961010169',NULL),(9,'user','$2a$04$aVuqZZv1.QxwXVB1Hdkr0uD0cT8JS1WEmzpZp5v/34pauBAcvJ73q','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169',NULL);
+INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,0,'',NULL,NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com','2021-03-20 21:39:00','2021-04-06 06:32:44',NULL,NULL,1,'Steve Dương','Nhổn, Minh Khai, Từ Liêm, Hà Nội','0961010169',NULL),(9,'user','$2a$04$rLaJ9pKCUSpYQu5K95E8K.T7ZsXLvDeUAOLLkWVw3H9ph/pf90TCq','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169',NULL),(12,'duong-xuan-a1','$2a$04$1gVHkn5NUzKREdoP/m3huuCbVsqgCxkUrt7Gst.HyoicxXk.Ry35.','signinfb@gmail.com','2021-04-08 11:45:44',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL),(14,'duong-xuan-a','$2a$04$xLJmxXzd50WACP4y0EKlsug3TzGxQQKbyWTTJngP4z1ecohBX3owC',NULL,'2021-04-08 12:46:01',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +410,7 @@ CREATE TABLE `tbl_users_roles` (
 
 LOCK TABLES `tbl_users_roles` WRITE;
 /*!40000 ALTER TABLE `tbl_users_roles` DISABLE KEYS */;
-INSERT INTO `tbl_users_roles` VALUES (8,7),(7,8),(9,8);
+INSERT INTO `tbl_users_roles` VALUES (8,7),(7,8),(9,8),(12,8),(14,8);
 /*!40000 ALTER TABLE `tbl_users_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -423,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-07 10:33:48
+-- Dump completed on 2021-04-10 18:19:52

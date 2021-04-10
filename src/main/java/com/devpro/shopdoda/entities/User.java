@@ -49,7 +49,7 @@ public class User extends BaseEntity implements UserDetails {
 	private String avatar;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Comment> comments = new ArrayList<Comment>();
+	private List<Review> comments = new ArrayList<Review>();
 
 	// bi-directional many-to-many association to Role
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -135,11 +135,11 @@ public class User extends BaseEntity implements UserDetails {
 		this.avatar = avatar;
 	}
 
-	public List<Comment> getComments() {
+	public List<Review> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comment) {
+	public void setComments(List<Review> comment) {
 		this.comments = comment;
 	}
 

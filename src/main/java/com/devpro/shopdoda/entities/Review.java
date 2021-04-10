@@ -4,12 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_comments")
-public class Comment extends BaseEntity {
+@Table(name = "tbl_reviews")
+public class Review extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;

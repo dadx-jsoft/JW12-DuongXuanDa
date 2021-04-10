@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.shopdoda.dto.AjaxResponse;
-import com.devpro.shopdoda.dto.CommentDto;
-import com.devpro.shopdoda.entities.Comment;
+import com.devpro.shopdoda.dto.ReviewDto;
+import com.devpro.shopdoda.entities.Review;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.User;
-import com.devpro.shopdoda.repositories.CommentRepo;
+import com.devpro.shopdoda.repositories.ReviewRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.services.UserService;
 
 @Controller
-public class CommentController {
+public class ReviewController {
 	
 	@Autowired
-	private CommentRepo commentRepo;
+	private ReviewRepo reviewRepo;
 	
 	@Autowired
 	private UserService userService;
@@ -36,22 +36,22 @@ public class CommentController {
 	// C3: Dùng Ajax
 	@RequestMapping(value = { "/comments/add" }, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> addComment(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response, @RequestBody CommentDto commentDto) {
-		Comment comment = new Comment();
+			final HttpServletResponse response, @RequestBody ReviewDto commentDto) {
+		Review review = new Review();
 		int userId = commentDto.getUserId();
 		User u = userService.loadUserById(userId);
-		comment.setUser(u);
+		review.setUser(u);
 		int productId = commentDto.getProductId();
 		Product p = productRepo.findById(productId).get();
-		comment.setProduct(p);
-		comment.setMessage(commentDto.getMessage());
-		comment.setStatus(false); // chờ admin duyệt
-		comment.setCreatedDate(new Date());
-		comment.setUpdatedDate(comment.getCreatedDate());
-		comment.setStatus(false);
+		review.setProduct(p);
+		review.setMessage(commentDto.getMessage());
+		review.setStatus(false); // chờ admin duyệt
+		review.setCreatedDate(new Date());
+		review.setUpdatedDate(review.getCreatedDate());
+		review.setStatus(false);
 		
-		commentRepo.save(comment);
+		reviewRepo.save(review);
 		
-		return ResponseEntity.ok(new AjaxResponse(200, "Comment thành công. Vui lòng chờ quản trị viên phê duyệt comment."));
+		return ResponseEntity.ok(new AjaxResponse(200, "Review thành công. Vui lòng chờ quản trị viên phê duyệt."));
 	}
 }
