@@ -23,7 +23,7 @@ import com.devpro.shopdoda.services.UserService;
 import com.devpro.shopdoda.utils.GeneratePassword;
 
 @Controller
-public class AdminUserController {
+public class UserAdminController {
 	@Autowired
 	private UserRepo userRepo;
 

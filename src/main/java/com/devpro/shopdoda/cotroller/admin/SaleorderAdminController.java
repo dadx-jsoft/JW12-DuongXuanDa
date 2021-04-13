@@ -15,7 +15,7 @@ import com.devpro.shopdoda.entities.Saleorder;
 import com.devpro.shopdoda.repositories.SaleorderRepo;
 
 @Controller
-public class AdminSaleorderController {
+public class SaleorderAdminController {
 	@Autowired 
 	private SaleorderRepo saleorderRepo;
 	

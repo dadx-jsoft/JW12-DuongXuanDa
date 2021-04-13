@@ -326,7 +326,6 @@ CREATE TABLE `tbl_saleorder_products` (
   `id` int NOT NULL AUTO_INCREMENT,
   `saleorder_id` int NOT NULL,
   `product_id` int NOT NULL,
-  `quality` int NOT NULL,
   `created_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `created_by` int DEFAULT NULL,
@@ -423,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-10 18:19:52
+-- Dump completed on 2021-04-13 11:38:32

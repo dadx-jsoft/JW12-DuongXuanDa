@@ -17,7 +17,7 @@ import com.devpro.shopdoda.entities.Role;
 import com.devpro.shopdoda.repositories.RoleRepo;
 
 @Controller
-public class AdminRoleController {
+public class RoleAdminController {
 
 	@Autowired
 	private RoleRepo roleRepo;

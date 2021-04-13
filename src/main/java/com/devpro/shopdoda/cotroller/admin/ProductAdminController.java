@@ -22,7 +22,7 @@ import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.services.ProductService;
 
 @Controller
-public class AdminProductController {
+public class ProductAdminController {
 	@Autowired
 	private CategoriesRepo categoriesRepo;
 

@@ -19,7 +19,7 @@ import com.devpro.shopdoda.utils.UserUtils;
 import com.devpro.shopdoda.utils.Utilities;
 
 @Controller
-public class AdminCategoryController {
+public class CategoryAdminController {
 
 	@Autowired
 	private CategoriesRepo categoriesRepo;

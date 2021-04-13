@@ -13,7 +13,7 @@ import com.devpro.shopdoda.repositories.ContactRepo;
 
 @Controller
 @RequestMapping("admin/contacts")
-public class AdminContactController {
+public class ContactAdminController {
 	
 	@Autowired
 	private ContactRepo contactRepo;
