@@ -43,9 +43,10 @@ public class ProductController extends BaseController {
 
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
+		
 		return "front-end/products";
 	}
-
+	
 	@RequestMapping(value = { "/product-detail/{seoPath}" }, method = RequestMethod.GET)
 	public String product_detail(final ModelMap model, @PathVariable("seoPath") String seoPath,
 			final HttpServletRequest request, final HttpServletResponse response) throws Exception {
@@ -104,4 +105,5 @@ public class ProductController extends BaseController {
 		return "front-end/products";
 	}
 
+	
 }

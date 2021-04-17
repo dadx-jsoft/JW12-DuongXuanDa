@@ -121,6 +121,7 @@ public class CartController extends BaseController {
 			saleOrderProducts.setCreatedDate(date);
 			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
 			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrderProducts.setPriceUnit(item.getPriceUnit());
 			saleOrder.addSaleorderProduct(saleOrderProducts);
 			saleOrder.setCreatedDate(date);
 			totalPrice = totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));

@@ -303,7 +303,7 @@ CREATE TABLE `tbl_saleorder` (
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,6 +312,7 @@ CREATE TABLE `tbl_saleorder` (
 
 LOCK TABLES `tbl_saleorder` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder` DISABLE KEYS */;
+INSERT INTO `tbl_saleorder` VALUES (27,'ORDER-1618675291505',NULL,1050000.00,'2021-04-17 23:01:32',NULL,NULL,NULL,1,'Dương Xuân Đà 10','Nhổn','ORDER-1618675291505','1693719775','xuandapa@gmail.com'),(28,'ORDER-1618676600486',NULL,1650000.00,'2021-04-17 23:23:20',NULL,NULL,NULL,1,'Dương Xuân Đà 11','Hà Nội','ORDER-1618676600486','1693719775','xuandapa@gmail.com');
 /*!40000 ALTER TABLE `tbl_saleorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,13 +332,14 @@ CREATE TABLE `tbl_saleorder_products` (
   `created_by` int DEFAULT NULL,
   `updated_by` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
-  `quantity` int DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `price_unit` decimal(13,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_saleorder_product_idx` (`saleorder_id`),
   KEY `product_id_idx` (`product_id`),
   CONSTRAINT `fk_saleorder_product` FOREIGN KEY (`saleorder_id`) REFERENCES `tbl_saleorder` (`id`),
   CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,6 +348,7 @@ CREATE TABLE `tbl_saleorder_products` (
 
 LOCK TABLES `tbl_saleorder_products` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder_products` DISABLE KEYS */;
+INSERT INTO `tbl_saleorder_products` VALUES (32,27,79,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,550000.00),(33,27,74,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,500000.00),(34,28,79,'2021-04-17 23:23:20',NULL,NULL,NULL,1,3,550000.00);
 /*!40000 ALTER TABLE `tbl_saleorder_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-13 11:38:32
+-- Dump completed on 2021-04-18  0:57:09

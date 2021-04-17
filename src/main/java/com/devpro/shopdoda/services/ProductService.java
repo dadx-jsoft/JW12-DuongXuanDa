@@ -1,6 +1,7 @@
 package com.devpro.shopdoda.services;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +17,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.shopdoda.dto.search.ProductSearch;
+import com.devpro.shopdoda.entities.Category;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
+import com.devpro.shopdoda.entities.SaleorderProduct;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.taglibs.PaginationTaglib;
 import com.devpro.shopdoda.utils.Constants;
@@ -37,7 +40,7 @@ public class ProductService implements Constants {
 		String jpql = "SELECT p FROM Product p where 1=1";
 
 		jpql = jpql + " AND p.status = true";
-		
+
 		if (!StringUtils.isEmpty(productSearch.getSeo())) {
 			jpql = jpql + " AND p.seo = '" + productSearch.getSeo() + "'";
 		}
@@ -47,9 +50,7 @@ public class ProductService implements Constants {
 		}
 		if (!StringUtils.isEmpty(productSearch.getSearchText())) {
 			String st = "'%" + productSearch.getSearchText() + "%'";
-			jpql = jpql + " AND (p.title LIKE " 
-					+ st + " OR p.shortDescription LIKE " 
-					+ st + " ) ";
+			jpql = jpql + " AND (p.title LIKE " + st + " OR p.shortDescription LIKE " + st + " ) ";
 		}
 		jpql = jpql + " ORDER BY p.createdDate DESC";
 //		System.out.println(jpql);
@@ -88,14 +89,14 @@ public class ProductService implements Constants {
 	public void saveOrUpdate(Product product, MultipartFile productAvatar, MultipartFile[] listProductImageFile)
 			throws Exception {
 		try {
-			
+
 			// TH chỉnh sửa
 			if (product.getId() != null && product.getId() > 0) {
 				Product productInDB = productRepo.findById(product.getId()).get();
 				// nếu upload lại avatar thì phải xóa avatar cũ đi
 				if (!isEmptyUploadFile(productAvatar)) {
 					String oldAvatarPath = productInDB.getAvatar();
-					if(!StringUtils.isEmpty(oldAvatarPath)) {
+					if (!StringUtils.isEmpty(oldAvatarPath)) {
 						new File(ROOT_UPLOAD_PATH + oldAvatarPath).delete();
 					}
 					String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
@@ -115,7 +116,7 @@ public class ProductService implements Constants {
 			// Upload nhiều file ảnh sản phẩm
 			if (!isEmptyUploadFile(listProductImageFile)) {
 				List<ProductsImages> images = new ArrayList<>();
-				
+
 				for (MultipartFile productImageFile : listProductImageFile) {
 					String productPath = "product/picture/" + productImageFile.getOriginalFilename();
 
@@ -124,7 +125,7 @@ public class ProductService implements Constants {
 					productsImages.setPath(productPath);
 					productsImages.setProduct(product);
 					productsImages.setCreatedDate(new Date());
-					
+
 					productImageFile.transferTo(new File(ROOT_UPLOAD_PATH + productPath));
 					images.add(productsImages);
 				}
@@ -140,4 +141,78 @@ public class ProductService implements Constants {
 		}
 	}
 
+	public List<Product> getBestSellingProducts() {
+		List<Product> bestSellingProducts = new ArrayList<Product>();
+		String jpql = "select * from tbl_category tc where tc.parent_id is null and tc.status = true";
+//		String nativeSql = "Select sp.id,sp.title, Sum(cthd.quantity) as SL, sp.price "
+//				+ "From tbl_products sp, tbl_saleorder_products cthd "
+//				+ "Where sp.id=cthd.product_id "
+//				+ "Group by sp.id,sp.title,sp.price "
+//				+ "Order by Sum(cthd.quantity) DESC "
+//				+ "LIMIT 0, 8";
+		String nativeSql = "Select sp.id,sp.title, Sum(cthd.quantity) as quantity, sp.price "
+				+ "From tbl_products sp, tbl_saleorder_products cthd "
+				+ "Where sp.id=cthd.product_id "
+				+ "Group by sp.id,sp.title,sp.price "
+				+ "Order by Sum(cthd.quantity) DESC "
+				+ "LIMIT 0, 8";
+		Query query = entityManager.createNativeQuery(nativeSql);
+		
+		List<Object[]> listPartialProductObject = query.getResultList();
+		
+		List<Integer> idProductList = new ArrayList<Integer>();
+		
+		for (Object[] partialProductObject : listPartialProductObject) {
+			idProductList.add((Integer) partialProductObject[0]) ;
+		}
+		
+		// ref: https://stackoverflow.com/questions/6277807/jpa-passing-list-to-in-clause-in-named-native-query
+		// https://stackoverflow.com/questions/13700565/jpa-query-getresultlist-use-in-a-generic-way
+		
+		String nativeQuery = "Select * from tbl_products where id in :ids";
+		Query q = entityManager.createNativeQuery(nativeQuery, Product.class);
+		q.setParameter("ids", idProductList);
+		
+		return q.getResultList();
+	}
+	
+	class PartialProduct {
+		private Integer id;
+		private String title;
+		private int quantity;
+		private BigDecimal price;
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		public int getQuantity() {
+			return quantity;
+		}
+
+		public void setQuantity(int quantity) {
+			this.quantity = quantity;
+		}
+
+		public BigDecimal getPrice() {
+			return price;
+		}
+
+		public void setPrice(BigDecimal price) {
+			this.price = price;
+		}
+
+	}
 }

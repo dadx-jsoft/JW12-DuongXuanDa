@@ -1,5 +1,7 @@
 package com.devpro.shopdoda.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 /**
@@ -11,11 +13,13 @@ import javax.persistence.*;
 public class SaleorderProduct extends BaseEntity {
 
 	@ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    Product product;
+	@JoinColumn(name = "product_id", nullable = false)
+	Product product;
 
-	@Column(name = "quality", nullable = false)
+	@Column(name = "quantity", nullable = false)
 	private int quantity;
+	@Column(name = "price_unit", nullable = false)
+	private BigDecimal priceUnit;
 
 	// bi-directional many-to-one association to Saleorder
 	@ManyToOne
@@ -39,6 +43,14 @@ public class SaleorderProduct extends BaseEntity {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public BigDecimal getPriceUnit() {
+		return priceUnit;
+	}
+
+	public void setPriceUnit(BigDecimal priceUnit) {
+		this.priceUnit = priceUnit;
 	}
 
 	public Saleorder getSaleorder() {
