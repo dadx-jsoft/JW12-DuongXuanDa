@@ -1,6 +1,7 @@
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +40,9 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Đăng ký tài khoản!</h1>
+                                <c:if test="${not empty error}">
+                                	<h3 class="h4 text-danger">Email đã tồn tại!</h3>
+                                </c:if>
                             </div>
                             <form class="user" action="${base}/register" method="POST">
                                 <div class="form-group">

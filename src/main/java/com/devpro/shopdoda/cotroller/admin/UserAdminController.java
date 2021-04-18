@@ -40,22 +40,26 @@ public class UserAdminController {
 	public String login(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
-		return "back-end/login";
+		return "back-end/user/login";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String register(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
-		return "back-end/register";
+		return "back-end/user/register";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String addAccount(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-
+		
 		String fullName = request.getParameter("fullName");
 		String email = request.getParameter("email");
+		if(userRepo.findUserByEmail(email) != null) {
+			model.addAttribute("error", "Email đã tồn tại!");
+			return "back-end/user/register";
+		}
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
@@ -84,7 +88,7 @@ public class UserAdminController {
 	public String forgotPassword(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
-		return "back-end/forgot_password";
+		return "back-end/user/forgot_password";
 	}
 
 	@RequestMapping(value = { "/password/reset" }, method = RequestMethod.POST)
@@ -95,7 +99,7 @@ public class UserAdminController {
 		User uResetPass = userRepo.findUserByEmail(emailResetPass);
 		if (uResetPass == null) {
 			model.addAttribute("messageReSetPass", "Không tồn tại tài khoản có email: " + emailResetPass);
-			return "back-end/forgot_password";
+			return "back-end/user/forgot_password";
 		}
 		String newPass = String.valueOf(System.currentTimeMillis() / 100);
 		uResetPass.setPassword(GeneratePassword.encodePassword(newPass));
@@ -105,7 +109,7 @@ public class UserAdminController {
 		mailService.sendEmailResetPass(emailResetPass, newPass);
 
 		model.addAttribute("messageReSetPass", "Reset password thành công, vui lòng kiếm tra email của bạn!");
-		return "back-end/forgot_password";
+		return "back-end/user/forgot_password";
 	}
 
 	@RequestMapping(value = { "admin/users" }, method = RequestMethod.GET)
@@ -114,7 +118,7 @@ public class UserAdminController {
 
 		model.addAttribute("users", userService.getAllUsers());
 
-		return "back-end/users";
+		return "back-end/user/users";
 	}
 
 	@RequestMapping(value = { "/admin/users/add" }, method = RequestMethod.GET)
@@ -123,7 +127,7 @@ public class UserAdminController {
 
 		model.addAttribute("userEdit", new User());
 
-		return "back-end/save_user";
+		return "back-end/user/save_user";
 	}
 
 	@RequestMapping(value = { "/admin/users/edit/{id}" }, method = RequestMethod.GET)
@@ -134,7 +138,7 @@ public class UserAdminController {
 
 		model.addAttribute("userEdit", userEdit);
 
-		return "back-end/save_user";
+		return "back-end/user/save_user";
 	}
 
 	@RequestMapping(value = { "/admin/users/save" }, method = RequestMethod.POST)

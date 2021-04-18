@@ -54,7 +54,7 @@ public class Product extends BaseEntity {
 	private List<ProductsImages> productsImages = new ArrayList<ProductsImages>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
-	private List<Review> comments = new ArrayList<Review>();
+	private List<Review> reviews = new ArrayList<Review>();
 
 	public String getTitle() {
 		return title;
@@ -145,11 +145,11 @@ public class Product extends BaseEntity {
 	}
 
 	public List<Review> getComments() {
-		return comments;
+		return reviews;
 	}
 
 	public void setComments(List<Review> comments) {
-		this.comments = comments;
+		this.reviews = comments;
 	}
 
 	public ProductsImages addProductsImages(ProductsImages productsImages) {

@@ -47,6 +47,105 @@ LOCK TABLES `tbl_attribute` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_blog`
+--
+
+DROP TABLE IF EXISTS `tbl_blog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_blog` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `short_description` varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `detail_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `views` int DEFAULT '0',
+  `created_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `created_by` int DEFAULT NULL,
+  `updated_by` int DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  `blog_type_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_blog_type_id` (`blog_type_id`),
+  CONSTRAINT `fk_blog_type_id` FOREIGN KEY (`blog_type_id`) REFERENCES `tbl_blog_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin bài viết';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_blog`
+--
+
+LOCK TABLES `tbl_blog` WRITE;
+/*!40000 ALTER TABLE `tbl_blog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_blog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_blog_comment`
+--
+
+DROP TABLE IF EXISTS `tbl_blog_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_blog_comment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `blog_id` int NOT NULL,
+  `parent_comment_id` int NOT NULL,
+  `comment` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `created_by` int DEFAULT NULL,
+  `updated_by` int DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin comment trên bài viết';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_blog_comment`
+--
+
+LOCK TABLES `tbl_blog_comment` WRITE;
+/*!40000 ALTER TABLE `tbl_blog_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_blog_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_blog_type`
+--
+
+DROP TABLE IF EXISTS `tbl_blog_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_blog_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `created_by` int DEFAULT NULL,
+  `updated_by` int DEFAULT NULL,
+  `parent_id` int DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  `seo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_parent_id` (`parent_id`),
+  CONSTRAINT `fk_parent_id` FOREIGN KEY (`parent_id`) REFERENCES `tbl_blog_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa danh mục bài viết';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_blog_type`
+--
+
+LOCK TABLES `tbl_blog_type` WRITE;
+/*!40000 ALTER TABLE `tbl_blog_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_blog_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_category`
 --
 
@@ -303,7 +402,7 @@ CREATE TABLE `tbl_saleorder` (
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +411,7 @@ CREATE TABLE `tbl_saleorder` (
 
 LOCK TABLES `tbl_saleorder` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder` DISABLE KEYS */;
-INSERT INTO `tbl_saleorder` VALUES (27,'ORDER-1618675291505',NULL,1050000.00,'2021-04-17 23:01:32',NULL,NULL,NULL,1,'Dương Xuân Đà 10','Nhổn','ORDER-1618675291505','1693719775','xuandapa@gmail.com'),(28,'ORDER-1618676600486',NULL,1650000.00,'2021-04-17 23:23:20',NULL,NULL,NULL,1,'Dương Xuân Đà 11','Hà Nội','ORDER-1618676600486','1693719775','xuandapa@gmail.com');
+INSERT INTO `tbl_saleorder` VALUES (27,'ORDER-1618675291505',NULL,1050000.00,'2021-04-17 23:01:32',NULL,NULL,NULL,1,'Dương Xuân Đà 10','Nhổn','ORDER-1618675291505','1693719775','xuandapa@gmail.com'),(28,'ORDER-1618676600486',NULL,1650000.00,'2021-04-17 23:23:20',NULL,NULL,NULL,1,'Dương Xuân Đà 11','Hà Nội','ORDER-1618676600486','1693719775','xuandapa@gmail.com'),(29,'ORDER-1618682751973',NULL,510000.00,'2021-04-18 01:05:52',NULL,NULL,NULL,1,'Hoàng Văn Quỳnh','Nam Định','ORDER-1618682751973','0123456789','quynh@gmail.com'),(30,'ORDER-1618683024360',NULL,510000.00,'2021-04-18 01:10:24',NULL,NULL,NULL,1,'Võ Văn Vẻ','Hà Đông','ORDER-1618683024360','0123456789','xuandapa@gmail.com'),(31,'ORDER-1618683097063',NULL,510000.00,'2021-04-18 01:11:37',NULL,NULL,NULL,1,'Dương Xuân Đà 3','Tây Bắc','ORDER-1618683097063','1693719775','xuandapa@gmail.com');
 /*!40000 ALTER TABLE `tbl_saleorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +438,7 @@ CREATE TABLE `tbl_saleorder_products` (
   KEY `product_id_idx` (`product_id`),
   CONSTRAINT `fk_saleorder_product` FOREIGN KEY (`saleorder_id`) REFERENCES `tbl_saleorder` (`id`),
   CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa phiếu mua hàng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +447,7 @@ CREATE TABLE `tbl_saleorder_products` (
 
 LOCK TABLES `tbl_saleorder_products` WRITE;
 /*!40000 ALTER TABLE `tbl_saleorder_products` DISABLE KEYS */;
-INSERT INTO `tbl_saleorder_products` VALUES (32,27,79,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,550000.00),(33,27,74,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,500000.00),(34,28,79,'2021-04-17 23:23:20',NULL,NULL,NULL,1,3,550000.00);
+INSERT INTO `tbl_saleorder_products` VALUES (32,27,79,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,550000.00),(33,27,74,'2021-04-17 23:01:32',NULL,NULL,NULL,1,1,500000.00),(34,28,79,'2021-04-17 23:23:20',NULL,NULL,NULL,1,3,550000.00),(35,29,73,'2021-04-18 01:05:52',NULL,NULL,NULL,1,1,510000.00),(36,30,75,'2021-04-18 01:10:24',NULL,NULL,NULL,1,1,510000.00),(37,31,73,'2021-04-18 01:11:37',NULL,NULL,NULL,1,1,510000.00);
 /*!40000 ALTER TABLE `tbl_saleorder_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +475,7 @@ CREATE TABLE `tbl_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin người dùng';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Bảng dữ liệu chứa thông tin người dùng';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +484,7 @@ CREATE TABLE `tbl_users` (
 
 LOCK TABLES `tbl_users` WRITE;
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,0,'',NULL,NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com','2021-03-20 21:39:00','2021-04-06 06:32:44',NULL,NULL,1,'Steve Dương','Nhổn, Minh Khai, Từ Liêm, Hà Nội','0961010169',NULL),(9,'user','$2a$04$rLaJ9pKCUSpYQu5K95E8K.T7ZsXLvDeUAOLLkWVw3H9ph/pf90TCq','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169',NULL),(12,'duong-xuan-a1','$2a$04$1gVHkn5NUzKREdoP/m3huuCbVsqgCxkUrt7Gst.HyoicxXk.Ry35.','signinfb@gmail.com','2021-04-08 11:45:44',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL),(14,'duong-xuan-a','$2a$04$xLJmxXzd50WACP4y0EKlsug3TzGxQQKbyWTTJngP4z1ecohBX3owC',NULL,'2021-04-08 12:46:01',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL);
+INSERT INTO `tbl_users` VALUES (7,'guest','$2a$08$L.03fm/tpKoXvxlkpoqfdOUmUHu.Kdc8ucOJwRvyw2OKvR0u5rX3u','guest@abc.com',NULL,NULL,NULL,NULL,0,'',NULL,NULL,NULL),(8,'admin','$2a$04$LdTMpn6dYDsjDADvW1Ig7.pMUEWitlpN3frpzPvwq32yArFYURLU2','amdin@abc.com','2021-03-20 21:39:00','2021-04-06 06:32:44',NULL,NULL,1,'Steve Dương','Nhổn, Minh Khai, Từ Liêm, Hà Nội','0961010169',NULL),(9,'user','$2a$04$nlc5DJpFx5kk7af.BOhwwe8TyzxiBf5gcj0uXZ5b4Ad2RVh1nLBEy','xuandapa@gmail.com','2021-03-20 21:39:49',NULL,NULL,NULL,1,'Dương Xuân Đà','A12A Khu tập thể học viện Nguyễn Ái Quốc','0961010169',NULL),(12,'duong-xuan-a1','$2a$04$1gVHkn5NUzKREdoP/m3huuCbVsqgCxkUrt7Gst.HyoicxXk.Ry35.','signinfb@gmail.com','2021-04-08 11:45:44',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL),(14,'duong-xuan-a','$2a$04$xLJmxXzd50WACP4y0EKlsug3TzGxQQKbyWTTJngP4z1ecohBX3owC',NULL,'2021-04-08 12:46:01',NULL,NULL,NULL,1,'Dương Xuân Đà',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +524,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-18  0:57:09
+-- Dump completed on 2021-04-18 21:57:24

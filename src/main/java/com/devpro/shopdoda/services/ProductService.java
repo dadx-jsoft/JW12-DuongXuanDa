@@ -1,7 +1,6 @@
 package com.devpro.shopdoda.services;
 
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,10 +16,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.shopdoda.dto.search.ProductSearch;
-import com.devpro.shopdoda.entities.Category;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
-import com.devpro.shopdoda.entities.SaleorderProduct;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.taglibs.PaginationTaglib;
 import com.devpro.shopdoda.utils.Constants;
@@ -142,22 +139,16 @@ public class ProductService implements Constants {
 	}
 
 	public List<Product> getBestSellingProducts() {
-		List<Product> bestSellingProducts = new ArrayList<Product>();
-		String jpql = "select * from tbl_category tc where tc.parent_id is null and tc.status = true";
-//		String nativeSql = "Select sp.id,sp.title, Sum(cthd.quantity) as SL, sp.price "
-//				+ "From tbl_products sp, tbl_saleorder_products cthd "
-//				+ "Where sp.id=cthd.product_id "
-//				+ "Group by sp.id,sp.title,sp.price "
-//				+ "Order by Sum(cthd.quantity) DESC "
-//				+ "LIMIT 0, 8";
-		String nativeSql = "Select sp.id,sp.title, Sum(cthd.quantity) as quantity, sp.price "
-				+ "From tbl_products sp, tbl_saleorder_products cthd "
-				+ "Where sp.id=cthd.product_id "
-				+ "Group by sp.id,sp.title,sp.price "
-				+ "Order by Sum(cthd.quantity) DESC "
+		// http://diendan.congdongcviet.com/threads/t73773::lam-sao-de-lay-5-ten-san-pham-duoc-ban-nhieu-nhat.cpp
+		String nativeSql = "SELECT sp.id,sp.title, SUM(cthd.quantity) AS quantity, sp.price "
+				+ "FROM tbl_products sp, tbl_saleorder_products cthd "
+				+ "WHERE sp.id=cthd.product_id AND sp.status=true "
+				+ "GROUP BY sp.id,sp.title,sp.price "
+				+ "ORDER BY Sum(cthd.quantity) DESC "
 				+ "LIMIT 0, 8";
 		Query query = entityManager.createNativeQuery(nativeSql);
 		
+		// https://stackoverflow.com/questions/13700565/jpa-query-getresultlist-use-in-a-generic-way
 		List<Object[]> listPartialProductObject = query.getResultList();
 		
 		List<Integer> idProductList = new ArrayList<Integer>();
@@ -166,53 +157,13 @@ public class ProductService implements Constants {
 			idProductList.add((Integer) partialProductObject[0]) ;
 		}
 		
-		// ref: https://stackoverflow.com/questions/6277807/jpa-passing-list-to-in-clause-in-named-native-query
-		// https://stackoverflow.com/questions/13700565/jpa-query-getresultlist-use-in-a-generic-way
-		
-		String nativeQuery = "Select * from tbl_products where id in :ids";
-		Query q = entityManager.createNativeQuery(nativeQuery, Product.class);
+		// https://stackoverflow.com/questions/6277807/jpa-passing-list-to-in-clause-in-named-native-query
+		// https://stackoverflow.com/questions/396748/ordering-by-the-order-of-values-in-a-sql-in-clause
+		String nativeQueryGetProducts = "SELECT * FROM tbl_products WHERE id IN :ids ORDER BY FIELD(id, :ids)";
+		Query q = entityManager.createNativeQuery(nativeQueryGetProducts, Product.class);
 		q.setParameter("ids", idProductList);
 		
 		return q.getResultList();
 	}
 	
-	class PartialProduct {
-		private Integer id;
-		private String title;
-		private int quantity;
-		private BigDecimal price;
-
-		public Integer getId() {
-			return id;
-		}
-
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-		public String getTitle() {
-			return title;
-		}
-
-		public void setTitle(String title) {
-			this.title = title;
-		}
-
-		public int getQuantity() {
-			return quantity;
-		}
-
-		public void setQuantity(int quantity) {
-			this.quantity = quantity;
-		}
-
-		public BigDecimal getPrice() {
-			return price;
-		}
-
-		public void setPrice(BigDecimal price) {
-			this.price = price;
-		}
-
-	}
 }
