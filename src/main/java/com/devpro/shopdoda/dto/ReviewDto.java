@@ -2,7 +2,7 @@ package com.devpro.shopdoda.dto;
 
 public class ReviewDto {
 	private Integer userId;
-	private Integer productId;
+	private Integer productOrBlogId;
 	private String message;
 
 	public Integer getUserId() {
@@ -13,12 +13,12 @@ public class ReviewDto {
 		this.userId = userId;
 	}
 
-	public Integer getProductId() {
-		return productId;
+	public Integer getProductOrBlogId() {
+		return productOrBlogId;
 	}
 
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProductOrBlogId(Integer productOrBlogId) {
+		this.productOrBlogId = productOrBlogId;
 	}
 
 	public String getMessage() {

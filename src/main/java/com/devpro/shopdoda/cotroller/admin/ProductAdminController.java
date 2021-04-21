@@ -17,14 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
-import com.devpro.shopdoda.repositories.CategoriesRepo;
 import com.devpro.shopdoda.repositories.ProductRepo;
+import com.devpro.shopdoda.services.CategoriesService;
 import com.devpro.shopdoda.services.ProductService;
 
 @Controller
 public class ProductAdminController {
 	@Autowired
-	private CategoriesRepo categoriesRepo;
+	private CategoriesService categoriesService;
 
 	@Autowired
 	private ProductRepo productRepo;
@@ -43,7 +43,7 @@ public class ProductAdminController {
 		model.addAttribute("productList", productList);
 		model.addAttribute("productSearch", productSearch);
 
-//		model.addAttribute("categories", categoriesRepo.findAll());
+//		model.addAttribute("categories", categoriesService.getCategories());
 
 		return "back-end/products";
 	}
@@ -53,7 +53,7 @@ public class ProductAdminController {
 			throws Exception {
 
 		model.addAttribute("product", new Product());
-		model.addAttribute("categories", categoriesRepo.findAll());
+		model.addAttribute("categories", categoriesService.getCategories());
 
 		return "back-end/save_product";
 	}
@@ -73,7 +73,7 @@ public class ProductAdminController {
 			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 
 		model.addAttribute("product", productRepo.findById(productId).get());
-		model.addAttribute("categories", categoriesRepo.findAll());
+		model.addAttribute("categories", categoriesService.getCategories());
 
 		return "back-end/save_product";
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Review - Dashboard</title>
+<title>Blogs - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -53,63 +54,70 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Danh sách review sản phẩm</h6>
+							<h6 class="m-0 font-weight-bold text-primary">
+								<a href="${base}/admin/blogs">Danh sách blog</a>
+							</h6>
 
 						</div>
 						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/blogs/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
+								<table class="table table-bordered" width="100%"
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>Product</th>
-											<th>Full name</th>
-											<th>Message</th>
+											<th>Title</th>
+											<th>Avatar</th>
+											<th>Short Description</th>
+											<th>views</th>
+											<th>Type</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Product</th>
-											<th>Full name</th>
-											<th>Message</th>
+											<th>Title</th>
+											<th>Avatar</th>
+											<th>Short Description</th>
+											<th>views</th>
+											<th>Type</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
 									<tbody>
-										<c:forEach items="${reviews}" var="review">
+										<c:forEach items="${blogs}" var="blog">
 											<tr>
-												<td>${review.product.title}</td>
-												<td>${review.user.fullName}</td>
-												<td>${review.message}</td>
+												<td>${blog.title}</td>
+												<td><img src="${base}/upload/${blog.avatar}" width="80px"></td>
+												<td>${blog.shortDescription}</td>
+												<td>${blog.views}</td>
+												<td>${blog.blogType.name}</td>
 												<td>
-												<c:if test="${review.status == false }">
-													<button id="unapprovedReview_${review.id}" onclick="approveReview(${review.id})"
-														class="btn btn-secondary a-btn-slide-text">Approve?
-															<i class="fas fa-check-square"></i>
-													</button> 
-												</c:if>
-												<c:if test="${review.status == true }">
-													<button
-														class="btn btn-success a-btn-slide-text">Approved
-															<i class="fas fa-check-square"></i>
-													</button> 
-												</c:if>
-												
-												<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
-														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-														<i class="fas fa-trash-alt"></i>
-												</a></td>
+												<a href="${base}/admin/blogs/edit/${blog.id}"
+													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+														<i class="fas fa-edit"></i>
+												</a> 
+												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+													<i class="fas fa-trash-alt"></i>
+												</a>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<!-- Paging -->
+								<c:set var="req" value="${pageContext.request}" />
+								<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />
+								<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}" />
+								<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}" />
+								<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params ? '?'+=params+='&':'' }" />
+								<tag:paginate offset="${productSearch.offset }"
+									count="${productSearch.count }" uri="${pageUrl}" />
+								<!-- End Paging -->
 							</div>
 						</div>
 					</div>
@@ -144,29 +152,7 @@
 
 	<!-- Page level custom scripts -->
 	<script src="${base}/js/demo/datatables-demo.js"></script>
-	
-	<script>
-		function approveReview(reviewId){
-			// javascript object.
-			var data = {};
-			data["id"] = reviewId;
-			var unapprovedReviewVar = "#unapprovedReview_" + reviewId;
-			$.ajax({
-				url: "/admin/reviews/approve",
-				type: "post",
-				contentType: "application/json",
-				data: JSON.stringify(data),
-				dataType: "json",
-				success: function(jsonResult) {
-					$(unapprovedReviewVar).removeClass("btn-secondary");
-					$(unapprovedReviewVar).addClass("btn-success");
-					$(unapprovedReviewVar).html('Approved<i class="fas fa-check-square"></i>');
-				},
-				error: function(jqXhr, textStatus, errorMessage) { // error callback 
-				}
-			});
-		}
-	</script>
+
 </body>
 
 </html>

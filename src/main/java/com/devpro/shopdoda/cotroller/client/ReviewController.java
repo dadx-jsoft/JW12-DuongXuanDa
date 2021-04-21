@@ -34,17 +34,17 @@ public class ReviewController {
 	@Autowired
 	private ProductRepo productRepo;
 	// C3: Dùng Ajax
-	@RequestMapping(value = { "/comments/add" }, method = RequestMethod.POST)
-	public ResponseEntity<AjaxResponse> addComment(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response, @RequestBody ReviewDto commentDto) {
+	@RequestMapping(value = { "/reviews/add" }, method = RequestMethod.POST)
+	public ResponseEntity<AjaxResponse> addReview(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response, @RequestBody ReviewDto reviewDto) {
 		Review review = new Review();
-		int userId = commentDto.getUserId();
+		int userId = reviewDto.getUserId();
 		User u = userService.loadUserById(userId);
 		review.setUser(u);
-		int productId = commentDto.getProductId();
+		int productId = reviewDto.getProductOrBlogId();
 		Product p = productRepo.findById(productId).get();
 		review.setProduct(p);
-		review.setMessage(commentDto.getMessage());
+		review.setMessage(reviewDto.getMessage());
 		review.setStatus(false); // chờ admin duyệt
 		review.setCreatedDate(new Date());
 		review.setUpdatedDate(review.getCreatedDate());

@@ -86,7 +86,6 @@ public class ProductService implements Constants {
 	public void saveOrUpdate(Product product, MultipartFile productAvatar, MultipartFile[] listProductImageFile)
 			throws Exception {
 		try {
-
 			// TH chỉnh sửa
 			if (product.getId() != null && product.getId() > 0) {
 				Product productInDB = productRepo.findById(product.getId()).get();

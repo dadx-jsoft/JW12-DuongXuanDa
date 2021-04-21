@@ -56,7 +56,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID").permitAll();
 
-		// configure remember me, time remain is 1296000s.
+		// configure remember me, time remain is 1296000s = 15 days.
 		http.rememberMe().key("uniqueAndSecretOfMe").tokenValiditySeconds(1296000);
 	}
 

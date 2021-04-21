@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "tbl_roles")
-public class Role extends BaseEntity implements GrantedAuthority{
+public class Role extends BaseEntity implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,6 +38,7 @@ public class Role extends BaseEntity implements GrantedAuthority{
 
 	public Role() {
 	}
+
 	public Role(String description, String name, List<User> users) {
 		super();
 		this.description = description;
@@ -73,7 +74,5 @@ public class Role extends BaseEntity implements GrantedAuthority{
 	public String getAuthority() {
 		return this.name;
 	}
-
-	
 
 }

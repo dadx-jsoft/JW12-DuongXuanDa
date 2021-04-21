@@ -91,6 +91,9 @@
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/reviews">
 			<i class="fas fa-fw fa-table"></i> <span>Review sản phẩm</span>
 	</a></li>
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/blogs">
+			<i class="fas fa-fw fa-table"></i> <span>Blog</span>
+	</a></li>
 	<!-- Nav Item - Add product -->
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/categories">
 			<i class="fas fa-fw fa-table"></i> <span>Danh mục</span>

@@ -191,7 +191,7 @@ if (principal instanceof UserDetails) {
 												</div>
 											</div>
 
-											<button onclick="saveComment(<%=userId %>,${pro_detail.id})"
+											<button onclick="saveReview(<%=userId %>,${pro_detail.id})"
 												class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
 												Submit</button>
 										<!-- </form> -->
@@ -330,17 +330,17 @@ if (principal instanceof UserDetails) {
 				});
 
 		/*---------------------------------------------*/
-		function saveComment(userId, productId) {
+		function saveReview(userId, productId) {
 			// javascript object.
 			var data = {};
 			data["userId"] = userId;
-			data["productId"] = productId;
+			data["productOrBlogId"] = productId;
 			data["message"] = $('#review').val();
 
 			// clear textarea
 			$('#review').val('');
 			$.ajax({
-				url : "/comments/add",
+				url : "/blog/comments/add",
 				type : "post",
 				contentType : "application/json",
 				data : JSON.stringify(data),

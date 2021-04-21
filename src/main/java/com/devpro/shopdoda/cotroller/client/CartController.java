@@ -2,9 +2,7 @@ package com.devpro.shopdoda.cotroller.client;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -134,8 +132,9 @@ public class CartController extends BaseController {
 		this.resetCart(request);
 
 		mailService.sendEmail(customerEmail);
-
-		return "redirect:/products";
+		
+		model.addAttribute("orderSuccess", "Chúc mừng bạn đã đặt hàng thành công, vui lòng kiểm tra email!");
+		return "front-end/order_success";
 	}
 
 	@RequestMapping(value = { "/cart/view" }, method = RequestMethod.GET)

@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.devpro.shopdoda.entities.BaseEntity;
-import com.devpro.shopdoda.entities.Review;
 
 @Entity
 @Table(name = "tbl_blog")
@@ -41,6 +40,9 @@ public class Blog extends BaseEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "blog", fetch = FetchType.LAZY)
 	private List<BlogComment> comments = new ArrayList<BlogComment>();
+
+	@Column(name = "seo")
+	private String seo;
 
 	public String getTitle() {
 		return title;
@@ -96,6 +98,14 @@ public class Blog extends BaseEntity {
 
 	public void setComments(List<BlogComment> comments) {
 		this.comments = comments;
+	}
+
+	public String getSeo() {
+		return seo;
+	}
+
+	public void setSeo(String seo) {
+		this.seo = seo;
 	}
 
 }
