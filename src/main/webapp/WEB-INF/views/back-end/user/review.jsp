@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!-- Paging -->
+<%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +66,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
+								<table class="table table-bordered" width="100%"
 									cellspacing="0">
 									<thead>
 										<tr>
@@ -87,16 +90,16 @@
 												<td>${review.product.title}</td>
 												<td>${review.user.fullName}</td>
 												<td>${review.message}</td>
-												<td>
+												<td class="w-25">
 												<c:if test="${review.status == false }">
 													<button id="unapprovedReview_${review.id}" onclick="approveReview(${review.id})"
-														class="btn btn-secondary a-btn-slide-text">Approve?
-															<i class="fas fa-check-square"></i>
+														class="btn btn-secondary a-btn-slide-text">Appr
+															<i class="fas fa-window-close"></i>
 													</button> 
 												</c:if>
 												<c:if test="${review.status == true }">
 													<button
-														class="btn btn-success a-btn-slide-text">Approved
+														class="btn btn-success a-btn-slide-text">Appr
 															<i class="fas fa-check-square"></i>
 													</button> 
 												</c:if>
@@ -110,6 +113,15 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<!-- Paging -->
+								<c:set var="req" value="${pageContext.request}" />
+								<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />
+								<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}" />
+								<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}" />
+								<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params ? '?'+=params+='&':'' }" />
+								<tag:paginate offset="${reviewSearch.offset }"
+									count="${reviewSearch.count }" uri="${pageUrl}" />
+								<!-- End Paging -->
 							</div>
 						</div>
 					</div>

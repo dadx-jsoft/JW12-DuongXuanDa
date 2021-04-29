@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,7 @@ import com.devpro.shopdoda.dto.cart.CartItem;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.Saleorder;
 import com.devpro.shopdoda.entities.SaleorderProduct;
+import com.devpro.shopdoda.entities.User;
 import com.devpro.shopdoda.repositories.ProductRepo;
 import com.devpro.shopdoda.repositories.SaleorderRepo;
 import com.devpro.shopdoda.services.MailService;
@@ -53,7 +56,7 @@ public class CartController extends BaseController {
 
 		return total;
 	}
-	
+
 	private Double getTotalPrice(HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
 
@@ -66,7 +69,7 @@ public class CartController extends BaseController {
 
 		Double totalPrice = 0d;
 		for (CartItem item : cartItems) {
-			totalPrice+= item.getPriceUnit().doubleValue() * item.getQuantity();
+			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 //			totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
 		}
 
@@ -92,10 +95,23 @@ public class CartController extends BaseController {
 			errorMessage = "Không có sản phẩm nào trong giỏ hàng";
 		}
 
-		String customerName = request.getParameter("customerName");
-		String customerAddress = request.getParameter("customerAddress");
-		String customerPhone = request.getParameter("customerPhone");
-		String customerEmail = request.getParameter("customerEmail");
+		String customerName = null;
+		String customerAddress = null;
+		String customerPhone = null;
+		String customerEmail = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) { // user đã đăng nhập -> lưu thông tin user vào saleorder
+			User u = (User) principal;
+			customerName = u.getFullName();
+			customerAddress = u.getAddress();
+			customerPhone = u.getPhone();
+			customerEmail = u.getEmail();
+		} else {
+			customerName = request.getParameter("customerName");
+			customerAddress = request.getParameter("customerAddress");
+			customerPhone = request.getParameter("customerPhone");
+			customerEmail = request.getParameter("customerEmail");
+		}
 
 		if (errorMessage != null) {
 			model.addAttribute("errorMessage", errorMessage);
@@ -131,8 +147,12 @@ public class CartController extends BaseController {
 
 		this.resetCart(request);
 
-		mailService.sendEmail(customerEmail);
-		
+		try {
+			mailService.sendMailAfterOrderSuccess(customerEmail);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		model.addAttribute("orderSuccess", "Chúc mừng bạn đã đặt hàng thành công, vui lòng kiểm tra email!");
 		return "front-end/order_success";
 	}
@@ -168,7 +188,7 @@ public class CartController extends BaseController {
 			cart = new Cart();
 			httpSession.setAttribute("cart", cart);
 		}
-		
+
 		List<CartItem> cartItems = cart.getCartItems();
 		boolean isExists = false;
 		Double totalPrice = 0d;
@@ -187,7 +207,7 @@ public class CartController extends BaseController {
 			cartItem.setPriceUnit(productInDb.getPrice());
 			cartItem.setProductSeo(productInDb.getSeo());
 			cart.getCartItems().add(cartItem);
-			
+
 			totalPrice += cartItem.getPriceUnit().doubleValue() * cartItem.getQuantity();
 		}
 
@@ -211,11 +231,11 @@ public class CartController extends BaseController {
 			}
 			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 		}
-		
+
 		httpSession.setAttribute("totalItems", getTotalItems(request));
 		httpSession.setAttribute("totalPrice", totalPrice);
-		String[] data = {String.valueOf(getTotalItems(request)), totalPrice.toString()};
+		String[] data = { String.valueOf(getTotalItems(request)), totalPrice.toString() };
 		return ResponseEntity.ok(new AjaxResponse(200, data));
 	}
-	
+
 }

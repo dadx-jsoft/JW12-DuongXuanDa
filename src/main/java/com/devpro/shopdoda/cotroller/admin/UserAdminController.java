@@ -1,12 +1,15 @@
 package com.devpro.shopdoda.cotroller.admin;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,6 +45,22 @@ public class UserAdminController {
 
 		return "back-end/user/login";
 	}
+	
+	// login thành công
+	// https://stackoverflow.com/questions/45709333/page-redirecting-depending-on-role-using-spring-security-and-thymeleaf-spring
+	@RequestMapping("/success")
+	public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult)
+			throws IOException, ServletException {
+		
+		User u = (User) authResult.getPrincipal();
+		String role = u.getRoles().get(0).getName();
+		
+		if (role.contains("ADMIN")) {
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin"));
+		} else {
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/home"));
+		}
+	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String register(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -53,10 +72,10 @@ public class UserAdminController {
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String addAccount(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-		
+
 		String fullName = request.getParameter("fullName");
 		String email = request.getParameter("email");
-		if(userRepo.findUserByEmail(email) != null) {
+		if (userRepo.findUserByEmail(email) != null) {
 			model.addAttribute("error", "Email đã tồn tại!");
 			return "back-end/user/register";
 		}

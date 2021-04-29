@@ -33,6 +33,7 @@ public class ProductService implements Constants {
 	EntityManager entityManager;
 
 	// tim kiem product
+	// https://stackoverflow.com/questions/871578/how-to-compare-strings-in-sql-ignoring-case/871583
 	public List<Product> search(ProductSearch productSearch) {
 		String jpql = "SELECT p FROM Product p where 1=1";
 
@@ -46,12 +47,13 @@ public class ProductService implements Constants {
 			jpql = jpql + " AND p.categories.seo = '" + productSearch.getCategorySeo() + "'";
 		}
 		if (!StringUtils.isEmpty(productSearch.getSearchText())) {
-			String st = "'%" + productSearch.getSearchText() + "%'";
-			jpql = jpql + " AND (p.title LIKE " + st + " OR p.shortDescription LIKE " + st + " ) ";
+			String st = "'%" + productSearch.getSearchText().toLowerCase() + "%'";
+			jpql = jpql + " AND ( LOWER(p.title) LIKE " + st 
+						+ " OR LOWER(p.shortDescription) LIKE " + st 
+						+ " OR LOWER(p.detailDescription) LIKE " + st +" ) ";
 		}
 		jpql = jpql + " ORDER BY p.createdDate DESC";
-//		System.out.println(jpql);
-
+		
 		Query query = entityManager.createQuery(jpql, Product.class);
 
 		// paging
@@ -60,6 +62,7 @@ public class ProductService implements Constants {
 
 			query.setFirstResult(productSearch.getOffset());
 			query.setMaxResults(PaginationTaglib.MAX);
+
 		}
 		return query.getResultList();
 	}
@@ -141,28 +144,27 @@ public class ProductService implements Constants {
 		// http://diendan.congdongcviet.com/threads/t73773::lam-sao-de-lay-5-ten-san-pham-duoc-ban-nhieu-nhat.cpp
 		String nativeSql = "SELECT sp.id,sp.title, SUM(cthd.quantity) AS quantity, sp.price "
 				+ "FROM tbl_products sp, tbl_saleorder_products cthd "
-				+ "WHERE sp.id=cthd.product_id AND sp.status=true "
+				+ "WHERE sp.id=cthd.product_id AND sp.status=true " 
 				+ "GROUP BY sp.id,sp.title,sp.price "
-				+ "ORDER BY Sum(cthd.quantity) DESC "
-				+ "LIMIT 0, 8";
+				+ "ORDER BY Sum(cthd.quantity) DESC " + "LIMIT 0, 8";
 		Query query = entityManager.createNativeQuery(nativeSql);
-		
+
 		// https://stackoverflow.com/questions/13700565/jpa-query-getresultlist-use-in-a-generic-way
 		List<Object[]> listPartialProductObject = query.getResultList();
-		
+
 		List<Integer> idProductList = new ArrayList<Integer>();
-		
+
 		for (Object[] partialProductObject : listPartialProductObject) {
-			idProductList.add((Integer) partialProductObject[0]) ;
+			idProductList.add((Integer) partialProductObject[0]);
 		}
-		
+
 		// https://stackoverflow.com/questions/6277807/jpa-passing-list-to-in-clause-in-named-native-query
 		// https://stackoverflow.com/questions/396748/ordering-by-the-order-of-values-in-a-sql-in-clause
 		String nativeQueryGetProducts = "SELECT * FROM tbl_products WHERE id IN :ids ORDER BY FIELD(id, :ids)";
 		Query q = entityManager.createNativeQuery(nativeQueryGetProducts, Product.class);
 		q.setParameter("ids", idProductList);
-		
+
 		return q.getResultList();
 	}
-	
+
 }

@@ -23,7 +23,7 @@
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
 		style="background-image: url('images/bg-01.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">Contact</h2>
+		<h2 class="cl0 txt-center">Liên hệ</h2>
 	</section>
 
 
@@ -87,28 +87,28 @@
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-								type="text" id="email" placeholder="Your Email Address">
+							<input class="cl2 plh3 size-116 p-l-62 p-r-30"
+								type="text" id="email" placeholder="Địa chỉ email">
 
 							<img class="how-pos4 pointer-none"
 								src="${base}/images/icons/icon-email.png" alt="ICON">
 						</div>
 						
 						<div class="bor8 m-b-20 how-pos4-parent">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-								type="text" id="fName" placeholder="Your Full Name">
+							<input class="cl2 plh3 size-116 p-l-62 p-r-30"
+								type="text" id="fName" placeholder="Họ tên">
 							<img class="how-pos4 pointer-none"
 								src="${base}/images/icons/icon-heart-01.png" alt="ICON">
 						</div>
 
 						<div class="bor8 m-b-30">
-							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
-								id="msg" placeholder="How Can We Help?"></textarea>
+							<textarea class="cl2 plh3 size-120 p-lr-28 p-tb-25"
+								id="msg" placeholder="Chúng tôi có thể giúp gì cho bạn?"></textarea>
 						</div>
 
 						<button type="button" onclick="SaveContact()"
-							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							Submit</button>
+							class="flex-c-m cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+							Gửi</button>
 					<!-- </form> -->
 				</div>
 				<div
@@ -119,9 +119,9 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2"> Address </span>
+							<span class="mtext-110 cl2"> Địa chỉ </span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội</p>
+							<p class="cl6 size-213 p-t-18">251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội</p>
 						</div>
 					</div>
 
@@ -131,9 +131,9 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2"> Lets Talk </span>
+							<span class="mtext-110 cl2"> Hotline </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">+84 961 010 169</p>
+							<p class="cl1 size-213 p-t-18">+84 961 010 169</p>
 						</div>
 					</div>
 
@@ -143,9 +143,9 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2"> Sale Support </span>
+							<span class="mtext-110 cl2"> Email hỗ trợ </span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">duongnc0212@gmail.com
+							<p class="cl1 size-213 p-t-18">duongnc0212@gmail.com
 							</p>
 						</div>
 					</div>

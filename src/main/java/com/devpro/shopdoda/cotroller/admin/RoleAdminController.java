@@ -28,7 +28,7 @@ public class RoleAdminController {
 
 		model.addAttribute("roles", roleRepo.findAll());
 		
-		return "back-end/roles";
+		return "back-end/user/roles";
 	}
 	
 	@RequestMapping(value = { "/admin/roles/add" }, method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class RoleAdminController {
 		
 		model.addAttribute("roleEdit", new Role());
 		
-		return "back-end/save_role";
+		return "back-end/user/save_role";
 	}
 	@RequestMapping(value = { "/admin/roles/edit/{id}" }, method = RequestMethod.GET)
 	public String editRole(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,

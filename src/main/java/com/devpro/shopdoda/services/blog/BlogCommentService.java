@@ -7,10 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import com.devpro.shopdoda.entities.Review;
+import com.devpro.shopdoda.dto.search.ReviewOrCommentSearch;
 import com.devpro.shopdoda.entities.blog.Blog;
 import com.devpro.shopdoda.entities.blog.BlogComment;
+import com.devpro.shopdoda.taglibs.PaginationTaglib;
 
 @Service
 public class BlogCommentService {
@@ -32,5 +34,26 @@ public class BlogCommentService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	public List<BlogComment> search(ReviewOrCommentSearch commentSearch) {
+		String jpql = "SELECT p FROM BlogComment p where 1=1 ";
+
+		if (!StringUtils.isEmpty(commentSearch.getSearchText())) {
+			String st = "'%" + commentSearch.getSearchText().toLowerCase() + "%'";
+			jpql = jpql + " AND ( LOWER(p.comment) LIKE " + st + " ) ";
+		}
+		jpql = jpql + " ORDER BY p.createdDate DESC";
+
+		Query query = entityManager.createQuery(jpql, BlogComment.class);
+
+		// paging
+		if (commentSearch.getOffset() != null) {
+			commentSearch.setCount(query.getResultList().size());
+
+			query.setFirstResult(commentSearch.getOffset());
+			query.setMaxResults(PaginationTaglib.MAX);
+
+		}
+		return query.getResultList();
 	}
 }

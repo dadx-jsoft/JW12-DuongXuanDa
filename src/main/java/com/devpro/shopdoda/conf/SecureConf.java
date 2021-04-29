@@ -48,7 +48,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 
 				.and()
 
-				.formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/home", true)
+				.formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/success", true)
 				.failureUrl("/login?login_error=true").permitAll()
 
 				.and()

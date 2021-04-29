@@ -30,11 +30,4 @@ public class AdminController {
 		return "back-end/charts";
 	}
 
-	@RequestMapping(value = { "admin/blank" }, method = RequestMethod.GET)
-	public String blank(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/blank";
-	}
-
 }

@@ -1,10 +1,10 @@
-<!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- Paging -->
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Blogs - Dashboard</title>
+<title>Comment - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -47,7 +47,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<jsp:include page="${base}/WEB-INF/views/back-end/common/topbar_blog.jsp"></jsp:include>
+				<jsp:include page="${base}/WEB-INF/views/back-end/common/topbar.jsp"></jsp:include>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -56,13 +56,11 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">
-								<a href="${base}/admin/blogs">Danh sách blog</a>
-							</h6>
+							<h6 class="m-0 font-weight-bold text-primary">Danh sách comment blog</h6>
 
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/blogs/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -72,45 +70,43 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>#</th>
-											<th>Title</th>
-											<th>Avatar</th>
-											<th>Short Description</th>
-											<th>views</th>
-											<th>Type</th>
+											<th>Blog title</th>
+											<th>Full name</th>
+											<th>Message</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>#</th>
-											<th>Title</th>
-											<th>Avatar</th>
-											<th>Short Description</th>
-											<th>views</th>
-											<th>Type</th>
+											<th>Blog title</th>
+											<th>Full name</th>
+											<th>Message</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
 									<tbody>
-										<c:forEach items="${blogs}" var="blog" varStatus="loop">
+										<c:forEach items="${comments}" var="comment">
 											<tr>
-												<%-- <td>${loop.index+1}</td> --%>
-												<td>${blog.id}</td>
-												<td>${blog.title}</td>
-												<td><img src="${base}/upload/${blog.avatar}" width="80px"></td>
-												<td>${blog.shortDescription}</td>
-												<td>${blog.views}</td>
-												<td>${blog.blogType.name}</td>
-												<td>
-												<a href="${base}/admin/blogs/edit/${blog.id}"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
-														<i class="fas fa-edit"></i>
-												</a> 
-												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
-													<i class="fas fa-trash-alt"></i>
-												</a>
-												</td>
+												<td>${comment.blog.title}</td>
+												<td>${comment.user.fullName}</td>
+												<td>${comment.comment}</td>
+												<td class="w-25">
+												<c:if test="${comment.status == false }">
+													<button id="unapprovedReview_${comment.id}" onclick="approveComment(${comment.id})"
+														class="btn btn-secondary a-btn-slide-text">Appr
+															<i class="fas fa-window-close"></i>
+													</button> 
+												</c:if>
+												<c:if test="${comment.status == true }">
+													<button
+														class="btn btn-success a-btn-slide-text">Appr
+															<i class="fas fa-check-square"></i>
+													</button> 
+												</c:if>
+												
+												<a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+														<i class="fas fa-trash-alt"></i>
+												</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -121,8 +117,8 @@
 								<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}" />
 								<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}" />
 								<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params ? '?'+=params+='&':'' }" />
-								<tag:paginate offset="${blogSearch.offset }"
-									count="${blogSearch.count }" uri="${pageUrl}" />
+								<tag:paginate offset="${commentSearch.offset }"
+									count="${commentSearch.count }" uri="${pageUrl}" />
 								<!-- End Paging -->
 							</div>
 						</div>
@@ -158,7 +154,29 @@
 
 	<!-- Page level custom scripts -->
 	<script src="${base}/js/demo/datatables-demo.js"></script>
-
+	
+	<script>
+		function approveComment(commentId){
+			// javascript object.
+			var data = {};
+			data["id"] = commentId;
+			var unapprovedReviewVar = "#unapprovedReview_" + commentId;
+			$.ajax({
+				url: "/admin/comments/approve",
+				type: "post",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(jsonResult) {
+					$(unapprovedReviewVar).removeClass("btn-secondary");
+					$(unapprovedReviewVar).addClass("btn-success");
+					$(unapprovedReviewVar).html('Approved<i class="fas fa-check-square"></i>');
+				},
+				error: function(jqXhr, textStatus, errorMessage) { // error callback 
+				}
+			});
+		}
+	</script>
 </body>
 
 </html>

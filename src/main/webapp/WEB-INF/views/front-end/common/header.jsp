@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="com.devpro.shopdoda.entities.User"%>
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
@@ -16,16 +18,16 @@ if (principal instanceof UserDetails) {
 		<!-- Topbar -->
 		<div class="top-bar">
 			<div class="content-topbar flex-sb-m h-full container">
-				<div class="left-top-bar">Free shipping for all order</div>
+				<div class="left-top-bar">Miễn phí ship</div>
 
 				<div class="right-top-bar flex-w h-full">
 					<%
 						if(username!=null){
 					%>
 						<a href="" class="flex-c-m trans-04 p-lr-25"> <%= username %> </a>
-						<a href="${base}/logout" class="flex-c-m trans-04 p-lr-25"> Logout </a>
+						<a href="${base}/logout" class="flex-c-m trans-04 p-lr-25"> Đăng xuất </a>
 					<% } else{ %>
-						<a href="${base}/login" class="flex-c-m trans-04 p-lr-25"> Login </a>
+						<a href="${base}/login" class="flex-c-m trans-04 p-lr-25"> Đăng nhập </a>
 					<% } %>
 					<!-- <a href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> 
 					<a href="#" class="flex-c-m trans-04 p-lr-25"> USD </a> -->
@@ -44,18 +46,18 @@ if (principal instanceof UserDetails) {
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
 					<ul class="main-menu">
-						<li><a href="/">Home</a></li>
+						<li><a href="/">Trang chủ</a></li>
 
 						<li><a href="${base}/products">Shop</a></li>
 
 						<%-- <li class="label1" data-label1="hot"><a
 							href="${base}/shopping-cart">Features</a></li> --%>
 
-						<li><a href="${base}/blog">Blog</a></li>
+						<li><a href="${base}/blog">Tin tức</a></li>
 
 						<li><a href="${base}/about">About</a></li>
 
-						<li><a href="${base}/contact">Contact</a></li>
+						<li><a href="${base}/contact">Liên hệ</a></li>
 					</ul>
 				</div>
 
@@ -118,10 +120,9 @@ if (principal instanceof UserDetails) {
 
 			<li>
 				<div class="right-top-bar flex-w h-full">
-					<a href="#" class="flex-c-m p-lr-10 trans-04"> Help & FAQs </a> <a
-						href="#" class="flex-c-m p-lr-10 trans-04"> My Account </a> <a
-						href="#" class="flex-c-m p-lr-10 trans-04"> EN </a> <a href="#"
-						class="flex-c-m p-lr-10 trans-04"> USD </a>
+					 <a	href="#" class="flex-c-m p-lr-10 trans-04"> My Account </a> 
+					 <a href="#" class="flex-c-m p-lr-10 trans-04"> EN </a> 
+					 <a href="#" class="flex-c-m p-lr-10 trans-04"> USD </a>
 				</div>
 			</li>
 		</ul>

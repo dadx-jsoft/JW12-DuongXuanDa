@@ -31,8 +31,8 @@
 					</ul>
 					<form class="form-inline my-2 my-lg-0" action="${base}/product/search-all">
 						<input class="form-control mr-sm-2" type="search"
-							placeholder="Search" aria-label="Search" name="searchText">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+							placeholder="Nhập từ khóa" aria-label="Search" name="searchText">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm</button>
 					</form>
 				</div>
 			</nav>
@@ -46,8 +46,8 @@
 								<div class="block2-pic hov-img0">
 									<img src="${base}/upload/${product.avatar}" alt="IMG-PRODUCT">
 									<button
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" onclick="showModal('product_${product.id}')">
-										Quick View </button>
+										class="block2-btn flex-c-m cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" onclick="showModal('product_${product.id}')">
+										Xem nhanh </button>
 									<script>
 									function showModal(productIdModal){
 								        document.getElementById(productIdModal).classList.add("show-modal1");
@@ -61,9 +61,9 @@
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
 										<a href="${base}/product-detail/${product.seo}"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											class="cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${product.title} </a> 
-											<span class="stext-105 cl3 text-danger font-weight-bold">
+											<span class="cl3 text-danger font-weight-bold">
 											<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${product.price}" />
 											</span>
 									</div>
@@ -139,7 +139,7 @@
 													<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${product.price}" /> 
 												</span>
 					
-												<p class="stext-102 cl3 p-t-23">
+												<p class="cl3 p-t-23">
 													${product.shortDescription }
 												</p>
 												
@@ -175,8 +175,8 @@
 															</div>
 					
 															<button onclick="addToCart(${product.id}, 1)"
-																	class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-															Add to cart
+																	class="flex-c-m cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+															Thêm vào giỏ
 															</button>
 														</div>
 													</div>	

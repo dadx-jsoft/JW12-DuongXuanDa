@@ -31,11 +31,11 @@ if (principal instanceof UserDetails) {
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="${base}/" class="stext-109 cl8 hov-cl1 trans-04"> Home
+			<a href="${base}/" class="cl8 hov-cl1 trans-04"> Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a> <a href="${base}/category/${pro_detail.categories.seo}" class="stext-109 cl8 hov-cl1 trans-04">
+			</a> <a href="${base}/category/${pro_detail.categories.seo}" class="cl8 hov-cl1 trans-04">
 				${pro_detail.categories.name} <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a> <span class="stext-109 cl4"> ${pro_detail.title} </span>
+			</a> <span class="cl4"> ${pro_detail.title} </span>
 		</div>
 	</div>
 
@@ -89,7 +89,7 @@ if (principal instanceof UserDetails) {
 						<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${pro_detail.price}" /> 
 						</span>
 
-						<p class="stext-102 cl3 p-t-23">${pro_detail.shortDescription}</p>
+						<p class="cl3 p-t-23">${pro_detail.shortDescription}</p>
 
 						<!--  -->
 						<div class="p-t-33">
@@ -123,8 +123,8 @@ if (principal instanceof UserDetails) {
 									</div>
 
 									<button onclick="addToCart(${pro_detail.id}, 1)"
-										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-										Add to cart</button>
+										class="flex-c-m cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+										Thêm vào giỏ</button>
 								</div>
 							</div>
 						</div>
@@ -139,11 +139,11 @@ if (principal instanceof UserDetails) {
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item p-b-10"><a class="nav-link active"
-							data-toggle="tab" href="#description" role="tab">Description</a>
+							data-toggle="tab" href="#description" role="tab">Mô tả</a>
 						</li>
 
 						<li class="nav-item p-b-10"><a class="nav-link"
-							data-toggle="tab" href="#reviews" role="tab">Reviews</a></li>
+							data-toggle="tab" href="#reviews" role="tab">Đánh giá</a></li>
 					</ul>
 
 					<!-- Tab panes -->
@@ -152,7 +152,7 @@ if (principal instanceof UserDetails) {
 						<div class="tab-pane fade show active" id="description"
 							role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">
-								<p class="stext-102 cl6">${pro_detail.detailDescription}</p>
+								<p class="cl6">${pro_detail.detailDescription}</p>
 							</div>
 						</div>
 
@@ -169,31 +169,30 @@ if (principal instanceof UserDetails) {
 
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> ${comment.user.fullName} </span> 
+													<span class="cl2 p-r-20"> ${comment.user.fullName} </span> 
 												</div>
 
-												<p class="stext-102 cl6">${comment.message}</p>
+												<p class="cl6">${comment.message}</p>
+												<i><fmt:formatDate value="${comment.createdDate}" pattern="HH:mm dd-MM-yyyy" /></i>
 											</div>
 										</div>
 										</c:forEach>
 										
 										<!-- Add review -->
 										<!-- <form class="w-full"> -->
-											<h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
-
+											<h5 class="mtext-108 cl2 p-b-7">Đánh giá</h5>
+											<i>Chú ý: Vui lòng đăng nhập *</i>
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Your
-														review</label>
 													<textarea
-														class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
+														class="size-110 bor8 cl2 p-lr-20 p-tb-10"
 														id="review" name="review"></textarea>
 												</div>
 											</div>
 
 											<button onclick="saveReview(<%=userId %>,${pro_detail.id})"
-												class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-												Submit</button>
+												class="flex-c-m cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+												Đăng</button>
 										<!-- </form> -->
 									</div>
 								</div>
@@ -205,8 +204,8 @@ if (principal instanceof UserDetails) {
 		</div>
 
 		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<span class="stext-107 cl6 p-lr-25"> Category </span> <span
-				class="stext-107 cl6 p-lr-25"> ${pro_detail.categories.name } </span>
+			<span class="cl6 p-lr-25"> Loại: </span> <span
+				class="cl6 p-lr-25"> ${pro_detail.categories.name } </span>
 		</div>
 	</section>
 
@@ -216,7 +215,7 @@ if (principal instanceof UserDetails) {
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 			<div class="p-b-45">
-				<h3 class="ltext-106 cl5 txt-center">Related Products</h3>
+				<h3 class="cl5 txt-center">Sản phẩm cùng danh mục</h3>
 			</div>
 
 			<!-- Slide2 -->
@@ -233,9 +232,9 @@ if (principal instanceof UserDetails) {
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="${base}/product-detail/${relatedProduct.seo}"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+										class="cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${relatedProduct.title} </a> 
-										<span class="stext-105 cl3 text-danger font-weight-bold">
+										<span class="cl3 text-danger font-weight-bold">
 										<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${relatedProduct.price}" /> 
 										</span>
 								</div>
@@ -340,7 +339,7 @@ if (principal instanceof UserDetails) {
 			// clear textarea
 			$('#review').val('');
 			$.ajax({
-				url : "/blog/comments/add",
+				url : "/reviews/add",
 				type : "post",
 				contentType : "application/json",
 				data : JSON.stringify(data),

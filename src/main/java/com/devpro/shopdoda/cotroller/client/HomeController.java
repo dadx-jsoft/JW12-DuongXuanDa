@@ -16,7 +16,7 @@ import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.services.ProductService;
 
 @Controller
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
 	@Autowired
 	private ProductService productService;
@@ -40,16 +40,16 @@ public class HomeController extends BaseController{
 
 //		model.addAttribute("categories", categoriesRepo.findAll());
 		model.addAttribute("menu", buildMenu());
-		
+
 		ProductSearch productSearch = new ProductSearch();
 		productSearch.buildPaging(request);
-		
+
 		List<Product> products = productService.search(productSearch);
-		
+
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
 		model.addAttribute("bestSellingProducts", productService.getBestSellingProducts());
-		
+
 		return "front-end/index";
 	}
 

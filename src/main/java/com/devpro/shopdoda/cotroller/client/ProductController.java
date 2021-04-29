@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.ProductsImages;
-import com.devpro.shopdoda.services.CommentService;
+import com.devpro.shopdoda.services.ReviewService;
 import com.devpro.shopdoda.services.ProductImagesService;
 import com.devpro.shopdoda.services.ProductService;
 
@@ -29,7 +29,7 @@ public class ProductController extends BaseController {
 	private ProductImagesService productImagesService;
 
 	@Autowired
-	private CommentService commentService;
+	private ReviewService reviewService;
 
 	@RequestMapping(value = { "/products" }, method = RequestMethod.GET)
 	public String products(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -48,7 +48,7 @@ public class ProductController extends BaseController {
 	}
 	
 	@RequestMapping(value = { "/product-detail/{seoPath}" }, method = RequestMethod.GET)
-	public String product_detail(final ModelMap model, @PathVariable("seoPath") String seoPath,
+	public String productDetail(final ModelMap model, @PathVariable("seoPath") String seoPath,
 			final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 
 		ProductSearch productSearch = new ProductSearch();
@@ -69,12 +69,12 @@ public class ProductController extends BaseController {
 		List<Product> relatedProducts = productService.search(productSearch);
 		relatedProducts.remove(productDetail); // bỏ product hiện tại khỏi ds liên quan đến nó
 		model.addAttribute("relatedProducts", relatedProducts);
-		model.addAttribute("comments", commentService.findByProduct(productDetail));
+		model.addAttribute("comments", reviewService.findByProduct(productDetail));
 		return "front-end/product_detail";
 	}
 
 	@RequestMapping(value = { "/category/{categoriesSeo}" }, method = RequestMethod.GET)
-	public String categories(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+	public String showProductByCategory(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
 			@PathVariable("categoriesSeo") String categoriesSeo) throws Exception {
 
 		ProductSearch productSearch = new ProductSearch();

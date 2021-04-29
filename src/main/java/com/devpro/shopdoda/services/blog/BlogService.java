@@ -38,7 +38,7 @@ public class BlogService implements Constants {
 		}
 
 		if (!StringUtils.isEmpty(blogSearch.getBlogTypeSeo())) {
-			jpql = jpql + " AND p.categories.seo = '" + blogSearch.getBlogTypeSeo() + "'";
+			jpql = jpql + " AND p.blogType.seo = '" + blogSearch.getBlogTypeSeo() + "'";
 		}
 		if (!StringUtils.isEmpty(blogSearch.getSearchText())) {
 			String st = "'%" + blogSearch.getSearchText() + "%'";
@@ -58,11 +58,6 @@ public class BlogService implements Constants {
 		return query.getResultList();
 	}
 	
-//	public List<Blog> getBlogs() {
-//		String jpql = "select b from Blog b where b.status = true";
-//		Query query = entityManager.createQuery(jpql, Blog.class);
-//		return query.getResultList();
-//	}
 
 	private boolean isEmptyUploadFile(MultipartFile images) {
 		return images == null || images.getOriginalFilename().isEmpty();
@@ -109,9 +104,4 @@ public class BlogService implements Constants {
 			throw e;
 		}
 	}
-//	public Blog getBlogBySeoPath(String seoPath) {
-//		String jpql = "SELECT b FROM Blog b where b.status = true And b.seo = '"+seoPath+"'";
-//		Query query = entityManager.createQuery(jpql, Blog.class);
-//		return (Blog) query.getSingleResult();
-//	}
 }

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.devpro.shopdoda.dto.AjaxResponse;
 import com.devpro.shopdoda.dto.ReviewDto;
 import com.devpro.shopdoda.dto.search.BlogSearch;
-import com.devpro.shopdoda.dto.search.ProductSearch;
 import com.devpro.shopdoda.entities.User;
 import com.devpro.shopdoda.entities.blog.Blog;
 import com.devpro.shopdoda.entities.blog.BlogComment;
@@ -27,6 +26,7 @@ import com.devpro.shopdoda.repositories.blog.BlogRepo;
 import com.devpro.shopdoda.services.UserService;
 import com.devpro.shopdoda.services.blog.BlogCommentService;
 import com.devpro.shopdoda.services.blog.BlogService;
+import com.devpro.shopdoda.services.blog.BlogTypeService;
 
 @Controller
 public class BlogController {
@@ -40,7 +40,9 @@ public class BlogController {
 
 	@Autowired
 	private BlogService blogService;
-
+	@Autowired
+	private BlogTypeService blogTypeService;
+	
 	@Autowired
 	private UserService userService;
 
@@ -50,9 +52,13 @@ public class BlogController {
 		BlogSearch blogSearch = new BlogSearch();
 		blogSearch.buildPaging(request);
 		
+		List<Blog> blogs = blogService.search(blogSearch);
 		
-		model.addAttribute("blogs", blogService.search(blogSearch));
-
+		model.addAttribute("blogs", blogs);
+		model.addAttribute("blogSearch", blogSearch);
+		
+		model.addAttribute("blogTypes", blogTypeService.getBlogTypes());
+		
 		return "front-end/blog";
 	}
 
@@ -69,7 +75,26 @@ public class BlogController {
 		model.addAttribute("blog", blog);
 		model.addAttribute("comments", blogCommentService.findByBlog(blog));
 		
+		model.addAttribute("blogTypes", blogTypeService.getBlogTypes());
+		
 		return "front-end/blog_detail";
+	}
+	
+	@RequestMapping(value = { "/blog-type/{seoPath}" }, method = RequestMethod.GET)
+	public String findBlogByBlogType(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+			@PathVariable("seoPath") String seoPath) throws Exception {
+		BlogSearch blogSearch = new BlogSearch();
+		blogSearch.buildPaging(request);
+		blogSearch.setBlogTypeSeo(seoPath);
+		
+		List<Blog> blogs = blogService.search(blogSearch);
+		
+		model.addAttribute("blogs", blogs);
+		model.addAttribute("blogSearch", blogSearch);
+		
+		model.addAttribute("blogTypes", blogTypeService.getBlogTypes());
+		
+		return "front-end/blog";
 	}
 
 	// C3: Dùng Ajax

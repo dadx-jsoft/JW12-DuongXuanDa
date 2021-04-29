@@ -25,9 +25,9 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="home" class="stext-109 cl8 hov-cl1 trans-04"> Home
+			<a href="home" class="cl8 hov-cl1 trans-04"> Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a> <span class="stext-109 cl4"> Shoping Cart </span>
+			</a> <span class="cl4"> Đơn hàng </span>
 		</div>
 	</div>
 
@@ -40,11 +40,11 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-1">Product</th>
-									<th class="column-2">Name</th>
-									<th class="column-3">Price Unit</th>
+									<th class="column-1">Sản phẩm</th>
+									<th class="column-2">Tên sản phẩm</th>
+									<th class="column-3">Giá</th>
 									<th class="column-4"></th>
-									<th class="column-5">Quantity</th>
+									<th class="column-5">Số lượng</th>
 								</tr>
 								
 								<c:forEach items="${cartItems}" var="item">
@@ -56,7 +56,7 @@
 									</td>
 									<td class="column-2">
 									<a href="${base}/product-detail/${item.productSeo}"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											class="cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${item.productName} </a>
 									</td>
 									<td class="column-3">
@@ -90,7 +90,7 @@
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 					<div
 						class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-30">Cart Totals</h4>
+						<h4 class="cl2 p-b-30">Thông tin đơn hàng</h4>
 						<c:if test="${not empty errorMessage}">
 						<h5 class="alert alert-warning">${errorMessage}</h5>
 						</c:if>
@@ -99,15 +99,15 @@
 
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
-								<span class="stext-110 cl2"> Shipping: </span>
+								<span class="cl2"> Shipping: </span>
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-								<p class="stext-111 cl6 p-t-2">Free ship cho mọi đơn hàng.</p>
+								<p class="cl6 p-t-2">Miễn phí ship cho mọi đơn hàng.</p>
 							</div>
 							<br>
 							<div class="size-208 w-full-ssm">
-								<span class="stext-110 cl2"> Thông tin người nhận: </span>
+								<span class="cl2"> Thông tin người nhận: </span>
 							</div>
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<div class="p-t-15">
@@ -121,19 +121,19 @@
 									%>
 									<%if(!isLogined){ %>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerName" placeholder="Họ tên" required="required">
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerAddress" placeholder="Địa chỉ" required="required">
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerPhone" placeholder="Số điện thoại" required="required">
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email"
+										<input class="cl8 plh3 size-111 p-lr-15" type="email"
 											name="customerEmail" placeholder="Email" required="required">
 									</div>
 									<%} else { 
@@ -144,19 +144,19 @@
 									%>
 									<div class="bor8 bg0 m-b-12">
 										
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerName" placeholder="<%= fullName %>" readonly>
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerAddress" placeholder="<%= address%>" readonly>
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+										<input class="cl8 plh3 size-111 p-lr-15" type="text"
 											name="customerPhone" placeholder="<%= phone %>" readonly>
 									</div>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email"
+										<input class="cl8 plh3 size-111 p-lr-15" type="email"
 											name="customerEmail" placeholder="<%= email %>" readonly>
 									</div>
 									<%} %>
@@ -168,7 +168,7 @@
 
 						<div class="flex-w flex-t p-t-27 p-b-33">
 							<div class="size-208">
-								<span class="mtext-101 cl2"> Total: </span>
+								<span class="cl2"> Tổng: </span>
 							</div>
 
 							<div class="size-209 p-t-1">
@@ -178,13 +178,13 @@
 								<%-- <span id="totalPrice" class="mtext-110 cl2 text-danger"> 
 									<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${totalPrice}" />
 								</span> --%>
-								<input id="totalPrice" value="${totalPrice}" readonly="readonly" class="text-danger font-weight-bold"/>VNĐ
+								<input id="totalPrice" value="${totalPrice} VNĐ" readonly="readonly" class="text-danger font-weight-bold"/>
 							</div>
 						</div>
 
 						<button type = "submit"
-							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Proceed to Checkout	
+							class="flex-c-m cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+							Đặt hàng
 						</button>
 					</div>
 				</div>

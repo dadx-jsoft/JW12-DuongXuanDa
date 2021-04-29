@@ -1,8 +1,8 @@
 <!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- Paging -->
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<jsp:include page="${base}/WEB-INF/views/back-end/common/topbar.jsp"></jsp:include>
+				<jsp:include page="${base}/WEB-INF/views/back-end/common/topbar_product.jsp"></jsp:include>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -103,17 +103,20 @@
 													<td>${product.price}</td>
 													<td>${product.priceSale}</td>
 													<td>${product.categories.name}</td>
-													<td><a
+													<td>
+													<a
 														href="${base}/admin/products/edit/${product.id}"
 														class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
 															<i class="fas fa-edit"></i>
-													</a> <a href="#" class="btn btn-primary a-btn-slide-text">
-															<strong>View</strong> <i class="fas fa-eye"></i>
 													</a> 
+													<!-- <a href="#" class="btn btn-primary a-btn-slide-text">
+															<strong>View</strong> <i class="fas fa-eye"></i>
+													</a>  -->
 													<a href="#" data-toggle="modal"
 														class="btn btn-danger a-btn-slide-text" data-target="#deleteModal">
 															<strong>Delete</strong> <i class="fas fa-trash-alt"></i>
-													</a></td>
+													</a>
+													</td>
 												</tr>
 												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 													aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -177,7 +180,6 @@
 		<jsp:include page="${base}/WEB-INF/views/back-end/common/logout.jsp"></jsp:include>
 
 		<jsp:include page="${base}/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
-
 		
 </body>
 

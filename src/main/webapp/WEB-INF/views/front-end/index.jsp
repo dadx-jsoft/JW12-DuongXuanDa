@@ -45,8 +45,8 @@
 							<div class="layer-slick1 animated visible-false"
 								data-appear="zoomIn" data-delay="1600">
 								<a href="${base}/products"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now </a>
+									class="flex-c-m cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Xem </a>
 							</div>
 						</div>
 					</div>
@@ -69,8 +69,8 @@
 							<div class="layer-slick1 animated visible-false"
 								data-appear="slideInUp" data-delay="1600">
 								<a href="${base}/products"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now </a>
+									class="flex-c-m cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Xem </a>
 							</div>
 						</div>
 					</div>
@@ -96,7 +96,7 @@
 								data-appear="rotateIn" data-delay="1600">
 								<a href="${base}/products"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now </a>
+									Xem </a>
 							</div>
 						</div>
 					</div>
@@ -117,13 +117,13 @@
 							href="${base}/category/day-da-dong-ho"
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8"> Leather
+								<span class="block1-name ltext-102 trans-04 p-b-8"> Strap
 								</span> <span class="block1-info stext-102 trans-04"> Spring
 									2021 </span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+								<div class="block1-link stext-101 cl0 trans-09">Xem</div>
 							</div>
 						</a>
 					</div>
@@ -143,7 +143,7 @@
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+								<div class="block1-link stext-101 cl0 trans-09">Xem</div>
 							</div>
 						</a>
 					</div>
@@ -162,7 +162,7 @@
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+								<div class="block1-link stext-101 cl0 trans-09">Xem</div>
 							</div>
 						</a>
 					</div>
@@ -174,7 +174,7 @@
 	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">Best selling Product</h3>
+				<h3 class="cl5 font-weight-bold text-uppercase mb-3">Sản phẩm mua nhiều nhất</h3>
 			</div>
 
 			<div class="row isotope-grid">
@@ -202,7 +202,7 @@
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
 										<a href="${base}/product-detail/${product.seo}"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											class="cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 											${product.title} </a> 
 											<span class="stext-105 cl3 text-danger font-weight-bold">
 											
@@ -341,7 +341,7 @@
 	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">Product Overview</h3>
+				<h3 class="cl5 font-weight-bold text-uppercase mb-3">Sản phẩm mới</h3>
 			</div>
 
 			<div class="row isotope-grid">

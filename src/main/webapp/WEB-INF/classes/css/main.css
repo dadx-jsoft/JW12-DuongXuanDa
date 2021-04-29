@@ -367,7 +367,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu > li > a {
-  font-family: Poppins-Medium;
+  /* font-family: Poppins-Medium; */
+  font-weight: 600; 
   font-size: 14px;
   color: #333;
   padding: 5px 0px;
@@ -1961,7 +1962,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .table_head th {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
   font-size: 13px;
   color: #555;
   text-transform: uppercase;

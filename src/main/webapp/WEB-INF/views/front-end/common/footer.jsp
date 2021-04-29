@@ -1,21 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
 <footer class="bg3 p-t-75 p-b-32">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Categories</h4>
+				<h4 class="stext-301 cl0 p-b-30">Danh mục</h4>
 
 				<ul>
-					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> Women </a></li>
-
-					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> Men </a></li>
-
-					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a></li>
-
-					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> Watches </a></li>
+					<li class="p-b-10"><a href="${base}/category/day-da-dong-ho"
+						class="cl7 hov-cl1 trans-04"> Dây da đồng hồ </a></li>
+					<li class="p-b-10"><a href="${base}/category/vi-da"
+						class="cl7 hov-cl1 trans-04">Ví da </a></li>
+					<li class="p-b-10"><a href="${base}/category/tui-deo-cheo-da"
+						class="cl7 hov-cl1 trans-04">Túi đeo chéo da </a></li>
 				</ul>
 			</div>
 
@@ -40,12 +38,12 @@
 			<div class="col-sm-6 col-lg-3 p-b-50">
 				<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
 
-				<p class="stext-107 cl7 size-201">Any questions? Let us know in
-					store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
-					(+1) 96 716 6879</p>
+				<p class="cl7 size-201">Any questions? Let us know in
+					store at 251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội or call us on
+					0961 010 169</p>
 
 				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+					<a href="https://www.facebook.com/Retro1981vn" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
 						class="fa fa-facebook"></i>
 					</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
 						class="fa fa-instagram"></i>
