@@ -60,7 +60,7 @@
 					<!-- add product form -->
 					<div class="panel-body mb-4">
 						<a href="${base}/admin/categories" class="btn btn-primary a-btn-slide-text"> <i
-							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
+							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>
 						</a>
 					</div>
 					<div class="panel-body">

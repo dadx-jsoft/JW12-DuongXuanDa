@@ -21,7 +21,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Save products - Dashboard</title>
+<title>Lưu sản phẩm - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -56,12 +56,12 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 text-gray-800">Thêm sản phẩm</h1>
+					<h1 class="h3 text-gray-800">Lưu sản phẩm</h1>
 
 					<!-- add product form -->
 					<div class="panel-body mb-4">
 						<a href="${base}/admin/products" class="btn btn-primary a-btn-slide-text"> <i
-							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
+							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>
 						</a>
 					</div>
 					<div class="panel-body">

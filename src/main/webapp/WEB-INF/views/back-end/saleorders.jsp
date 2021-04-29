@@ -62,11 +62,11 @@
 								hàng</h6>
 
 						</div>
-						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+						<!-- <div class="card-body py-3">
+							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
-						</div>
+						</div> -->
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" width="100%" cellspacing="0">
@@ -107,9 +107,9 @@
 													</label>
 												</td>
 												<td style="width: 25%;"> <a href="${base}/admin/saleorders/detail/${saleorder.id}"
-													class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
+													class="btn btn-primary a-btn-slide-text"> <strong>Xem</strong>
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 														<i class="fas fa-trash-alt"></i>
 												</a></td>
 											</tr>

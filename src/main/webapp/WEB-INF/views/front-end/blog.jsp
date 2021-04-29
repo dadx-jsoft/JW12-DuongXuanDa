@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Tin tức</title>
 <!-- Variables -->
 <jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
 		style="background-image: url('images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">Blog</h2>
+		<h2 class="cl0 txt-center">Tin tức</h2>
 	</section>
 
 

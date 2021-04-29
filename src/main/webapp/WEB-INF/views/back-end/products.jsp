@@ -62,7 +62,7 @@
 						</div>
 						<div class="card-body py-3">
 							<a href="${base}/admin/products/add"
-								class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+								class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -106,7 +106,7 @@
 													<td>
 													<a
 														href="${base}/admin/products/edit/${product.id}"
-														class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+														class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 															<i class="fas fa-edit"></i>
 													</a> 
 													<!-- <a href="#" class="btn btn-primary a-btn-slide-text">
@@ -114,7 +114,7 @@
 													</a>  -->
 													<a href="#" data-toggle="modal"
 														class="btn btn-danger a-btn-slide-text" data-target="#deleteModal">
-															<strong>Delete</strong> <i class="fas fa-trash-alt"></i>
+															<strong>Xóa</strong> <i class="fas fa-trash-alt"></i>
 													</a>
 													</td>
 												</tr>
@@ -133,7 +133,7 @@
 																to delete this.</div>
 															<div class="modal-footer">
 																<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-																<a class="btn btn-primary" href="${base}/admin/products/delete/${product.id}">Delete</a>
+																<a class="btn btn-primary" href="${base}/admin/products/delete/${product.id}">Xóa</a>
 															</div>
 														</div>
 													</div>

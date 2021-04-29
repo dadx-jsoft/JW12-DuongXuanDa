@@ -60,7 +60,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/roles/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/roles/add" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -90,10 +90,10 @@
 											<td>${role.description}</td>
 											<td>
 											<a href="${base}/admin/roles/edit/${role.id}"
-												class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+												class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 													<i class="fas fa-edit"></i>
 											</a> 
-											<a href="${base}/admin/roles/delete/${role.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+											<a href="${base}/admin/roles/delete/${role.id}" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 											</a>
 											</td>

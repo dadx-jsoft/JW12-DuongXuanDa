@@ -62,7 +62,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/blogs/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/blogs/add" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -104,10 +104,10 @@
 												<td>${blog.blogType.name}</td>
 												<td>
 												<a href="${base}/admin/blogs/edit/${blog.id}"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+													class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 														<i class="fas fa-edit"></i>
 												</a> 
-												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 												</a>
 												</td>

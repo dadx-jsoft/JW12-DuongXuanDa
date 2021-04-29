@@ -62,7 +62,7 @@
 					<div class="panel-body mb-4">
 						<a href="${base}/admin/saleorders"
 							class="btn btn-primary a-btn-slide-text"> <i
-							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
+							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>
 						</a>
 					</div>
 					<div class="panel-body">
@@ -131,13 +131,13 @@
 														<td>${sp.priceUnit}VNĐ</td>
 														<td>${sp.quantity}</td>
 														<%-- <td style="width: 25%;"><a href="#"
-															class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+															class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 																<i class="fas fa-edit"></i>
 														</a> <a href="${base}/admin/saleorders/detail/${saleorder.id}"
 															class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 																<i class="fas fa-eye"></i>
 														</a> <a href="#" class="btn btn-danger a-btn-slide-text">
-																<strong>Delete</strong> <i class="fas fa-trash-alt"></i>
+																<strong>Xóa</strong> <i class="fas fa-trash-alt"></i>
 														</a></td> --%>
 													</tr>
 												</c:forEach>

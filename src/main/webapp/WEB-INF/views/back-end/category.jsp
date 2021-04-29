@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Categories - Dashboard</title>
+<title>Danh mục sản phẩm - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -59,7 +59,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="${base}/admin/categories/add" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="${base}/admin/categories/add" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -89,10 +89,10 @@
 												<td>${category.description}</td>
 												<td>
 												<a href="${base}/admin/categories/edit/${category.id}"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Edit</strong>
+													class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 														<i class="fas fa-edit"></i>
 												</a> 
-												<a href="${base}/admin/categories/delete/${category.id}" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+												<a href="${base}/admin/categories/delete/${category.id}" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 												</a>
 												</td>

@@ -60,7 +60,7 @@
 
 						</div>
 						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Add</strong>
+							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</div>
@@ -106,7 +106,7 @@
 												
 												<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Delete</strong>
+												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 														<i class="fas fa-trash-alt"></i>
 												</a></td>
 											</tr>

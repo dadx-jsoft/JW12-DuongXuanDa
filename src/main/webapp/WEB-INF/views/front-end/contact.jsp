@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Liên hệ</title>
 <!-- Variables -->
 <jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
@@ -83,7 +83,7 @@
 
 					<!-- Cách 3 -->
 					<!-- <form> -->
-						<h4 class="mtext-105 cl2 txt-center p-b-30">Send Us A Message
+						<h4 class="mtext-105 cl2 txt-center p-b-30">Liên hệ với chúng tôi
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent">
