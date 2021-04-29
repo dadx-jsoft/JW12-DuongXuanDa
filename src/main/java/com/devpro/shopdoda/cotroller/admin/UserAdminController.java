@@ -45,16 +45,16 @@ public class UserAdminController {
 
 		return "back-end/user/login";
 	}
-	
+
 	// login thành công
 	// https://stackoverflow.com/questions/45709333/page-redirecting-depending-on-role-using-spring-security-and-thymeleaf-spring
 	@RequestMapping("/success")
 	public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult)
 			throws IOException, ServletException {
-		
+
 		User u = (User) authResult.getPrincipal();
 		String role = u.getRoles().get(0).getName();
-		
+
 		if (role.contains("ADMIN")) {
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin"));
 		} else {
@@ -168,9 +168,21 @@ public class UserAdminController {
 			User userInDB = userRepo.findById(userEdit.getId()).get();
 			userEdit.setCreatedDate(userInDB.getCreatedDate());
 			userEdit.setPassword(userInDB.getPassword());
+		} else {
+			userEdit.setPassword(GeneratePassword.encodePassword("admin"));
+			// Role
+			Role role = roleService.getRoleByName("ADMIN");
+			ArrayList<Role> listRoles = new ArrayList<Role>();
+			listRoles.add(role);
+			userEdit.setRoles(listRoles);
 		}
 
 		userEdit.setUpdatedDate(new Date());
+
+		if (userService.findByEmail(userEdit.getEmail()) != null) {
+			model.addAttribute("saveError", "Email này đã được sử dụng!!");
+			return "back-end/user/save_user";
+		}
 
 		userRepo.save(userEdit);
 

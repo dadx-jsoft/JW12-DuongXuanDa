@@ -39,7 +39,7 @@ public class ReviewController {
 			final HttpServletResponse response, @RequestBody ReviewDto reviewDto) {
 		Review review = new Review();
 		int userId = reviewDto.getUserId();
-		User u = userService.loadUserById(userId);
+		User u = userService.findById(userId);
 		review.setUser(u);
 		int productId = reviewDto.getProductOrBlogId();
 		Product p = productRepo.findById(productId).get();

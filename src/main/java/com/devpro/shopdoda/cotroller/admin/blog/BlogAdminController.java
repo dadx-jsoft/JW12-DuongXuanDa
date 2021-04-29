@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.shopdoda.dto.search.BlogSearch;
-import com.devpro.shopdoda.dto.search.ProductSearch;
-import com.devpro.shopdoda.entities.Product;
 import com.devpro.shopdoda.entities.blog.Blog;
 import com.devpro.shopdoda.repositories.blog.BlogRepo;
 import com.devpro.shopdoda.services.blog.BlogService;

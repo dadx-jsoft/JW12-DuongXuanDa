@@ -104,7 +104,7 @@ public class BlogController {
 		BlogComment comment = new BlogComment();
 
 		int userId = commentDto.getUserId();
-		User u = userService.loadUserById(userId);
+		User u = userService.findById(userId);
 		comment.setUser(u);
 		int blogId = commentDto.getProductOrBlogId();
 		Blog b = blogRepo.findById(blogId).get();

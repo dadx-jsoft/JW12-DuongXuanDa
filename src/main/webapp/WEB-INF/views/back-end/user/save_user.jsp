@@ -20,7 +20,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Save products - Dashboard</title>
+<title>Lưu user - Dashboard</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -55,12 +55,12 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 text-gray-800">Save user</h1>
+					<h1 class="h3 text-gray-800">Lưu user</h1>
 
 					<!-- add product form -->
 					<div class="panel-body mb-4">
 						<a href="${base}/admin/users" class="btn btn-primary a-btn-slide-text"> <i
-							class="fas fa-arrow-circle-left"></i> <strong>Back</strong>
+							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>
 						</a>
 					</div>
 					<div class="panel-body">
@@ -92,7 +92,7 @@
 								<label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
 								<div class="col-sm-9">
 									<sf:input path="phone" type="text" cssClass="form-control"
-										name="phone" placeholder="Nhập số điện thoại" />
+										name="phone" placeholder="Nhập số điện thoại" maxlength="10"/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -102,7 +102,9 @@
 										name="email" placeholder="Nhập email" />
 								</div>
 							</div>
-
+							<div class="form-group">
+								<label class="col-sm-3 control-label text-danger">${saveError}</label>
+							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="submit" class="btn btn-primary">Lưu <i class="fas fa-plus-circle"></i></button>

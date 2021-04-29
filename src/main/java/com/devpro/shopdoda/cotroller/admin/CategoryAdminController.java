@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.shopdoda.entities.Category;
 import com.devpro.shopdoda.repositories.CategoriesRepo;
-import com.devpro.shopdoda.utils.StatusConstant;
 import com.devpro.shopdoda.utils.UserUtils;
 import com.devpro.shopdoda.utils.Utilities;
 
