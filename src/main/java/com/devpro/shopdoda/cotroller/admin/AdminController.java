@@ -1,5 +1,11 @@
 package com.devpro.shopdoda.cotroller.admin;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.devpro.shopdoda.entities.Saleorder;
 import com.devpro.shopdoda.services.SaleorderService;
+import com.devpro.shopdoda.utils.SaleorderExcelExporter;
 
 @Controller
 public class AdminController {
@@ -44,11 +52,20 @@ public class AdminController {
 		return "back-end/index";
 	}
 
-	@RequestMapping(value = { "/charts" }, method = RequestMethod.GET)
-	public String charts(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-
-		return "back-end/charts";
-	}
-
+	@RequestMapping(value = {"/admin/export/excel"}, method = RequestMethod.GET)
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+         
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=saleorders_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+         
+        List<Saleorder> listSaleorders = saleorderService.getAllByMonth();
+         
+        SaleorderExcelExporter excelExporter = new SaleorderExcelExporter(listSaleorders);
+         
+        excelExporter.export(response);    
+    } 
 }

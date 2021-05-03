@@ -23,6 +23,10 @@ public class SaleorderService {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	private int DAY_OF_MONTH = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+	private int MONTH = Calendar.getInstance().get(Calendar.MONTH) + 1;
+	private int YEAR = Calendar.getInstance().get(Calendar.YEAR);
+	
 	public List<Saleorder> search(SaleorderSearch saleorderSearch) {
 		String jpql = "SELECT p FROM Saleorder p where p.status = true";
 
@@ -45,6 +49,18 @@ public class SaleorderService {
 		return query.getResultList();
 	}
 
+	public List<Saleorder> getAllByMonth(){
+//		String nativeSql = "SELECT s.code, s.total, s.created_date, s.customer_name, s.customer_address, s.customer_phone, s.cutomer_email "
+		String nativeSql = "SELECT * "
+				+ "FROM tbl_saleorder s " 
+				+ "WHERE MONTH(s.created_date) = " + this.MONTH + " "
+				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
+		Query query = entityManager.createNativeQuery(nativeSql, Saleorder.class);
+		
+		List<Saleorder> results = query.getResultList();
+		
+		return results;
+	}
 	public String thongKeTheoThang() {
 		StringBuilder data = new StringBuilder();
 
@@ -88,24 +104,16 @@ public class SaleorderService {
 	public Integer doanhThuNgay() {
 		Integer data = 0;
 
-		int dayOfMonth = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-		int month = Calendar.getInstance().get(Calendar.MONTH);
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-
 		String nativeSql = "SELECT SUM(s.total) " 
 				+ "FROM tbl_saleorder s "
 				+ "WHERE 1=1 " 
-				+ "AND DAY(s.created_date) = " + dayOfMonth + " "
-				+ "AND MONTH(s.created_date) = " + (month+1) + " " 
-				+ "AND YEAR(s.created_date) = " + year + " ";
+				+ "AND DAY(s.created_date) = " + this.DAY_OF_MONTH + " "
+				+ "AND MONTH(s.created_date) = " + this.MONTH + " " 
+				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
 		try {
-//			List<BigDecimal> listData= query.getResultList();
-//			for (BigDecimal dataItem : listData) {
-//				data += dataItem.intValue();
-//			}
 			data = ((BigDecimal) query.getSingleResult()).intValue();
 		} catch (NullPointerException e) {
 			return 0;
@@ -116,22 +124,15 @@ public class SaleorderService {
 	public Integer doanhThuThang() {
 		Integer data = 0;
 
-		int month = Calendar.getInstance().get(Calendar.MONTH);
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-
 		String nativeSql = "SELECT SUM(s.total) " 
 				+ "FROM tbl_saleorder s "
 				+ "WHERE 1=1 " 
-				+ "AND MONTH(s.created_date) = " + (month+1) + " "
-				+ "AND YEAR(s.created_date) = " + year + " ";
+				+ "AND MONTH(s.created_date) = " + this.MONTH + " "
+				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
 		try {
-//			List<BigDecimal> listData= query.getResultList();
-//			for (BigDecimal dataItem : listData) {
-//				data += dataItem.intValue();
-//			}
 			data = ((BigDecimal) query.getSingleResult()).intValue();
 		} catch (NullPointerException e) {
 			return 0;
@@ -142,12 +143,10 @@ public class SaleorderService {
 	public Integer doanhThuNam() {
 		Integer data = 0;
 
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-
 		String nativeSql = "SELECT SUM(sp.price_unit) " 
 				+ "FROM tbl_saleorder s, tbl_saleorder_products sp "
 				+ "WHERE s.id = sp.saleorder_id " 
-				+ "AND YEAR(s.created_date) = " + year + " ";
+				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
