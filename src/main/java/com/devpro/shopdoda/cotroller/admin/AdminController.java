@@ -52,6 +52,7 @@ public class AdminController {
 		return "back-end/index";
 	}
 
+	// https://www.codejava.net/frameworks/spring-boot/export-data-to-excel-example
 	@RequestMapping(value = {"/admin/export/excel"}, method = RequestMethod.GET)
     public void exportToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");

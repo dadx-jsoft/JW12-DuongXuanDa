@@ -53,7 +53,8 @@ public class SaleorderService {
 //		String nativeSql = "SELECT s.code, s.total, s.created_date, s.customer_name, s.customer_address, s.customer_phone, s.cutomer_email "
 		String nativeSql = "SELECT * "
 				+ "FROM tbl_saleorder s " 
-				+ "WHERE MONTH(s.created_date) = " + this.MONTH + " "
+				+ "WHERE s.status = true "
+				+ "AND MONTH(s.created_date) = " + this.MONTH + " "
 				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 		Query query = entityManager.createNativeQuery(nativeSql, Saleorder.class);
 		
@@ -66,7 +67,8 @@ public class SaleorderService {
 
 		String nativeSql = "SELECT MONTH(s.created_date), SUM(sp.price_unit) "
 				+ "FROM tbl_saleorder s, tbl_saleorder_products sp " 
-				+ "WHERE s.id = sp.saleorder_id "
+				+ "WHERE s.status = true "
+				+ "AND s.id = sp.saleorder_id "
 				+ "GROUP BY MONTH(s.created_date) " 
 				+ "ORDER BY MONTH(s.created_date) ";
 
@@ -106,7 +108,7 @@ public class SaleorderService {
 
 		String nativeSql = "SELECT SUM(s.total) " 
 				+ "FROM tbl_saleorder s "
-				+ "WHERE 1=1 " 
+				+ "WHERE s.status = true "
 				+ "AND DAY(s.created_date) = " + this.DAY_OF_MONTH + " "
 				+ "AND MONTH(s.created_date) = " + this.MONTH + " " 
 				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
@@ -126,7 +128,7 @@ public class SaleorderService {
 
 		String nativeSql = "SELECT SUM(s.total) " 
 				+ "FROM tbl_saleorder s "
-				+ "WHERE 1=1 " 
+				+ "WHERE s.status = true "
 				+ "AND MONTH(s.created_date) = " + this.MONTH + " "
 				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 
@@ -145,7 +147,8 @@ public class SaleorderService {
 
 		String nativeSql = "SELECT SUM(sp.price_unit) " 
 				+ "FROM tbl_saleorder s, tbl_saleorder_products sp "
-				+ "WHERE s.id = sp.saleorder_id " 
+				+ "WHERE s.status = true "
+				+ "AND s.id = sp.saleorder_id " 
 				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);
