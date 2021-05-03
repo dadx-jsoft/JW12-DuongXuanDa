@@ -5,7 +5,7 @@
 <!-- Variables -->
 <jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 
-<%@page import="com.devpro.shopdoda.entities.User"%>
+<%@page import="com.eoptech.shopdoda.entities.User"%>
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%

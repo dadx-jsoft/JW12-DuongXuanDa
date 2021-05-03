@@ -1,6 +1,6 @@
 <%@ page session="true" %>
 <%@page import="java.math.BigDecimal"%>
-<%@page import="com.devpro.shopdoda.entities.User"%>
+<%@page import="com.eoptech.shopdoda.entities.User"%>
 <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

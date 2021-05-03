@@ -8,7 +8,7 @@
 
 	<tag>
 		<name>paginate</name>
-		<tag-class>com.devpro.shopdoda.taglibs.PaginationTaglib</tag-class>
+		<tag-class>com.eoptech.shopdoda.taglibs.PaginationTaglib</tag-class>
 		<body-content>empty</body-content>
 
 		<attribute>
