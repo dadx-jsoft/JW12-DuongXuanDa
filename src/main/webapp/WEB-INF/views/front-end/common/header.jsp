@@ -18,7 +18,9 @@ if (principal instanceof UserDetails) {
 		<!-- Topbar -->
 		<div class="top-bar">
 			<div class="content-topbar flex-sb-m h-full container">
-				<div class="left-top-bar">Miễn phí ship</div>
+				<div class="left-top-bar">
+					Hotline: 0961010169
+				</div>
 
 				<div class="right-top-bar flex-w h-full">
 					<%
