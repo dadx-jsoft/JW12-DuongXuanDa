@@ -70,7 +70,7 @@
 											</div>
 
 											<input id="numberOfProduct_${item.productId}" class="mtext-104 cl3 txt-center num-product"
-												type="number" name="num-product1" value="${item.quantity}" min="1">
+												type="number" name="num-product1" value="${item.quantity}" min="1" disabled="disabled">
 
 											<div onclick="UpdateCart(${item.productId},1)"
 												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
@@ -205,7 +205,6 @@
 	<script>
 		function UpdateCart(productId, difference){
 			var numberOfProductId = '#numberOfProduct_' + productId;
-			if($(numberOfProductId).val() >= 2){
 			// javascript object.
 			var data = {};
 			data["productId"] = productId;
@@ -249,7 +248,6 @@
 	
 				}
 			});
-		}
 		}
 	</script>
 	<script type="text/javascript">

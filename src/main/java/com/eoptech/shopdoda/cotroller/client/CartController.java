@@ -227,7 +227,8 @@ public class CartController extends BaseController {
 		Double totalPrice = 0d;
 		for (CartItem item : cartItems) {
 			if (item.getProductId() == cartItem.getProductId()) { // trùng id trong giỏ hàng
-				item.setQuantity(cartItem.getQuantity());
+				if(cartItem.getQuantity() == 0) item.setQuantity(1);
+				else item.setQuantity(cartItem.getQuantity());
 			}
 			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 		}
