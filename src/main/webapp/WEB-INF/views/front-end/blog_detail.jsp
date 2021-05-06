@@ -31,7 +31,7 @@ if (principal instanceof UserDetails) {
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="${base}/index" class="cl8 hov-cl1 trans-04"> Trang chủ
+			<a href="${base}/" class="cl8 hov-cl1 trans-04"> Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a> <a href="${base}/blog" class="cl8 hov-cl1 trans-04"> Tin tức
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>

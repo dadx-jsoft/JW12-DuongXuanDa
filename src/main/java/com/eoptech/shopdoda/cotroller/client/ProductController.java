@@ -77,6 +77,8 @@ public class ProductController extends BaseController {
 	public String showProductByCategory(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
 			@PathVariable("categoriesSeo") String categoriesSeo) throws Exception {
 
+		model.addAttribute("menu", buildMenu());
+		
 		ProductSearch productSearch = new ProductSearch();
 		productSearch.buildPaging(request);
 
@@ -93,6 +95,8 @@ public class ProductController extends BaseController {
 	public String searchAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
+		model.addAttribute("menu", buildMenu());
+		
 		ProductSearch productSearch = new ProductSearch();
 		productSearch.buildPaging(request);
 

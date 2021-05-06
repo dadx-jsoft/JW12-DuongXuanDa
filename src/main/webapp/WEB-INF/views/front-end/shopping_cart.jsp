@@ -25,7 +25,7 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="home" class="cl8 hov-cl1 trans-04"> Trang chủ
+			<a href="${base}/" class="cl8 hov-cl1 trans-04"> Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a> <span class="cl4"> Đơn hàng </span>
 		</div>
@@ -181,7 +181,7 @@
 								<%-- <span id="totalPrice" class="mtext-110 cl2 text-danger"> 
 									<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${totalPrice}" />
 								</span> --%>
-								<input id="totalPrice" value="${totalPrice} VNĐ" readonly="readonly" class="text-danger font-weight-bold"/>
+								<input id="totalPrice" value="${totalPrice}" readonly="readonly" class="text-danger font-weight-bold"/> <span>VNĐ</span>
 							</div>
 						</div>
 

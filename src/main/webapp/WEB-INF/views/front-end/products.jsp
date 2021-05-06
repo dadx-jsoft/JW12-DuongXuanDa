@@ -12,13 +12,13 @@
 <head>
 <title>Home</title>
 <!-- Variables -->
-<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/common/variables.jsp"></jsp:include>
 <meta charset="UTF-8">
-<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
+<jsp:include page="${base}/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 </head>
 <body class="animsition">
 
-	<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
@@ -88,7 +88,7 @@
 							<div class="container">
 								<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 									<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-										<img src="images/icons/icon-close.png" alt="CLOSE">
+										<img src="${base}/images/icons/icon-close.png" alt="CLOSE">
 									</button>
 					
 									<div class="row">
@@ -212,23 +212,23 @@
 	</div>
 
 	<!-- Footer -->
-	<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
 
 	<!-- Back to top -->
-	<jsp:include page="/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 
 
-	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+	<jsp:include page="${base}/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 
 	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="${base}/vendor/daterangepicker/moment.min.js"></script>
+	<script src="${base}/vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
+	<script src="${base}/vendor/slick/slick.min.js"></script>
+	<script src="${base}/js/slick-custom.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/parallax100/parallax100.js"></script>
+	<script src="${base}/vendor/parallax100/parallax100.js"></script>
 	<script>
 		$('.parallax100').parallax100();
 	</script>
@@ -247,9 +247,9 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="${base}/vendor/isotope/isotope.pkgd.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="${base}/vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
 		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e) {
 			e.preventDefault();
