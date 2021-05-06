@@ -70,7 +70,7 @@
 											</div>
 
 											<input id="numberOfProduct_${item.productId}" class="mtext-104 cl3 txt-center num-product"
-												type="number" name="num-product1" value="${item.quantity}">
+												type="number" name="num-product1" value="${item.quantity}" min="1">
 
 											<div onclick="UpdateCart(${item.productId},1)"
 												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
@@ -204,11 +204,14 @@
 	
 	<script>
 		function UpdateCart(productId, difference){
+			var numberOfProductId = '#numberOfProduct_' + productId;
+			if($(numberOfProductId).val() >= 2){
 			// javascript object.
 			var data = {};
 			data["productId"] = productId;
-			var numberOfProductId = '#numberOfProduct_' + productId;
+			 
 			data["quantity"] = parseInt($(numberOfProductId).val()) + difference; // vì sự kiện onclick lấy value hiện tại
+			
 			$.ajax({
 				url : "/cart/update",
 				type : "post",
@@ -246,6 +249,7 @@
 	
 				}
 			});
+		}
 		}
 	</script>
 	<script type="text/javascript">
