@@ -97,10 +97,11 @@ public class UserAdminController {
 		ArrayList<Role> listRoles = new ArrayList<Role>();
 		listRoles.add(role);
 		user.setRoles(listRoles);
-
+		
 		userRepo.save(user);
-
-		return "front-end/index";
+		
+		model.addAttribute("registerSuccess", "Đăng ký tài khoản thành công!!");
+		return "back-end/user/register";
 	}
 
 	@RequestMapping(value = { "/password/forgot" }, method = RequestMethod.GET)

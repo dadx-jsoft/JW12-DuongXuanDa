@@ -238,4 +238,30 @@ public class CartController extends BaseController {
 		return ResponseEntity.ok(new AjaxResponse(200, data));
 	}
 
+	@RequestMapping(value = { "/cart/delete" }, method = RequestMethod.POST)
+	public ResponseEntity<AjaxResponse> deleteItemInCart(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response, @RequestBody CartItem cartItem) {
+		HttpSession httpSession = request.getSession();
+
+		Cart cart = (Cart) httpSession.getAttribute("cart");
+
+		List<CartItem> cartItems = cart.getCartItems();
+		Double totalPrice = 0d;
+		
+		for (int i = 0; i < cartItems.size(); i++) {
+			if(cartItems.get(i).getProductId() == cartItem.getProductId()) {
+				cartItems.remove(i);
+				break;
+			}
+		}
+		for (CartItem item : cartItems) {
+			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
+		}
+		
+		httpSession.setAttribute("totalItems", getTotalItems(request));
+		httpSession.setAttribute("totalPrice", totalPrice);
+		String[] data = { String.valueOf(getTotalItems(request)), totalPrice.toString() };
+		return ResponseEntity.ok(new AjaxResponse(200, data));
+	}
+	
 }

@@ -43,28 +43,31 @@
                                 <c:if test="${not empty error}">
                                 	<h3 class="h4 text-danger">Email đã tồn tại!</h3>
                                 </c:if>
+                                <c:if test="${not empty error}">
+                               		<h3 class="h4 text-primary">${registerSuccess}</h3>
+                               	</c:if>
                             </div>
                             <form class="user" action="${base}/register" method="POST">
                                 <div class="form-group">
                                     <input name="fullName" type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Họ và tên">
+                                        placeholder="Họ và tên" required="required">
                                 </div>
                                 <div class="form-group">
                                     <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Địa chỉ email">
+                                        placeholder="Địa chỉ email" required="required">
                                 </div>
                                 <div class="form-group">
                                     <input name="userName" type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Username">
+                                        placeholder="Username" required="required">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="password" type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Mật khẩu">
+                                            id="exampleInputPassword" placeholder="Mật khẩu" required="required">
                                     </div>
                                     <div class="col-sm-6">
                                         <input name="confirmPassword" type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Xác nhận mật khẩu">
+                                            id="exampleRepeatPassword" placeholder="Xác nhận mật khẩu" required="required">
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">

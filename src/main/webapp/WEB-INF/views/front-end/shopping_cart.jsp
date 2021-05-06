@@ -43,12 +43,12 @@
 									<th class="column-1">Sản phẩm</th>
 									<th class="column-2">Tên sản phẩm</th>
 									<th class="column-3">Giá</th>
-									<th class="column-4"></th>
-									<th class="column-5">Số lượng</th>
+									<th class="column-4">Số lượng</th>
+									<th class="column-5"></th>
 								</tr>
 								
 								<c:forEach items="${cartItems}" var="item">
-								<tr class="table_row">
+								<tr class="table_row" id="row_${item.productId}">
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="${base}/upload/${item.productAvatar}" alt="IMG">
@@ -62,8 +62,7 @@
 									<td class="column-3">
 										<span class="text-danger"><fmt:formatNumber type="number" pattern="###,###" value="${item.priceUnit}" /></span> VNĐ
 									</td>
-									<td class="column-4"></td>
-									<td class="column-5">
+									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<div onclick="UpdateCart(${item.productId},-1)"
 												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -78,6 +77,10 @@
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
+									</td>
+									<td class="column-5">
+										<!-- <a href="#" class="text-center">Xóa</a> -->
+										<div onclick="DeleteItemInCart(${item.productId})" class="btn btn-danger"><i class="fs-16 zmdi zmdi-delete"></i></div>
 									</td>
 								</tr>
 								</c:forEach>
@@ -244,6 +247,54 @@
 				}
 			});
 		}
+	</script>
+	<script type="text/javascript">
+	function DeleteItemInCart(productId){
+		// javascript object.
+		var data = {};
+		data["productId"] = productId;
+		var numberOfProductId = '#numberOfProduct_' + productId;
+		var rowDeleted = '#row_' + productId;
+		data["quantity"] = 0;
+		$.ajax({
+			url : "/cart/delete",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(data),
+
+			dataType : "json",
+			success : function(jsonResult) {
+				$('#totalPrice').val(jsonResult.data[1])
+
+				// Một cách siêu củ chuối để update number của cart trên giao diện @@
+				var base = '${base}'
+				$("#totalItemsInCart").after(
+					"<div id='totalItemsInCart1' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='${base}/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+				)
+				$("#totalItemsInCart").remove()
+				$("#totalItemsInCart1").after(
+					"<div id='totalItemsInCart' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+				)
+				$("#totalItemsInCart1").remove()
+				
+				// Mobile 
+				$("#totalItemsInCartMobile").after(
+					"<div id='totalItemsInCartMobile1' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='${base}/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+				)
+				$("#totalItemsInCartMobile").remove()
+				$("#totalItemsInCartMobile1").after(
+					"<div id='totalItemsInCartMobile' class='icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti' data-notify='"+jsonResult.data[0]+"'> <a href='/cart/view'><i class='zmdi zmdi-shopping-cart'></i></a> </div>"
+				)
+				$("#totalItemsInCartMobile1").remove()
+
+				// xóa dòng muốn xóa
+				$(rowDeleted).remove();
+			},
+			error : function(jqXhr, textStatus, errorMessage) { // error callback 
+
+			}
+		});
+	}
 	</script>
 </body>
 </html>
