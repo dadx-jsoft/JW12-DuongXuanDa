@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,6 +19,9 @@ import com.eoptech.shopdoda.taglibs.PaginationTaglib;
 public class ReviewService {
 	@PersistenceContext
 	protected EntityManager entityManager;
+	
+	@Autowired
+	private ProductService productService;
 
 	public List<Review> findByProduct(Product product) {
 		try {
@@ -31,6 +35,7 @@ public class ReviewService {
 	}
 
 	public List<Review> search(ReviewOrCommentSearch reviewSearch) {
+		
 		String jpql = "SELECT p FROM Review p where 1=1 ";
 
 		if (!StringUtils.isEmpty(reviewSearch.getSearchText())) {
@@ -39,6 +44,10 @@ public class ReviewService {
 		}
 		jpql = jpql + " ORDER BY p.createdDate DESC";
 
+		if(reviewSearch.getIdProductOrBlog() > 0) {
+			jpql = "Select c From Review c Where c.product.id='" + reviewSearch.getIdProductOrBlog() + "' And c.status = true";
+		}
+		
 		Query query = entityManager.createQuery(jpql, Review.class);
 
 		// paging

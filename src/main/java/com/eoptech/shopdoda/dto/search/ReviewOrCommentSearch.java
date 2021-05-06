@@ -11,6 +11,8 @@ public class ReviewOrCommentSearch {
 	public Integer offset = null;
 	public Integer count = null;
 
+	public Integer idProductOrBlog;
+
 	public void buildPaging(HttpServletRequest request) {
 		if (!StringUtils.isEmpty(request.getParameter("offset"))) {
 			this.offset = Integer.parseInt(request.getParameter("offset"));
@@ -41,6 +43,14 @@ public class ReviewOrCommentSearch {
 
 	public void setCount(Integer count) {
 		this.count = count;
+	}
+
+	public Integer getIdProductOrBlog() {
+		return idProductOrBlog;
+	}
+
+	public void setIdProductOrBlog(Integer idProductOrBlog) {
+		this.idProductOrBlog = idProductOrBlog;
 	}
 
 }

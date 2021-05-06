@@ -53,7 +53,7 @@
 
 					<!-- Page Heading -->
 					<!-- <h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1> -->
-
+					
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
@@ -73,23 +73,23 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Title</th>
+											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Price</th>
-											<th>Price Sale</th>
-											<th>Category</th>
-											<th>Action</th>
+											<th>Giá</th>
+											<th>Giá Sale</th>
+											<th>Danh mục</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>Title</th>
+											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Price</th>
-											<th>Price Sale</th>
-											<th>Category</th>
-											<th>Action</th>
+											<th>Giá</th>
+											<th>Giá Sale</th>
+											<th>Danh mục</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -109,9 +109,9 @@
 														class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 															<i class="fas fa-edit"></i>
 													</a> 
-													<!-- <a href="#" class="btn btn-primary a-btn-slide-text">
-															<strong>View</strong> <i class="fas fa-eye"></i>
-													</a>  -->
+													<a href="${base}/admin/reviews/${product.id}" class="btn btn-primary a-btn-slide-text">
+															<strong>Đánh giá</strong> <i class="fas fa-comment"></i>
+													</a> 
 													<a href="#" data-toggle="modal"
 														class="btn btn-danger a-btn-slide-text" data-target="#deleteModal">
 															<strong>Xóa</strong> <i class="fas fa-trash-alt"></i>

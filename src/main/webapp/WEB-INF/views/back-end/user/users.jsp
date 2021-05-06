@@ -67,22 +67,22 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>User name</th>
+											<th>Username</th>
 											<th>email</th>
-											<th>Full name</th>
-											<th>Address</th>
-											<th>Phone</th>
-											<th>Action</th>
+											<th>Họ tên</th>
+											<th>Địa chỉ</th>
+											<th>Số điện thoại</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>User name</th>
+											<th>Username</th>
 											<th>email</th>
-											<th>Full name</th>
-											<th>Address</th>
-											<th>Phone</th>
-											<th>Action</th>
+											<th>Họ tên</th>
+											<th>Địa chỉ</th>
+											<th>Số điện thoại</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>

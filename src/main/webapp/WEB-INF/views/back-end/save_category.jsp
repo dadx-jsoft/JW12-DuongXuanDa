@@ -57,7 +57,6 @@
 					<!-- Page Heading -->
 					<h1 class="h3 text-gray-800">Thêm danh mục</h1>
 
-					<!-- add product form -->
 					<div class="panel-body mb-4">
 						<a href="${base}/admin/categories" class="btn btn-primary a-btn-slide-text"> <i
 							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>

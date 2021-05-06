@@ -56,31 +56,24 @@
 							<h6 class="m-0 font-weight-bold text-primary">Danh sách liên hệ</h6>
 
 						</div>
-						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
-								<i class="fas fa-plus-circle"></i>
-							</a>
-						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>Full Name</th>
+											<th>Họ tên</th>
 											<th>Email</th>
-											<th>Request type</th>
-											<th>Message</th>
-											<th>Action</th>
+											<th>Lời nhắn</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Full Name</th>
+											<th>Họ tên</th>
 											<th>Email</th>
-											<th>Request type</th>
-											<th>Message</th>
-											<th>Action</th>
+											<th>Lời nhắn</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -88,16 +81,16 @@
 											<tr>
 												<td>${contact.fullName}</td>
 												<td>${contact.email}</td>
-												<td>${contact.requestType}</td>
 												<td>${contact.message}</td>
-												<td><a href="#"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
-														<i class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
+												<td>
+												<!-- <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
+												</a>  -->
+												<a href="${base}/admin/contacts/delete/${contact.id}" class="btn btn-danger a-btn-slide-text"> 
+														<strong>Xóa</strong>
 														<i class="fas fa-trash-alt"></i>
-												</a></td>
+												</a>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>

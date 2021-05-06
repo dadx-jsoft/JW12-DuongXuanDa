@@ -166,5 +166,11 @@ public class ProductService implements Constants {
 
 		return q.getResultList();
 	}
+	
+	public Product findById(int id) {
+		String jpql = "SELECT p FROM Product p where p.status = true";
+		Query query = entityManager.createQuery(jpql, Product.class);
+		return (Product) query.getSingleResult();
+	}
 
 }

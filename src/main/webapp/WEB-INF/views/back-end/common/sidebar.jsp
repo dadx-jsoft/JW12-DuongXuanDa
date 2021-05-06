@@ -66,26 +66,12 @@
 			<i class="fab fa-product-hunt"></i> <span>Sản phẩm</span>
 	</a></li>
 	
-	<li class="nav-item"><a class="nav-link" href="${base}/admin/reviews">
-			<i class="fas fa-star"></i> <span>Review sản phẩm</span>
-	</a></li>
-	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/blogs">
 			<i class="fas fa-blog"></i> <span>Blog</span>
 	</a></li>
 	
-	<li class="nav-item">
-	<a class="nav-link" href="${base}/admin/comments">
-			<i class="fas fa-comments"></i> <span>Comment blog</span>
-	</a>
-	</li>
-	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/contacts">
 			<i class="fas fa-id-card-alt"></i> <span>Liên hệ</span>
-	</a></li>
-	
-	<li class="nav-item"><a class="nav-link" href="${base}/admin/roles">
-			<i class="fas fa-fw fa-table"></i> <span>Vai trò</span>
 	</a></li>
 	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/users">

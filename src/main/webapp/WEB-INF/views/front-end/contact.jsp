@@ -82,13 +82,13 @@
 					</sf:form> --%>
 
 					<!-- Cách 3 -->
-					<!-- <form> -->
+					<form>
 						<h4 class="mtext-105 cl2 txt-center p-b-30">Liên hệ với chúng tôi
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<input class="cl2 plh3 size-116 p-l-62 p-r-30"
-								type="text" id="email" placeholder="Địa chỉ email">
+								type = "text" id="email" placeholder="Địa chỉ email">
 
 							<img class="how-pos4 pointer-none"
 								src="${base}/images/icons/icon-email.png" alt="ICON">
@@ -109,7 +109,7 @@
 						<button type="button" onclick="SaveContact()"
 							class="flex-c-m cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 							Gửi</button>
-					<!-- </form> -->
+					</form>
 				</div>
 				<div
 					class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
@@ -181,7 +181,28 @@
 	<script src="${base}/vendor/sweetalert/sweetalert.min.js"></script>
 	
 	<script>
+		function validateEmail(email) {
+		  	const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		  	return re.test(email);
+		}
 		function SaveContact() {
+			var email = $("#email").val();
+			if(email == ""){
+				alert("Email không được để trống!")
+				return;
+			}
+			if(validateEmail(email)){
+				alert("Email không đúng định dạng!")
+				return;
+			}
+			if($("#fName").val() == ""){
+				alert("Họ tên không được để trống!")
+				return;
+			}
+			if($("#msg").val() == ""){
+				alert("Nội dung không được để trống!")
+				return;
+			}
 			// javascript object.
 			var data = {};
 			data["email"] = $("#email").val();

@@ -52,17 +52,16 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
+					<div class="panel-body mb-4">
+						<a href="${base}/admin/products" class="btn btn-primary a-btn-slide-text"> <i
+							class="fas fa-arrow-circle-left"></i> <strong>Trở lại</strong>
+						</a>
+					</div>
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">Danh sách review sản phẩm</h6>
 
-						</div>
-						<div class="card-body py-3">
-							<a href="#" class="btn btn-primary a-btn-slide-text"> <strong>Thêm</strong>
-								<i class="fas fa-plus-circle"></i>
-							</a>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">

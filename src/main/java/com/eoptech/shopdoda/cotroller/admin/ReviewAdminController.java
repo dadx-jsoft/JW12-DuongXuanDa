@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,20 +25,21 @@ import com.eoptech.shopdoda.services.ReviewService;
 public class ReviewAdminController {
 	@Autowired
 	private ReviewRepo reviewRepo;
-	
+
 	@Autowired
 	private ReviewService reviewService;
-	
-	@RequestMapping(value = { "/admin/reviews" }, method = RequestMethod.GET)
-	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+
+	@RequestMapping(value = { "/admin/reviews/{id}" }, method = RequestMethod.GET)
+	public String showReviews(final ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response, @PathVariable("id") int productId) throws Exception {
 		ReviewOrCommentSearch reviewSearch = new ReviewOrCommentSearch();
+		reviewSearch.setIdProductOrBlog(productId);
 		reviewSearch.buildPaging(request);
 		List<Review> reviews = reviewService.search(reviewSearch);
-		
+
 		model.addAttribute("reviews", reviews);
 		model.addAttribute("reviewSearch", reviewSearch);
-		
+
 		return "back-end/user/review";
 	}
 

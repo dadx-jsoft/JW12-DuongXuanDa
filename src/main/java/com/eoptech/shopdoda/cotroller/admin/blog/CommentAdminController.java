@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +28,13 @@ public class CommentAdminController {
 	@Autowired
 	private BlogCommentService commentService;
 
-	@RequestMapping(value = { "/admin/comments" }, method = RequestMethod.GET)
-	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+	@RequestMapping(value = { "/admin/comments/{id}" }, method = RequestMethod.GET)
+	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+			@PathVariable("id") int blogId) throws Exception {
 		ReviewOrCommentSearch commentSearch = new ReviewOrCommentSearch();
+		commentSearch.setIdProductOrBlog(blogId);
 		commentSearch.buildPaging(request);
-		
+
 		List<BlogComment> comments = commentService.search(commentSearch);
 		model.addAttribute("comments", comments);
 		model.addAttribute("commentSearch", commentSearch);

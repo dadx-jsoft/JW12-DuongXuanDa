@@ -73,23 +73,21 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Title</th>
+											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Short Description</th>
-											<th>views</th>
-											<th>Type</th>
-											<th>Action</th>
+											<th>Lượt xem</th>
+											<th>Loại</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>Title</th>
+											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Short Description</th>
-											<th>views</th>
-											<th>Type</th>
-											<th>Action</th>
+											<th>Lượt xem</th>
+											<th>Loại</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -99,13 +97,16 @@
 												<td>${blog.id}</td>
 												<td>${blog.title}</td>
 												<td><img src="${base}/upload/${blog.avatar}" width="80px"></td>
-												<td>${blog.shortDescription}</td>
 												<td>${blog.views}</td>
 												<td>${blog.blogType.name}</td>
 												<td>
 												<a href="${base}/admin/blogs/edit/${blog.id}"
 													class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
 														<i class="fas fa-edit"></i>
+												</a> 
+												<a href="${base}/admin/comments/${blog.id}"
+													class="btn btn-primary a-btn-slide-text"> <strong>Comment</strong>
+														<i class="fas fa-comment"></i>
 												</a> 
 												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>

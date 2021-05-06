@@ -30,9 +30,13 @@ public class SaleorderService {
 	public List<Saleorder> search(SaleorderSearch saleorderSearch) {
 		String jpql = "SELECT p FROM Saleorder p where p.status = true";
 
+//		if (!StringUtils.isEmpty(saleorderSearch.getSearchText())) {
+//			String st = "'%" + saleorderSearch.getSearchText().toLowerCase() + "%'";
+//			jpql = jpql + " AND ( LOWER(p.customerName) LIKE " + st + " ) ";
+//		}
 		if (!StringUtils.isEmpty(saleorderSearch.getSearchText())) {
-			String st = "'%" + saleorderSearch.getSearchText().toLowerCase() + "%'";
-			jpql = jpql + " AND ( LOWER(p.customerName) LIKE " + st + " ) ";
+			String st = "'" + saleorderSearch.getSearchText().toLowerCase() + "'";
+			jpql = jpql + " AND ( p.customerPhone = " + st + " ) ";
 		}
 		jpql = jpql + " ORDER BY p.createdDate DESC";
 

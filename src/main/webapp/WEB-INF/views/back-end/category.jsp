@@ -69,16 +69,16 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Action</th>
+											<th>Tên danh mục</th>
+											<th>Mô tả</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Action</th>
+											<th>Tên danh mục</th>
+											<th>Mô tả</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>

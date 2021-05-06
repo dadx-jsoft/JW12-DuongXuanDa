@@ -82,7 +82,7 @@ public class ContactController {
 		contact.setCreatedDate(new Date());
 		contact.setUpdatedDate(contact.getCreatedDate());
 
-		contactRepo.save(contact);
+//		contactRepo.save(contact);
 
 		return ResponseEntity.ok(new AjaxResponse(200, "Thành công"));
 	}
