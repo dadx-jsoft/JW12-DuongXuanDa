@@ -164,7 +164,7 @@ if (principal instanceof UserDetails) {
 										<c:forEach items="${comments}" var="comment">
 										<div class="flex-w flex-t p-b-68">
 											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="${base}/images/avatar-01.jpg" alt="AVATAR">
+												<img src="${base}/upload/${comment.user.avatar}" alt="AVATAR">
 											</div>
 
 											<div class="size-207">
@@ -181,7 +181,7 @@ if (principal instanceof UserDetails) {
 										<!-- Add review -->
 										<!-- <form class="w-full"> -->
 											<h5 class="mtext-108 cl2 p-b-7">Đánh giá</h5>
-											<i>Chú ý: Vui lòng đăng nhập *</i>
+											<i>Chú ý: Vui lòng đăng nhập để đánh giá *</i>
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
 													<textarea

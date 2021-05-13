@@ -26,7 +26,7 @@ public class SaleorderService {
 	private int DAY_OF_MONTH = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 	private int MONTH = Calendar.getInstance().get(Calendar.MONTH) + 1;
 	private int YEAR = Calendar.getInstance().get(Calendar.YEAR);
-	
+
 	public List<Saleorder> search(SaleorderSearch saleorderSearch) {
 		String jpql = "SELECT p FROM Saleorder p where p.status = true";
 
@@ -53,28 +53,24 @@ public class SaleorderService {
 		return query.getResultList();
 	}
 
-	public List<Saleorder> getAllByMonth(){
-//		String nativeSql = "SELECT s.code, s.total, s.created_date, s.customer_name, s.customer_address, s.customer_phone, s.cutomer_email "
-		String nativeSql = "SELECT * "
-				+ "FROM tbl_saleorder s " 
-				+ "WHERE s.status = true "
-				+ "AND MONTH(s.created_date) = " + this.MONTH + " "
-				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
+	public List<Saleorder> getAllByMonth() {
+		String nativeSql = "SELECT * FROM tbl_saleorder s " + " WHERE s.status = true "
+				+ " AND MONTH(s.created_date) = " + this.MONTH + " AND YEAR(s.created_date) = " + this.YEAR;
 		Query query = entityManager.createNativeQuery(nativeSql, Saleorder.class);
-		
+
 		List<Saleorder> results = query.getResultList();
-		
+
 		return results;
 	}
+
 	public String thongKeTheoThang() {
 		StringBuilder data = new StringBuilder();
 
 		String nativeSql = "SELECT MONTH(s.created_date), SUM(sp.price_unit) "
-				+ "FROM tbl_saleorder s, tbl_saleorder_products sp " 
-				+ "WHERE s.status = true "
-				+ "AND s.id = sp.saleorder_id "
-				+ "GROUP BY MONTH(s.created_date) " 
-				+ "ORDER BY MONTH(s.created_date) ";
+				+ " FROM tbl_saleorder s, tbl_saleorder_products sp " + " WHERE s.status = true "
+				+ " AND s.order_status = 3 "
+				+ " AND s.id = sp.saleorder_id " + " GROUP BY MONTH(s.created_date) "
+				+ " ORDER BY MONTH(s.created_date) ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
@@ -110,12 +106,10 @@ public class SaleorderService {
 	public Integer doanhThuNgay() {
 		Integer data = 0;
 
-		String nativeSql = "SELECT SUM(s.total) " 
-				+ "FROM tbl_saleorder s "
-				+ "WHERE s.status = true "
-				+ "AND DAY(s.created_date) = " + this.DAY_OF_MONTH + " "
-				+ "AND MONTH(s.created_date) = " + this.MONTH + " " 
-				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
+		String nativeSql = "SELECT SUM(s.total) " + "FROM tbl_saleorder s" + " WHERE s.status = true"
+				+ " AND s.order_status = 3 "
+				+ " AND DAY(s.created_date) = " + this.DAY_OF_MONTH + " AND MONTH(s.created_date) = " + this.MONTH
+				+ " AND YEAR(s.created_date) = " + this.YEAR;
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
@@ -130,11 +124,9 @@ public class SaleorderService {
 	public Integer doanhThuThang() {
 		Integer data = 0;
 
-		String nativeSql = "SELECT SUM(s.total) " 
-				+ "FROM tbl_saleorder s "
-				+ "WHERE s.status = true "
-				+ "AND MONTH(s.created_date) = " + this.MONTH + " "
-				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
+		String nativeSql = "SELECT SUM(s.total)" + "FROM tbl_saleorder s" + " WHERE s.status = true"
+				+ " AND s.order_status = 3 "
+				+ " AND MONTH(s.created_date) = " + this.MONTH + " AND YEAR(s.created_date) = " + this.YEAR;
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
@@ -149,11 +141,9 @@ public class SaleorderService {
 	public Integer doanhThuNam() {
 		Integer data = 0;
 
-		String nativeSql = "SELECT SUM(sp.price_unit) " 
-				+ "FROM tbl_saleorder s, tbl_saleorder_products sp "
-				+ "WHERE s.status = true "
-				+ "AND s.id = sp.saleorder_id " 
-				+ "AND YEAR(s.created_date) = " + this.YEAR + " ";
+		String nativeSql = "SELECT SUM(s.total)" + " FROM tbl_saleorder s" + " WHERE s.status = true"
+				+ " AND s.order_status = 3 "
+				+ " AND YEAR(s.created_date) = " + this.YEAR;
 
 		Query query = entityManager.createNativeQuery(nativeSql);
 
@@ -163,6 +153,15 @@ public class SaleorderService {
 			return 0;
 		}
 		return data;
+	}
+
+	public List<Saleorder> findSaleordersByUserId(int userId) {
+
+		String jpql = "SELECT p FROM Saleorder p where p.status = true And p.userId = " + userId;
+		Query query = entityManager.createQuery(jpql, Saleorder.class);
+		List<Saleorder> saleorders = (List<Saleorder>) query.getResultList();
+		return saleorders;
+
 	}
 
 }

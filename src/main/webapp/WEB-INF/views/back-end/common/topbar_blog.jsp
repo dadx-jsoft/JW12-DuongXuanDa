@@ -7,9 +7,12 @@
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%
 String username = null;
+String userAvatarPath = null;
 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 if (principal instanceof UserDetails) {
 	username = ((User)principal).getUsername();
+	
+	userAvatarPath = ((User)principal).getAvatar();
 }
 %>
 <nav
@@ -26,7 +29,7 @@ if (principal instanceof UserDetails) {
 		class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 		<div class="input-group">
 			<input name = "searchText" type="text" class="form-control bg-light border-0 small"
-				placeholder="Tìm kiếm blog..." aria-label="Tìm kiếm blog"
+				placeholder="Tìm kiếm bài đăng" aria-label="Tìm kiếm tin tức"
 				aria-describedby="basic-addon2">
 			<div class="input-group-append">
 				<button class="btn btn-primary" type="button">
@@ -70,7 +73,7 @@ if (principal instanceof UserDetails) {
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
 				class="mr-2 d-none d-lg-inline text-gray-600 small"><%= username %></span> <img class="img-profile rounded-circle"
-				src="${base}/img/undraw_profile.svg">
+				src="${base}/upload/<%= userAvatarPath %>">
 		</a> <!-- Dropdown - User Information -->
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -78,7 +81,7 @@ if (principal instanceof UserDetails) {
 				<a class="dropdown-item" href="#" data-toggle="modal"
 					data-target="#logoutModal"> <i
 					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-					Logout
+					Đăng xuất
 				</a>
 			</div></li>
 

@@ -33,12 +33,12 @@ public class Category extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categories", fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<Product>();
 
-	private void addProduct(Product product) {
+	public void addProduct(Product product) {
 		products.add(product);
 		product.setCategories(this);
 	}
 
-	private void removeProduct(Product product) {
+	public void removeProduct(Product product) {
 		products.remove(product);
 		product.setCategories(null);
 	}

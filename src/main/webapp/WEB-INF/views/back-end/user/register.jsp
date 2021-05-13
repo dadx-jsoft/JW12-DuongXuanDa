@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Đăng ký</title>
 
     <!-- Custom fonts for this template-->
     <link href="${base}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,8 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+                    <div class="col-lg-5 d-none d-lg-block" style="background-image: url('https://s1.1zoom.me/b6258/556/Cats_Ginger_color_Bokeh_Sitting_572594_600x800.jpg');"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -47,7 +48,7 @@
                                		<h3 class="h4 text-primary">${registerSuccess}</h3>
                                	</c:if>
                             </div>
-                            <form class="user" action="${base}/register" method="POST">
+                            <form class="user" action="${base}/register" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <input name="fullName" type="text" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Họ và tên" required="required">
@@ -70,21 +71,27 @@
                                             id="exampleRepeatPassword" placeholder="Xác nhận mật khẩu" required="required">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+	                                    <label for="userAvatar" class="control-label">Chọn ảnh đại diện</label>
+                                        <input name="userAvatar" type="file">
+                                    </div>
+                                </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
-                                <hr>
+                                <!-- <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                                </a> -->
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="${base}/password/forgot">Forgot Password?</a>
+                                <a class="small" href="${base}/password/forgot">Quên mật khẩu?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="${base}/login">Already have an account? Login!</a>
+                                <a class="small" href="${base}/login">Đăng nhập</a>
                             </div>
                         </div>
                     </div>

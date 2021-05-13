@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,13 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.eoptech.shopdoda.dto.AjaxResponse;
 import com.eoptech.shopdoda.dto.ContactDto;
 import com.eoptech.shopdoda.entities.Contact;
-import com.eoptech.shopdoda.repositories.ContactRepo;
 
 @Controller
 public class ContactController {
-
-	@Autowired
-	private ContactRepo contactRepo;
 
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
 	public String details(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)

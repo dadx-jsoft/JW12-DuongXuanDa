@@ -58,12 +58,12 @@ public class User extends BaseEntity implements UserDetails {
 					@JoinColumn(name = "role_id", nullable = false) })
 	private List<Role> roles;
 
-	private void addRole(Role r) {
+	public void addRole(Role r) {
 		roles.add(r);
-		r.setUsers((List<User>) this);
+		r.getUsers().add(this);
 	}
 
-	private void removeRole(Role r) {
+	public void removeRole(Role r) {
 		roles.remove(r);
 		r.setUsers(null);
 	}

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Forgot Password</title>
+    <title>Quên mật khẩu</title>
 
     <!-- Custom fonts for this template-->
     <link href="${base}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,29 +37,29 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-password-image"></div> -->
+                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/50128076/5/?bust=1608824260&width=600');"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
+                                        <h1 class="h4 text-gray-900 mb-2">Quên mật khẩu?</h1>
+                                        <p class="mb-4">Vui lòng nhập email đăng ký tài khoản để khôi phục mật khẩu!</p>
                                         <p class="text-danger">${messageReSetPass}</p>
                                     </div>
                                     <form class="user" action="${base}/password/reset" method="POST">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="emailResetPass" name="emailResetPass" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Nhập email...">
                                         </div>
-                                        <input type="submit" value="Reset Password" class="btn btn-primary btn-user btn-block"/>
+                                        <input type="submit" value="Đặt lại mật khẩu" class="btn btn-primary btn-user btn-block"/>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="${base}/register">Create an Account!</a>
+                                        <a class="small" href="${base}/register">Tạo tài khoản</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="${base}/login">Already have an account? Login!</a>
+                                        <a class="small" href="${base}/login">Đăng nhập</a>
                                     </div>
                                 </div>
                             </div>

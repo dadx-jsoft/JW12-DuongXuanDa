@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Roles - Dashboard</title>
+<title>Vai trò</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>

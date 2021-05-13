@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Dashboard</title>
+<title>Thống kê</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -49,10 +49,10 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+						<h1 class="h3 mb-0 text-gray-800">Thống kê doanh thu</h1>
 						<a href="${base}/admin/export/excel"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+							class="fas fa-download fa-sm text-white-50"></i> Xuất báo cáo tháng</a>
 					</div>
 
 					<!-- Content Row -->
@@ -65,7 +65,7 @@
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												Earnings (Daily)</div>
+												Doanh thu (ngày)</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">
 												<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${doanhThuNgay}" />
 											</div>
@@ -86,7 +86,7 @@
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-success text-uppercase mb-1">
-												Earnings (Monthly)</div>
+												Doanh thu (tháng)</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">
 												<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${doanhThuThang}" />
 											</div>
@@ -100,13 +100,13 @@
 						</div>
 						
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2">
+							<div class="card border-left-danger shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
-												class="text-xs font-weight-bold text-success text-uppercase mb-1">
-												Earnings (Yearly)</div>
+												class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+												Doanh thu (năm)</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">
 												<fmt:formatNumber type="number" pattern="###,###VNĐ" value="${doanhThuNam}" />
 											</div>
@@ -179,8 +179,7 @@
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Earnings
-										Overview</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Doanh thu theo tháng</h6>
 									<div class="dropdown no-arrow">
 										<a class="dropdown-toggle" href="#" role="button"
 											id="dropdownMenuLink" data-toggle="dropdown"
@@ -277,9 +276,9 @@
 	var myLineChart = new Chart(ctx, {
 	  type: 'line',
 	  data: {
-	    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+		  labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
 	    datasets: [{
-	      label: "Earnings",
+	      label: "Doanh thu",
 	      lineTension: 0.3,
 	      backgroundColor: "rgba(78, 115, 223, 0.05)",
 	      borderColor: "rgba(78, 115, 223, 1)",

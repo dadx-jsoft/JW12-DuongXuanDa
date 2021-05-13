@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 
 import com.eoptech.shopdoda.entities.Category;
-import com.eoptech.shopdoda.entities.blog.BlogType;
 import com.eoptech.shopdoda.utils.Constants;
 
 @Service

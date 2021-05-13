@@ -56,7 +56,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 text-gray-800">Thêm bài viết</h1>
+					<h1 class="h3 text-gray-800">Lưu bài viết</h1>
 
 					<!-- add product form -->
 					<div class="panel-body mb-4">

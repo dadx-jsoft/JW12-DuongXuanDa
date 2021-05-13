@@ -57,7 +57,7 @@ if (principal instanceof UserDetails) {
 
 						<li><a href="${base}/blog">Tin tức</a></li>
 
-						<li><a href="${base}/about">About</a></li>
+						<%-- <li><a href="${base}/about">About</a></li> --%>
 
 						<li><a href="${base}/contact">Liên hệ</a></li>
 					</ul>

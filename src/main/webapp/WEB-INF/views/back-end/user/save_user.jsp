@@ -20,7 +20,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Lưu user - Dashboard</title>
+<title>Lưu người dùng</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -71,35 +71,35 @@
 								<label for="fullName" class="col-sm-3 control-label">Họ tên</label>
 								<div class="col-sm-9">
 									<sf:input path="fullName" type="text" cssClass="form-control"
-										name="fullName" placeholder="Nhập họ tên user" />
+										name="fullName" placeholder="Nhập họ tên user" required="required"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="username" class="col-sm-3 control-label">Username</label>
 								<div class="col-sm-9">
 									<sf:input path="username" type="text" cssClass="form-control"
-										name="username" placeholder="Nhập username" />
+										name="username" placeholder="Nhập username" required="required" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="address" class="col-sm-3 control-label">Địa chỉ</label>
 								<div class="col-sm-9">
 									<sf:input path="address" type="text" cssClass="form-control"
-										name="address" placeholder="Nhập địa chỉ" />
+										name="address" placeholder="Nhập địa chỉ" required="required" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
 								<div class="col-sm-9">
 									<sf:input path="phone" type="text" cssClass="form-control"
-										name="phone" placeholder="Nhập số điện thoại" maxlength="10"/>
+										name="phone" placeholder="Nhập số điện thoại" maxlength="10" required="required"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="email" class="col-sm-3 control-label">Email</label>
 								<div class="col-sm-9">
 									<sf:input path="email" type="text" cssClass="form-control"
-										name="email" placeholder="Nhập email" />
+										name="email" placeholder="Nhập email" required="required" />
 								</div>
 							</div>
 							<div class="form-group">

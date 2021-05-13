@@ -53,7 +53,7 @@ public class UserService {
 
 	public List<User> getAllUsers() {
 		try {
-			String jpql = "Select u From User u Where u.status = true";
+			String jpql = "Select u From User u Where u.status = true Order By u.createdDate";
 			Query query = entityManager.createQuery(jpql, User.class);
 			return query.getResultList();
 		} catch (Exception e) {

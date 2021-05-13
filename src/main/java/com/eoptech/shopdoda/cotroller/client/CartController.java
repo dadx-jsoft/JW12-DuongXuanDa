@@ -28,14 +28,20 @@ import com.eoptech.shopdoda.entities.User;
 import com.eoptech.shopdoda.repositories.ProductRepo;
 import com.eoptech.shopdoda.repositories.SaleorderRepo;
 import com.eoptech.shopdoda.services.MailService;
+import com.eoptech.shopdoda.services.SaleorderService;
 
 @Controller
 public class CartController extends BaseController {
 
 	@Autowired
 	ProductRepo productRepo;
+	
 	@Autowired
 	SaleorderRepo saleOrderRepo;
+	
+	@Autowired
+	private SaleorderService saleorderService;
+	
 	@Autowired
 	private MailService mailService;
 
@@ -49,32 +55,27 @@ public class CartController extends BaseController {
 		Cart cart = (Cart) httpSession.getAttribute("cart");
 		List<CartItem> cartItems = cart.getCartItems();
 
-		int total = 0;
-		for (CartItem item : cartItems) {
-			total += item.getQuantity();
-		}
-
-		return total;
+		return cartItems.size();
 	}
 
-	private Double getTotalPrice(HttpServletRequest request) {
-		HttpSession httpSession = request.getSession();
-
-		if (httpSession.getAttribute("cart") == null) {
-			return 0d;
-		}
-
-		Cart cart = (Cart) httpSession.getAttribute("cart");
-		List<CartItem> cartItems = cart.getCartItems();
-
-		Double totalPrice = 0d;
-		for (CartItem item : cartItems) {
-			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
-//			totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
-		}
-
-		return totalPrice;
-	}
+//	private Double getTotalPrice(HttpServletRequest request) {
+//		HttpSession httpSession = request.getSession();
+//
+//		if (httpSession.getAttribute("cart") == null) {
+//			return 0d;
+//		}
+//
+//		Cart cart = (Cart) httpSession.getAttribute("cart");
+//		List<CartItem> cartItems = cart.getCartItems();
+//
+//		Double totalPrice = 0d;
+//		for (CartItem item : cartItems) {
+//			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
+////			totalPrice.add(item.getPriceUnit().multiply(BigDecimal.valueOf(item.getQuantity())));
+//		}
+//
+//		return totalPrice;
+//	}
 
 	private void resetCart(final HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
@@ -95,6 +96,7 @@ public class CartController extends BaseController {
 			errorMessage = "Không có sản phẩm nào trong giỏ hàng";
 		}
 
+		int userId = -1;
 		String customerName = null;
 		String customerAddress = null;
 		String customerPhone = null;
@@ -102,6 +104,7 @@ public class CartController extends BaseController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) { // user đã đăng nhập -> lưu thông tin user vào saleorder
 			User u = (User) principal;
+			userId = u.getId();
 			customerName = u.getFullName();
 			customerAddress = u.getAddress();
 			customerPhone = u.getPhone();
@@ -121,11 +124,15 @@ public class CartController extends BaseController {
 		Saleorder saleOrder = new Saleorder();
 		saleOrder.setCode("ORDER-" + System.currentTimeMillis());
 		saleOrder.setSeo("ORDER-" + System.currentTimeMillis());
+		if (userId != -1) {
+			saleOrder.setUserId(userId);
+		}
 		saleOrder.setCustomerName(customerName);
 		saleOrder.setCustomerAddress(customerAddress);
 		saleOrder.setCustomerPhone(customerPhone);
 		saleOrder.setCustomerEmail(customerEmail);
 		saleOrder.setTotal(new BigDecimal(0));
+		saleOrder.setOrderStatus(0);
 
 		BigDecimal totalPrice = BigDecimal.ZERO;
 
@@ -175,7 +182,22 @@ public class CartController extends BaseController {
 
 		return "front-end/shopping_cart";
 	}
+	
+	@RequestMapping(value = { "/order/history" }, method = RequestMethod.GET)
+	public String orderHistoryView(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
 
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) { // user đã đăng nhập. Hiển thị lịch sử đơn hàng
+			User u = (User) principal;
+			List<Saleorder> saleorders = saleorderService.findSaleordersByUserId(u.getId());
+			model.addAttribute("orderHistory", saleorders);
+		}
+			
+		return "front-end/order_history";
+	}
+
+	
 	@RequestMapping(value = { "/cart/add" }, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> addToCart(final ModelMap model, final HttpServletRequest request,
 			final HttpServletResponse response, @RequestBody CartItem cartItem) {
@@ -227,8 +249,10 @@ public class CartController extends BaseController {
 		Double totalPrice = 0d;
 		for (CartItem item : cartItems) {
 			if (item.getProductId() == cartItem.getProductId()) { // trùng id trong giỏ hàng
-				if(cartItem.getQuantity() == 0) item.setQuantity(1);
-				else item.setQuantity(cartItem.getQuantity());
+				if (cartItem.getQuantity() == 0)
+					item.setQuantity(1);
+				else
+					item.setQuantity(cartItem.getQuantity());
 			}
 			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 		}
@@ -248,9 +272,9 @@ public class CartController extends BaseController {
 
 		List<CartItem> cartItems = cart.getCartItems();
 		Double totalPrice = 0d;
-		
+
 		for (int i = 0; i < cartItems.size(); i++) {
-			if(cartItems.get(i).getProductId() == cartItem.getProductId()) {
+			if (cartItems.get(i).getProductId() == cartItem.getProductId()) {
 				cartItems.remove(i);
 				break;
 			}
@@ -258,11 +282,11 @@ public class CartController extends BaseController {
 		for (CartItem item : cartItems) {
 			totalPrice += item.getPriceUnit().doubleValue() * item.getQuantity();
 		}
-		
+
 		httpSession.setAttribute("totalItems", getTotalItems(request));
 		httpSession.setAttribute("totalPrice", totalPrice);
 		String[] data = { String.valueOf(getTotalItems(request)), totalPrice.toString() };
 		return ResponseEntity.ok(new AjaxResponse(200, data));
 	}
-	
+
 }

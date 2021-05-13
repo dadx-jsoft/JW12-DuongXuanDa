@@ -30,6 +30,9 @@ public class Saleorder extends BaseEntity {
 
 	@Column(name = "seo")
 	private String seo;
+	
+	@Column(name = "order_status")
+	private Integer orderStatus;
 
 	@Column(precision = 10, scale = 2)
 	private BigDecimal total;
@@ -90,6 +93,14 @@ public class Saleorder extends BaseEntity {
 
 	public void setSeo(String seo) {
 		this.seo = seo;
+	}
+
+	public Integer getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(Integer orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	public BigDecimal getTotal() {

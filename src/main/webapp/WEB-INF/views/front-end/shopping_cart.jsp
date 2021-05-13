@@ -1,14 +1,20 @@
 <%@ page session="true" %>
 <%@page import="java.math.BigDecimal"%>
-<%@page import="com.eoptech.shopdoda.entities.User"%>
-<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
-<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
+<%@page import="com.eoptech.shopdoda.entities.User"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%
+String username = null;
+Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+if (principal instanceof UserDetails) {
+	username = ((User)principal).getUsername();
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +43,11 @@
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<% if(username != null) {%>
+						<span>
+						<a href="${base}/order/history" class="btn btn-primary">Lịch sử mua hàng</a>
+						</span>
+						<%} %>
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
@@ -102,7 +113,7 @@
 
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
-								<span class="cl2"> Shipping: </span>
+								<span class="cl2"> Vận chuyển: </span>
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
@@ -117,7 +128,6 @@
 									
 									<%
 									boolean isLogined = false;
-									Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 									if (principal instanceof UserDetails) {
 										isLogined = true;
 									}

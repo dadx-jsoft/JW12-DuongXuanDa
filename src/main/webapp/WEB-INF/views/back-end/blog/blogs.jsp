@@ -17,7 +17,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Blogs - Dashboard</title>
+<title>Tin tức - quản trị</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -57,7 +57,7 @@
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">
-								<a href="${base}/admin/blogs">Danh sách blog</a>
+								<a href="${base}/admin/blogs">Danh sách bài đăng</a>
 							</h6>
 
 						</div>
@@ -108,11 +108,31 @@
 													class="btn btn-primary a-btn-slide-text"> <strong>Comment</strong>
 														<i class="fas fa-comment"></i>
 												</a> 
-												<a href="${base}/admin/blogs/delete/${blog.id}" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
+												<a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> 
+													<strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 												</a>
 												</td>
 											</tr>
+											<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+															<button class="close" type="button" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">X</span>
+															</button>
+														</div>
+														<div class="modal-body">Chọn nút "xóa" để xóa mục này.</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+															<a class="btn btn-primary" href="${base}/admin/blogs/delete/${blog.id}">Xóa</a>
+														</div>
+													</div>
+												</div>
+											</div>
 										</c:forEach>
 									</tbody>
 								</table>

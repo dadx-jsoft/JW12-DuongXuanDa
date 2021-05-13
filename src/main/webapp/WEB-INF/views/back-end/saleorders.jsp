@@ -18,7 +18,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Saleorders - Dashboard</title>
+<title>Đơn hàng</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -78,6 +78,7 @@
 											<th>Số điện thoại</th>
 											<th>Email</th>
 											<th>Thành tiền(VNĐ)</th>
+											<th>Trạng thái đơn</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -89,6 +90,7 @@
 											<th>Số điện thoại</th>
 											<th>Email</th>
 											<th>Thành tiền(VNĐ)</th>
+											<th>Trạng thái đơn</th>
 											<th></th>
 										</tr>
 									</tfoot>
@@ -106,13 +108,53 @@
 														<fmt:formatNumber type="number" pattern="###,###" value="${saleorder.total}"/>
 													</label>
 												</td>
+												<td>
+												<c:if test="${saleorder.orderStatus == 0}">
+													<span id="approveSaleorder_${saleorder.id}">
+													<button class="btn btn-secondary" onclick="approveSaleorder(${saleorder.id})">Duyệt</button>
+													</span>
+												</c:if>
+												<c:if test="${saleorder.orderStatus == 1}">
+													<span id="deliverySaleorder_${saleorder.id}">
+													<button class="btn btn-primary" onclick="deliverySaleorder(${saleorder.id})">Giao hàng</button>
+													</span>
+												</c:if>
+												<c:if test="${saleorder.orderStatus == 2}">
+													<span id="completeSaleorder_${saleorder.id}">
+													<button class="btn btn-success" onclick="completeSaleorder(${saleorder.id})">Hoàn thành</button>
+													</span>
+												</c:if>
+												<c:if test="${saleorder.orderStatus == 3}">
+													<span class="text-success"><i class="fas fa-clipboard-check"></i> Hoàn thành</span>
+												</c:if>
+												</td>
+												
 												<td style="width: 25%;"> <a href="${base}/admin/saleorders/detail/${saleorder.id}"
 													class="btn btn-primary a-btn-slide-text"> <strong>Xem</strong>
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text"> <strong>Xóa</strong>
+												</a> <a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> <strong>Xóa</strong>
 														<i class="fas fa-trash-alt"></i>
 												</a></td>
 											</tr>
+											<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+															<button class="close" type="button" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">X</span>
+															</button>
+														</div>
+														<div class="modal-body">Chọn nút "xóa" để xóa mục này.</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+															<a class="btn btn-primary" href="${base}/admin/saleorders/delete/${saleorder.id}">Xóa</a>
+														</div>
+													</div>
+												</div>
+											</div>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -164,6 +206,71 @@
 
 	<!-- Page level custom scripts -->
 	<script src="${base}/js/demo/datatables-demo.js"></script>
+	
+	<script>
+		function approveSaleorder(saleorderId){
+			// javascript object.
+			var data = {};
+			data["id"] = saleorderId;
+			var approveSaleorder = "#approveSaleorder_" + saleorderId;
+			var htmlStr = '<button id="deliverySaleorder_' + saleorderId + '" class="btn btn-primary" onclick="deliverySaleorder('+saleorderId+')">Giao hàng</button>';
+			$.ajax({
+				url: "/admin/saleorders/approve",
+				type: "post",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(jsonResult) {
+					$(approveSaleorder).html(htmlStr);
+					$(approveSaleorder).attr("id","deliverySaleorder_" + saleorderId);
+				},
+				error: function(jqXhr, textStatus, errorMessage) { // error callback 
+				}
+			});
+		}
+		
+		function deliverySaleorder(saleorderId){
+			// javascript object.
+			var data = {};
+			data["id"] = saleorderId;
+			var deliverySaleorder = "#deliverySaleorder_" + saleorderId;
+			var htmlStr = '<button id="completeSaleorder_' + saleorderId + '" class="btn btn-success" onclick="completeSaleorder('+saleorderId+')">Hoàn thành</button>';
+			$.ajax({
+				url: "/admin/saleorders/delivery",
+				type: "post",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(jsonResult) {
+					$(deliverySaleorder).html(htmlStr);
+					$(deliverySaleorder).attr("id","deliverySaleorder_" + saleorderId);
+				},
+				error: function(jqXhr, textStatus, errorMessage) { // error callback 
+				}
+			});
+		}
+		
+		function completeSaleorder(saleorderId){
+			// javascript object.
+			var data = {};
+			data["id"] = saleorderId;
+			var completeSaleorder = "#completeSaleorder_" + saleorderId;
+			$.ajax({
+				url: "/admin/saleorders/complete",
+				type: "post",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(jsonResult) {
+					$(completeSaleorder).removeClass("btn btn-success");
+					$(completeSaleorder).addClass("text-danger");
+					$(completeSaleorder).html('<i class="fas fa-clipboard-check"></i> Hoàn thành')
+				},
+				error: function(jqXhr, textStatus, errorMessage) { // error callback 
+				}
+			});
+		}
+	</script>
 
 </body>
 

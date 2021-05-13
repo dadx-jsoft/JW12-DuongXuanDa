@@ -19,7 +19,7 @@ public class ContactService {
 	public List<Contact> getContacts() {
 		String jpql = "SELECT c FROM Contact c where c.status = true";
 		Query query = entityManager.createQuery(jpql, Contact.class);
-		return (List<Contact>) query.getResultList();
+		return query.getResultList();
 	}
 	
 }

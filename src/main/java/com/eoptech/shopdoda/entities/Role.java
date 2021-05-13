@@ -26,12 +26,12 @@ public class Role extends BaseEntity implements GrantedAuthority {
 	@ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<User> users;
 
-	private void addUser(User u) {
+	public void addUser(User u) {
 		users.add(u);
-		u.setRoles((List<Role>) this);
+		u.getRoles().add(this);
 	}
 
-	private void removeUser(User u) {
+	public void removeUser(User u) {
 		users.remove(u);
 		u.setRoles(null);
 	}

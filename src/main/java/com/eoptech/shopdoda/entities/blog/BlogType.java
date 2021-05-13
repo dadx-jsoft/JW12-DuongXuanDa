@@ -34,12 +34,12 @@ public class BlogType extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "blogType", fetch = FetchType.LAZY)
 	private List<Blog> blogs = new ArrayList<Blog>();
 
-	private void addBLog(Blog blog) {
+	public void addBLog(Blog blog) {
 		this.blogs.add(blog);
 		blog.setBlogType(this);
 	}
 
-	private void removeBLog(Blog blog) {
+	public void removeBLog(Blog blog) {
 		this.blogs.remove(blog);
 		blog.setBlogType(null);
 	}

@@ -17,7 +17,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Comment - Dashboard</title>
+<title>Bình luận tin tức</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -170,7 +170,7 @@
 				success: function(jsonResult) {
 					$(unapprovedReviewVar).removeClass("btn-secondary");
 					$(unapprovedReviewVar).addClass("btn-success");
-					$(unapprovedReviewVar).html('Approved<i class="fas fa-check-square"></i>');
+					$(unapprovedReviewVar).html('Appr<i class="fas fa-check-square"></i>');
 				},
 				error: function(jqXhr, textStatus, errorMessage) { // error callback 
 				}

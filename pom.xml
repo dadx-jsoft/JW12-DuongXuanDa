@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.devpro</groupId>
-	<artifactId>com.eoptech.demo</artifactId>
+	<artifactId>com.eoptech.shopdoda</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>shop-do-da</name>
+	<name>shopdoda</name>
 
 	<properties>
 		<!-- báo maven sử dụng phiên bản jdk nào ? -->
@@ -126,7 +126,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>com.devpro.buoi1</finalName>
+		<finalName>com.eoptech.shopdoda</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<!-- Dùng plugin tạo file jar -->
@@ -137,7 +137,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.devpro.buoi1.SpringBootMain</mainClass>
+							<mainClass>com.eoptech.shopdoda.SpringBootMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

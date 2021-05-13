@@ -65,7 +65,6 @@
 										<span> ${blog.views} views <span
 											class="cl12 m-l-4 m-r-6">|</span>
 									</span> 
-									<span> 8 Comments </span> 
 									</span> <a href="${base}/blog-detail/${blog.seo}"
 										class="cl2 hov-cl1 trans-04 m-tb-10"> Đọc tiếp <i class="fa fa-long-arrow-right m-l-9"></i>
 									</a>

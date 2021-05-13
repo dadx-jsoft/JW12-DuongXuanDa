@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -20,14 +19,11 @@ public class ReviewService {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-	@Autowired
-	private ProductService productService;
-
 	public List<Review> findByProduct(Product product) {
 		try {
 			String jpql = "Select c From Review c Where c.product.id='" + product.getId() + "' And c.status = true";
 			Query query = entityManager.createQuery(jpql, Review.class);
-			return (List<Review>) query.getResultList();
+			return query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -45,7 +41,7 @@ public class ReviewService {
 		jpql = jpql + " ORDER BY p.createdDate DESC";
 
 		if(reviewSearch.getIdProductOrBlog() > 0) {
-			jpql = "Select c From Review c Where c.product.id='" + reviewSearch.getIdProductOrBlog() + "' And c.status = true";
+			jpql = "Select c From Review c Where c.product.id='" + reviewSearch.getIdProductOrBlog() + "'"; // Hiển thị cả status=0
 		}
 		
 		Query query = entityManager.createQuery(jpql, Review.class);

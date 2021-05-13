@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Contact - Dashboard</title>
+<title>Liên hệ khách hàng</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -86,12 +86,31 @@
 												<!-- <a href="#" class="btn btn-primary a-btn-slide-text"> <strong>View</strong>
 														<i class="fas fa-eye"></i>
 												</a>  -->
-												<a href="${base}/admin/contacts/delete/${contact.id}" class="btn btn-danger a-btn-slide-text"> 
-														<strong>Xóa</strong>
-														<i class="fas fa-trash-alt"></i>
+												<a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> 
+													<strong>Xóa</strong>
+													<i class="fas fa-trash-alt"></i>
 												</a>
 												</td>
 											</tr>
+											<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+															<button class="close" type="button" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">X</span>
+															</button>
+														</div>
+														<div class="modal-body">Chọn nút "xóa" để xóa mục này.</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+															<a class="btn btn-primary" href="${base}/admin/contacts/delete/${contact.id}">Xóa</a>
+														</div>
+													</div>
+												</div>
+											</div>
 										</c:forEach>
 									</tbody>
 								</table>

@@ -45,12 +45,16 @@
 	<hr class="sidebar-divider">
 
 	<!-- Heading -->
-	<div class="sidebar-heading">Manage</div>
+	<div class="sidebar-heading">Quản lý</div>
 
 	<!-- Nav Item - Charts -->
 	<%-- <li class="nav-item"><a class="nav-link" href="${base}/charts"> <i
 			class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
 	</a></li> --%>
+	
+	<li class="nav-item"><a class="nav-link" href="${base}/admin">
+			<i class="fas fa-users"></i> <span>Thống kê</span>
+	</a></li>
 	
 	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/saleorders">
@@ -67,7 +71,7 @@
 	</a></li>
 	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/blogs">
-			<i class="fas fa-blog"></i> <span>Blog</span>
+			<i class="fas fa-blog"></i> <span>Tin tức</span>
 	</a></li>
 	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/contacts">
@@ -75,7 +79,7 @@
 	</a></li>
 	
 	<li class="nav-item"><a class="nav-link" href="${base}/admin/users">
-			<i class="fas fa-users"></i> <span>Users</span>
+			<i class="fas fa-users"></i> <span>Người dùng</span>
 	</a></li>
 	
 	<!-- Divider -->

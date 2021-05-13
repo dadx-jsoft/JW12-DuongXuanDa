@@ -1,5 +1,6 @@
 package com.eoptech.shopdoda.cotroller.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.eoptech.shopdoda.entities.Role;
 import com.eoptech.shopdoda.entities.User;
@@ -24,6 +27,7 @@ import com.eoptech.shopdoda.services.MailService;
 import com.eoptech.shopdoda.services.RoleService;
 import com.eoptech.shopdoda.services.UserService;
 import com.eoptech.shopdoda.utils.GeneratePassword;
+import com.eoptech.shopdoda.utils.PathConstant;
 
 @Controller
 public class UserAdminController {
@@ -70,8 +74,8 @@ public class UserAdminController {
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-	public String addAccount(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+	public String addAccount(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+			@RequestParam("userAvatar") MultipartFile userAvatar) throws Exception {
 
 		String fullName = request.getParameter("fullName");
 		String email = request.getParameter("email");
@@ -82,7 +86,12 @@ public class UserAdminController {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
-
+		
+		if(userName.trim().equals("")) {
+			model.addAttribute("error", "Username không được để trống!");
+			return "back-end/user/register";
+		}
+		
 		User user = new User();
 		user.setUsername(userName);
 		if (password.equals(confirmPassword)) {
@@ -92,14 +101,19 @@ public class UserAdminController {
 		user.setCreatedDate(new Date());
 		user.setFullName(fullName);
 
+		// avatar
+		String avatarPath = "user/avatar/" + userAvatar.getOriginalFilename();
+		user.setAvatar(avatarPath);
+		userAvatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
+
 		// Role
 		Role role = roleService.getRoleByName("GUEST");
 		ArrayList<Role> listRoles = new ArrayList<Role>();
 		listRoles.add(role);
 		user.setRoles(listRoles);
-		
+
 		userRepo.save(user);
-		
+
 		model.addAttribute("registerSuccess", "Đăng ký tài khoản thành công!!");
 		return "back-end/user/register";
 	}

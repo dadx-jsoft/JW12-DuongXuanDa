@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Products - Dashboard</title>
+<title>Sản phẩm</title>
 
 <!-- Custom fonts for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
@@ -123,16 +123,15 @@
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel">Are you sure to delete?</h5>
+																<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
 																<button class="close" type="button" data-dismiss="modal"
 																	aria-label="Close">
 																	<span aria-hidden="true">X</span>
 																</button>
 															</div>
-															<div class="modal-body">Select "Delete" below if you are ready
-																to delete this.</div>
+															<div class="modal-body">Chọn nút "xóa" để xóa mục này.</div>
 															<div class="modal-footer">
-																<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+																<button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
 																<a class="btn btn-primary" href="${base}/admin/products/delete/${product.id}">Xóa</a>
 															</div>
 														</div>
