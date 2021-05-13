@@ -22,10 +22,10 @@
 
 				<ul>
 					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a></li>
+						class="stext-107 cl7 hov-cl1 trans-04"> Vận chuyển </a></li>
 
 					<li class="p-b-10"><a href="#"
-						class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a></li>
+						class="stext-107 cl7 hov-cl1 trans-04"> Câu hỏi </a></li>
 				</ul>
 			</div>
 
@@ -58,7 +58,7 @@
 
 					<div class="p-t-18">
 						<button type="button" onclick="SaveSubscribe();"
-							class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+							class="flex-c-m cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 							Gửi</button>
 					</div>
 				</form>

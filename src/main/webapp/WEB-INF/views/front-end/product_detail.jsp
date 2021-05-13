@@ -346,10 +346,11 @@ if (principal instanceof UserDetails) {
 	
 				dataType : "json",
 				success : function(jsonResult) {
+					var message = jsonResult.data;
 					if (jsonResult.statusCode == 200) {
-						swal("Comment thành công!!", "Vui lòng chờ admin duyệt comment", "success");
+						swal(message, "Thông báo");
 					} else {
-						alert(jsonResult.data);
+						alert(message);
 					}
 				},
 				error : function(jqXhr, textStatus, errorMessage) { // error callback 
