@@ -155,7 +155,7 @@ public class CartController extends BaseController {
 		this.resetCart(request);
 
 		try {
-			mailService.sendMailAfterOrderSuccess(customerEmail);
+			mailService.sendMailAfterOrderSuccess(customerEmail, saleOrder);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -5,15 +5,17 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.eoptech.shopdoda.entities.Saleorder;
+
 @Service
 public class MailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	public void sendMailAfterOrderSuccess(String email) {
+	public void sendMailAfterOrderSuccess(String email, Saleorder saleorder) {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(email);
-
+		
 		msg.setSubject("Đặt hàng thành công");
 		msg.setText(
 				"Chúc mừng bạn đã đặt hàng thành công, "

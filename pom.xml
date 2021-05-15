@@ -137,6 +137,7 @@
 				<configuration>
 					<archive>
 						<manifest>
+							<addClasspath>true</addClasspath>
 							<mainClass>com.eoptech.shopdoda.SpringBootMain</mainClass>
 						</manifest>
 					</archive>
