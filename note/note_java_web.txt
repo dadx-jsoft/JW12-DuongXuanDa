@@ -1,0 +1,15 @@
+- admin: sửa logo, sửa slide trang chủ
+
+-client: lọc sản phẩm theo giá, thuộc tính
+yêu thích sản phẩm
+
+web bán mỹ phẩm: chat với khách hàng
+phát triển: thống kê doanh thu, theo dõi tình trạng đơn hàng
+
+Bảo: 
+quản lý khuyến mại, 
+không thể mua quá số lượng sản phẩm trong db,
+xuất hóa đơn ra file excel,
+
+
+không nên sửa mật khẩu trong admin

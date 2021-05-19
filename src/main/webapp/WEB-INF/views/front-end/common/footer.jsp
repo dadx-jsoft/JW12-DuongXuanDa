@@ -6,7 +6,6 @@
 		<div class="row">
 			<div class="col-sm-6 col-lg-3 p-b-50">
 				<h4 class="stext-301 cl0 p-b-30">Danh mục</h4>
-
 				<ul>
 					<li class="p-b-10"><a href="${base}/category/day-da-dong-ho"
 						class="cl7 hov-cl1 trans-04"> Dây da đồng hồ </a></li>
@@ -18,7 +17,7 @@
 			</div>
 
 			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Help</h4>
+				<h4 class="stext-301 cl0 p-b-30">Trợ giúp</h4>
 
 				<ul>
 					<li class="p-b-10"><a href="#"
@@ -30,20 +29,8 @@
 			</div>
 
 			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">Cửa hàng</h4>
-
-				<p class="cl7 size-201">251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội </p>
-				<p class="cl7 size-201">Điện thoại: 0961 010 169</p>
-
-				<div class="p-t-27">
-					<a href="https://www.facebook.com/Retro1981vn" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-						class="fa fa-facebook"></i>
-					</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-						class="fa fa-instagram"></i>
-					</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-						class="fa fa-pinterest-p"></i>
-					</a>
-				</div>
+				<h4 class="stext-301 cl0 p-b-30">Tin tức</h4>
+				<a class="cl7 size-201" href="${base}/blog">Tin tức</a>
 			</div>
 
 			<div class="col-sm-6 col-lg-3 p-b-50">

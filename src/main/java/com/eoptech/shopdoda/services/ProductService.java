@@ -131,6 +131,7 @@ public class ProductService implements Constants {
 				product.setProductsImages(images);
 			}
 			product.setUpdatedDate(new Date());
+			product.setCreatedDate(product.getCreatedDate() == null ? new Date() : product.getCreatedDate());
 			product.setSeo(Utilities.seo(product.getTitle() + "-" + System.currentTimeMillis()));
 			productRepo.save(product);
 

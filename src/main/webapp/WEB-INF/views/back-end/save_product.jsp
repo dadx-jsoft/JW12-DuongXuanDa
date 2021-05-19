@@ -127,6 +127,16 @@
 							</div>
 
 							<div class="form-group">
+								<label for="quantity" class="col-sm-3 control-label">Số
+									lượng</label>
+								<div class="col-sm-3">
+									<sf:input path="quantity" type="number" cssClass="form-control"
+										name="quantity" id="quantity"
+										placeholder="Nhập số lượng sản phẩm" min = "1" />
+								</div>
+							</div>
+							
+							<div class="form-group">
 								<label for="seo" class="col-sm-3 control-label">Seo</label>
 								<div class="col-sm-3">
 									<sf:input path="seo" type="text" cssClass="form-control"
@@ -134,17 +144,6 @@
 								</div>
 							</div>
 
-							<!-- form-group // -->
-
-							<%-- <div class="form-group">
-								<label for="quantity" class="col-sm-3 control-label">Số
-									lượng</label>
-								<div class="col-sm-3">
-									<sf:input path="quantity" type="number" cssClass="form-control"
-										name="quantity" id="quantity"
-										placeholder="Nhập số lượng sản phẩm" min = "1" value = "1"/>
-								</div>
-							</div> --%>
 							<!-- form-group // -->
 
 							<div class="form-group">

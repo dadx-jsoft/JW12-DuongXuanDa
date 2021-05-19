@@ -121,7 +121,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Địa chỉ </span>
 
-							<p class="cl6 size-213 p-t-18">251 Giáp Nhất, Nhân Chính, Thanh Xuân, Hà Nội</p>
+							<p class="cl6 size-213 p-t-18">${shopInfo.address}</p>
 						</div>
 					</div>
 
@@ -133,7 +133,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Hotline </span>
 
-							<p class="cl1 size-213 p-t-18">+84 961 010 169</p>
+							<p class="cl1 size-213 p-t-18">${shopInfo.phone}</p>
 						</div>
 					</div>
 
@@ -145,7 +145,7 @@
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2"> Email hỗ trợ </span>
 
-							<p class="cl1 size-213 p-t-18">duongnc0212@gmail.com
+							<p class="cl1 size-213 p-t-18">${shopInfo.email}
 							</p>
 						</div>
 					</div>

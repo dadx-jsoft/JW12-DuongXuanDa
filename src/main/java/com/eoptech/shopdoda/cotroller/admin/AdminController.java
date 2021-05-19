@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoptech.shopdoda.entities.Saleorder;
+import com.eoptech.shopdoda.entities.Shop;
+import com.eoptech.shopdoda.repositories.ShopRepo;
 import com.eoptech.shopdoda.services.SaleorderService;
 import com.eoptech.shopdoda.utils.SaleorderExcelExporter;
 
@@ -24,6 +27,8 @@ public class AdminController {
 	
 	@Autowired
 	private SaleorderService saleorderService;
+	@Autowired
+	private ShopRepo shopRepo;
 	
 	/**
 	 * @param model    - Dùng để đẩy dữ liệu hoặc hứng dữ liệu từ tầng VIEW.
@@ -68,5 +73,27 @@ public class AdminController {
         SaleorderExcelExporter excelExporter = new SaleorderExcelExporter(listSaleorders);
          
         excelExporter.export(response);    
-    } 
+    }
+	
+	@RequestMapping(value = { "admin/shop/info" }, method = RequestMethod.GET)
+	public String shopInfo(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		
+		Shop shopInfo = shopRepo.findAll().get(0);
+		model.addAttribute("shopInfo", shopInfo);
+		
+		return "back-end/shop_info";
+	}
+	
+	@RequestMapping(value = { "admin/shop/info" }, method = RequestMethod.POST)
+	public String saveShopInfo(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response, 
+			@ModelAttribute("shopInfo") Shop shopInfo)
+			throws Exception {
+		
+		shopRepo.save(shopInfo);
+		model.addAttribute("saveShopInfoSuccess", "Đã lưu!");
+		
+		return "back-end/shop_info";
+	}
+
 }

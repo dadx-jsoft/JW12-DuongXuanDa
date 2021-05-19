@@ -82,6 +82,10 @@
 			<i class="fas fa-users"></i> <span>Người dùng</span>
 	</a></li>
 	
+	<li class="nav-item"><a class="nav-link" href="${base}/admin/shop/info">
+			<i class="fas fa-users"></i> <span>Thông tin cửa hàng</span>
+	</a></li>
+	
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 

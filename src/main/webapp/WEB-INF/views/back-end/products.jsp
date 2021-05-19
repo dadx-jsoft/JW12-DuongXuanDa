@@ -3,6 +3,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- Paging -->
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/pagingTagLibs.tld"%>
 <!DOCTYPE html>
@@ -75,8 +76,8 @@
 											<th>#</th>
 											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Giá</th>
-											<th>Giá Sale</th>
+											<th>Giá (VNĐ)</th>
+											<th>Giá Sale (VNĐ)</th>
 											<th>Danh mục</th>
 											<th></th>
 										</tr>
@@ -86,8 +87,8 @@
 											<th>#</th>
 											<th>Tiêu đề</th>
 											<th>Avatar</th>
-											<th>Giá</th>
-											<th>Giá Sale</th>
+											<th>Giá (VNĐ)</th>
+											<th>Giá Sale (VNĐ)</th>
 											<th>Danh mục</th>
 											<th></th>
 										</tr>
@@ -100,8 +101,12 @@
 													<td>${product.title}</td>
 													<td><img src="${base}/upload/${product.avatar}"
 														width="80px"></td>
-													<td>${product.price}</td>
-													<td>${product.priceSale}</td>
+													<td>
+														<fmt:formatNumber type="number" pattern="###,###" value="${product.price}" />
+													</td>
+													<td>
+														<fmt:formatNumber type="number" pattern="###,###" value="${product.priceSale}" />
+													</td>
 													<td>${product.categories.name}</td>
 													<td>
 													<a

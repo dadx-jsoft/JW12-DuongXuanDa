@@ -26,6 +26,9 @@ public class Product extends BaseEntity {
 
 	@Column(name = "price_sale", precision = 13, scale = 2, nullable = true)
 	private BigDecimal priceSale;
+	
+	@Column(name = "quantity")
+	private Integer quantity;
 
 	@Column(name = "short_description")
 	private String shortDescription;
@@ -74,6 +77,14 @@ public class Product extends BaseEntity {
 
 	public BigDecimal getPriceSale() {
 		return priceSale;
+	}
+	
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public void setPriceSale(BigDecimal priceSale) {

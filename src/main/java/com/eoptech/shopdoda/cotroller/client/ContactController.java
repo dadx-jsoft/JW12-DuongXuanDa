@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,15 +17,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.eoptech.shopdoda.dto.AjaxResponse;
 import com.eoptech.shopdoda.dto.ContactDto;
 import com.eoptech.shopdoda.entities.Contact;
+import com.eoptech.shopdoda.entities.Shop;
+import com.eoptech.shopdoda.repositories.ShopRepo;
 
 @Controller
 public class ContactController {
+	
+	@Autowired
+	private ShopRepo shopRepo;
 
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
 	public String details(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 
 		model.addAttribute("contact", new ContactDto());
+
+		// Thông tin cửa hàng
+		Shop shopInfo = (Shop) shopRepo.findAll().get(0);
+		model.addAttribute("shopInfo", shopInfo);
 
 		return "front-end/contact";
 	}
@@ -72,7 +82,7 @@ public class ContactController {
 		contact.setFullName(contactDto.getFullName());
 		contact.setEmail(contactDto.getEmail());
 		contact.setMessage(contactDto.getMsg());
-		
+
 		contact.setRequestType("CONTACT");
 		contact.setCreatedDate(new Date());
 		contact.setUpdatedDate(contact.getCreatedDate());

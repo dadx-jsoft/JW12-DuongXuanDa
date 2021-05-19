@@ -1,0 +1,8 @@
+xử lý: java.lang.IllegalArgumentException: org.hibernate.QueryException: unexpected char: '@'
+==> viết native sql trong repository thay vì jpql trong service
+
+remember me: https://stackjava.com/spring/code-vi-du-spring-boot-remember-me-tu-dong-login.html
+https://www.baeldung.com/spring-security-remember-me
+
+login with facebook: https://www.baeldung.com/facebook-authentication-with-spring-security-and-social
+https://o7planning.org/11823/example-of-oauth2-social-login-in-spring-boot#a17245541

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoptech.shopdoda.dto.search.ProductSearch;
 import com.eoptech.shopdoda.entities.Product;
+import com.eoptech.shopdoda.entities.Shop;
+import com.eoptech.shopdoda.repositories.ShopRepo;
 import com.eoptech.shopdoda.services.ProductService;
 
 @Controller
@@ -21,6 +23,8 @@ public class HomeController extends BaseController {
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private ShopRepo shopRepo;
 	/**
 	 * @param model    - Dùng để đẩy dữ liệu hoặc hứng dữ liệu từ tầng VIEW.
 	 * @param request  - Các thông tin người dùng yêu cầu.
@@ -37,7 +41,6 @@ public class HomeController extends BaseController {
 //		for (Categories child : parent.getChilds()) {
 //			System.out.println("child: " + child.getName());
 //		}
-
 //		model.addAttribute("categories", categoriesRepo.findAll());
 		model.addAttribute("menu", buildMenu());
 
@@ -49,6 +52,9 @@ public class HomeController extends BaseController {
 		model.addAttribute("products", products);
 		model.addAttribute("productSearch", productSearch);
 		model.addAttribute("bestSellingProducts", productService.getBestSellingProducts());
+
+		// Thông tin cửa hàng
+		Shop shopInfo = (Shop) shopRepo.findAll().get(0);
 
 		return "front-end/index";
 	}
