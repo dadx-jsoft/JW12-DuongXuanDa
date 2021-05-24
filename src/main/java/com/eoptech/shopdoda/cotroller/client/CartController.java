@@ -81,6 +81,7 @@ public class CartController extends BaseController {
 		HttpSession httpSession = request.getSession();
 		httpSession.setAttribute("cart", new Cart());
 		httpSession.setAttribute("totalItems", 0);
+		httpSession.setAttribute("totalPrice", 0);
 	}
 
 	@RequestMapping(value = { "/cart/payment" }, method = RequestMethod.POST)

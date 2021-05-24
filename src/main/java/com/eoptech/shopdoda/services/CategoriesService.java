@@ -9,10 +9,9 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 
 import com.eoptech.shopdoda.entities.Category;
-import com.eoptech.shopdoda.utils.Constants;
 
 @Service
-public class CategoriesService implements Constants {
+public class CategoriesService {
 
 	@PersistenceContext
 	EntityManager entityManager;

@@ -20,11 +20,11 @@ import com.eoptech.shopdoda.entities.Product;
 import com.eoptech.shopdoda.entities.ProductsImages;
 import com.eoptech.shopdoda.repositories.ProductRepo;
 import com.eoptech.shopdoda.taglibs.PaginationTaglib;
-import com.eoptech.shopdoda.utils.Constants;
+import com.eoptech.shopdoda.utils.PathConstant;
 import com.eoptech.shopdoda.utils.Utilities;
 
 @Service
-public class ProductService implements Constants {
+public class ProductService {
 
 	@Autowired
 	private ProductRepo productRepo;
@@ -96,11 +96,11 @@ public class ProductService implements Constants {
 				if (!isEmptyUploadFile(productAvatar)) {
 					String oldAvatarPath = productInDB.getAvatar();
 					if (!StringUtils.isEmpty(oldAvatarPath)) {
-						new File(ROOT_UPLOAD_PATH + oldAvatarPath).delete();
+						new File(PathConstant.ROOT_UPLOAD_PATH + oldAvatarPath).delete();
 					}
 					String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
 					product.setAvatar(avatarPath);
-					productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
+					productAvatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
 				} else {
 					product.setAvatar(productInDB.getAvatar());
 				}
@@ -110,7 +110,7 @@ public class ProductService implements Constants {
 			else if (!isEmptyUploadFile(productAvatar)) {
 				String avatarPath = "product/avatar/" + productAvatar.getOriginalFilename();
 				product.setAvatar(avatarPath);
-				productAvatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
+				productAvatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
 			}
 			// Upload nhiều file ảnh sản phẩm
 			if (!isEmptyUploadFile(listProductImageFile)) {
@@ -125,7 +125,7 @@ public class ProductService implements Constants {
 					productsImages.setProduct(product);
 					productsImages.setCreatedDate(new Date());
 
-					productImageFile.transferTo(new File(ROOT_UPLOAD_PATH + productPath));
+					productImageFile.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + productPath));
 					images.add(productsImages);
 				}
 				product.setProductsImages(images);

@@ -8,12 +8,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.eoptech.shopdoda.utils.Constants;
+import com.eoptech.shopdoda.utils.PathConstant;
 
 //-> là 1 bean mà spring hiểu được
 // bean này dùng để cấu hình.
 @Configuration
-public class MVCConf implements WebMvcConfigurer, Constants {
+public class MVCConf implements WebMvcConfigurer {
 
 	/**
 	 * cấu hình các static resources.
@@ -27,7 +27,7 @@ public class MVCConf implements WebMvcConfigurer, Constants {
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
 		registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/fonts/");
 		registry.addResourceHandler("/summernote/**").addResourceLocations("classpath:/summernote/");
-		registry.addResourceHandler("/upload/**").addResourceLocations("file:"+ROOT_UPLOAD_PATH);
+		registry.addResourceHandler("/upload/**").addResourceLocations("file:"+PathConstant.ROOT_UPLOAD_PATH);
 	}
 	
 	// cấu hình cho MVC biết chỗ folder để lấy view trả về cho Browser.

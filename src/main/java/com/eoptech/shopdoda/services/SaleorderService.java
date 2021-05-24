@@ -55,6 +55,7 @@ public class SaleorderService {
 
 	public List<Saleorder> getAllByMonth() {
 		String nativeSql = "SELECT * FROM tbl_saleorder s " + " WHERE s.status = true "
+				+ " AND s.order_status = 3 "
 				+ " AND MONTH(s.created_date) = " + this.MONTH + " AND YEAR(s.created_date) = " + this.YEAR;
 		Query query = entityManager.createNativeQuery(nativeSql, Saleorder.class);
 
@@ -66,10 +67,10 @@ public class SaleorderService {
 	public String thongKeTheoThang() {
 		StringBuilder data = new StringBuilder();
 
-		String nativeSql = "SELECT MONTH(s.created_date), SUM(sp.price_unit) "
-				+ " FROM tbl_saleorder s, tbl_saleorder_products sp " + " WHERE s.status = true "
+		String nativeSql = "SELECT MONTH(s.created_date), SUM(s.total) FROM tbl_saleorder s " 
+				+ " WHERE s.status = true "
 				+ " AND s.order_status = 3 "
-				+ " AND s.id = sp.saleorder_id " + " GROUP BY MONTH(s.created_date) "
+				+ " GROUP BY MONTH(s.created_date) "
 				+ " ORDER BY MONTH(s.created_date) ";
 
 		Query query = entityManager.createNativeQuery(nativeSql);

@@ -18,11 +18,11 @@ import com.eoptech.shopdoda.dto.search.BlogSearch;
 import com.eoptech.shopdoda.entities.blog.Blog;
 import com.eoptech.shopdoda.repositories.blog.BlogRepo;
 import com.eoptech.shopdoda.taglibs.PaginationTaglib;
-import com.eoptech.shopdoda.utils.Constants;
+import com.eoptech.shopdoda.utils.PathConstant;
 import com.eoptech.shopdoda.utils.Utilities;
 
 @Service
-public class BlogService implements Constants {
+public class BlogService {
 
 	@Autowired
 	private BlogRepo blogRepo;
@@ -73,11 +73,11 @@ public class BlogService implements Constants {
 				if (!isEmptyUploadFile(avatar)) {
 					String oldAvatarPath = blogInDB.getAvatar();
 					if (!StringUtils.isEmpty(oldAvatarPath)) {
-						new File(ROOT_UPLOAD_PATH + oldAvatarPath).delete();
+						new File(PathConstant.ROOT_UPLOAD_PATH + oldAvatarPath).delete();
 					}
 					String avatarPath = "blog/avatar/" + avatar.getOriginalFilename();
 					blog.setAvatar(avatarPath);
-					avatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
+					avatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
 				} else {
 					blog.setAvatar(blogInDB.getAvatar());
 				}
@@ -91,7 +91,7 @@ public class BlogService implements Constants {
 				if (!isEmptyUploadFile(avatar)) {
 					String avatarPath = "blog/avatar/" + avatar.getOriginalFilename();
 					blog.setAvatar(avatarPath);
-					avatar.transferTo(new File(ROOT_UPLOAD_PATH + avatarPath));
+					avatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
 				}
 				blog.setCreatedDate(new Date());
 			}
