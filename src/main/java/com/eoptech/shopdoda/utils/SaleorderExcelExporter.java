@@ -86,6 +86,7 @@ public class SaleorderExcelExporter {
             createCell(row, columnCount++, saleorder.getCustomerPhone(), style);
             createCell(row, columnCount++, saleorder.getCustomerEmail(), style);
         }
+        //https://openplanning.net/11259/doc-ghi-file-excel-trong-java-su-dung-apache-poi#a5144240
         CellStyle styleNew = workbook.createCellStyle();
         XSSFFont fontNew = workbook.createFont();
         fontNew.setBold(true);
