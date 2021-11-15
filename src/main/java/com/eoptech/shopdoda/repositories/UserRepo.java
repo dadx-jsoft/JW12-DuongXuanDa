@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.eoptech.shopdoda.entities.User;
 
 @Repository
-public interface UserRepo extends JpaRepository<User, Integer>{
-	@Query(value="select * from tbl_users u where u.status = true and u.email= :email",nativeQuery = true)
-	public User findUserByEmail(String email);
+public interface UserRepo extends JpaRepository<User, Integer> {
+    @Query(value = "select * from tbl_users u where u.status = true and u.email= :email", nativeQuery = true)
+    public User findUserByEmail(String email);
 }

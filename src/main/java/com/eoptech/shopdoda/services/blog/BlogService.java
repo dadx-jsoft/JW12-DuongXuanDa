@@ -28,7 +28,7 @@ public class BlogService {
 	private BlogRepo blogRepo;
 
 	@PersistenceContext
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	
 	public List<Blog> search(BlogSearch blogSearch) {
 		String jpql = "SELECT p FROM Blog p where p.status = true";

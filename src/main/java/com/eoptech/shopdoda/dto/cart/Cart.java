@@ -6,23 +6,24 @@ import java.util.List;
 import com.ibm.icu.math.BigDecimal;
 
 public class Cart {
-	private List<CartItem> cartItems = new ArrayList<CartItem>();
-	private BigDecimal totalPrice = BigDecimal.ZERO;
 
-	public List<CartItem> getCartItems() {
-		return cartItems;
-	}
+    private List<CartItem> cartItems = new ArrayList<CartItem>();
+    private BigDecimal totalPrice = BigDecimal.ZERO;
 
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
-	}
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
 
-	public BigDecimal getTotalPrice() {
-		return totalPrice;
-	}
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
 
-	public void setTotalPrice(BigDecimal totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
 }

@@ -16,47 +16,49 @@ import com.eoptech.shopdoda.taglibs.PaginationTaglib;
 
 @Service
 public class BlogCommentService {
-	@PersistenceContext
-	EntityManager entityManager;
+    @PersistenceContext
+    EntityManager entityManager;
 
-	public List<BlogComment> getBlogComments() {
-		String jpql = "Select c From BlogComment c Where c.status = true ";
-		Query query = entityManager.createQuery(jpql, BlogComment.class);
-		return query.getResultList();
-	}
+    public List<BlogComment> getBlogComments() {
+        String jpql = "Select c From BlogComment c Where c.status = true ";
+        Query query = entityManager.createQuery(jpql, BlogComment.class);
+        return query.getResultList();
+    }
 
-	public List<BlogComment> findByBlog(Blog blog) {
-		try {
-			String jpql = "Select c From BlogComment c Where c.blog.id='" + blog.getId() + "' And c.status = true";
-			Query query = entityManager.createQuery(jpql, BlogComment.class);
-			return (List<BlogComment>) query.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	public List<BlogComment> search(ReviewOrCommentSearch commentSearch) {
-		String jpql = "SELECT p FROM BlogComment p where 1=1 ";
+    public List<BlogComment> findByBlog(Blog blog) {
+        try {
+            String jpql = "Select c From BlogComment c Where c.blog.id='" + blog.getId() + "' And c.status = true";
+            Query query = entityManager.createQuery(jpql, BlogComment.class);
+            return (List<BlogComment>) query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-		if (!StringUtils.isEmpty(commentSearch.getSearchText())) {
-			String st = "'%" + commentSearch.getSearchText().toLowerCase() + "%'";
-			jpql = jpql + " AND ( LOWER(p.comment) LIKE " + st + " ) ";
-		}
-		jpql = jpql + " ORDER BY p.createdDate DESC";
+    public List<BlogComment> search(ReviewOrCommentSearch commentSearch) {
+        String jpql = "SELECT p FROM BlogComment p where 1=1 ";
 
-		if(commentSearch.getIdProductOrBlog() > 0) {
-			jpql = "Select c From BlogComment c Where c.blog.id='" + commentSearch.getIdProductOrBlog() + "' And c.status = true";
-		}
-		Query query = entityManager.createQuery(jpql, BlogComment.class);
+        if (!StringUtils.isEmpty(commentSearch.getSearchText())) {
+            String st = "'%" + commentSearch.getSearchText().toLowerCase() + "%'";
+            jpql = jpql + " AND ( LOWER(p.comment) LIKE " + st + " ) ";
+        }
+        jpql = jpql + " ORDER BY p.createdDate DESC";
 
-		// paging
-		if (commentSearch.getOffset() != null) {
-			commentSearch.setCount(query.getResultList().size());
+        if (commentSearch.getIdProductOrBlog() > 0) {
+            jpql = "Select c From BlogComment c Where c.blog.id='" + commentSearch.getIdProductOrBlog()
+                    + "' And c.status = true";
+        }
+        Query query = entityManager.createQuery(jpql, BlogComment.class);
 
-			query.setFirstResult(commentSearch.getOffset());
-			query.setMaxResults(PaginationTaglib.MAX);
+        // paging
+        if (commentSearch.getOffset() != null) {
+            commentSearch.setCount(query.getResultList().size());
 
-		}
-		return query.getResultList();
-	}
+            query.setFirstResult(commentSearch.getOffset());
+            query.setMaxResults(PaginationTaglib.MAX);
+
+        }
+        return query.getResultList();
+    }
 }

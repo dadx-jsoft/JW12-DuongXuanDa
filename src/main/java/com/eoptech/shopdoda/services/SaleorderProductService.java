@@ -12,12 +12,13 @@ import com.eoptech.shopdoda.entities.SaleorderProduct;
 
 @Service
 public class SaleorderProductService {
-	@PersistenceContext
-	protected EntityManager entityManager;
-	
-	public List<SaleorderProduct> findAllBySaleorderId(int saleorderId){
-		String jpql = "Select u From SaleorderProduct u Where u.saleorder.id='" + saleorderId + "' And u.status = true";
-		Query query = entityManager.createQuery(jpql, SaleorderProduct.class);
-		return (List<SaleorderProduct>) query.getResultList();
-	}
+    
+    @PersistenceContext
+    protected EntityManager entityManager;
+
+    public List<SaleorderProduct> findAllBySaleorderId(int saleorderId) {
+        String jpql = "Select u From SaleorderProduct u Where u.saleorder.id='" + saleorderId + "' And u.status = true";
+        Query query = entityManager.createQuery(jpql, SaleorderProduct.class);
+        return (List<SaleorderProduct>) query.getResultList();
+    }
 }

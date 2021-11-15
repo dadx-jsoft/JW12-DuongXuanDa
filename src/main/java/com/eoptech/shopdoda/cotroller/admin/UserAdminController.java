@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,187 +33,181 @@ import com.eoptech.shopdoda.utils.PathConstant;
 
 @Controller
 public class UserAdminController {
-	@Autowired
-	private UserRepo userRepo;
+    @Autowired
+    private UserRepo userRepo;
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-	@Autowired
-	private MailService mailService;
+    @Autowired
+    private MailService mailService;
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String login(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+    @GetMapping(value = { "/login" })
+    public String login() {
 
-		return "back-end/user/login";
-	}
+        return "back-end/user/login";
+    }
 
-	// login thành công
-	// https://stackoverflow.com/questions/45709333/page-redirecting-depending-on-role-using-spring-security-and-thymeleaf-spring
-	@RequestMapping("/success")
-	public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult)
-			throws IOException, ServletException {
+    // login thành công
+    // https://stackoverflow.com/questions/45709333/page-redirecting-depending-on-role-using-spring-security-and-thymeleaf-spring
+    @GetMapping("/success")
+    public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult)
+            throws IOException, ServletException {
 
-		User u = (User) authResult.getPrincipal();
-		String role = u.getRoles().get(0).getName();
+        User u = (User) authResult.getPrincipal();
+        String role = u.getRoles().get(0).getName();
 
-		if (role.contains("ADMIN")) {
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin"));
-		} else {
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/home"));
-		}
-	}
+        if (role.contains("ADMIN")) {
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin"));
+        } else {
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/home"));
+        }
+    }
 
-	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
-	public String register(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+    @RequestMapping(value = { "/register" }, method = RequestMethod.GET)
+    public String register(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+            throws Exception {
 
-		return "back-end/user/register";
-	}
+        return "back-end/user/register";
+    }
 
-	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-	public String addAccount(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@RequestParam("userAvatar") MultipartFile userAvatar) throws Exception {
+    @PostMapping(value = { "/register" })
+    public String addAccount(final ModelMap model, final HttpServletRequest request,
+            @RequestParam("userAvatar") MultipartFile userAvatar) throws IllegalStateException, IOException {
 
-		String fullName = request.getParameter("fullName");
-		String email = request.getParameter("email");
-		if (userRepo.findUserByEmail(email) != null) {
-			model.addAttribute("error", "Email đã tồn tại!");
-			return "back-end/user/register";
-		}
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword");
-		
-		if(userName.trim().equals("")) {
-			model.addAttribute("error", "Username không được để trống!");
-			return "back-end/user/register";
-		}
-		
-		User user = new User();
-		user.setUsername(userName);
-		if (password.equals(confirmPassword)) {
-			user.setPassword(GeneratePassword.encodePassword(password));
-		}
-		user.setEmail(email);
-		user.setCreatedDate(new Date());
-		user.setFullName(fullName);
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        if (userRepo.findUserByEmail(email) != null) {
+            model.addAttribute("error", "Email đã tồn tại!");
+            return "back-end/user/register";
+        }
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
 
-		// avatar
-		String avatarPath = "user/avatar/" + userAvatar.getOriginalFilename();
-		user.setAvatar(avatarPath);
-		userAvatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
+        if (userName.trim().equals("")) {
+            model.addAttribute("error", "Username không được để trống!");
+            return "back-end/user/register";
+        }
 
-		// Role
-		Role role = roleService.getRoleByName("GUEST");
-		ArrayList<Role> listRoles = new ArrayList<Role>();
-		listRoles.add(role);
-		user.setRoles(listRoles);
+        User user = new User();
+        user.setUsername(userName);
+        if (password.equals(confirmPassword)) {
+            user.setPassword(GeneratePassword.encodePassword(password));
+        }
+        user.setEmail(email);
+        user.setCreatedDate(new Date());
+        user.setFullName(fullName);
 
-		userRepo.save(user);
+        // avatar
+        String avatarPath = "user/avatar/" + userAvatar.getOriginalFilename();
+        user.setAvatar(avatarPath);
+        userAvatar.transferTo(new File(PathConstant.ROOT_UPLOAD_PATH + avatarPath));
 
-		model.addAttribute("registerSuccess", "Đăng ký tài khoản thành công!!");
-		return "back-end/user/register";
-	}
+        // Role
+        Role role = roleService.getRoleByName("GUEST");
+        ArrayList<Role> listRoles = new ArrayList<Role>();
+        listRoles.add(role);
+        user.setRoles(listRoles);
 
-	@RequestMapping(value = { "/password/forgot" }, method = RequestMethod.GET)
-	public String forgotPassword(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
+        userRepo.save(user);
 
-		return "back-end/user/forgot_password";
-	}
+        model.addAttribute("registerSuccess", "Đăng ký tài khoản thành công!!");
+        return "back-end/user/register";
+    }
 
-	@RequestMapping(value = { "/password/reset" }, method = RequestMethod.POST)
-	public String resetPassword(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-		String emailResetPass = request.getParameter("emailResetPass");
-		// reset pass
-		User uResetPass = userRepo.findUserByEmail(emailResetPass);
-		if (uResetPass == null) {
-			model.addAttribute("messageReSetPass", "Không tồn tại tài khoản có email: " + emailResetPass);
-			return "back-end/user/forgot_password";
-		}
-		String newPass = String.valueOf(System.currentTimeMillis() / 100);
-		uResetPass.setPassword(GeneratePassword.encodePassword(newPass));
-		userRepo.save(uResetPass);
+    @RequestMapping(value = { "/password/forgot" }, method = RequestMethod.GET)
+    public String forgotPassword(final ModelMap model, final HttpServletRequest request,
+            final HttpServletResponse response) throws Exception {
 
-		// send mail
-		mailService.sendEmailResetPass(emailResetPass, newPass);
+        return "back-end/user/forgot_password";
+    }
 
-		model.addAttribute("messageReSetPass", "Reset password thành công, vui lòng kiếm tra email của bạn!");
-		return "back-end/user/forgot_password";
-	}
+    @PostMapping(value = { "/password/reset" })
+    public String resetPassword(final ModelMap model, final HttpServletRequest request) {
+        String emailResetPass = request.getParameter("emailResetPass");
+        // reset pass
+        User uResetPass = userRepo.findUserByEmail(emailResetPass);
+        if (uResetPass == null) {
+            model.addAttribute("messageReSetPass", "Không tồn tại tài khoản có email: " + emailResetPass);
+            return "back-end/user/forgot_password";
+        }
+        String newPass = String.valueOf(System.currentTimeMillis() / 100);
+        uResetPass.setPassword(GeneratePassword.encodePassword(newPass));
+        userRepo.save(uResetPass);
 
-	@RequestMapping(value = { "admin/users" }, method = RequestMethod.GET)
-	public String users(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+        // send mail
+        mailService.sendEmailResetPass(emailResetPass, newPass);
 
-		model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("messageReSetPass", "Reset password thành công, vui lòng kiếm tra email của bạn!");
+        return "back-end/user/forgot_password";
+    }
 
-		return "back-end/user/users";
-	}
+    @GetMapping(value = { "admin/users" })
+    public String users(final ModelMap model) {
 
-	@RequestMapping(value = { "/admin/users/add" }, method = RequestMethod.GET)
-	public String addUser(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
+        model.addAttribute("users", userService.getAllUsers());
 
-		model.addAttribute("userEdit", new User());
+        return "back-end/user/users";
+    }
 
-		return "back-end/user/save_user";
-	}
+    @GetMapping(value = { "/admin/users/add" })
+    public String addUser(final ModelMap model) {
 
-	@RequestMapping(value = { "/admin/users/edit/{id}" }, method = RequestMethod.GET)
-	public String editUser(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@PathVariable("id") Integer userID) throws Exception {
+        model.addAttribute("userEdit", new User());
 
-		User userEdit = userRepo.findById(userID).get();
+        return "back-end/user/save_user";
+    }
 
-		model.addAttribute("userEdit", userEdit);
+    @GetMapping(value = { "/admin/users/edit/{id}" })
+    public String editUser(final ModelMap model, @PathVariable("id") Integer userID) {
 
-		return "back-end/user/save_user";
-	}
+        User userEdit = userRepo.findById(userID).get();
 
-	@RequestMapping(value = { "/admin/users/save" }, method = RequestMethod.POST)
-	public String saveUser(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@ModelAttribute("userEdit") User userEdit) throws Exception {
+        model.addAttribute("userEdit", userEdit);
 
-		if (userEdit.getId() != null && userEdit.getId() > 0) {
-			User userInDB = userRepo.findById(userEdit.getId()).get();
-			userEdit.setCreatedDate(userInDB.getCreatedDate());
-			userEdit.setPassword(userInDB.getPassword());
-		} else {
-			userEdit.setPassword(GeneratePassword.encodePassword("admin"));
-			// Role
-			Role role = roleService.getRoleByName("ADMIN");
-			ArrayList<Role> listRoles = new ArrayList<Role>();
-			listRoles.add(role);
-			userEdit.setRoles(listRoles);
-		}
+        return "back-end/user/save_user";
+    }
 
-		userEdit.setUpdatedDate(new Date());
+    @PostMapping(value = { "/admin/users/save" })
+    public String saveUser(final ModelMap model, @ModelAttribute("userEdit") User userEdit) {
 
-		if (userService.findByEmail(userEdit.getEmail()) != null) {
-			model.addAttribute("saveError", "Email này đã được sử dụng!!");
-			return "back-end/user/save_user";
-		}
+        if (userEdit.getId() != null && userEdit.getId() > 0) {
+            User userInDB = userRepo.findById(userEdit.getId()).get();
+            userEdit.setCreatedDate(userInDB.getCreatedDate());
+            userEdit.setPassword(userInDB.getPassword());
+            userEdit.setRoles(userInDB.getRoles());
+        } else {
+            userEdit.setPassword(GeneratePassword.encodePassword("admin"));
+            // Role
+            Role role = roleService.getRoleByName("ADMIN");
+            ArrayList<Role> listRoles = new ArrayList<Role>();
+            listRoles.add(role);
+            userEdit.setRoles(listRoles);
+        }
 
-		userRepo.save(userEdit);
+        userEdit.setUpdatedDate(new Date());
 
-		return "redirect:/admin/users";
-	}
+        if (userService.findByEmail(userEdit.getEmail()) != null) {
+            model.addAttribute("saveError", "Email này đã được sử dụng!!");
+            return "back-end/user/save_user";
+        }
 
-	@RequestMapping(value = { "/admin/users/delete/{id}" }, method = RequestMethod.GET)
-	public String deleteUser(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
-			@PathVariable("id") Integer userId) throws Exception {
-		User deletedUser = userRepo.findById(userId).get();
-		deletedUser.setStatus(false);
-		userRepo.save(deletedUser);
+        userRepo.save(userEdit);
 
-		return "redirect:/admin/users";
-	}
+        return "redirect:/admin/users";
+    }
+
+    @GetMapping(value = { "/admin/users/delete/{id}" })
+    public String deleteUser(final ModelMap model, @PathVariable("id") Integer userId) {
+        User deletedUser = userRepo.findById(userId).get();
+        deletedUser.setStatus(false);
+        userRepo.save(deletedUser);
+
+        return "redirect:/admin/users";
+    }
 
 }

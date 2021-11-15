@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 
 public class BlogSearch {
+    
 	private String seo;
 	private String blogTypeSeo;
 	public String searchText;

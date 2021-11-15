@@ -3,6 +3,7 @@ package com.eoptech.shopdoda.dto.cart;
 import java.math.BigDecimal;
 
 public class CartItem {
+    
 	private int productId;
 	private String productName;
 	private String productAvatar;

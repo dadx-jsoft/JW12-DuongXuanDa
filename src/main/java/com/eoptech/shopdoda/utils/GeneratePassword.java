@@ -3,7 +3,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class GeneratePassword {
 	public static void main(String[] args) {
-		String result = encodePassword("user");
+//		String result = encodePassword("user");
+	    String result = encodePassword("user12345");
 		System.out.println(result);
 	}
 	

@@ -158,7 +158,7 @@ public class SaleorderService {
 
 	public List<Saleorder> findSaleordersByUserId(int userId) {
 
-		String jpql = "SELECT p FROM Saleorder p where p.status = true And p.userId = " + userId;
+		String jpql = "SELECT p FROM Saleorder p where p.status = true And p.userId = " + userId +" order by p.createdDate desc";
 		Query query = entityManager.createQuery(jpql, Saleorder.class);
 		List<Saleorder> saleorders = (List<Saleorder>) query.getResultList();
 		return saleorders;

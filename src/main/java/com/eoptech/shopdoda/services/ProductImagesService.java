@@ -13,16 +13,17 @@ import com.eoptech.shopdoda.entities.ProductsImages;
 
 @Service
 public class ProductImagesService {
-	@PersistenceContext
-	EntityManager entityManager;
 
-	// tim kiem product images
-	public List<ProductsImages> findByProduct(Product product) {
-		String jpql = "SELECT p FROM ProductsImages p WHERE 1=1 AND p.status = true";
+    @PersistenceContext
+    EntityManager entityManager;
 
-		jpql = jpql + " AND p.product.id = '" + product.getId() + "'";
+    // tim kiem product images
+    public List<ProductsImages> findByProduct(Product product) {
+        String jpql = "SELECT p FROM ProductsImages p WHERE 1=1 AND p.status = true";
 
-		Query query = entityManager.createQuery(jpql, ProductsImages.class);
-		return query.getResultList();
-	}
+        jpql = jpql + " AND p.product.id = '" + product.getId() + "'";
+
+        Query query = entityManager.createQuery(jpql, ProductsImages.class);
+        return query.getResultList();
+    }
 }

@@ -10,17 +10,15 @@ import com.eoptech.shopdoda.entities.Role;
 
 @Service
 public class RoleService {
-	@PersistenceContext
-	EntityManager entityManager;
+    @PersistenceContext
+    EntityManager entityManager;
 
-	// tim kiem role by name
-	public Role getRoleByName(String roleName) {
-		String jpql = "SELECT r FROM Role r where r.name = '"+roleName+"' AND r.status = true";
+    // tim kiem role by name
+    public Role getRoleByName(String roleName) {
+        String jpql = "SELECT r FROM Role r where r.name = '" + roleName + "' AND r.status = true";
 
-		System.out.println(jpql);
+        Query query = entityManager.createQuery(jpql, Role.class);
 
-		Query query = entityManager.createQuery(jpql, Role.class);
-
-		return (Role) query.getSingleResult();
-	}
+        return (Role) query.getSingleResult();
+    }
 }

@@ -1,8 +1,5 @@
 package com.eoptech.shopdoda.cotroller.admin;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,28 +15,26 @@ import com.eoptech.shopdoda.services.ContactService;
 @RequestMapping("admin/contacts")
 public class ContactAdminController {
 
-	@Autowired
-	private ContactRepo contactRepo;
-	
-	@Autowired
-	private ContactService contactService;
+    @Autowired
+    private ContactRepo contactRepo;
 
-	@GetMapping
-	public String contacts(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		model.addAttribute("contactList", contactService.getContacts());
-		return "back-end/contacts";
-	}
+    @Autowired
+    private ContactService contactService;
 
-	@GetMapping("/delete/{id}")
-	public String deleteContact(final ModelMap model, final HttpServletRequest request,
-			final HttpServletResponse response, @PathVariable("id") int contactId) throws Exception {
-		
-		Contact contact = contactRepo.findById(contactId).get();
-		contact.setStatus(false);
-		contactRepo.save(contact);
-		
-		return "redirect:/admin/contacts";
-	}
+    @GetMapping
+    public String contacts(final ModelMap model) {
+        model.addAttribute("contactList", contactService.getContacts());
+        return "back-end/contacts";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteContact(final ModelMap model, @PathVariable("id") int contactId) {
+
+        Contact contact = contactRepo.findById(contactId).get();
+        contact.setStatus(false);
+        contactRepo.save(contact);
+
+        return "redirect:/admin/contacts";
+    }
 
 }

@@ -9,6 +9,7 @@ import com.eoptech.shopdoda.entities.Saleorder;
 
 @Service
 public class MailService {
+    
 	@Autowired
 	private JavaMailSender javaMailSender;
 
