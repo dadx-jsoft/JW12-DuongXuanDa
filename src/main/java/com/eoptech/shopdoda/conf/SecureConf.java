@@ -24,67 +24,67 @@ import com.eoptech.shopdoda.services.fb.FacebookSignInAdapter;
 @EnableWebSecurity
 public class SecureConf extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Autowired
-	private FacebookConnectionSignup facebookConnectionSignup;
+    @Autowired
+    private FacebookConnectionSignup facebookConnectionSignup;
 
-	@Value("${spring.social.facebook.appSecret}")
-	String appSecret;
+    @Value("${spring.social.facebook.appSecret}")
+    String appSecret;
 
-	@Value("${spring.social.facebook.appId}")
-	String appId;
+    @Value("${spring.social.facebook.appId}")
+    String appId;
 
-	@Override
-	protected void configure(final HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
+    @Override
+    protected void configure(final HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests()
 
-				.antMatchers("/css/**", "/js/**", "/vendor/**", "/images/**", "/img/**", "/fonts/**", "/upload/**",
-						"/summernote/**" /* , "/files/**" */)
-				.permitAll()
+                .antMatchers("/css/**", "/js/**", "/vendor/**", "/images/**", "/img/**", "/fonts/**", "/upload/**",
+                        "/summernote/**" /* , "/files/**" */)
+                .permitAll()
 
-				.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
 
-				.and()
+                .and()
 
-				.formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/success", true)
-				.failureUrl("/login?login_error=true").permitAll()
+                .formLogin().loginPage("/login").loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/success", true).failureUrl("/login?login_error=true").permitAll()
 
-				.and()
+                .and()
 
-				.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
-				.deleteCookies("JSESSIONID").permitAll();
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID").permitAll();
 
-		// configure remember me, time remain is 7 days.
-		http.rememberMe().key("uniqueAndSecretOfMe").tokenValiditySeconds(7*24*60*60);
-	}
+        // configure remember me, time remain is 7 days.
+        http.rememberMe().key("uniqueAndSecretOfMe").tokenValiditySeconds(7 * 24 * 60 * 60);
+    }
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder(4));
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder(4));
+    }
 
-	// kích hoạt xác thực qua Facebook
-	@Bean
-	public ProviderSignInController providerSignInController() {
-		ConnectionFactoryLocator connectionFactoryLocator = connectionFactoryLocator();
-		UsersConnectionRepository usersConnectionRepository = getUsersConnectionRepository(connectionFactoryLocator);
-		((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignup);
-		return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository,
-				new FacebookSignInAdapter());
-	}
+    // kích hoạt xác thực qua Facebook
+    @Bean
+    public ProviderSignInController providerSignInController() {
+        ConnectionFactoryLocator connectionFactoryLocator = connectionFactoryLocator();
+        UsersConnectionRepository usersConnectionRepository = getUsersConnectionRepository(connectionFactoryLocator);
+        ((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignup);
+        return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository,
+                new FacebookSignInAdapter());
+    }
 
-	// đăng ký FacebookConnectionFactory với những thuộc tính trong
-	// appilcation.properties
-	private ConnectionFactoryLocator connectionFactoryLocator() {
-		ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
-		registry.addConnectionFactory(new FacebookConnectionFactory(appId, appSecret));
-		return registry;
-	}
+    // đăng ký FacebookConnectionFactory với những thuộc tính trong
+    // appilcation.properties
+    private ConnectionFactoryLocator connectionFactoryLocator() {
+        ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
+        registry.addConnectionFactory(new FacebookConnectionFactory(appId, appSecret));
+        return registry;
+    }
 
-	private UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-		return new InMemoryUsersConnectionRepository(connectionFactoryLocator);
-	}
+    private UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
+        return new InMemoryUsersConnectionRepository(connectionFactoryLocator);
+    }
 
 }

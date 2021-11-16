@@ -10,4 +10,5 @@ public class AboutController {
     public String about() {
         return "front-end/about";
     }
+    
 }

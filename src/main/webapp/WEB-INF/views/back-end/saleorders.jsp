@@ -20,15 +20,11 @@
 
 <title>Đơn hàng</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/fonts.jsp"></jsp:include>
 
 <!-- Custom styles for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
-
-<!-- Custom styles for this page -->
-<link href="${base}/vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
 
 </head>
 
@@ -69,7 +65,7 @@
 						</div> -->
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" width="100%" cellspacing="0">
+								<table class="table table-bordered">
 									<thead>
 										<tr>
 											<th>#</th>
@@ -129,12 +125,15 @@
 												</c:if>
 												</td>
 												
-												<td style="width: 25%;"> <a href="${base}/admin/saleorders/detail/${saleorder.id}"
-													class="btn btn-primary a-btn-slide-text"> <strong>Xem</strong>
+												<td style="width: 25%;"> 
+												<a href="${base}/admin/saleorders/detail/${saleorder.id}"
+													class="btn btn-primary a-btn-slide-text">
 														<i class="fas fa-eye"></i>
-												</a> <a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> <strong>Xóa</strong>
+												</a> 
+												<a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> 
 														<i class="fas fa-trash-alt"></i>
-												</a></td>
+												</a>
+												</td>
 											</tr>
 											<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 												aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,13 +199,6 @@
 
 	<jsp:include page="${base}/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
 
-	<!-- Page level plugins -->
-	<script src="${base}/vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="${base}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="${base}/js/demo/datatables-demo.js"></script>
-	
 	<script>
 		function approveSaleorder(saleorderId){
 			// javascript object.

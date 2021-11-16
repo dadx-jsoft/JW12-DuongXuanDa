@@ -123,7 +123,5 @@
 
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 
-
-
 </body>
 </html>

@@ -22,10 +22,6 @@
 <!-- Custom styles for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
 
-<!-- Custom styles for this page -->
-<link href="${base}/vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -65,8 +61,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" width="100%"
-									cellspacing="0">
+								<table class="table table-bordered">
 									<thead>
 										<tr>
 											<th>Tên danh mục</th>
@@ -89,11 +84,10 @@
 												<td>${category.description}</td>
 												<td>
 												<a href="${base}/admin/categories/edit/${category.id}"
-													class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
+													class="btn btn-secondary a-btn-slide-text">
 														<i class="fas fa-edit"></i>
 												</a> 
 												<a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> 
-													<strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 												</a>
 												</td>
@@ -148,13 +142,6 @@
 	<jsp:include page="${base}/WEB-INF/views/back-end/common/logout.jsp"></jsp:include>
 
 	<jsp:include page="${base}/WEB-INF/views/back-end/common/js.jsp"></jsp:include>
-
-	<!-- Page level plugins -->
-	<script src="${base}/vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="${base}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="${base}/js/demo/datatables-demo.js"></script>
 
 </body>
 

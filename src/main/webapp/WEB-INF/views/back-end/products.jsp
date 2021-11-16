@@ -1,4 +1,4 @@
-<!-- sử dụng tiếng việt -->
+	<!-- sử dụng tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -25,9 +25,6 @@
 <!-- Custom styles for this template-->
 <jsp:include page="${base}/WEB-INF/views/back-end/common/css.jsp"></jsp:include>
 
-<!-- Custom styles for this page -->
-<link href="${base}/vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -69,8 +66,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
+								<table class="table table-bordered" id="dataTable">
 									<thead>
 										<tr>
 											<th>#</th>
@@ -109,17 +105,17 @@
 													</td>
 													<td>${product.categories.name}</td>
 													<td>
-													<a
-														href="${base}/admin/products/edit/${product.id}"
-														class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
-															<i class="fas fa-edit"></i>
-													</a> 
 													<a href="${base}/admin/reviews/${product.id}" class="btn btn-primary a-btn-slide-text">
 															<strong>Đánh giá</strong> <i class="fas fa-comment"></i>
+													</a>
+													<a
+														href="${base}/admin/products/edit/${product.id}"
+														class="btn btn-secondary a-btn-slide-text"> 
+															<i class="fas fa-edit"></i>
 													</a> 
 													<a href="#" data-toggle="modal"
 														class="btn btn-danger a-btn-slide-text" data-target="#deleteModal">
-															<strong>Xóa</strong> <i class="fas fa-trash-alt"></i>
+															<i class="fas fa-trash-alt"></i>
 													</a>
 													</td>
 												</tr>

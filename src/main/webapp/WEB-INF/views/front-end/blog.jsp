@@ -223,7 +223,6 @@
 	<!-- Footer -->
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 
-
 	<!-- Back to top -->
 	<jsp:include page="${base}/WEB-INF/views/front-end/common/back_to_top.jsp"></jsp:include>
 

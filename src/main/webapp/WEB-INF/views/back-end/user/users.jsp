@@ -95,11 +95,10 @@
 											<td>${user.phone}</td>
 											<td>
 											<a href="${base}/admin/users/edit/${user.id}"
-												class="btn btn-secondary a-btn-slide-text"> <strong>Sửa</strong>
+												class="btn btn-secondary a-btn-slide-text">
 													<i class="fas fa-edit"></i>
 											</a>  
 											<a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#deleteModal"> 
-													<strong>Xóa</strong>
 													<i class="fas fa-trash-alt"></i>
 												</a>
 											</td>
