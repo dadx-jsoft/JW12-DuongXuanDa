@@ -4,6 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.util.StringUtils;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ProductSearch {
 
 	private String seo;
@@ -21,43 +26,4 @@ public class ProductSearch {
 		}
 	}
 
-	public Integer getOffset() {
-		return offset;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
-
-	public String getCategorySeo() {
-		return categorySeo;
-	}
-
-	public void setCategorySeo(String categorySeo) {
-		this.categorySeo = categorySeo;
-	}
-
-	public Integer getCount() {
-		return count;
-	}
-
-	public void setCount(Integer count) {
-		this.count = count;
-	}
-
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
-
-	public String getSearchText() {
-		return searchText;
-	}
-
-	public void setSearchText(String searchText) {
-		this.searchText = searchText;
-	}
 }

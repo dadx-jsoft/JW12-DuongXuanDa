@@ -9,6 +9,11 @@ import javax.persistence.Table;
 import com.eoptech.shopdoda.entities.BaseEntity;
 import com.eoptech.shopdoda.entities.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_blog_comment")
 public class BlogComment extends BaseEntity {
@@ -25,37 +30,5 @@ public class BlogComment extends BaseEntity {
 
 	@Column(name = "parent_comment_id")
 	private int parentCommentId;
-
-	public Blog getBlog() {
-		return blog;
-	}
-
-	public void setBlog(Blog blog) {
-		this.blog = blog;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public int getParentCommentId() {
-		return parentCommentId;
-	}
-
-	public void setParentCommentId(int parentCommentId) {
-		this.parentCommentId = parentCommentId;
-	}
 
 }

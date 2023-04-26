@@ -13,6 +13,11 @@ import javax.persistence.Table;
 
 import com.eoptech.shopdoda.entities.BaseEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_blog_type")
 public class BlogType extends BaseEntity {
@@ -42,46 +47,6 @@ public class BlogType extends BaseEntity {
 	public void removeBLog(Blog blog) {
 		this.blogs.remove(blog);
 		blog.setBlogType(null);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
-
-	public List<BlogType> getChilds() {
-		return childs;
-	}
-
-	public void setChilds(List<BlogType> childs) {
-		this.childs = childs;
-	}
-
-	public List<Blog> getBlogs() {
-		return blogs;
-	}
-
-	public void setBlogs(List<Blog> blogs) {
-		this.blogs = blogs;
 	}
 
 }

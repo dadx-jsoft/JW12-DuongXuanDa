@@ -1,6 +1,10 @@
 package com.eoptech.shopdoda.entities;
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +13,8 @@ import java.util.List;
  * The persistent class for the tbl_saleorder database table.
  * 
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_saleorder")
 public class Saleorder extends BaseEntity {
@@ -45,86 +51,6 @@ public class Saleorder extends BaseEntity {
 	private List<SaleorderProduct> saleorderProducts;
 
 	public Saleorder() {
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getCustomerAddress() {
-		return customerAddress;
-	}
-
-	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public String getCustomerPhone() {
-		return customerPhone;
-	}
-
-	public void setCustomerPhone(String customerPhone) {
-		this.customerPhone = customerPhone;
-	}
-
-	public String getCustomerEmail() {
-		return customerEmail;
-	}
-
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
-
-	public Integer getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(Integer orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
-	public BigDecimal getTotal() {
-		return total;
-	}
-
-	public void setTotal(BigDecimal total) {
-		this.total = total;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public List<SaleorderProduct> getSaleorderProducts() {
-		return saleorderProducts;
-	}
-
-	public void setSaleorderProducts(List<SaleorderProduct> saleorderProducts) {
-		this.saleorderProducts = saleorderProducts;
 	}
 
 	public SaleorderProduct addSaleorderProduct(SaleorderProduct saleorderProduct) {

@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_products")
 public class Product extends BaseEntity {
@@ -58,110 +63,6 @@ public class Product extends BaseEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
 	private List<Review> reviews = new ArrayList<Review>();
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public BigDecimal getPriceSale() {
-		return priceSale;
-	}
-	
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setPriceSale(BigDecimal priceSale) {
-		this.priceSale = priceSale;
-	}
-
-	public String getShortDescription() {
-		return shortDescription;
-	}
-
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
-	}
-
-	public String getDetailDescription() {
-		return detailDescription;
-	}
-
-	public void setDetailDescription(String detailDescription) {
-		this.detailDescription = detailDescription;
-	}
-
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-
-	public Category getCategories() {
-		return categories;
-	}
-
-	public void setCategories(Category categories) {
-		this.categories = categories;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
-
-	public List<ProductsImages> getProductsImages() {
-		return productsImages;
-	}
-
-	public void setProductsImages(List<ProductsImages> productsImages) {
-		this.productsImages = productsImages;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public String getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(String material) {
-		this.material = material;
-	}
-
-	public List<Review> getComments() {
-		return reviews;
-	}
-
-	public void setComments(List<Review> comments) {
-		this.reviews = comments;
-	}
 
 	public ProductsImages addProductsImages(ProductsImages productsImages) {
 		getProductsImages().add(productsImages);

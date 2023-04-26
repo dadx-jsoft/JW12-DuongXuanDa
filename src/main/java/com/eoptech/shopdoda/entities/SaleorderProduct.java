@@ -4,10 +4,15 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * The persistent class for the tbl_saleorder_products database table.
  * 
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_saleorder_products")
 public class SaleorderProduct extends BaseEntity {
@@ -27,38 +32,6 @@ public class SaleorderProduct extends BaseEntity {
 	private Saleorder saleorder;
 
 	public SaleorderProduct() {
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public BigDecimal getPriceUnit() {
-		return priceUnit;
-	}
-
-	public void setPriceUnit(BigDecimal priceUnit) {
-		this.priceUnit = priceUnit;
-	}
-
-	public Saleorder getSaleorder() {
-		return saleorder;
-	}
-
-	public void setSaleorder(Saleorder saleorder) {
-		this.saleorder = saleorder;
 	}
 
 }

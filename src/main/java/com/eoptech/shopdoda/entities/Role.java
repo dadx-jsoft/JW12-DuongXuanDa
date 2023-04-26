@@ -4,12 +4,17 @@ import javax.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 /**
  * The persistent class for the tbl_roles database table.
  * 
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_roles")
 public class Role extends BaseEntity implements GrantedAuthority {
@@ -43,30 +48,6 @@ public class Role extends BaseEntity implements GrantedAuthority {
 		super();
 		this.description = description;
 		this.name = name;
-		this.users = users;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 

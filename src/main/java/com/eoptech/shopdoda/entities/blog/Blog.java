@@ -15,6 +15,11 @@ import javax.persistence.Table;
 
 import com.eoptech.shopdoda.entities.BaseEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tbl_blog")
 public class Blog extends BaseEntity {
@@ -43,69 +48,5 @@ public class Blog extends BaseEntity {
 
 	@Column(name = "seo")
 	private String seo;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-
-	public String getShortDescription() {
-		return shortDescription;
-	}
-
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
-	}
-
-	public String getDetailDescription() {
-		return detailDescription;
-	}
-
-	public void setDetailDescription(String detailDescription) {
-		this.detailDescription = detailDescription;
-	}
-
-	public int getViews() {
-		return views;
-	}
-
-	public void setViews(int views) {
-		this.views = views;
-	}
-
-	public BlogType getBlogType() {
-		return blogType;
-	}
-
-	public void setBlogType(BlogType blogType) {
-		this.blogType = blogType;
-	}
-
-	public List<BlogComment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<BlogComment> comments) {
-		this.comments = comments;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
 
 }

@@ -114,11 +114,11 @@
 		    <version>2.0.3.RELEASE</version>
 		</dependency>
 		
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
-		</dependency> -->
+		</dependency>
 
 	</dependencies>
 
@@ -126,7 +126,7 @@
 		<finalName>com.eoptech.shopdoda</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 
-		<!-- Dùng plugin tạo file jar -->
+		<!--Dùng plugin tạo file jar-->
 		<plugins>
 			<!-- mvn clean compile assembly:single -->
 			<plugin>
